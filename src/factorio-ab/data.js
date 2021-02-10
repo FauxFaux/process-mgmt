@@ -51,7 +51,7 @@ data.add_processes(
         [items.ore_jivolite, items.crushed_jivolite],
     ].map(i => {
         return new Process(
-            i[0] + "_crushing",
+            i[0].id + "_crushing",
             [new Stack(i[0], 2)],
             [new Stack(i[1], 2), new Stack(items.crushed_stone, 1)],
             1,
@@ -84,7 +84,7 @@ data.add_processes([
 ]);
 data.add_processes([
     new Process(
-        "iron_ore_by_sorting"
+        "iron_ore_by_sorting",
         [new Stack(items.catalyst_mineral, 1), new Stack(items.crushed_saphirite, 2), new Stack(items.crushed_jivolite, 2)],
         [new Stack(items.ore_iron, 4)],
         1,

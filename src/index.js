@@ -6,17 +6,15 @@ import { inspect } from 'util'
 
 // console.log(inspect(data, false, null, true));
 
-// data.processes.forEach((p, i) => {
-//     console.log(i, p.factory_group, p.outputs)
-// });
+// console.log(data);
 
 let p = new ProcessChain([
-    data.processes[9],
-    data.processes[8],
-    data.processes[7],
-    data.processes[6],
-    data.processes[0],
-    data.processes[5],
+    data.processes.iron_ore_by_sorting,
+    data.processes.mineral_catalyst,
+    data.processes.mineral_sludge_from_slag_slurry,
+    data.processes.slag_slurry_from_crushed_stone,
+    data.processes.ore_jivolite_crushing,
+    data.processes.ore_saphirite_crushing,
 ]);
 
 //console.log(p.processes_by_output)

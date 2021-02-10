@@ -1,6 +1,15 @@
 
+function check(...values) {
+    values.forEach(v => {
+        if (typeof v === "undefined") {
+            throw new Error("must not be undefined");
+        }
+    });
+}
+
 class Data {
     constructor(game, version) {
+        check(game, version);
         this.game = game;
         this.version = version;
         this.items = {};
@@ -28,6 +37,7 @@ class Data {
 
 class Item {
     constructor(id, name) {
+        check(id, name);
         this.id = id;
         this.name = name;
     }
@@ -38,6 +48,7 @@ class Item {
 
 class FactoryGroup {
     constructor(name) {
+        check(name);
         this.id = name;
         this.name = name;
     }
@@ -49,6 +60,7 @@ class FactoryGroup {
 
 class Factory {
     constructor(name, group, duration_modifier = 1) {
+        check(name, group, duration_modifier);
         this.name = name;
         this.group = group;
         this.duration_modifier = duration_modifier;
@@ -61,6 +73,7 @@ class Factory {
 
 class Stack {
     constructor(item, quantity) {
+        check(item, quantity);
         this.item = item;
         this.quantity = quantity;
     }
@@ -68,6 +81,7 @@ class Stack {
 
 class Process {
     constructor(id, inputs, outputs, duration, factory_group) {
+        check(id, inputs, outputs, duration, factory_group);
         this.id = id;
         this.inputs = inputs;
         this.outputs = outputs;
@@ -94,11 +108,12 @@ class Process {
 
 class ProcessChain {
     constructor(processes) {
+        check(processes);
         this.processes = processes;
         this.processes_by_output = processes.reduce((acc, cur) => {
             cur.outputs.forEach(output => {
-                if (!acc[output.item]) { acc[output.item] = []; }
-                acc[output.item].push(cur)
+                if (!acc[output.item.id]) { acc[output.item.id] = []; }
+                acc[output.item.id].push(cur)
             });
             return acc;
         }, {});
