@@ -1,7 +1,8 @@
 import { Data, Item, Stack, FactoryGroup, Factory, Process } from '../structures.js'
 
-let mineable_ores = ["saphirite", "stiratite", "rubyte", "bobmonium", "crotinnium", "jivolite"];
 let data = new Data("factorio-ab", "0.0.1");
+
+let mineable_ores = ["saphirite", "stiratite", "rubyte", "bobmonium", "crotinnium", "jivolite"];
 mineable_ores.forEach(ore => {
     data.add_item(new Item("ore_" + ore, ore + " ore"));
     data.add_item(new Item("crushed_" + ore, ore + " crushed"));
@@ -16,11 +17,15 @@ data.add_items([
     new Item("catalyst_hybrid", "hybrid catalyst"),
 
     new Item("water_purified", "purified water"),
+    new Item("water_mineralized", "mineralised water"),
     new Item("water_waste_sulfuric", "sulphuric waste water"),
 
     new Item("slurry_slag", "slag slurry"),
 
+    new Item("sulfur", "sulphur"),
     new Item("acid_sulfuric", "sulphuric acid"),
+    new Item("gas_sulfur_dioxide", "sulphur dioxide gas"),
+    new Item("gas_oxygen", "oxygen gas"),
 
     new Item("ore_iron", "iron ore"),
     new Item("ore_copper", "copper ore"),
@@ -38,6 +43,8 @@ data.add_factory_groups([
     new FactoryGroup("filtration_unit"),
     new FactoryGroup("liquifier"),
     new FactoryGroup("assembler"),
+    new FactoryGroup("chemical_plant"),
+    new FactoryGroup("hydro_plant"),
 ]);
 let factory_groups = data.factory_groups;
 
@@ -89,6 +96,29 @@ data.add_processes([
         [new Stack(items.ore_iron, 4)],
         1,
         factory_groups.sorter
+    )
+]);
+data.add_processes([
+    new Process(
+        "acid_sulfuric",
+        [new Stack(items.gas_sulfur_dioxide, 90), new Stack(items.water_purified, 40)],
+        [new Stack(items.acid_sulfuric, 60)],
+        1,
+        factory_groups.chemical_plant
+    ),
+    new Process(
+        "gas_sulfur_dioxide",
+        [new Stack(items.sulfur, 1), new Stack(items.gas_oxygen, 60)],
+        [new Stack(items.gas_sulfur_dioxide, 60)],
+        1,
+        factory_groups.chemical_plant
+    ),
+    new Process(
+        "waste_water_purification_sulfuric",
+        [new Stack(items.water_waste_sulfuric, 100)],
+        [new Stack(items.sulfur, 1), new Stack(items.water_purified, 70), new Stack(items.water_mineralized, 20)],
+        1,
+        factory_groups.hydro_plant
     )
 ]);
 
