@@ -1,15 +1,17 @@
 
-function check(...values) {
-    values.forEach(v => {
+function check() {
+    for (let i = 0; i < arguments.length; i += 2) {
+        let n = arguments[i];
+        let v = arguments[i+1];
         if (typeof v === "undefined") {
-            throw new Error("must not be undefined");
+            throw new Error(n + " must not be undefined");
         }
-    });
+    }
 }
 
 class Data {
     constructor(game, version) {
-        check(game, version);
+        check("game", game, "version", version);
         this.game = game;
         this.version = version;
         this.items = {};
@@ -37,7 +39,7 @@ class Data {
 
 class Item {
     constructor(id, name) {
-        check(id, name);
+        check("id", id, "name", name);
         this.id = id;
         this.name = name;
     }
@@ -48,7 +50,7 @@ class Item {
 
 class FactoryGroup {
     constructor(name) {
-        check(name);
+        check("name", name);
         this.id = name;
         this.name = name;
     }
@@ -60,7 +62,7 @@ class FactoryGroup {
 
 class Factory {
     constructor(name, group, duration_modifier = 1) {
-        check(name, group, duration_modifier);
+        check("name", name, "group", group, "duration_modifier", duration_modifier);
         this.name = name;
         this.group = group;
         this.duration_modifier = duration_modifier;
@@ -73,7 +75,7 @@ class Factory {
 
 class Stack {
     constructor(item, quantity) {
-        check(item, quantity);
+        check("item", item, "quantity", quantity);
         this.item = item;
         this.quantity = quantity;
     }
@@ -81,7 +83,7 @@ class Stack {
 
 class Process {
     constructor(id, inputs, outputs, duration, factory_group) {
-        check(id, inputs, outputs, duration, factory_group);
+        check("id", id, "inputs", inputs, "outputs", outputs, "duration", duration, "factory_group", factory_group);
         this.id = id;
         this.inputs = inputs;
         this.outputs = outputs;
@@ -108,7 +110,7 @@ class Process {
 
 class ProcessChain {
     constructor(processes) {
-        check(processes);
+        check("processes", processes);
         this.processes = processes;
         this.processes_by_output = processes.reduce((acc, cur) => {
             cur.outputs.forEach(output => {
