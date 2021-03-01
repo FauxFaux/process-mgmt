@@ -20,18 +20,52 @@ data.add_items([
     new Item("electric_motor", "electric motor"),
     new Item("magnetic_coil", "magnetic coil"),
     new Item("gear", "gear"),
-    new Item("a", ""),
-    new Item("b", ""),
+    new Item("graviton_lens", "graviton lens"),
+    new Item("diamond", "diamond"),
+    new Item("strange_matter", "strange matter"),
+    new Item("energetic_graphite", "energetic graphite"),
+    new Item("deuterium", "deuterium"),
+    new Item("coal", "coal"),
+    new Item("d", ""),
 ]);
 let items = data.items;
 
 data.add_factory_groups([
     new FactoryGroup("smelter"),
     new FactoryGroup("assembler"),
+    new FactoryGroup("particle_collider"),
 ]);
 let factory_groups = data.factory_groups;
 
 data.add_processes([
+    new Process(
+        "energetic_graphite",
+        [new Stack(items.coal, 1)],
+        [new Stack(items.energetic_graphite, 1)],
+        1,
+        factory_groups.smelter
+    ),
+    new Process(
+        "diamond",
+        [new Stack(items.energetic_graphite, 1)],
+        [new Stack(items.diamond, 1)],
+        1,
+        factory_groups.smelter
+    ),
+    new Process(
+        "strange_matter",
+        [new Stack(items.particle_container, 2), new Stack(items.iron_plate, 2), new Stack(items.deuterium, 10)],
+        [new Stack(items.strange_matter, 1)],
+        1,
+        factory_groups.particle_collider
+    ),
+    new Process(
+        "graviton_lens",
+        [new Stack(items.diamond, 4), new Stack(items.strange_matter, 1)],
+        [new Stack(items.graviton_lens, 1)],
+        6,
+        factory_groups.assembler
+    ),
     new Process(
         "iron_plate",
         [new Stack(items.iron_ore, 1)],

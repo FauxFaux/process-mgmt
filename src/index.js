@@ -1,6 +1,6 @@
 import { data } from "./dsp/data.js"
 //import { data } from "./factorio-ab/data.js"
-import { ProcessChain } from "./structures.js"
+import { ProcessChain, Stack } from "./structures.js"
 // import { inspect } from 'util'
 
 
@@ -33,7 +33,11 @@ let names = [
 "copper_plate",
 "particle_container",
 ];
-let p = new ProcessChain(names.map(n => data.processes[n]));
+// let p = new ProcessChain(names.map(n => data.processes[n]));
+// let p = new ProcessChain([data.processes['diamond']])
+let p = new ProcessChain(Object.values(data.processes))
+    .filter_for_output(new Stack(data.items.graviton_lens, 1))
+    ;
 // let p = new ProcessChain(Object.entries(data.processes).flatMap(
     //  ([id, proc]) => proc
 // ));

@@ -121,6 +121,22 @@ class ProcessChain {
         }, {});
     }
 
+    filter_for_output(output_stack, priorities) {
+        let result = [];
+        let queue = [output_stack.item.id];
+        while (queue.length > 0) {
+            let current = queue.shift();
+            let processes_for_current = this.processes_by_output[current];
+            if (processes_for_current && processes_for_current.length > 1) {
+                throw new Error("TODO enable priorities for " + current);
+            } else if (processes_for_current && processes_for_current.length == 1) {
+                result.push(processes_for_current[0]);
+                processes_for_current[0].inputs.forEach(input => queue.push(input.item.id));
+            }
+        }
+        return new ProcessChain(result);
+    }
+
     require_output(stack) {
         return stack.quantity / this.processes_by_output[stack.item][0].production_rate(stack.item);
     }
@@ -165,5 +181,7 @@ class ProcessChain {
         return result.join('\n')
     }
 }
+
+
 
 export {Data, Item, Stack, FactoryGroup, Factory, Process, ProcessChain}
