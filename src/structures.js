@@ -123,15 +123,20 @@ class ProcessChain {
 
     filter_for_output(output_stack, priorities) {
         let result = [];
+        let visited = [];
         let queue = [output_stack.item.id];
         while (queue.length > 0) {
             let current = queue.shift();
+            visited.push(current);
             let processes_for_current = this.processes_by_output[current];
             if (processes_for_current && processes_for_current.length > 1) {
                 throw new Error("TODO enable priorities for " + current);
             } else if (processes_for_current && processes_for_current.length == 1) {
                 result.push(processes_for_current[0]);
-                processes_for_current[0].inputs.forEach(input => queue.push(input.item.id));
+                processes_for_current[0].inputs
+                        .filter(input => !queue.includes(input.item.id))
+                        .filter(input => !visited.includes(input.item.id))
+                        .forEach(input => queue.push(input.item.id));
             }
         }
         return new ProcessChain(result);
