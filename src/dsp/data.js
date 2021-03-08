@@ -6,7 +6,13 @@ data.add_items([
     new Item("iron_ore", "iron ore"),
     new Item("iron_plate", "iron plate"),
     new Item("magnet", "magnet"),
+    new Item("stone_ore", "stone ore"),
+    new Item("stone", "stone"),
+    new Item("steel", "steel"),
+    new Item("glass", "glass"),
     new Item("copper_ore", "copper ore"),
+    new Item("titanium_ore", "titanium ore"),
+    new Item("titanium_plate", "titanium plate"),
     new Item("copper_plate", "copper plate"),
     new Item("circuit", "circuit"),
     new Item("silicon_ore", "silicon ore"),
@@ -38,9 +44,51 @@ data.add_factory_groups([
 let factory_groups = data.factory_groups;
 
 data.add_processes([
+    // new Process(
+    //     "hardened titanium thing", // XXX find the name for the titanium stuff
+    //     [new Stack(items.steel, 4), new Stack(items.sulfuric_acid, 8), new Stack(items.titanium, 4)],
+    //     [new Stack(items.titanium_stuff, 1)],
+    //     12,
+    //     factory_groups.smelter
+    // ),
+    // new Process(
+    //     "diamond_rare",
+    //     [new Stack(items.diamond_rare_thing, 1)], // XXX find the rare diamond name
+    //     [new Stack(items.diamond, 1)],
+    //     2,
+    //     factory_groups.smelter
+    // ),
+    new Process(
+        "glass",
+        [new Stack(items.stone_ore, 2)],
+        [new Stack(items.glass, 1)],
+        2,
+        factory_groups.smelter
+    ),
+    new Process(
+        "stone",
+        [new Stack(items.stone_ore, 1)],
+        [new Stack(items.stone, 1)],
+        1,
+        factory_groups.smelter
+    ),
+    new Process(
+        "titanium_plate",
+        [new Stack(items.titanium_ore, 2)],
+        [new Stack(items.titanium_plate, 1)],
+        2,
+        factory_groups.smelter
+    ),
+    new Process(
+        "steel",
+        [new Stack(items.iron_plate, 3)],
+        [new Stack(items.steel, 1)],
+        3,
+        factory_groups.smelter
+    ),
     new Process(
         "energetic_graphite",
-        [new Stack(items.coal, 1)],
+        [new Stack(items.coal, 2)],
         [new Stack(items.energetic_graphite, 1)],
         1,
         factory_groups.smelter
