@@ -79,6 +79,16 @@ class Stack {
         this.item = item;
         this.quantity = quantity;
     }
+    clone() {
+        return new Stack(this.item, this.quantity);
+    }
+    add(other) {
+        if (other) {
+            return new Stack(this.item, this.quantity + other.quantity);
+        } else {
+            return this;
+        }
+    }
 }
 
 class Process {
@@ -129,11 +139,19 @@ class ProcessChain {
             let current = queue.shift();
             visited.push(current);
             let processes_for_current = this.processes_by_output[current];
+            process = null;
             if (processes_for_current && processes_for_current.length > 1) {
-                throw new Error("TODO enable priorities for " + current);
-            } else if (processes_for_current && processes_for_current.length == 1) {
-                result.push(processes_for_current[0]);
-                processes_for_current[0].inputs
+                if (!priorities) {
+                    throw new Error("No priority selector enabled");
+                }
+                process = priorities(current, processes_for_current);
+            }    
+            if (processes_for_current && processes_for_current.length == 1) {
+                process = processes_for_current[0];
+            }
+            if (process) {
+                result.push(process);
+                process.inputs
                         .filter(input => !queue.includes(input.item.id))
                         .filter(input => !visited.includes(input.item.id))
                         .forEach(input => queue.push(input.item.id));
@@ -155,30 +173,56 @@ class ProcessChain {
         )];
     }
 
+    _render_processor_node(node_id, process) {
+        let inputs = process.inputs.map((input, index) => {
+            return "<i" + index + "> " + input.item.name;
+        }).join(" | ");
+        let outputs = process.outputs.map((output, index) => {
+            return "<o" + index + "> " + output.item.name;
+        }).join(" | ");
+        return node_id + " [" +
+            "shape=\"record\" " +
+            "label=\"{ {" + inputs + "} " +
+                "| " + process.factory_group.name + " " +
+                "| " + process.duration + 
+                "| {" + outputs + "} }\"" +
+            "]";
+    }
+
+    _render_item_node(item) {
+        return item.id + " [shape=\"oval\" label=\"" + item.name + "\"]"
+    }
+
+    _render_edge(node_id, from, to, index) {
+        if (from.factory_group) { // XXX need a better way to detect 
+            // outbound from a process to an item
+            return node_id + ":o" + index + " -> " + to.item.id + " [label=\"" + to.quantity + "\"]";
+        } else {
+            // inbound from an item to a process
+            return from.item.id + " -> " + node_id + ":i" + index + " [label=\"" + from.quantity + "\"]";
+        }
+    }
+
     to_graphviz() {
         let result = [];
         result.push("digraph {")
         this.all_items().forEach(item => {
-            result.push("  " + item.id + " [shape=\"oval\" label=\"" + item.name + "\"]")
+            result.push("  " + this._render_item_node(item));
         });
         this.processes.forEach((process, index) => {
             let node_id = "process_" + index;
-            let inputs = process.inputs.map((input, index) => {
-                return "<i" + index + "> " + input.item.name;
-            }).join(" | ");
-            let outputs = process.outputs.map((output, index) => {
-                return "<o" + index + "> " + output.item.name;
-            }).join(" | ");
-            result.push("  " + node_id + " [shape=\"record\" label=\"{ {" + inputs + "} | " + process.factory_group.name + " | {" + outputs + "} }\"]");
+
+            result.push("  " + this._render_processor_node(node_id, process))
 
             result.push(...
                 process.inputs.map((input, index) => {
-                    return "  " + input.item.id + " -> " + node_id + ":i" + index + " [label=\"" + input.quantity + "\"]";
+                    return "  " + this._render_edge(node_id, input, process, index);
                 })
             )
             result.push(...
                 process.outputs.map((output, index) => {
-                    return "  " + node_id + ":o" + index + " -> " + output.item.id + " [label=\"" + output.quantity + "\"]";
+                    return "  " + this._render_edge(node_id, process, output, index);
+                    // return "  " + this._render_edge(node_id + ":o" + index, output.item.id, process, output);
                 })
             )
         });
@@ -187,6 +231,94 @@ class ProcessChain {
     }
 }
 
+class RatedProcess extends Process {
+    constructor(p) {
+        super(p.id, p.inputs, p.outputs, p.duration, p.factory_group);
+        this.factory_type = new Factory("TODO", "any", 1);
+        this.factory_count = 0;
+    }
+
+    input_requirements() {
+        return this.inputs.map(input => {
+            let result = input.clone();
+            result.quantity = result.quantity * this.factory_count / this.duration;
+            return result;
+        });
+    }
+}
+
+class RateChain extends ProcessChain {
+    constructor(chain) {
+        super(chain.processes.map(p => new RatedProcess(p)));
+        this.rates = {};
+        this.edge_rates = {};
+    }
+
+    update(product_stack) {
+        let queue = [];
+        queue.push(product_stack.clone());
+        this.rates[product_stack.item.id] = product_stack.clone();
+        while (queue.length > 0) {
+            let stack = queue.shift();
+            if (this.processes_by_output[stack.item.id]) {
+                let process = this.processes_by_output[stack.item.id][0]; // XXX "pick the first"
+                process.factory_count += process.count_for_rate(stack);
+                let req = process.input_requirements();
+                req.forEach(r => {
+                    this._set_edge_rate(r.item, process, r);
+                    this.rates[r.item.id] = stack.add(this.rates[r.item.id]);
+                    queue.push(r);
+                });
+            }
+        }
+    }
+
+    _get_edge_rate(from, to) {
+        return this.edge_rates[from.id][to.id];
+    }
+    _set_edge_rate(from, to, stack) {
+        if (!this.edge_rates[from.id]) {
+            this.edge_rates[from.id] = {};
+        }
+        this.edge_rates[from.id][to.id] = stack;
+    }
+
+    _render_item_node(item) {
+        return item.id + " [shape=\"record\" label=\"{" 
+            + item.name
+            + " | " + ( this.rates[item.id] ? this.rates[item.id].quantity : "???????????" ) + "/s"
+            + "}\"]"
+    }
+
+    _render_edge(node_id, from, to, index) {
+        if (from.factory_group) { // XXX need a better way to detect 
+            // outbound from a process to an item
+            return node_id + ":o" + index + " -> " + to.item.id;
+        } else {
+            // inbound from an item to a process
+            let rate = this._get_edge_rate(from.item, to);
+            return from.item.id + " -> " + node_id + ":i" + index + " [label=\"" + rate.quantity + "/s\"]";
+        }
+    }
+
+    _render_processor_node(node_id, process) {
+        let inputs = process.inputs.map((input, index) => {
+            return "<i" + index + "> " + input.item.name + " (" + input.quantity + ")";
+        }).join(" | ");
+        let outputs = process.outputs.map((output, index) => {
+            return "<o" + index + "> " + output.item.name + " (" + output.quantity + ")";
+        }).join(" | ");
+        return node_id + " [" +
+            "shape=\"record\" " +
+            "label=\"{ {" + inputs + "}" +
+                " | " + process.factory_group.name +
+                " | { " + process.duration + "s/run | " + process.factory_count + " factories }" + 
+                " | {" + outputs + "} }\"" +
+            "]";
+    }
+
+}
 
 
-export {Data, Item, Stack, FactoryGroup, Factory, Process, ProcessChain}
+
+export {Data, Item, Stack, FactoryGroup, Factory, Process, ProcessChain, RateChain}
