@@ -5,7 +5,8 @@
   "description": "Managing factory processes",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive --require esm"
+    "test": "mocha --recursive --require esm",
+    "run": "node src/index.js"
   },
   "author": "",
   "license": "GPL-2.0-only",
