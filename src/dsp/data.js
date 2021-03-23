@@ -32,6 +32,7 @@ data.add_items([
     new Item("energetic_graphite", "energetic graphite"),
     new Item("deuterium", "deuterium"),
     new Item("coal", "coal"),
+    new Item("kimberlite_ore", "kimberlite ore"),
     new Item("d", ""),
 ]);
 let items = data.items;
@@ -51,13 +52,13 @@ data.add_processes([
     //     12,
     //     factory_groups.smelter
     // ),
-    // new Process(
-    //     "diamond_rare",
-    //     [new Stack(items.diamond_rare_thing, 1)], // XXX find the rare diamond name
-    //     [new Stack(items.diamond, 1)],
-    //     2,
-    //     factory_groups.smelter
-    // ),
+    new Process(
+        "diamond_rare",
+        [new Stack(items.kimberlite_ore, 1)],
+        [new Stack(items.diamond, 1)],
+        2,
+        factory_groups.smelter
+    ),
     new Process(
         "glass",
         [new Stack(items.stone_ore, 2)],
@@ -104,7 +105,7 @@ data.add_processes([
         "strange_matter",
         [new Stack(items.particle_container, 2), new Stack(items.iron_plate, 2), new Stack(items.deuterium, 10)],
         [new Stack(items.strange_matter, 1)],
-        1,
+        8,
         factory_groups.particle_collider
     ),
     new Process(
@@ -125,7 +126,7 @@ data.add_processes([
         "magnet",
         [new Stack(items.iron_ore, 1)],
         [new Stack(items.magnet, 1)],
-        1,
+        1.5,
         factory_groups.smelter
     ),
     new Process(
