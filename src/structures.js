@@ -86,8 +86,24 @@ class Stack {
         if (other) {
             return new Stack(this.item, this.quantity + other.quantity);
         } else {
-            return this;
+            return this.clone();
         }
+    }
+}
+
+class StackSet {
+    constructor() {
+        this.stacks = {};
+    }
+    add(stack) {
+        if (!this.stacks[stack.item.id]) {
+            this.stacks[stack.item.id] = [];
+        }
+        this.stacks[stack.item.id].push(stack);
+    }
+
+    total(item) {
+        return this.stacks[item.id].reduce((p, c) => p.add(c), new Stack(item, 0));
     }
 }
 
@@ -241,7 +257,7 @@ class RatedProcess extends Process {
     input_requirements() {
         return this.inputs.map(input => {
             let result = input.clone();
-            result.quantity = result.quantity * this.factory_count / this.duration;
+            result.quantity = result.quantity * this.factory_cousnt / this.duration;
             return result;
         });
     }
@@ -254,19 +270,35 @@ class RateChain extends ProcessChain {
         this.edge_rates = {};
     }
 
+
+    update2(product_stack) {
+        let queue = [];
+        let process_counts = {}; // process_id => required count of the process.
+        queue.push(product_stack.clone());
+        while(queue.length > 0) {
+            let stack = queue.pop();
+            if (this.processes_by_output[stack.item.id]) {
+                let process = this.processes_by_output[stack.item.id][0]; // XXX "pick the first"
+                process.inputs.forEach(input => {
+                    
+                });
+            }
+        }
+    }
+
     update(product_stack) {
         let queue = [];
         queue.push(product_stack.clone());
         this.rates[product_stack.item.id] = product_stack.clone();
         while (queue.length > 0) {
-            let stack = queue.shift();
+            let stack = queue.pop();
             if (this.processes_by_output[stack.item.id]) {
                 let process = this.processes_by_output[stack.item.id][0]; // XXX "pick the first"
                 process.factory_count += process.count_for_rate(stack);
                 let req = process.input_requirements();
                 req.forEach(r => {
                     this._set_edge_rate(r.item, process, r);
-                    this.rates[r.item.id] = stack.add(this.rates[r.item.id]);
+                    this.rates[r.item.id] = r.add(this.rates[r.item.id]);
                     queue.push(r);
                 });
             }
@@ -293,7 +325,7 @@ class RateChain extends ProcessChain {
     _render_edge(node_id, from, to, index) {
         if (from.factory_group) { // XXX need a better way to detect 
             // outbound from a process to an item
-            return node_id + ":o" + index + " -> " + to.item.id;
+            return node_id + ":o" + index + " -> " + to.item.id;// + " [label=\"" + to.quantity + "\"]";
         } else {
             // inbound from an item to a process
             let rate = this._get_edge_rate(from.item, to);
