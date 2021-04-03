@@ -5,13 +5,13 @@
   "description": "Managing factory processes",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive --require esm",
+    "test": "mocha --recursive",
     "run": "node src/index.js"
   },
   "author": "",
   "license": "GPL-2.0-only",
   "devDependencies": {
     "esm": "^3.2.25",
-    "mocha": "^8.2.1"
+    "mocha": "^8.3.2"
   }
 }
