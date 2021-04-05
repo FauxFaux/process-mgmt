@@ -1,7 +1,7 @@
-import { data } from "./dsp/data.js"
-// import { data as factorio_ab } from "./factorio-ab-01/data.js"
-//import { data } from "./factorio-ab/data.js"
-import { ProcessChain, RateChain, Stack } from "./structures.js"
+import { data } from './dsp/data.js';
+// import { data as factorio_ab } from './factorio-ab-01/data.js'
+//import { data } from './factorio-ab/data.js'
+import { ProcessChain, RateChain, Stack } from './structures.js';
 // import { inspect } from 'util'
 const readline = import('readline');
 
@@ -25,7 +25,7 @@ const readline = import('readline');
 // Object.entries(data.processes).forEach(([id, proc]) => console.log(id));
 
 const readline_disambiguate = function(requirement, options) {
-    console.log("Multiple potential options for ", requirement, ":", options);
+    console.log('Multiple potential options for ', requirement, ':', options);
 
 };
 
@@ -33,20 +33,20 @@ const array_disambiguate = function(requirement, options) {
     let arr = {};
     arr[data.items.diamond.id] = data.processes.diamond_rare;
     if (arr[data.items.diamond.id] === false) {
-        throw new Error("No enabled priority for " + requirement + " (available: " + options.map(i => i.id).join(", ") + ")");
+        throw new Error('No enabled priority for ' + requirement + ' (available: ' + options.map(i => i.id).join(', ') + ')');
     }
     return arr[requirement];
 };
 
 let names = [
-"iron_plate",
-"magnet",
-"gear",
-"magnetic_coil",
-"elctric_motor",
-"electromagnetic_turbine",
-"copper_plate",
-"particle_container",
+    'iron_plate',
+    'magnet',
+    'gear',
+    'magnetic_coil',
+    'elctric_motor',
+    'electromagnetic_turbine',
+    'copper_plate',
+    'particle_container',
 ];
 // let p = new ProcessChain(names.map(n => data.processes[n]));
 // let p = new ProcessChain([data.processes['diamond']])
@@ -62,15 +62,15 @@ p.update(new Stack(data.items.graviton_lens, 1));
 // p.update(new Stack(data.items.electric_motor, 8));
 // console.log(r[0], r[1]);
 // let p = new ProcessChain(Object.entries(data.processes).flatMap(
-    //  ([id, proc]) => proc
+//  ([id, proc]) => proc
 // ));
 
 // let processes_from_exported_data = [
-    // 'angelsore-crushed-mix1-processing', // iron ore from 2x crushed + catalyst.
+// 'angelsore-crushed-mix1-processing', // iron ore from 2x crushed + catalyst.
 // ]
 
 //console.log(p.processes_by_output)
-// console.log("circuit production rate", data.processes[3].production_rate(data.items.circuit, 1))
+// console.log('circuit production rate', data.processes[3].production_rate(data.items.circuit, 1))
 
 // console.log(p.require_output(new Stack(data.items.circuit, 10)));
 // console.log(p.all_items());

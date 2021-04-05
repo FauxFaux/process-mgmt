@@ -4,19 +4,19 @@ import { check } from './structures_base.js';
 
 class FactoryGroup {
     constructor(name) {
-        check("name", name);
+        check('name', name);
         this.id = name;
         this.name = name;
     }
 
     toString() {
-        return "FactoryGroup: [name: " + this.name + "]";
+        return 'FactoryGroup: [name: ' + this.name + ']';
     }
 }
 
 class Factory {
     constructor(id, name, group, duration_modifier = 1) {
-        check("id", id, "name", name, "group", group, "duration_modifier", duration_modifier);
+        check('id', id, 'name', name, 'group', group, 'duration_modifier', duration_modifier);
         this.id = id;
         this.name = name;
         this.group = group;
@@ -24,7 +24,7 @@ class Factory {
     }
 
     toString() {
-        return "Factory: [id: " + this.id + ", name: " + this.name + ", group: " + this.group + "]";
+        return 'Factory: [id: ' + this.id + ', name: ' + this.name + ', group: ' + this.group + ']';
     }
 
     update_process(p) {
@@ -32,4 +32,4 @@ class Factory {
     }
 }
 
-export { FactoryGroup, Factory }
+export { FactoryGroup, Factory };
