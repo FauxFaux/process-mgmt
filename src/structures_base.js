@@ -10,4 +10,4 @@ function check() {
 }
 
 
-export {check}
+export { check }

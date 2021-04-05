@@ -19,6 +19,12 @@ class Stack {
             return this.clone();
         }
     }
+    div(scalar) {
+        return new Stack(this.item, this.quantity / scalar);
+    }
+    mul(scalar) {
+        return new Stack(this.item, this.quantity * scalar);
+    }
 }
 
 class StackSet {
@@ -26,14 +32,32 @@ class StackSet {
         this.stacks = {};
     }
     add(stack) {
+        this._ensure_stack(stack);
+        this.stacks[stack.item.id].push(stack);
+    }
+    sub(stack) {
+        this._ensure_stack(stack);
+        this.stacks[stack.item.id].push(stack.mul(-1));
+    }
+
+    _ensure_stack(stack) {
         if (!this.stacks[stack.item.id]) {
             this.stacks[stack.item.id] = [];
         }
-        this.stacks[stack.item.id].push(stack);
     }
 
     total(item) {
         return this.stacks[item.id].reduce((p, c) => p.add(c), new Stack(item, 0));
+    }
+    total_positive(item) {
+        return this.stacks[item.id]
+                .filter(s => s.quantity > 0)
+                .reduce((p, c) => p.add(c), new Stack(item, 0));
+    }
+    total_negative(item) {
+        return this.stacks[item.id]
+                .filter(s => s.quantity < 0)
+                .reduce((p, c) => p.add(c), new Stack(item, 0));
     }
 }
 

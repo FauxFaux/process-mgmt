@@ -12,6 +12,7 @@
   "license": "GPL-2.0-only",
   "devDependencies": {
     "esm": "^3.2.25",
+    "jslint": "^0.12.1",
     "mocha": "^8.3.2"
   }
 }
