@@ -103,4 +103,4 @@ class RateChain extends ProcessChain {
     }
 }
 
-export {RateProcess, RateChain}
+export { RateProcess, RateChain }

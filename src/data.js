@@ -31,4 +31,4 @@ class Data {
 
 }
 
-export {Data}
+export { Data }

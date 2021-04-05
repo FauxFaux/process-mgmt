@@ -1,7 +1,7 @@
 import * as assert from 'assert';
 
-import {Item} from '../src/item.js'
-import {Stack, StackSet} from '../src/stack.js'
+import { Item } from '../src/item.js'
+import { Stack, StackSet } from '../src/stack.js'
 
 let item_a = new Item("a", "A");
 let item_b = new Item("b", "B");

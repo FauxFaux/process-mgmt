@@ -1,6 +1,5 @@
 {
   "name": "process-mgmt",
-  "type": "module",
   "version": "1.0.0",
   "description": "Managing factory processes",
   "main": "index.js",
@@ -11,8 +10,8 @@
   "author": "",
   "license": "GPL-2.0-only",
   "devDependencies": {
+    "eslint": "^7.23.0",
     "esm": "^3.2.25",
-    "jslint": "^0.12.1",
     "mocha": "^8.3.2"
   }
 }

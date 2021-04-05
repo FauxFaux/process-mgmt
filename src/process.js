@@ -1,5 +1,5 @@
 import { check } from './structures_base.js';
-
+import { Stack } from './stack.js';
 
 class Process {
     constructor(id, inputs, outputs, duration, factory_group) {
@@ -49,7 +49,7 @@ class ProcessChain {
             let current = queue.shift();
             visited.push(current);
             let processes_for_current = this.processes_by_output[current];
-            process = null;
+            let process = null;
             if (processes_for_current && processes_for_current.length > 1) {
                 if (!priorities) {
                     throw new Error("No priority selector enabled");
@@ -104,7 +104,7 @@ class ProcessChain {
     }
 
     _render_edge(node_id, from, to, index) {
-        if (from.factory_group) { // XXX need a better way to detect 
+        if (from.factory_group) { // XXX need a better way to detect
             // outbound from a process to an item
             return node_id + ":o" + index + " -> " + to.item.id + " [label=\"" + to.quantity + "\"]";
         } else {

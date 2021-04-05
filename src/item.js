@@ -13,4 +13,4 @@ class Item {
     }
 }
 
-export {Item}
+export { Item }

@@ -24,7 +24,7 @@ class Factory {
     }
 
     toString() {
-        return "Factory: [id: " + id + ", name: " + this.name + ", group: " + this.group + "]";
+        return "Factory: [id: " + this.id + ", name: " + this.name + ", group: " + this.group + "]";
     }
 
     update_process(p) {
@@ -32,4 +32,4 @@ class Factory {
     }
 }
 
-export {FactoryGroup, Factory}
+export { FactoryGroup, Factory }
