@@ -25,7 +25,7 @@ class RateProcess extends Process {
 class RateChain extends ProcessChain {
     constructor(chain, factory_types) {
         super(chain.processes.map(p => {
-            let factory = new Factory('__generated__', 'generated default', 1);
+            let factory = new Factory('__generated__', 'default', 1);
             if (factory_types[p.factory_group.id]) {
                 factory = factory_types[p.factory_group.id];
             }
@@ -82,8 +82,8 @@ class RateChain extends ProcessChain {
         return node_id + ' [' +
             'shape="record" ' +
             'label="{ {' + inputs + '}' +
-                ' | ' + process.factory_group.name +
-                ' | { ' + process.duration + 's/run | ' + process_count + ' factories }' +
+                ' | ' + process.factory_type.name + ' (' + process.factory_group.name + ')' +
+                ' | { ' + Math.round(process.duration*100)/100 + 's/run | ' + Math.round(process_count*100)/100 + ' factories }' +
                 ' | {' + outputs + '} }"' +
             ']';
     }

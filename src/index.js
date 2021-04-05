@@ -56,7 +56,7 @@ let p1 = new ProcessChain(Object.values(data.processes))
     // .filter_for_output(new Stack(data.items.circuit, 1), array_disambiguate)
     ;
 
-let p = new RateChain(p1, {});
+let p = new RateChain(p1, {'assembler': data.factories.assembler_III});
 // let r = p.update(new Stack(data.items.circuit, 10));
 p.update(new Stack(data.items.graviton_lens, 1));
 // p.update(new Stack(data.items.electric_motor, 8));

@@ -45,9 +45,9 @@ data.add_factory_groups([
 let factory_groups = data.factory_groups;
 
 data.add_factories([
-    new Factory('assembling_I', 'assembler I', factory_groups.assembler, 1/1),
-    new Factory('assembling_II', 'assembler II', factory_groups.assembler, 1/1.25),
-    new Factory('assembling_III', 'assembler III', factory_groups.assembler, 1/1.5),
+    new Factory('assembler_I', 'assembler I', factory_groups.assembler, 1/1),
+    new Factory('assembler_II', 'assembler II', factory_groups.assembler, 1/1.25),
+    new Factory('assembler_III', 'assembler III', factory_groups.assembler, 1/1.5),
 
     new Factory('smelter', 'smelter', factory_groups.smelter, 1),
     new Factory('particle_collider', 'particle collider', factory_groups.particle_collider, 1),

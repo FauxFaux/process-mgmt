@@ -1,6 +1,7 @@
 {
   "name": "process-mgmt",
   "version": "1.0.0",
+  "type": "module",
   "description": "Managing factory processes",
   "main": "index.js",
   "scripts": {
