@@ -1,0 +1,435 @@
+{
+    "recipes": [
+        {
+            "name": "angelsore-crushed-mix1-processing",
+            "category": "ore-sorting",
+            "ingredients": [
+                {
+                    "type": "item",
+                    "amount": 1,
+                    "name": "catalysator-brown"
+                },
+                {
+                    "type": "item",
+                    "amount": 2,
+                    "name": "angels-ore1-crushed"
+                },
+                {
+                    "type": "item",
+                    "amount": 2,
+                    "name": "angels-ore2-crushed"
+                }
+            ],
+            "products": [
+                {
+                    "type": "item",
+                    "name": "iron-ore",
+                    "probability": 1,
+                    "amount": 4
+                }
+            ],
+            "energy": 1
+        },
+        {
+            "name": "angelsore2-crushed",
+            "category": "ore-sorting-t1",
+            "ingredients": [
+                {
+                    "type": "item",
+                    "amount": 2,
+                    "name": "angels-ore2"
+                }
+            ],
+            "products": [
+                {
+                    "type": "item",
+                    "name": "angels-ore2-crushed",
+                    "probability": 1,
+                    "amount": 2
+                },
+                {
+                    "type": "item",
+                    "name": "stone-crushed",
+                    "probability": 1,
+                    "amount": 1
+                }
+            ],
+            "energy": 1
+        },
+        {
+            "name": "angelsore1-crushed",
+            "category": "ore-sorting-t1",
+            "ingredients": [
+                {
+                    "type": "item",
+                    "amount": 2,
+                    "name": "angels-ore1"
+                }
+            ],
+            "products": [
+                {
+                    "type": "item",
+                    "name": "angels-ore1-crushed",
+                    "probability": 1,
+                    "amount": 2
+                },
+                {
+                    "type": "item",
+                    "name": "stone-crushed",
+                    "probability": 1,
+                    "amount": 1
+                }
+            ],
+            "energy": 1
+        },
+        {
+            "name": "angelsore-chunk-mix1-processing",
+            "category": "ore-sorting",
+            "ingredients": [
+                {
+                    "type": "item",
+                    "amount": 1,
+                    "name": "catalysator-green"
+                },
+                {
+                    "type": "item",
+                    "amount": 2,
+                    "name": "angels-ore1-chunk"
+                },
+                {
+                    "type": "item",
+                    "amount": 2,
+                    "name": "angels-ore6-chunk"
+                }
+            ],
+            "products": [
+                {
+                    "type": "item",
+                    "name": "quartz",
+                    "probability": 1,
+                    "amount": 4
+                }
+            ],
+            "energy": 1
+        },
+        {
+            "name": "angelsore6-crushed",
+            "category": "ore-sorting-t1",
+            "ingredients": [
+                {
+                    "type": "item",
+                    "amount": 2,
+                    "name": "angels-ore6"
+                }
+            ],
+            "products": [
+                {
+                    "type": "item",
+                    "name": "angels-ore6-crushed",
+                    "probability": 1,
+                    "amount": 2
+                },
+                {
+                    "type": "item",
+                    "name": "stone-crushed",
+                    "probability": 1,
+                    "amount": 1
+                }
+            ],
+            "energy": 1
+        },
+        {
+            "name": "angelsore6-chunk",
+            "category": "ore-sorting-t2",
+            "ingredients": [
+                {
+                    "type": "item",
+                    "amount": 2,
+                    "name": "angels-ore6-crushed"
+                },
+                {
+                    "type": "fluid",
+                    "amount": 50,
+                    "name": "water-purified"
+                }
+            ],
+            "products": [
+                {
+                    "type": "item",
+                    "name": "angels-ore6-chunk",
+                    "probability": 1,
+                    "amount": 2
+                },
+                {
+                    "type": "item",
+                    "name": "geode-red",
+                    "probability": 0.5,
+                    "amount": 1
+                },
+                {
+                    "type": "fluid",
+                    "name": "water-yellow-waste",
+                    "probability": 1,
+                    "amount": 50
+                }
+            ],
+            "energy": 2
+        },
+        {
+            "name": "angelsore1-chunk",
+            "category": "ore-sorting-t2",
+            "ingredients": [
+                {
+                    "type": "item",
+                    "amount": 2,
+                    "name": "angels-ore1-crushed"
+                },
+                {
+                    "type": "fluid",
+                    "amount": 50,
+                    "name": "water-purified"
+                }
+            ],
+            "products": [
+                {
+                    "type": "item",
+                    "name": "angels-ore1-chunk",
+                    "probability": 1,
+                    "amount": 2
+                },
+                {
+                    "type": "item",
+                    "name": "geode-blue",
+                    "probability": 0.5,
+                    "amount": 1
+                },
+                {
+                    "type": "fluid",
+                    "name": "water-yellow-waste",
+                    "probability": 1,
+                    "amount": 50
+                }
+            ],
+            "energy": 2
+        },
+        {
+            "name": "yellow-waste-water-purification",
+            "category": "water-treatment",
+            "ingredients": [
+                {
+                    "type": "fluid",
+                    "amount": 99,
+                    "name": "water-yellow-waste"
+                }
+            ],
+            "products": [
+                {
+                    "type": "item",
+                    "name": "sulfur",
+                    "probability": 0,
+                    "amount": 0
+                },
+                {
+                    "type": "fluid",
+                    "name": "water-mineralized",
+                    "probability": 0,
+                    "amount": 19
+                },
+                {
+                    "type": "fluid",
+                    "name": "water-purified",
+                    "probability": 0,
+                    "amount": 69
+                }
+            ],
+            "energy": 1
+        },
+        {
+            "name": "hydrogen-sulfide",
+            "category": "chemistry",
+            "ingredients": [
+                {
+                    "type": "item",
+                    "amount": 4,
+                    "name": "sulfur"
+                },
+                {
+                    "type": "fluid",
+                    "amount": 79,
+                    "name": "gas-hydrogen"
+                }
+            ],
+            "products": [
+                {
+                    "type": "fluid",
+                    "name": "gas-hydrogen-sulfide",
+                    "probability": 0,
+                    "amount": 49
+                }
+            ],
+            "energy": 1
+        },
+        {
+            "name": "sulfuric-acid-4",
+            "category": "chemistry",
+            "ingredients": [
+                {
+                    "type": "fluid",
+                    "amount": 49,
+                    "name": "gas-hydrogen-sulfide"
+                },
+                {
+                    "type": "fluid",
+                    "amount": 99,
+                    "name": "gas-oxygen"
+                }
+            ],
+            "products": [
+                {
+                    "type": "fluid",
+                    "name": "liquid-sulfuric-acid",
+                    "probability": 0,
+                    "amount": 49
+                }
+            ],
+            "energy": 1
+        },
+        {
+            "name": "water-separation",
+            "category": "petrochem-electrolyser",
+            "ingredients": [
+                {
+                    "type": "fluid",
+                    "amount": 99,
+                    "name": "water-purified"
+                }
+            ],
+            "products": [
+                {
+                    "type": "fluid",
+                    "name": "gas-oxygen",
+                    "probability": 0,
+                    "amount": 39
+                },
+                {
+                    "type": "fluid",
+                    "name": "gas-hydrogen",
+                    "probability": 0,
+                    "amount": 59
+                }
+            ],
+            "energy": 3
+        },
+
+        {}
+    ],
+
+
+    "craftingMachines": [
+        {
+            "name": "burner-ore-crusher",
+            "categories": {
+                "ore-sorting-t1": true
+            },
+            "craftingSpeed": 1,
+            "ingredientCount": 2,
+            "moduleSlots": 0
+        },
+        {
+            "name": "ore-crusher",
+            "categories": {
+                "ore-sorting-t1": true
+            },
+            "craftingSpeed": 1.5,
+            "ingredientCount": 3,
+            "moduleSlots": 1
+        },
+        {
+            "name": "ore-crusher-2",
+            "categories": {
+                "ore-sorting-t1": true
+            },
+            "craftingSpeed": 2,
+            "ingredientCount": 3,
+            "moduleSlots": 2
+        },
+        {
+            "name": "ore-crusher-3",
+            "categories": {
+                "ore-sorting-t1": true
+            },
+            "craftingSpeed": 3,
+            "ingredientCount": 3,
+            "moduleSlots": 3
+        },
+        {
+            "name": "ore-sorting-facility",
+            "categories": {
+                "ore-sorting": true
+            },
+            "craftingSpeed": 0.75,
+            "ingredientCount": 2,
+            "moduleSlots": 2
+        },
+        {
+            "name": "ore-sorting-facility-2",
+            "categories": {
+                "ore-sorting": true
+            },
+            "craftingSpeed": 1,
+            "ingredientCount": 4,
+            "moduleSlots": 2
+        },
+        {
+            "name": "ore-sorting-facility-3",
+            "categories": {
+                "ore-sorting": true
+            },
+            "craftingSpeed": 1.5,
+            "ingredientCount": 6,
+            "moduleSlots": 3
+        },
+        {
+            "name": "ore-sorting-facility-4",
+            "categories": {
+                "ore-sorting": true
+            },
+            "craftingSpeed": 2,
+            "ingredientCount": 6,
+            "moduleSlots": 3
+        },
+        {
+            "name": "ore-floatation-cell",
+            "categories": {
+                "ore-sorting-t2": true
+            },
+            "craftingSpeed": 0.75,
+            "ingredientCount": 3,
+            "moduleSlots": 1
+        },
+        {
+            "name": "ore-floatation-cell-2",
+            "categories": {
+                "ore-sorting-t2": true
+            },
+            "craftingSpeed": 1,
+            "ingredientCount": 3,
+            "moduleSlots": 2
+        },
+        {
+            "name": "ore-floatation-cell-3",
+            "categories": {
+                "ore-sorting-t2": true
+            },
+            "craftingSpeed": 1.5,
+            "ingredientCount": 3,
+            "moduleSlots": 3
+        },
+
+
+
+
+
+        {}
+    ]
+}

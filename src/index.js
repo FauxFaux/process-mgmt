@@ -1,5 +1,5 @@
-import { data } from './dsp/data.js';
-// import { data as factorio_ab } from './factorio-ab-01/data.js'
+// import { data } from './dsp/data.js';
+import { data } from './factorio-ab-01/data.js'
 //import { data } from './factorio-ab/data.js'
 import { ProcessChain, RateChain, Stack } from './structures.js';
 // import { inspect } from 'util'
@@ -29,14 +29,15 @@ const readline_disambiguate = function(requirement, options) {
 
 };
 
-const array_disambiguate = function(requirement, options) {
-    let arr = {};
-    arr[data.items.diamond.id] = data.processes.diamond_rare;
-    if (arr[data.items.diamond.id] === false) {
-        throw new Error('No enabled priority for ' + requirement + ' (available: ' + options.map(i => i.id).join(', ') + ')');
-    }
-    return arr[requirement];
-};
+const array_disambiguate = function(requirement, options) { }
+//const array_disambiguate = function(requirement, options) {
+//     let arr = {};
+//     arr[data.items.diamond.id] = data.processes.diamond_rare;
+//     if (arr[data.items.diamond.id] === false) {
+//         throw new Error('No enabled priority for ' + requirement + ' (available: ' + options.map(i => i.id).join(', ') + ')');
+//     }
+//     return arr[requirement];
+// };
 
 let names = [
     'iron_plate',
@@ -52,13 +53,19 @@ let names = [
 // let p = new ProcessChain([data.processes['diamond']])
 let p1 = new ProcessChain(Object.values(data.processes))
     // .filter_for_output(new Stack(data.items.electric_motor, 1), array_disambiguate)
-    .filter_for_output(new Stack(data.items.graviton_lens, 1), array_disambiguate)
+    // .filter_for_output(new Stack(data.items.graviton_lens, 1), array_disambiguate)
+    .filter_for_output(new Stack(data.items['liquid_sulfuric_acid'], 1), array_disambiguate)
     // .filter_for_output(new Stack(data.items.circuit, 1), array_disambiguate)
     ;
 
-let p = new RateChain(p1, {'assembler': data.factories.assembler_III});
+// let p = new RateChain(p1, {'assembler': data.factories.assembler_III});
+let p = new RateChain(p1, {
+    'ore_sorting': data.factories['ore_crusher_3'],
+    'ore_sorting_t1': data.factories['ore_sorting_facility_4'],
+    'ore_sorting_t2': data.factories['ore_floatation_cell_3'],
+});
 // let r = p.update(new Stack(data.items.circuit, 10));
-p.update(new Stack(data.items.graviton_lens, 1));
+p.update(new Stack(data.items['liquid_sulfuric_acid'], 1200));
 // p.update(new Stack(data.items.electric_motor, 8));
 // console.log(r[0], r[1]);
 // let p = new ProcessChain(Object.entries(data.processes).flatMap(

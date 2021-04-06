@@ -13,6 +13,7 @@
   "devDependencies": {
     "eslint": "^7.23.0",
     "esm": "^3.2.25",
+    "json-loader": "^0.5.7",
     "mocha": "^8.3.2"
   }
 }

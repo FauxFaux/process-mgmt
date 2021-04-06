@@ -66,18 +66,18 @@ class RateChain extends ProcessChain {
     _render_item_node(item) {
         return item.id + ' [shape="record" label="{'
             + item.name
-            + ' | { produce: ' + this.materials.total_positive(item).quantity + '/s'
-            + ' | consume: ' + this.materials.total_negative(item).mul(-1).quantity + '/s }'
+            + ' | { produce: ' + (Math.round(this.materials.total_positive(item).quantity*100)/100) + '/s'
+            + ' | consume: ' + (Math.round(this.materials.total_negative(item).mul(-1).quantity*100)/100) + '/s }'
             + '}"]';
     }
 
     _render_processor_node(node_id, process) {
         let process_count = this.process_counts[process.id];
         let inputs = process.inputs.map((input, index) => {
-            return '<i' + index + '> ' + input.item.name + ' (' + (input.quantity * process_count) + ')';
+            return '<i' + index + '> ' + input.item.name + ' (' + (Math.round(input.quantity * process_count * 100)/100) + ')';
         }).join(' | ');
         let outputs = process.outputs.map((output, index) => {
-            return '<o' + index + '> ' + output.item.name + ' (' + (output.quantity * process_count) + ')';
+            return '<o' + index + '> ' + output.item.name + ' (' + (Math.round(output.quantity * process_count * 100)/100) + ')';
         }).join(' | ');
         return node_id + ' [' +
             'shape="record" ' +
