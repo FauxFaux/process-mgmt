@@ -104,7 +104,7 @@ class RateChain extends ProcessChain {
             // inbound from an item to a process
             let process_count = this.process_counts[to.id];
             let input_rate = to.inputs.find(i => i.item.id === from.item.id);
-            let rate = input_rate.quantity * process_count;
+            let rate = Math.round(input_rate.quantity * process_count * 100)/100;
             return from.item.id + ' -> ' + node_id + ':i' + index + ' [label="' + rate + '/s"]';
         }
     }
