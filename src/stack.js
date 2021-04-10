@@ -39,13 +39,11 @@ class StackSet {
         this._ensure_stack(stack);
         this.stacks[stack.item.id].push(stack.mul(-1));
     }
-
     _ensure_stack(stack) {
         if (!this.stacks[stack.item.id]) {
             this.stacks[stack.item.id] = [];
         }
     }
-
     total(item) {
         return this.stacks[item.id].reduce((p, c) => p.add(c), new Stack(item, 0));
     }
