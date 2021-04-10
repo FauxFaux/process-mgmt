@@ -44,6 +44,7 @@ class ProcessChain {
     filter_for_output(output_stack, priorities) {
         let result = [];
         let visited = [];
+        let visited_processes = [];
         let queue = [output_stack.item.id];
         while (queue.length > 0) {
             let current = queue.shift();
@@ -59,8 +60,9 @@ class ProcessChain {
             if (processes_for_current && processes_for_current.length == 1) {
                 process = processes_for_current[0];
             }
-            if (process) {
+            if (process && !visited_processes.includes(process.id)) {
                 result.push(process);
+                visited_processes.push(process.id);
                 process.inputs
                     .filter(input => !queue.includes(input.item.id))
                     .filter(input => !visited.includes(input.item.id))
