@@ -54,8 +54,15 @@ class RateChain extends ProcessChain {
                     materials.add(input.mul(process_count));
                 });
                 process.inputs.forEach(input => {
-                    queue.push(input.mul(process_count));
+                    // if I have more than enough of this input already
+                    // have 6 already, need 4 for this, then push nothing onto the queue. subtract 4 from materials.
+                    // have 2 already, need 6 for this, then push 4 onto the queue. subtract 6 from the materials.
+                    // have -5 already, need 7 for this, then push 7 onto the queue. subtract 7 from the materials.
+                    // ==> subtract from materials. if total <= 0, push onto queue.
                     materials.sub(input.mul(process_count));
+                    if (materials.total(input.item).quantity <= 0) {
+                        queue.push(input.mul(process_count));
+                    }
                 });
             }
         }
