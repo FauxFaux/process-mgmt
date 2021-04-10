@@ -218,7 +218,7 @@
             "ingredients": [
                 {
                     "type": "fluid",
-                    "amount": 99,
+                    "amount": 100,
                     "name": "water-yellow-waste"
                 }
             ],
@@ -226,20 +226,20 @@
                 {
                     "type": "item",
                     "name": "sulfur",
-                    "probability": 0,
-                    "amount": 0
+                    "probability": 1,
+                    "amount": 1
                 },
                 {
                     "type": "fluid",
                     "name": "water-mineralized",
-                    "probability": 0,
-                    "amount": 19
+                    "probability": 1,
+                    "amount": 20
                 },
                 {
                     "type": "fluid",
                     "name": "water-purified",
-                    "probability": 0,
-                    "amount": 69
+                    "probability": 1,
+                    "amount": 70
                 }
             ],
             "energy": 1
@@ -255,7 +255,7 @@
                 },
                 {
                     "type": "fluid",
-                    "amount": 79,
+                    "amount": 80,
                     "name": "gas-hydrogen"
                 }
             ],
@@ -263,8 +263,8 @@
                 {
                     "type": "fluid",
                     "name": "gas-hydrogen-sulfide",
-                    "probability": 0,
-                    "amount": 49
+                    "probability": 1,
+                    "amount": 50
                 }
             ],
             "energy": 1
@@ -275,12 +275,12 @@
             "ingredients": [
                 {
                     "type": "fluid",
-                    "amount": 49,
+                    "amount": 50,
                     "name": "gas-hydrogen-sulfide"
                 },
                 {
                     "type": "fluid",
-                    "amount": 99,
+                    "amount": 100,
                     "name": "gas-oxygen"
                 }
             ],
@@ -288,8 +288,8 @@
                 {
                     "type": "fluid",
                     "name": "liquid-sulfuric-acid",
-                    "probability": 0,
-                    "amount": 49
+                    "probability": 1,
+                    "amount": 50
                 }
             ],
             "energy": 1
@@ -300,7 +300,7 @@
             "ingredients": [
                 {
                     "type": "fluid",
-                    "amount": 99,
+                    "amount": 100,
                     "name": "water-purified"
                 }
             ],
@@ -309,13 +309,13 @@
                     "type": "fluid",
                     "name": "gas-oxygen",
                     "probability": 0,
-                    "amount": 39
+                    "amount": 40
                 },
                 {
                     "type": "fluid",
                     "name": "gas-hydrogen",
                     "probability": 0,
-                    "amount": 59
+                    "amount": 60
                 }
             ],
             "energy": 3
