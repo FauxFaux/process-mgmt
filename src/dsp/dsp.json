@@ -1,0 +1,2154 @@
+{
+  "items": [
+    {
+      "id": "ConveyorBeltMk1",
+      "group": "structure",
+      "i18n": {
+        "en": "Conveyor Belt Mk.I"
+      }
+    },
+    {
+      "id": "ConveyorBeltMk2",
+      "group": "structure",
+      "i18n": {
+        "en": "Conveyor Belt Mk.II"
+      }
+    },
+    {
+      "id": "ConveyorBeltMk3",
+      "group": "structure",
+      "i18n": {
+        "en": "Conveyor Belt Mk.III"
+      }
+    },
+    {
+      "id": "Splitter",
+      "group": "structure",
+      "i18n": {
+        "en": "Splitter (4-direction)"
+      }
+    },
+    {
+      "id": "SorterMk1",
+      "group": "structure",
+      "i18n": {
+        "en": "Sorter Mk.I"
+      }
+    },
+    {
+      "id": "SorterMk2",
+      "group": "structure",
+      "i18n": {
+        "en": "Sorter Mk.II"
+      }
+    },
+    {
+      "id": "SorterMk3",
+      "group": "structure",
+      "i18n": {
+        "en": "Sorter Mk.III"
+      }
+    },
+    {
+      "id": "Planetary_Logistics_Station",
+      "group": "structure",
+      "i18n": {
+        "en": "Planetary logistics station"
+      }
+    },
+    {
+      "id": "Logistics_Drone",
+      "group": "structure",
+      "i18n": {
+        "en": "Logistics drone"
+      }
+    },
+    {
+      "id": "Interstellar_Logistic_Station",
+      "group": "structure",
+      "i18n": {
+        "en": "Interstellar Logistics Station"
+      }
+    },
+    {
+      "id": "Logistic_Vessel",
+      "group": "structure",
+      "i18n": {
+        "en": "Logistics vessel"
+      }
+    },
+    {
+      "id": "Tesla_Tower",
+      "group": "structure",
+      "i18n": {
+        "en": "Tesla tower"
+      }
+    },
+    {
+      "id": "Wireless_Power_Tower",
+      "group": "structure",
+      "i18n": {
+        "en": "Wireless power tower"
+      }
+    },
+    {
+      "id": "Energy_Exchanger",
+      "group": "structure",
+      "i18n": {
+        "en": "Energy exchanger"
+      }
+    },
+    {
+      "id": "Satellite_Substation",
+      "group": "structure",
+      "i18n": {
+        "en": "Satellite substation"
+      }
+    },
+    {
+      "id": "Foundation",
+      "group": "structure",
+      "i18n": {
+        "en": "Foundation"
+      }
+    },
+    {
+      "id": "Mining_Machine",
+      "group": "structure",
+      "i18n": {
+        "en": "Mining machine"
+      }
+    },
+    {
+      "id": "Oil_Extractor",
+      "group": "structure",
+      "i18n": {
+        "en": "Oil extractor"
+      }
+    },
+    {
+      "id": "Water_Pump",
+      "group": "structure",
+      "i18n": {
+        "en": "Water pump"
+      }
+    },
+    {
+      "id": "Orbit_Collector",
+      "group": "structure",
+      "i18n": {
+        "en": "Orbit collector"
+      }
+    },
+    {
+      "id": "Smelter",
+      "group": "structure",
+      "i18n": {
+        "en": "Smelter"
+      }
+    },
+    {
+      "id": "Assembling_Machine_Mk1",
+      "group": "structure",
+      "i18n": {
+        "en": "Assembling Machine Mk.I"
+      }
+    },
+    {
+      "id": "Assembling_Machine_Mk2",
+      "group": "structure",
+      "i18n": {
+        "en": "Assembling Machine Mk.II"
+      }
+    },
+    {
+      "id": "Assembling_Machine_Mk3",
+      "group": "structure",
+      "i18n": {
+        "en": "Assembling Machine Mk.III"
+      }
+    },
+    {
+      "id": "Chemical_Plant",
+      "group": "structure",
+      "i18n": {
+        "en": "Chemical plant"
+      }
+    },
+    {
+      "id": "Fractionator",
+      "group": "structure",
+      "i18n": {
+        "en": "Fractionator"
+      }
+    },
+    {
+      "id": "Miniature_Particle_Collider",
+      "group": "structure",
+      "i18n": {
+        "en": "Miniature particle collider"
+      }
+    },
+    {
+      "id": "Refinery",
+      "group": "structure",
+      "i18n": {
+        "en": "Oil refinery"
+      }
+    },
+    {
+      "id": "Matrix_Lab",
+      "group": "structure",
+      "i18n": {
+        "en": "Matrix lab"
+      }
+    },
+    {
+      "id": "Wind_Turbine",
+      "group": "structure",
+      "i18n": {
+        "en": "Wind turbine"
+      }
+    },
+    {
+      "id": "Solar_Panel",
+      "group": "structure",
+      "i18n": {
+        "en": "Solar panel"
+      }
+    },
+    {
+      "id": "Thermal_Power_Station",
+      "group": "structure",
+      "i18n": {
+        "en": "Thermal power station"
+      }
+    },
+    {
+      "id": "Ray_Receiver",
+      "group": "structure",
+      "i18n": {
+        "en": "Ray receiver"
+      }
+    },
+    {
+      "id": "Mini_Fusion_Power_Station",
+      "group": "structure",
+      "i18n": {
+        "en": "Mini fusion power station"
+      }
+    },
+    {
+      "id": "Artificial_Star",
+      "group": "structure",
+      "i18n": {
+        "en": "Artificial star"
+      }
+    },
+    {
+      "id": "StorageMk1",
+      "group": "structure",
+      "i18n": {
+        "en": "Storage Mk.I"
+      }
+    },
+    {
+      "id": "StorageMk2",
+      "group": "structure",
+      "i18n": {
+        "en": "Storage Mk.II"
+      }
+    },
+    {
+      "id": "StorageTank",
+      "group": "structure",
+      "i18n": {
+        "en": "Storage tank"
+      }
+    },
+    {
+      "id": "Accumulator",
+      "group": "structure",
+      "i18n": {
+        "en": "Accumulator"
+      }
+    },
+    {
+      "id": "Accumulator_Full",
+      "i18n": {
+        "en": "Accumulator (Full)"
+      }
+    },
+    {
+      "id": "EM_Rail_Ejector",
+      "group": "structure",
+      "i18n": {
+        "en": "EM-Rail Ejector"
+      }
+    },
+    {
+      "id": "Vertical_Launching_Silo",
+      "group": "structure",
+      "i18n": {
+        "en": "Vertical launching silo"
+      }
+    },
+    {
+      "id": "Small_Carrier_Rocket",
+      "group": "structure",
+      "i18n": {
+        "en": "Small carrier rocket"
+      }
+    },
+    {
+      "id": "Iron_Ore",
+      "group": "ore",
+      "i18n": {
+        "en": "Iron Ore"
+      }
+    },
+    {
+      "id": "Copper_Ore",
+      "group": "ore",
+      "i18n": {
+        "en": "Copper Ore"
+      }
+    },
+    {
+      "id": "Stone_Ore",
+      "group": "ore",
+      "i18n": {
+        "en": "Stone Ore"
+      }
+    },
+    {
+      "id": "Coal_Ore",
+      "group": "ore",
+      "i18n": {
+        "en": "Coal Ore"
+      }
+    },
+    {
+      "id": "Silicon_Ore",
+      "group": "ore",
+      "i18n": {
+        "en": "Silicon Ore"
+      }
+    },
+    {
+      "id": "Crystal_Rubber",
+      "group": "ore",
+      "i18n": {
+        "en": "Organic crystal"
+      }
+    },
+    {
+      "id": "Bamboo_Crystal",
+      "group": "ore",
+      "i18n": {
+        "en": "Spiniform stalagmite crystal"
+      }
+    },
+    {
+      "id": "Kimberlite_Ore",
+      "group": "ore",
+      "i18n": {
+        "en": "Kimberlite ore"
+      }
+    },
+    {
+      "id": "Fractal_Silica",
+      "group": "ore",
+      "i18n": {
+        "en": "Fractal silicon"
+      }
+    },
+    {
+      "id": "Gas_Hydrate",
+      "group": "ore",
+      "i18n": {
+        "en": "Fire ice"
+      }
+    },
+    {
+      "id": "Grating_Ore",
+      "group": "ore",
+      "i18n": {
+        "en": "Optical grating crystal"
+      }
+    },
+    {
+      "id": "Mono_Mag_Ore",
+      "group": "ore",
+      "i18n": {
+        "en": "Unipolar magnet"
+      }
+    },
+    {
+      "id": "Titanium_Ore",
+      "group": "ore",
+      "i18n": {
+        "en": "Titanium ore"
+      }
+    },
+    {
+      "id": "Oil",
+      "group": "ore",
+      "i18n": {
+        "en": "Crude oil"
+      }
+    },
+    {
+      "id": "Refined_Oil",
+      "i18n": {
+        "en": "Refined oil"
+      }
+    },
+    {
+      "id": "Water",
+      "group": "ore",
+      "i18n": {
+        "en": "Water"
+      }
+    },
+    {
+      "id": "Sulphuric_Acid",
+      "group": "ore",
+      "i18n": {
+        "en": "Sulfuric acid"
+      }
+    },
+    {
+      "id": "Iron_Ingot",
+      "i18n": {
+        "en": "Iron Ingot"
+      }
+    },
+    {
+      "id": "Magnet",
+      "i18n": {
+        "en": "Magnet"
+      }
+    },
+    {
+      "id": "Magnetic_Coil",
+      "i18n": {
+        "en": "Magnetic Coil"
+      }
+    },
+    {
+      "id": "Copper_Ingot",
+      "i18n": {
+        "en": "Copper Ingot"
+      }
+    },
+    {
+      "id": "Stone",
+      "i18n": {
+        "en": "Stone"
+      }
+    },
+    {
+      "id": "Glass",
+      "i18n": {
+        "en": "Glass"
+      }
+    },
+    {
+      "id": "Prism",
+      "i18n": {
+        "en": "Prism"
+      }
+    },
+    {
+      "id": "Diamond",
+      "i18n": {
+        "en": "Diamond"
+      }
+    },
+    {
+      "id": "High_Purity_Silicon",
+      "i18n": {
+        "en": "High-Purity Silicon"
+      }
+    },
+    {
+      "id": "Crystal_Silicon",
+      "i18n": {
+        "en": "Crystal silicon"
+      }
+    },
+    {
+      "id": "Steel",
+      "i18n": {
+        "en": "Steel"
+      }
+    },
+    {
+      "id": "Plastic",
+      "i18n": {
+        "en": "Plastic"
+      }
+    },
+    {
+      "id": "Graphene",
+      "i18n": {
+        "en": "Graphene"
+      }
+    },
+    {
+      "id": "Carbon_Nanotube",
+      "i18n": {
+        "en": "Carbon nanotube"
+      }
+    },
+    {
+      "id": "Titanium_Ingot",
+      "i18n": {
+        "en": "Titanium ingot"
+      }
+    },
+    {
+      "id": "Titanium_Alloy",
+      "i18n": {
+        "en": "Titanium alloy"
+      }
+    },
+    {
+      "id": "Titanium_Crystal",
+      "i18n": {
+        "en": "Titanium crystal"
+      }
+    },
+    {
+      "id": "Titanium_Glass",
+      "i18n": {
+        "en": "Titanium glass"
+      }
+    },
+    {
+      "id": "Hydrogen",
+      "i18n": {
+        "en": "Hydrogen"
+      }
+    },
+    {
+      "id": "Deuterium",
+      "i18n": {
+        "en": "Deuterium"
+      }
+    },
+    {
+      "id": "Critical_Photon",
+      "i18n": {
+        "en": "Critical photon"
+      }
+    },
+    {
+      "id": "Anti_Matter",
+      "i18n": {
+        "en": "Antimatter"
+      }
+    },
+    {
+      "id": "Strange_Matter",
+      "i18n": {
+        "en": "Strange matter"
+      }
+    },
+    {
+      "id": "Frame_Material",
+      "i18n": {
+        "en": "Frame material"
+      }
+    },
+    {
+      "id": "Casimir_Crystal",
+      "i18n": {
+        "en": "Casimir crystal"
+      }
+    },
+    {
+      "id": "Gear",
+      "i18n": {
+        "en": "Gear"
+      }
+    },
+    {
+      "id": "Circuit_Board",
+      "i18n": {
+        "en": "Circuit Board"
+      }
+    },
+    {
+      "id": "Microcrystalline_Component",
+      "i18n": {
+        "en": "Microcrystalline component"
+      }
+    },
+    {
+      "id": "Plasma_Exciter",
+      "i18n": {
+        "en": "Plasma Exciter"
+      }
+    },
+    {
+      "id": "Photon_Combiner",
+      "i18n": {
+        "en": "Photon combiner"
+      }
+    },
+    {
+      "id": "Electric_Motor",
+      "i18n": {
+        "en": "Electric Motor"
+      }
+    },
+    {
+      "id": "Electromagnetic_Turbine",
+      "i18n": {
+        "en": "Electromagnetic turbine"
+      }
+    },
+    {
+      "id": "Processor",
+      "i18n": {
+        "en": "Processor"
+      }
+    },
+    {
+      "id": "Plane_Filter",
+      "i18n": {
+        "en": "Plane filter"
+      }
+    },
+    {
+      "id": "Particle_Container",
+      "i18n": {
+        "en": "Particle container"
+      }
+    },
+    {
+      "id": "Super_magnetic_Ring",
+      "i18n": {
+        "en": "Super-magnetic ring"
+      }
+    },
+    {
+      "id": "Graviton_Lens",
+      "i18n": {
+        "en": "Graviton lens"
+      }
+    },
+    {
+      "id": "Particle_Broadband",
+      "i18n": {
+        "en": "Particle broadband"
+      }
+    },
+    {
+      "id": "Quantum_Chip",
+      "i18n": {
+        "en": "Quantum chip"
+      }
+    },
+    {
+      "id": "Annihilation_Constraint_Sphere",
+      "i18n": {
+        "en": "Annihilation constraint sphere"
+      }
+    },
+    {
+      "id": "Thruster",
+      "i18n": {
+        "en": "Thruster"
+      }
+    },
+    {
+      "id": "Reinforced_Thruster",
+      "i18n": {
+        "en": "Reinforced thruster"
+      }
+    },
+    {
+      "id": "Space_Warper",
+      "i18n": {
+        "en": "Space warper"
+      }
+    },
+    {
+      "id": "Plant_Fuel",
+      "group": "ore",
+      "i18n": {
+        "en": "Plant fuel"
+      }
+    },
+    {
+      "id": "Wood",
+      "group": "ore",
+      "i18n": {
+        "en": "Log"
+      }
+    },
+    {
+      "id": "Energetic_Graphite",
+      "i18n": {
+        "en": "Energetic Graphite"
+      }
+    },
+    {
+      "id": "Hydrogen_Fuel_Rod",
+      "i18n": {
+        "en": "Hydrogen fuel rod"
+      }
+    },
+    {
+      "id": "Deuterium_Fuel_Rod",
+      "i18n": {
+        "en": "Deuterium fuel rod"
+      }
+    },
+    {
+      "id": "Antimatter_Fuel_Rod",
+      "i18n": {
+        "en": "Antimatter fuel rod"
+      }
+    },
+    {
+      "id": "T_Matrix",
+      "i18n": {
+        "en": "Electromagnetic matrix"
+      }
+    },
+    {
+      "id": "E_Matrix",
+      "i18n": {
+        "en": "Energy matrix"
+      }
+    },
+    {
+      "id": "C_Matrix",
+      "i18n": {
+        "en": "Structure matrix"
+      }
+    },
+    {
+      "id": "I_Matrix",
+      "i18n": {
+        "en": "Information matrix"
+      }
+    },
+    {
+      "id": "G_Matrix",
+      "i18n": {
+        "en": "Gravity matrix"
+      }
+    },
+    {
+      "id": "U_Matrix",
+      "i18n": {
+        "en": "Universe matrix"
+      }
+    },
+    {
+      "id": "Solar_Sail",
+      "i18n": {
+        "en": "Solar sail"
+      }
+    },
+    {
+      "id": "Dyson_Sphere_Component",
+      "i18n": {
+        "en": "Dyson sphere component"
+      }
+    }
+  ],
+  "processes": [
+    {
+      "name": "Accumulator",
+      "duration": 5,
+      "factory_group": "assembler",
+      "outputs": {
+        "Accumulator": 1
+      },
+      "inputs": {
+        "Super_magnetic_Ring": 6,
+        "Iron_Ingot": 6,
+        "Crystal_Silicon": 4
+      }
+    },
+    {
+      "name": "Accumulator_Full",
+      "duration": 0,
+      "factory_group": "energy_exchanger",
+      "outputs": {
+        "Accumulator_Full": 1
+      },
+      "inputs": {
+        "Accumulator": 1
+      }
+    },
+    {
+      "name": "Annihilation_Constraint_Sphere",
+      "duration": 20,
+      "factory_group": "assembler",
+      "inputs": {
+        "Particle_Container": 1,
+        "Processor": 1
+      },
+      "outputs": {
+        "Annihilation_Constraint_Sphere": 1
+      }
+    },
+    {
+      "name": "Anti_Matter",
+      "duration": 2,
+      "factory_group": "particle_collider",
+      "inputs": {
+        "Critical_Photon": 2
+      },
+      "outputs": {
+        "Anti_Matter": 2,
+        "Hydrogen": 2
+      }
+    },
+    {
+      "name": "Antimatter_Fuel_Rod",
+      "duration": 12,
+      "factory_group": "assembler",
+      "inputs": {
+        "Anti_Matter": 10,
+        "Annihilation_Constraint_Sphere": 1,
+        "Hydrogen": 10,
+        "Titanium_Alloy": 1
+      },
+      "outputs": {
+        "Antimatter_Fuel_Rod": 1
+      }
+    },
+    {
+      "name": "Artificial_Star",
+      "duration": 30,
+      "factory_group": "assembler",
+      "outputs": {
+        "Artificial_Star": 1
+      },
+      "inputs": {
+        "Frame_Material": 20,
+        "Annihilation_Constraint_Sphere": 10,
+        "Quantum_Chip": 10,
+        "Titanium_Alloy": 20
+      }
+    },
+    {
+      "name": "Assembling_Machine_Mk1",
+      "duration": 2,
+      "factory_group": "assembler",
+      "outputs": {
+        "Assembling_Machine_Mk1": 1
+      },
+      "inputs": {
+        "Iron_Ingot": 4,
+        "Gear": 8,
+        "Circuit_Board": 4
+      }
+    },
+    {
+      "name": "Assembling_Machine_Mk2",
+      "duration": 3,
+      "factory_group": "assembler",
+      "outputs": {
+        "Assembling_Machine_Mk2": 1
+      },
+      "inputs": {
+        "Assembling_Machine_Mk1": 1,
+        "Graphene": 8,
+        "Processor": 4
+      }
+    },
+    {
+      "name": "Assembling_Machine_Mk3",
+      "duration": 4,
+      "factory_group": "assembler",
+      "outputs": {
+        "Assembling_Machine_Mk3": 1
+      },
+      "inputs": {
+        "Assembling_Machine_Mk2": 1,
+        "Particle_Broadband": 8,
+        "Quantum_Chip": 2
+      }
+    },
+    {
+      "name": "C_Matrix",
+      "duration": 8,
+      "factory_group": "matrix_lab",
+      "inputs": {
+        "Diamond": 1,
+        "Titanium_Crystal": 1
+      },
+      "outputs": {
+        "C_Matrix": 1
+      }
+    },
+    {
+      "name": "Carbon_Nanotube",
+      "duration": 4,
+      "factory_group": "chemical_plant",
+      "inputs": {
+        "Graphene": 3,
+        "Titanium_Ingot": 1
+      },
+      "outputs": {
+        "Carbon_Nanotube": 2
+      }
+    },
+    {
+      "name": "Carbon_Nanotube_Rare",
+      "duration": 0,
+      "factory_group": "assembler",
+      "inputs": {
+        "Bamboo_Crystal": 2
+      },
+      "outputs": {
+        "Carbon_Nanotube": 2
+      }
+    },
+    {
+      "name": "Casimir_Crystal",
+      "duration": 4,
+      "factory_group": "assembler",
+      "inputs": {
+        "Graphene": 2,
+        "Hydrogen": 12,
+        "Titanium_Crystal": 1
+      },
+      "outputs": {
+        "Casimir_Crystal": 1
+      }
+    },
+    {
+      "name": "Casimir_Crystal_Rare",
+      "duration": 4,
+      "factory_group": "assembler",
+      "inputs": {
+        "Graphene": 2,
+        "Grating_Ore": 6,
+        "Hydrogen": 12
+      },
+      "outputs": {
+        "Casimir_Crystal": 1
+      }
+    },
+    {
+      "name": "Chemical_Plant",
+      "duration": 6,
+      "factory_group": "assembler",
+      "outputs": {
+        "Chemical_Plant": 1
+      },
+      "inputs": {
+        "Circuit_Board": 2,
+        "Glass": 8,
+        "Steel": 8,
+        "Stone": 8
+      }
+    },
+    {
+      "name": "Circuit_Board",
+      "duration": 1,
+      "factory_group": "assembler",
+      "inputs": {
+        "Iron_Ingot": 2,
+        "Copper_Ingot": 1
+      },
+      "outputs": {
+        "Circuit_Board": 2
+      }
+    },
+    {
+      "name": "ConveyorBeltMk1",
+      "duration": 1,
+      "factory_group": "assembler",
+      "outputs": {
+        "ConveyorBeltMk1": 3
+      },
+      "inputs": {
+        "Gear": 1,
+        "Iron_Ingot": 2
+      }
+    },
+    {
+      "name": "ConveyorBeltMk2",
+      "duration": 1,
+      "factory_group": "assembler",
+      "outputs": {
+        "ConveyorBeltMk2": 3
+      },
+      "inputs": {
+        "ConveyorBeltMk1": 3,
+        "Electromagnetic_Turbine": 1
+      }
+    },
+    {
+      "name": "ConveyorBeltMk3",
+      "duration": 1,
+      "factory_group": "assembler",
+      "outputs": {
+        "ConveyorBeltMk3": 3
+      },
+      "inputs": {
+        "ConveyorBeltMk2": 3,
+        "Graphene": 1,
+        "Super_magnetic_Ring": 1
+      }
+    },
+    {
+      "name": "Copper_Ingot",
+      "duration": 0,
+      "factory_group": "smelter",
+      "inputs": {
+        "Copper_Ore": 1
+      },
+      "outputs": {
+        "Copper_Ingot": 1
+      }
+    },
+    {
+      "name": "Crystal_Rubber",
+      "duration": 6,
+      "factory_group": "chemical_plant",
+      "inputs": {
+        "Plastic": 2,
+        "Refined_Oil": 1,
+        "Water": 1
+      },
+      "outputs": {
+        "Crystal_Rubber": 1
+      }
+    },
+    {
+      "name": "Crystal_Rubber_Adv",
+      "duration": 0,
+      "factory_group": "assembler",
+      "inputs": {
+        "Plant_Fuel": 30,
+        "Water": 10,
+        "Wood": 20
+      },
+      "outputs": {
+        "Crystal_Rubber": 1
+      }
+    },
+    {
+      "name": "Crystal_Silicon",
+      "duration": 2,
+      "factory_group": "smelter",
+      "inputs": {
+        "High_Purity_Silicon": 1
+      },
+      "outputs": {
+        "Crystal_Silicon": 1
+      }
+    },
+    {
+      "name": "Crystal_Silicon_Rare",
+      "duration": 4,
+      "factory_group": "assembler",
+      "inputs": {
+        "Fractal_Silica": 1
+      },
+      "outputs": {
+        "Crystal_Silicon": 1
+      }
+    },
+    {
+      "name": "Deuterium",
+      "duration": 5,
+      "factory_group": "particle_collider",
+      "inputs": {
+        "Hydrogen": 10
+      },
+      "outputs": {
+        "Deuterium": 5
+      }
+    },
+    {
+      "name": "Deuterium_Fraction",
+      "duration": 10,
+      "factory_group": "fractionator",
+      "inputs": {
+        "Hydrogen": 1000
+      },
+      "outputs": {
+        "Deuterium": 10
+      }
+    },
+    {
+      "name": "Deuterium_Fuel_Rod",
+      "duration": 6,
+      "factory_group": "assembler",
+      "inputs": {
+        "Deuterium": 10,
+        "Super_magnetic_Ring": 1,
+        "Titanium_Alloy": 1
+      },
+      "outputs": {
+        "Deuterium_Fuel_Rod": 1
+      }
+    },
+    {
+      "name": "Diamond",
+      "duration": 2,
+      "factory_group": "smelter",
+      "inputs": {
+        "Energetic_Graphite": 1
+      },
+      "outputs": {
+        "Diamond": 1
+      }
+    },
+    {
+      "name": "Diamond_Rare",
+      "duration": 2,
+      "factory_group": "smelter",
+      "inputs": {
+        "Kimberlite_Ore": 1
+      },
+      "outputs": {
+        "Diamond": 1
+      }
+    },
+    {
+      "name": "Dyson_Sphere_Component",
+      "duration": 8,
+      "factory_group": "assembler",
+      "inputs": {
+        "Frame_Material": 3,
+        "Processor": 3,
+        "Solar_Sail": 3
+      },
+      "outputs": {
+        "Dyson_Sphere_Component": 1
+      }
+    },
+    {
+      "name": "EM_Rail_Ejector",
+      "duration": 6,
+      "factory_group": "assembler",
+      "outputs": {
+        "EM_Rail_Ejector": 1
+      },
+      "inputs": {
+        "Gear": 20,
+        "Super_magnetic_Ring": 10,
+        "Processor": 5,
+        "Steel": 20
+      }
+    },
+    {
+      "name": "E_Matrix",
+      "duration": 6,
+      "factory_group": "matrix_lab",
+      "inputs": {
+        "Energetic_Graphite": 2,
+        "Hydrogen": 2
+      },
+      "outputs": {
+        "E_Matrix": 1
+      }
+    },
+    {
+      "name": "Electric_Motor",
+      "duration": 2,
+      "factory_group": "assembler",
+      "inputs": {
+        "Iron_Ingot": 2,
+        "Gear": 1,
+        "Magnetic_Coil": 1
+      },
+      "outputs": {
+        "Electric_Motor": 1
+      }
+    },
+    {
+      "name": "Electromagnetic_Turbine",
+      "duration": 2,
+      "factory_group": "assembler",
+      "inputs": {
+        "Electric_Motor": 2,
+        "Magnetic_Coil": 2
+      },
+      "outputs": {
+        "Electromagnetic_Turbine": 1
+      }
+    },
+    {
+      "name": "Energetic_Graphite",
+      "duration": 2,
+      "factory_group": "assembler",
+      "inputs": {
+        "Coal_Ore": 2
+      },
+      "outputs": {
+        "Energetic_Graphite": 1
+      }
+    },
+    {
+      "name": "Energetic_Graphite_Oil",
+      "duration": 4,
+      "factory_group": "refinery",
+      "inputs": {
+        "Hydrogen": 2,
+        "Refined_Oil": 1
+      },
+      "outputs": {
+        "Energetic_Graphite": 1,
+        "Hydrogen": 3
+      }
+    },
+    {
+      "name": "Energy_Exchanger",
+      "duration": 15,
+      "factory_group": "assembler",
+      "outputs": {
+        "Energy_Exchanger": 1
+      },
+      "inputs": {
+        "Particle_Container": 8,
+        "Processor": 40,
+        "Steel": 40,
+        "Titanium_Alloy": 40
+      }
+    },
+    {
+      "name": "Foundation",
+      "duration": 1,
+      "factory_group": "assembler",
+      "outputs": {
+        "Foundation": 1
+      },
+      "inputs": {
+        "Stone": 3,
+        "Steel": 1
+      }
+    },
+    {
+      "name": "Fractionator",
+      "duration": 3,
+      "factory_group": "assembler",
+      "outputs": {
+        "Fractionator": 1
+      },
+      "inputs": {
+        "Glass": 4,
+        "Processor": 1,
+        "Steel": 8,
+        "Stone": 4
+      }
+    },
+    {
+      "name": "Frame_Material",
+      "duration": 6,
+      "factory_group": "assembler",
+      "inputs": {
+        "Carbon_Nanotube": 4,
+        "High_Purity_Silicon": 1,
+        "Titanium_Alloy": 1
+      },
+      "outputs": {
+        "Frame_Material": 1
+      }
+    },
+    {
+      "name": "G_Matrix",
+      "duration": 24,
+      "factory_group": "matrix_lab",
+      "inputs": {
+        "Graviton_Lens": 1,
+        "Quantum_Chip": 1
+      },
+      "outputs": {
+        "G_Matrix": 2
+      }
+    },
+    {
+      "name": "Gear",
+      "duration": 1,
+      "factory_group": "assembler",
+      "inputs": {
+        "Iron_Ingot": 1
+      },
+      "outputs": {
+        "Gear": 1
+      }
+    },
+    {
+      "name": "Glass",
+      "duration": 2,
+      "factory_group": "smelter",
+      "inputs": {
+        "Stone_Ore": 2
+      },
+      "outputs": {
+        "Glass": 1
+      }
+    },
+    {
+      "name": "Graphene",
+      "duration": 3,
+      "factory_group": "chemical_plant",
+      "inputs": {
+        "Energetic_Graphite": 3,
+        "Sulphuric_Acid": 1
+      },
+      "outputs": {
+        "Graphene": 2
+      }
+    },
+    {
+      "name": "Graphene_Rare",
+      "duration": 4,
+      "factory_group": "chemical_plant",
+      "inputs": {
+        "Gas_Hydrate": 2
+      },
+      "outputs": {
+        "Graphene": 2,
+        "Hydrogen": 1
+      }
+    },
+    {
+      "name": "Graviton_Lens",
+      "duration": 6,
+      "factory_group": "assembler",
+      "inputs": {
+        "Diamond": 4,
+        "Strange_Matter": 1
+      },
+      "outputs": {
+        "Graviton_Lens": 1
+      }
+    },
+    {
+      "name": "High_Purity_Silicon",
+      "duration": 2,
+      "factory_group": "smelter",
+      "inputs": {
+        "Silicon_Ore": 2
+      },
+      "outputs": {
+        "High_Purity_Silicon": 1
+      }
+    },
+    {
+      "name": "Hydrogen_Fuel_Rod",
+      "duration": 3,
+      "factory_group": "assembler",
+      "inputs": {
+        "Hydrogen": 5,
+        "Titanium_Ingot": 1
+      },
+      "outputs": {
+        "Hydrogen_Fuel_Rod": 1
+      }
+    },
+    {
+      "name": "I_Matrix",
+      "duration": 10,
+      "factory_group": "matrix_lab",
+      "inputs": {
+        "Particle_Broadband": 1,
+        "Processor": 2
+      },
+      "outputs": {
+        "I_Matrix": 1
+      }
+    },
+    {
+      "name": "Interstellar_Logistic_Station",
+      "duration": 30,
+      "factory_group": "assembler",
+      "outputs": {
+        "Interstellar_Logistic_Station": 1
+      },
+      "inputs": {
+        "Planetary_Logistics_Station": 1,
+        "Particle_Container": 20,
+        "Titanium_Alloy": 40
+      }
+    },
+    {
+      "name": "Iron_Ingot",
+      "duration": 1,
+      "factory_group": "smelter",
+      "inputs": {
+        "Iron_Ore": 1
+      },
+      "outputs": {
+        "Iron_Ingot": 1
+      }
+    },
+    {
+      "name": "Logistic_Vessel",
+      "duration": 6,
+      "factory_group": "assembler",
+      "outputs": {
+        "Logistic_Vessel": 1
+      },
+      "inputs": {
+        "Reinforced_Thruster": 2,
+        "Processor": 10,
+        "Titanium_Alloy": 10
+      }
+    },
+    {
+      "name": "Logistics_Drone",
+      "duration": 4,
+      "factory_group": "assembler",
+      "outputs": {
+        "Logistics_Drone": 1
+      },
+      "inputs": {
+        "Thruster": 2,
+        "Iron_Ingot": 5,
+        "Processor": 2
+      }
+    },
+    {
+      "name": "Magnet",
+      "duration": 1.5,
+      "factory_group": "smelter",
+      "inputs": {
+        "Iron_Ore": 1
+      },
+      "outputs": {
+        "Magnet": 1
+      }
+    },
+    {
+      "name": "Magnetic_Coil",
+      "duration": 1,
+      "factory_group": "assembler",
+      "inputs": {
+        "Magnet": 2,
+        "Copper_Ingot": 1
+      },
+      "outputs": {
+        "Magnetic_Coil": 2
+      }
+    },
+    {
+      "name": "Matrix_Lab",
+      "duration": 3,
+      "factory_group": "assembler",
+      "outputs": {
+        "Matrix_Lab": 1
+      },
+      "inputs": {
+        "Circuit_Board": 4,
+        "Glass": 4,
+        "Iron_Ingot": 8,
+        "Magnetic_Coil": 4
+      }
+    },
+    {
+      "name": "Microcrystalline_Component",
+      "duration": 2,
+      "factory_group": "assembler",
+      "inputs": {
+        "Copper_Ingot": 1,
+        "High_Purity_Silicon": 2
+      },
+      "outputs": {
+        "Microcrystalline_Component": 1
+      }
+    },
+    {
+      "name": "Mini_Fusion_Power_Station",
+      "duration": 10,
+      "factory_group": "assembler",
+      "outputs": {
+        "Mini_Fusion_Power_Station": 1
+      },
+      "inputs": {
+        "Super_magnetic_Ring": 10,
+        "Carbon_Nanotube": 8,
+        "Processor": 4,
+        "Titanium_Alloy": 12
+      }
+    },
+    {
+      "name": "Miniature_Particle_Collider",
+      "duration": 0,
+      "factory_group": "assembler",
+      "outputs": {
+        "Miniature_Particle_Collider": 1
+      },
+      "inputs": {
+        "Frame_Material": 20,
+        "Graphene": 10,
+        "Super_magnetic_Ring": 50,
+        "Processor": 8,
+        "Titanium_Alloy": 20
+      }
+    },
+    {
+      "name": "Mining_Machine",
+      "duration": 3,
+      "factory_group": "assembler",
+      "outputs": {
+        "Mining_Machine": 1
+      },
+      "inputs": {
+        "Iron_Ingot": 4,
+        "Circuit_Board": 2,
+        "Magnetic_Coil": 2,
+        "Gear": 2
+      }
+    },
+    {
+      "name": "Oil_Extractor",
+      "duration": 8,
+      "factory_group": "assembler",
+      "outputs": {
+        "Oil_Extractor": 1
+      },
+      "inputs": {
+        "Circuit_Board": 6,
+        "Plasma_Exciter": 4,
+        "Steel": 12,
+        "Stone": 12
+      }
+    },
+    {
+      "name": "Orbit_Collector",
+      "duration": 30,
+      "factory_group": "assembler",
+      "outputs": {
+        "Orbit_Collector": 1
+      },
+      "inputs": {
+        "Accumulator_Full": 20,
+        "Super_magnetic_Ring": 50,
+        "Interstellar_Logistic_Station": 1,
+        "Reinforced_Thruster": 20
+      }
+    },
+    {
+      "name": "Particle_Broadband",
+      "duration": 8,
+      "factory_group": "assembler",
+      "inputs": {
+        "Carbon_Nanotube": 2,
+        "Plastic": 1,
+        "Crystal_Silicon": 2
+      },
+      "outputs": {
+        "Particle_Broadband": 1
+      }
+    },
+    {
+      "name": "Particle_Container",
+      "duration": 4,
+      "factory_group": "assembler",
+      "inputs": {
+        "Copper_Ingot": 2,
+        "Graphene": 2,
+        "Electromagnetic_Turbine": 2
+      },
+      "outputs": {
+        "Particle_Container": 1
+      }
+    },
+    {
+      "name": "Particle_Container_Rare",
+      "duration": 4,
+      "factory_group": "assembler",
+      "inputs": {
+        "Copper_Ingot": 2,
+        "Mono_Mag_Ore": 10
+      },
+      "outputs": {
+        "Particle_Container": 1
+      }
+    },
+    {
+      "name": "Photon_Combiner",
+      "duration": 3,
+      "factory_group": "assembler",
+      "inputs": {
+        "Circuit_Board": 1,
+        "Prism": 2
+      },
+      "outputs": {
+        "Photon_Combiner": 1
+      }
+    },
+    {
+      "name": "Photon_Combiner_Rare",
+      "duration": 3,
+      "factory_group": "assembler",
+      "inputs": {
+        "Circuit_Board": 1,
+        "Grating_Ore": 1
+      },
+      "outputs": {
+        "Photon_Combiner": 1
+      }
+    },
+    {
+      "name": "Plane_Filter",
+      "duration": 12,
+      "factory_group": "assembler",
+      "inputs": {
+        "Casimir_Crystal": 1,
+        "Titanium_Glass": 2
+      },
+      "outputs": {
+        "Plane_Filter": 1
+      }
+    },
+    {
+      "name": "Planetary_Logistics_Station",
+      "duration": 20,
+      "factory_group": "assembler",
+      "outputs": {
+        "Planetary_Logistics_Station": 1
+      },
+      "inputs": {
+        "Particle_Container": 20,
+        "Processor": 40,
+        "Steel": 40,
+        "Titanium_Ingot": 40
+      }
+    },
+    {
+      "name": "Plasma_Exciter",
+      "duration": 2,
+      "factory_group": "assembler",
+      "inputs": {
+        "Magnetic_Coil": 4,
+        "Prism": 2
+      },
+      "outputs": {
+        "Plasma_Exciter": 1
+      }
+    },
+    {
+      "name": "Plastic",
+      "duration": 3,
+      "factory_group": "chemical_plant",
+      "inputs": {
+        "Energetic_Graphite": 1,
+        "Refined_Oil": 2
+      },
+      "outputs": {
+        "Plastic": 1
+      }
+    },
+    {
+      "name": "Prism",
+      "duration": 3,
+      "factory_group": "assembler",
+      "inputs": {
+        "Glass": 3
+      },
+      "outputs": {
+        "Prism": 2
+      }
+    },
+    {
+      "name": "Processor",
+      "duration": 3,
+      "factory_group": "assembler",
+      "inputs": {
+        "Circuit_Board": 2,
+        "Microcrystalline_Component": 2
+      },
+      "outputs": {
+        "Processor": 1
+      }
+    },
+    {
+      "name": "Quantum_Chip",
+      "duration": 6,
+      "factory_group": "assembler",
+      "inputs": {
+        "Plane_Filter": 2,
+        "Processor": 2
+      },
+      "outputs": {
+        "Quantum_Chip": 1
+      }
+    },
+    {
+      "name": "Ray_Receiver",
+      "duration": 8,
+      "factory_group": "assembler",
+      "outputs": {
+        "Ray_Receiver": 1
+      },
+      "inputs": {
+        "Super_magnetic_Ring": 20,
+        "Photon_Combiner": 10,
+        "Processor": 5,
+        "High_Purity_Silicon": 20,
+        "Steel": 20
+      }
+    },
+    {
+      "name": "Refined_Oil",
+      "duration": 4,
+      "factory_group": "refinery",
+      "inputs": {
+        "Oil": 2
+      },
+      "outputs": {
+        "Hydrogen": 1,
+        "Refined_Oil": 2
+      }
+    },
+    {
+      "name": "Refinery",
+      "duration": 6,
+      "factory_group": "assembler",
+      "outputs": {
+        "Refinery": 1
+      },
+      "inputs": {
+        "Circuit_Board": 6,
+        "Plasma_Exciter": 6,
+        "Steel": 10,
+        "Stone": 10
+      }
+    },
+    {
+      "name": "Reinforced_Thruster",
+      "duration": 6,
+      "factory_group": "assembler",
+      "inputs": {
+        "Electromagnetic_Turbine": 5,
+        "Titanium_Alloy": 5
+      },
+      "outputs": {
+        "Reinforced_Thruster": 1
+      }
+    },
+    {
+      "name": "Satellite_Substation",
+      "duration": 5,
+      "factory_group": "assembler",
+      "outputs": {
+        "Satellite_Substation": 1
+      },
+      "inputs": {
+        "Wireless_Power_Tower": 1,
+        "Frame_Material": 2,
+        "Super_magnetic_Ring": 10
+      }
+    },
+    {
+      "name": "Silicon_Ore",
+      "duration": 10,
+      "factory_group": "assembler",
+      "inputs": {
+        "Stone_Ore": 10
+      },
+      "outputs": {
+        "Silicon_Ore": 1
+      }
+    },
+    {
+      "name": "Small_Carrier_Rocket",
+      "duration": 6,
+      "factory_group": "assembler",
+      "outputs": {
+        "Small_Carrier_Rocket": 1
+      },
+      "inputs": {
+        "Deuterium_Fuel_Rod": 2,
+        "Dyson_Sphere_Component": 2,
+        "Quantum_Chip": 2
+      }
+    },
+    {
+      "name": "Smelter",
+      "duration": 3,
+      "factory_group": "assembler",
+      "outputs": {
+        "Smelter": 1
+      },
+      "inputs": {
+        "Iron_Ingot": 4,
+        "Stone": 2,
+        "Circuit_Board": 4,
+        "Magnetic_Coil": 2
+      }
+    },
+    {
+      "name": "Solar_Panel",
+      "duration": 5,
+      "factory_group": "assembler",
+      "outputs": {
+        "Solar_Panel": 1
+      },
+      "inputs": {
+        "Circuit_Board": 4,
+        "Copper_Ingot": 6,
+        "High_Purity_Silicon": 6
+      }
+    },
+    {
+      "name": "Solar_Sail",
+      "duration": 4,
+      "factory_group": "assembler",
+      "inputs": {
+        "Graphene": 1,
+        "Photon_Combiner": 1
+      },
+      "outputs": {
+        "Solar_Sail": 2
+      }
+    },
+    {
+      "name": "SorterMk1",
+      "duration": 1,
+      "factory_group": "assembler",
+      "outputs": {
+        "SorterMk1": 1
+      },
+      "inputs": {
+        "Circuit_Board": 1,
+        "Iron_Ingot": 1
+      }
+    },
+    {
+      "name": "SorterMk2",
+      "duration": 1,
+      "factory_group": "assembler",
+      "outputs": {
+        "SorterMk2": 2
+      },
+      "inputs": {
+        "Electric_Motor": 1,
+        "SorterMk1": 2
+      }
+    },
+    {
+      "name": "SorterMk3",
+      "duration": 1,
+      "factory_group": "assembler",
+      "outputs": {
+        "SorterMk3": 2
+      },
+      "inputs": {
+        "SorterMk2": 2,
+        "Electromagnetic_Turbine": 1
+      }
+    },
+    {
+      "name": "Space_Warper",
+      "duration": 10,
+      "factory_group": "assembler",
+      "inputs": {
+        "Graviton_Lens": 1
+      },
+      "outputs": {
+        "Space_Warper": 1
+      }
+    },
+    {
+      "name": "Space_Warper_Rare",
+      "duration": 10,
+      "factory_group": "assembler",
+      "inputs": {
+        "G_Matrix": 1
+      },
+      "outputs": {
+        "Space_Warper": 8
+      }
+    },
+    {
+      "name": "Splitter",
+      "duration": 2,
+      "factory_group": "assembler",
+      "outputs": {
+        "Splitter": 1
+      },
+      "inputs": {
+        "Circuit_Board": 1,
+        "Gear": 2,
+        "Iron_Ingot": 3
+      }
+    },
+    {
+      "name": "Steel",
+      "duration": 3,
+      "factory_group": "smelter",
+      "inputs": {
+        "Iron_Ingot": 3
+      },
+      "outputs": {
+        "Steel": 1
+      }
+    },
+    {
+      "name": "Stone",
+      "duration": 1,
+      "factory_group": "smelter",
+      "inputs": {
+        "Stone_Ore": 1
+      },
+      "outputs": {
+        "Stone": 1
+      }
+    },
+    {
+      "name": "StorageMk1",
+      "duration": 2,
+      "factory_group": "assembler",
+      "outputs": {
+        "StorageMk1": 1
+      },
+      "inputs": {
+        "Iron_Ingot": 4,
+        "Stone": 4
+      }
+    },
+    {
+      "name": "StorageMk2",
+      "duration": 4,
+      "factory_group": "assembler",
+      "outputs": {
+        "StorageMk2": 1
+      },
+      "inputs": {
+        "Steel": 8,
+        "Stone": 8
+      }
+    },
+    {
+      "name": "StorageTank",
+      "duration":2,
+      "factory_group": "assembler",
+      "outputs": {
+        "StorageTank": 1
+      },
+      "inputs": {
+        "Glass": 4,
+        "Iron_Ingot": 8,
+        "Stone": 4
+      }
+    },
+    {
+      "name": "Strange_Matter",
+      "duration": 8,
+      "factory_group": "particle_collider",
+      "inputs": {
+        "Deuterium": 10,
+        "Iron_Ingot": 2,
+        "Particle_Container": 2
+      },
+      "outputs": {
+        "Strange_Matter": 1
+      }
+    },
+    {
+      "name": "Sulphuric_Acid",
+      "duration": 6,
+      "factory_group": "chemical_plant",
+      "inputs": {
+        "Refined_Oil": 6,
+        "Stone_Ore": 8,
+        "Water": 4
+      },
+      "outputs": {
+        "Sulphuric_Acid": 4
+      }
+    },
+    {
+      "name": "Super_magnetic_Ring",
+      "duration": 3,
+      "factory_group": "assembler",
+      "inputs": {
+        "Energetic_Graphite": 1,
+        "Electromagnetic_Turbine": 2,
+        "Magnet": 3
+      },
+      "outputs": {
+        "Super_magnetic_Ring": 1
+      }
+    },
+    {
+      "name": "T_Matrix",
+      "duration": 3,
+      "factory_group": "assembler",
+      "inputs": {
+        "Circuit_Board": 1,
+        "Magnetic_Coil": 1
+      },
+      "outputs": {
+        "T_Matrix": 1
+      }
+    },
+    {
+      "name": "Tesla_Tower",
+      "duration": 1,
+      "factory_group": "assembler",
+      "outputs": {
+        "Tesla_Tower": 1
+      },
+      "inputs": {
+        "Iron_Ingot": 2,
+        "Magnetic_Coil": 1
+      }
+    },
+    {
+      "name": "Thermal_Power_Station",
+      "duration": 5,
+      "factory_group": "assembler",
+      "outputs": {
+        "Thermal_Power_Station": 1
+      },
+      "inputs": {
+        "Gear": 4,
+        "Iron_Ingot": 10,
+        "Magnetic_Coil": 4,
+        "Stone": 4
+      }
+    },
+    {
+      "name": "Thruster",
+      "duration": 4,
+      "factory_group": "assembler",
+      "inputs": {
+        "Copper_Ingot": 3,
+        "Steel": 2
+      },
+      "outputs": {
+        "Thruster": 1
+      }
+    },
+    {
+      "name": "Titanium_Alloy",
+      "duration": 12,
+      "factory_group": "smelter",
+      "inputs": {
+        "Steel": 4,
+        "Sulphuric_Acid": 8,
+        "Titanium_Ingot": 4
+      },
+      "outputs": {
+        "Titanium_Alloy": 4
+      }
+    },
+    {
+      "name": "Titanium_Crystal",
+      "duration": 4,
+      "factory_group": "assembler",
+      "inputs": {
+        "Crystal_Rubber": 1,
+        "Titanium_Ingot": 3
+      },
+      "outputs": {
+        "Titanium_Crystal": 1
+      }
+    },
+    {
+      "name": "Titanium_Glass",
+      "duration": 5,
+      "factory_group": "assembler",
+      "inputs": {
+        "Glass": 2,
+        "Titanium_Ingot": 2,
+        "Water": 2
+      },
+      "outputs": {
+        "Titanium_Glass": 2
+      }
+    },
+    {
+      "name": "Titanium_Ingot",
+      "duration": 2,
+      "factory_group": "smelter",
+      "inputs": {
+        "Titanium_Ore": 2
+      },
+      "outputs": {
+        "Titanium_Ingot": 1
+      }
+    },
+    {
+      "name": "U_Matrix",
+      "duration": 15,
+      "factory_group": "assembler",
+      "inputs": {
+        "Anti_Matter": 1,
+        "C_Matrix": 1,
+        "E_Matrix": 1,
+        "G_Matrix": 1,
+        "I_Matrix": 1,
+        "T_Matrix": 1
+      },
+      "outputs": {
+        "U_Matrix": 1
+      }
+    },
+    {
+      "name": "Vertical_Launching_Silo",
+      "duration": 30,
+      "factory_group": "assembler",
+      "outputs": {
+        "Vertical_Launching_Silo": 1
+      },
+      "inputs": {
+        "Frame_Material": 30,
+        "Graviton_Lens": 20,
+        "Quantum_Chip": 10,
+        "Titanium_Alloy": 80
+      }
+    },
+    {
+      "name": "Water_Pump",
+      "duration": 4,
+      "factory_group": "assembler",
+      "outputs": {
+        "Water_Pump": 1
+      },
+      "inputs": {
+        "Circuit_Board": 2,
+        "Electric_Motor": 4,
+        "Iron_Ingot": 8,
+        "Stone": 4
+      }
+    },
+    {
+      "name": "Wind_Turbine",
+      "duration": 4,
+      "factory_group": "assembler",
+      "outputs": {
+        "Wind_Turbine": 1
+      },
+      "inputs": {
+        "Gear": 1,
+        "Iron_Ingot": 6,
+        "Magnetic_Coil": 3
+      }
+    },
+    {
+      "name": "Wireless_Power_Tower",
+      "duration": 3,
+      "factory_group": "assembler",
+      "outputs": {
+        "Wireless_Power_Tower": 1
+      },
+      "inputs": {
+        "Plasma_Exciter": 3,
+        "Tesla_Tower": 1
+      }
+    }
+  ],
+  "factory_groups": [],
+  "factory_types": []
+}
