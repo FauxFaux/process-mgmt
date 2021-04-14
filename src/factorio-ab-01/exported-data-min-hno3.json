@@ -1,0 +1,458 @@
+{
+    "recipes": [
+        {
+            "name": "red-waste-water-purification",
+            "category": "water-treatment",
+            "ingredients": [
+                {
+                    "type": "fluid",
+                    "amount": 100,
+                    "name": "water-red-waste"
+                }
+            ],
+            "products": [
+                {
+                    "type": "item",
+                    "name": "solid-sodium-nitrate",
+                    "probability": 1,
+                    "amount": 1
+                },
+                {
+                    "type": "fluid",
+                    "name": "water-mineralized",
+                    "probability": 1,
+                    "amount": 20
+                },
+                {
+                    "type": "fluid",
+                    "name": "water-purified",
+                    "probability": 1,
+                    "amount": 70
+                }
+            ],
+            "energy": 1
+        },
+        {
+            "name": "sodium-nitrate-acid-processing",
+            "category": "chemistry",
+            "ingredients": [
+                {
+                    "type": "item",
+                    "amount": 5,
+                    "name": "solid-sodium-nitrate"
+                },
+                {
+                    "type": "fluid",
+                    "amount": 40,
+                    "name": "liquid-sulfuric-acid"
+                }
+            ],
+            "products": [
+                {
+                    "type": "fluid",
+                    "name": "liquid-nitric-acid",
+                    "probability": 1,
+                    "amount": 40
+                }
+            ],
+            "energy": 2
+        },
+        {
+            "name": "liquid-nitric-acid",
+            "category": "chemistry",
+            "ingredients": [
+                {
+                    "type": "fluid",
+                    "amount": 100,
+                    "name": "gas-nitrogen-dioxide"
+                },
+                {
+                    "type": "fluid",
+                    "amount": 50,
+                    "name": "water-purified"
+                }
+            ],
+            "products": [
+                {
+                    "type": "fluid",
+                    "name": "liquid-nitric-acid",
+                    "probability": 1,
+                    "amount": 50
+                }
+            ],
+            "energy": 2
+        },
+        {
+            "name": "solid-sodium-nitrate-processing",
+            "category": "chemistry",
+            "ingredients": [
+                {
+                    "type": "item",
+                    "amount": 5,
+                    "name": "solid-sodium-nitrate"
+                },
+                {
+                    "type": "fluid",
+                    "amount": 60,
+                    "name": "gas-compressed-air"
+                }
+            ],
+            "products": [
+                {
+                    "type": "fluid",
+                    "name": "gas-nitrogen-monoxide",
+                    "probability": 1,
+                    "amount": 40
+                },
+                {
+                    "type": "fluid",
+                    "name": "gas-nitrogen-dioxide",
+                    "probability": 1,
+                    "amount": 20
+                }
+            ],
+            "energy": 2
+        },
+        {
+            "name": "nitric-acid",
+            "category": "chemistry",
+            "ingredients": [
+                {
+                    "type": "fluid",
+                    "amount": 20,
+                    "name": "gas-nitrogen-dioxide"
+                },
+                {
+                    "type": "fluid",
+                    "amount": 20,
+                    "name": "gas-hydrogen-peroxide"
+                }
+            ],
+            "products": [
+                {
+                    "type": "fluid",
+                    "name": "liquid-nitric-acid",
+                    "probability": 1,
+                    "amount": 20
+                }
+            ],
+            "energy": 1
+        },
+        {
+            "name": "nitrogen-dioxide",
+            "category": "chemistry",
+            "ingredients": [
+                {
+                    "type": "fluid",
+                    "amount": 20,
+                    "name": "gas-nitrogen-monoxide"
+                },
+                {
+                    "type": "fluid",
+                    "amount": 10,
+                    "name": "gas-oxygen"
+                }
+            ],
+            "products": [
+                {
+                    "type": "fluid",
+                    "name": "gas-nitrogen-dioxide",
+                    "probability": 1,
+                    "amount": 20
+                }
+            ],
+            "energy": 1
+        },
+
+        {
+            "name": "gas-nitrogen-monoxide",
+            "category": "chemistry",
+            "ingredients": [
+                {
+                    "type": "item",
+                    "amount": 1,
+                    "name": "catalyst-metal-green"
+                },
+                {
+                    "type": "fluid",
+                    "amount": 60,
+                    "name": "gas-ammonia"
+                },
+                {
+                    "type": "fluid",
+                    "amount": 40,
+                    "name": "gas-oxygen"
+                }
+            ],
+            "products": [
+                {
+                    "type": "item",
+                    "name": "catalyst-metal-carrier",
+                    "probability": 1,
+                    "amount": 1,
+                    "catalyst_amount": 1
+                },
+                {
+                    "type": "fluid",
+                    "name": "gas-nitrogen-monoxide",
+                    "probability": 1,
+                    "amount": 100
+                }
+            ],
+            "energy": 2
+        },
+        {
+            "name": "catalyst-metal-green",
+            "category": "crafting",
+            "ingredients": [
+                {
+                    "type": "item",
+                    "amount": 1,
+                    "name": "bauxite-ore"
+                },
+                {
+                    "type": "item",
+                    "amount": 1,
+                    "name": "silver-ore"
+                },
+                {
+                    "type": "item",
+                    "amount": 10,
+                    "name": "catalyst-metal-carrier"
+                }
+            ],
+            "products": [
+                {
+                    "type": "item",
+                    "name": "catalyst-metal-green",
+                    "probability": 1,
+                    "amount": 10
+                }
+            ],
+            "energy": 2
+        },
+        {
+            "name": "gas-ammonia-from-blue-fiber",
+            "category": "liquifying",
+            "ingredients": [
+                {
+                    "type": "item",
+                    "amount": 20,
+                    "name": "blue-cellulose-fiber"
+                }
+            ],
+            "products": [
+                {
+                    "type": "fluid",
+                    "name": "gas-ammonia",
+                    "probability": 1,
+                    "amount": 100
+                }
+            ],
+            "energy": 30
+        },
+        {
+            "name": "gas-ammonia",
+            "category": "chemistry",
+            "ingredients": [
+                {
+                    "type": "item",
+                    "amount": 1,
+                    "name": "catalyst-metal-red"
+                },
+                {
+                    "type": "fluid",
+                    "amount": 50,
+                    "name": "gas-hydrogen"
+                },
+                {
+                    "type": "fluid",
+                    "amount": 50,
+                    "name": "gas-nitrogen"
+                }
+            ],
+            "products": [
+                {
+                    "type": "item",
+                    "name": "catalyst-metal-carrier",
+                    "probability": 1,
+                    "amount": 1,
+                    "catalyst_amount": 1
+                },
+                {
+                    "type": "fluid",
+                    "name": "gas-ammonia",
+                    "probability": 1,
+                    "amount": 100
+                }
+            ],
+            "energy": 2
+        },
+        {
+            "name": "hydrogen-peroxide",
+            "category": "chemistry",
+            "ingredients": [
+                {
+                    "type": "fluid",
+                    "amount": 16,
+                    "name": "gas-hydrogen"
+                },
+                {
+                    "type": "fluid",
+                    "amount": 20,
+                    "name": "gas-oxygen"
+                }
+            ],
+            "products": [
+                {
+                    "type": "fluid",
+                    "name": "gas-hydrogen-peroxide",
+                    "probability": 1,
+                    "amount": 8
+                }
+            ],
+            "energy": 1
+        },
+        {
+            "name": "catalyst-metal-red",
+            "category": "crafting",
+            "ingredients": [
+                {
+                    "type": "item",
+                    "amount": 1,
+                    "name": "copper-ore"
+                },
+                {
+                    "type": "item",
+                    "amount": 1,
+                    "name": "iron-ore"
+                },
+                {
+                    "type": "item",
+                    "amount": 10,
+                    "name": "catalyst-metal-carrier"
+                }
+            ],
+            "products": [
+                {
+                    "type": "item",
+                    "name": "catalyst-metal-red",
+                    "probability": 1,
+                    "amount": 10
+                }
+            ],
+            "energy": 2
+        },
+
+        {}
+    ],
+
+
+    "craftingMachines": [
+        {
+            "name": "burner-ore-crusher",
+            "categories": {
+                "ore-sorting-t1": true
+            },
+            "craftingSpeed": 1,
+            "ingredientCount": 2,
+            "moduleSlots": 0
+        },
+        {
+            "name": "ore-crusher",
+            "categories": {
+                "ore-sorting-t1": true
+            },
+            "craftingSpeed": 1.5,
+            "ingredientCount": 3,
+            "moduleSlots": 1
+        },
+        {
+            "name": "ore-crusher-2",
+            "categories": {
+                "ore-sorting-t1": true
+            },
+            "craftingSpeed": 2,
+            "ingredientCount": 3,
+            "moduleSlots": 2
+        },
+        {
+            "name": "ore-crusher-3",
+            "categories": {
+                "ore-sorting-t1": true
+            },
+            "craftingSpeed": 3,
+            "ingredientCount": 3,
+            "moduleSlots": 3
+        },
+        {
+            "name": "ore-sorting-facility",
+            "categories": {
+                "ore-sorting": true
+            },
+            "craftingSpeed": 0.75,
+            "ingredientCount": 2,
+            "moduleSlots": 2
+        },
+        {
+            "name": "ore-sorting-facility-2",
+            "categories": {
+                "ore-sorting": true
+            },
+            "craftingSpeed": 1,
+            "ingredientCount": 4,
+            "moduleSlots": 2
+        },
+        {
+            "name": "ore-sorting-facility-3",
+            "categories": {
+                "ore-sorting": true
+            },
+            "craftingSpeed": 1.5,
+            "ingredientCount": 6,
+            "moduleSlots": 3
+        },
+        {
+            "name": "ore-sorting-facility-4",
+            "categories": {
+                "ore-sorting": true
+            },
+            "craftingSpeed": 2,
+            "ingredientCount": 6,
+            "moduleSlots": 3
+        },
+        {
+            "name": "ore-floatation-cell",
+            "categories": {
+                "ore-sorting-t2": true
+            },
+            "craftingSpeed": 0.75,
+            "ingredientCount": 3,
+            "moduleSlots": 1
+        },
+        {
+            "name": "ore-floatation-cell-2",
+            "categories": {
+                "ore-sorting-t2": true
+            },
+            "craftingSpeed": 1,
+            "ingredientCount": 3,
+            "moduleSlots": 2
+        },
+        {
+            "name": "ore-floatation-cell-3",
+            "categories": {
+                "ore-sorting-t2": true
+            },
+            "craftingSpeed": 1.5,
+            "ingredientCount": 3,
+            "moduleSlots": 3
+        },
+
+
+
+
+
+        {}
+    ]
+}

@@ -11,7 +11,8 @@ import * as fs from 'fs'
 import * as path from 'path'
 import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-let raw = JSON.parse(fs.readFileSync(path.join(__dirname, 'exported-data-min.json'), 'utf8'));
+//let raw = JSON.parse(fs.readFileSync(path.join(__dirname, 'exported-data-min.json'), 'utf8'));
+let raw = JSON.parse(fs.readFileSync(path.join(__dirname, 'exported-data-min-hno3.json'), 'utf8'));
 // let raw = JSON.parse(fs.readFileSync(path.join(__dirname, 'exported-data.json'), 'utf8'));
 
 let data = new Data('factorio-ab-01', '0.0.1');
@@ -73,6 +74,9 @@ raw.craftingMachines.forEach(machine => {
     check_add(machine, function() {
         Object.keys(machine.categories).forEach(category => {
             const category_name = fix_identifier(category);
+            if (!data.factory_groups[category_name]) {
+                data.add_factory_group(new FactoryGroup(category_name));
+            }
             const machine_name = fix_identifier(machine.name);
             data.add_factory(new Factory(
                 machine_name,
