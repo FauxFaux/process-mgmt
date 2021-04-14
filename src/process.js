@@ -118,9 +118,28 @@ class ProcessChain {
     to_graphviz() {
         let result = [];
         result.push('digraph {');
-        this.all_items().forEach(item => {
-            result.push('  ' + this._render_item_node(item));
-        });
+        Object.entries(this.all_items().reduce((acc, cur) => {
+            let g = cur.group;
+            if (!g) {
+                g = '__default__';
+            }
+            if (!acc[g]) {
+                acc[g] = [];
+            }
+            acc[g].push(cur);
+            return acc;
+        }, {})).forEach(g => {
+            let id = g[0];
+            let contents = g[1];
+            if (id === '__default__') {
+                contents.forEach(item => result.push('  ' + this._render_item_node(item)));
+            } else {
+                result.push('  subgraph cluster_' + id + " {");
+                contents.forEach(item => result.push('    ' + this._render_item_node(item)));
+                result.push('  }');
+            }
+        })
+
         this.processes.forEach((process, index) => {
             let node_id = 'process_' + index;
 
