@@ -38,7 +38,12 @@ class RateChain extends ProcessChain {
         this.process_counts = {};
     }
 
-    update(stack) {
+    // Calculate the rates and factury counts required
+    // to produce 'stack' as a rate per second.
+    // 'imported_materials' are materials that are
+    // produced elsewhere and can be transported
+    // to this part of the process.
+    update(stack, imported_materials) {
         let materials = new StackSet();
         let process_counts = {};
 
@@ -61,7 +66,9 @@ class RateChain extends ProcessChain {
                     // ==> subtract from materials. if total <= 0, push onto queue.
                     materials.sub(input.mul(process_count));
                     if (materials.total(input.item).quantity <= 0) {
-                        queue.push(input.mul(process_count));
+                        if (!imported_materials.includes(input.item.id)) {
+                            queue.push(input.mul(process_count));
+                        }
                     }
                 });
             }
@@ -70,12 +77,22 @@ class RateChain extends ProcessChain {
         this.process_counts = process_counts;
     }
 
+    _determine_item_node_colour(produce, consume) {
+        if (produce > consume) return "red";
+        if (consume > produce) return "green";
+        return "";
+    }
+
     _render_item_node(item) {
+        let produce = (Math.round(this.materials.total_positive(item).quantity*100)/100);
+        let consume = (Math.round(this.materials.total_negative(item).mul(-1).quantity*100)/100);
         return item.id + ' [shape="record" label="{'
             + item.name
-            + ' | { produce: ' + (Math.round(this.materials.total_positive(item).quantity*100)/100) + '/s'
-            + ' | consume: ' + (Math.round(this.materials.total_negative(item).mul(-1).quantity*100)/100) + '/s }'
-            + '}"]';
+            + ' | { produce: ' + produce + '/s'
+            + ' | consume: ' + consume + '/s }'
+            + '}" '
+            + 'style="filled" fillcolor="' + this._determine_item_node_colour(produce, consume) + '"'
+            + ']';
     }
 
     _render_processor_node(node_id, process) {
