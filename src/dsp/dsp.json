@@ -1005,7 +1005,7 @@
     },
     {
       "name": "Copper_Ingot",
-      "duration": 0,
+      "duration": 1,
       "factory_group": "smelter",
       "inputs": {
         "Copper_Ore": 1
