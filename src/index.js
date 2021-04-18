@@ -56,7 +56,7 @@ const readline_disambiguate = function(requirement, options) {
 
 const array_disambiguate = function(requirement, options) {
     let arr = {};
-    arr[data.items.bauxite_ore.id] = data.processes.angelsore_chunk_mix3_processing;
+    arr[data.items.rutile_ore.id] = data.processes.angelsore_crystal_mix1_processing;
     arr[data.items.liquid_sulfuric_acid.id] = data.processes.liquid_sulfuric_acid;
     arr[data.items.liquid_nitric_acid.id] = data.processes.liquid_nitric_acid;
     arr[data.items.angels_ore1_crushed.id] = data.processes.angelsore1_crushed;
@@ -87,13 +87,13 @@ let p = new ProcessChain(Object.values(data.processes))
     // .filter_for_output(new Stack(data.items.electric_motor, 1), array_disambiguate)
     // .filter_for_output(new Stack(data.items.graviton_lens, 1), array_disambiguate)
     .filter_for_output(
-        new Stack(data.items.bauxite_ore, 1),
+        new Stack(data.items.rutile_ore, 1),
         array_disambiguate,
         [
-            data.items.catalysator_green.id,
+            data.items.catalysator_orange.id,
             data.items.water_purified.id,
             data.items.liquid_nitric_acid.id,
-            data.items.liquid_sulfuric_acid.id,
+            data.items.liquid_sulfuric_acid.id
         ]
     )
     // .filter_for_output(new Stack(data.items['liquid_sulfuric_acid'], 1), array_disambiguate)
@@ -109,7 +109,11 @@ p = new RateChain(p, {
     'ore_sorting_t3': data.factories['ore-leaching-plant-3'],
 });
 // let r = p.update(new Stack(data.items.circuit, 10));
-p.update(new Stack(data.items['bauxite_ore'], 36), []);
+p.update(new Stack(data.items['rutile_ore'], 36), [
+    data.items.liquid_sulfuric_acid.id,
+    data.items.liquid_nitric_acid.id,
+    data.items.catalysator_orange.id,
+]);
 // p.update(new Stack(data.items['liquid_sulfuric_acid'], 600));
 // p.update(new Stack(data.items['liquid_nitric_acid'], 100));
 // p.update(new Stack(data.items.electric_motor, 8));
