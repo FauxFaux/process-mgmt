@@ -54,7 +54,7 @@ class ProcessChain {
         }, {});
     }
 
-    filter_for_output(output_stack, priorities) {
+    filter_for_output(output_stack, priorities, ignored = []) {
         let result = [];
         let visited = [];
         let visited_processes = [];
@@ -62,6 +62,9 @@ class ProcessChain {
         while (queue.length > 0) {
             let current = queue.shift();
             visited.push(current);
+            if (ignored.includes(current)) {
+                continue;
+            }
             let processes_for_current = this.processes_by_output[current];
             let process = null;
             if (processes_for_current && processes_for_current.length > 1) {
