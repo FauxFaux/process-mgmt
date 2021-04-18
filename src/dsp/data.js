@@ -39,4 +39,14 @@ raw.processes.forEach(p => {
     ))});
 })
 
+
+data.add_factories([
+    new Factory('assembler_I', 'assembler I', data.factory_groups.assembler, 1/1),
+    new Factory('assembler_II', 'assembler II', data.factory_groups.assembler, 1/1.25),
+    new Factory('assembler_III', 'assembler III', data.factory_groups.assembler, 1/1.5),
+
+    new Factory('smelter', 'smelter', data.factory_groups.smelter, 1),
+    new Factory('particle_collider', 'particle collider', data.factory_groups.particle_collider, 1),
+]);
+
 export { data };
