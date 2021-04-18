@@ -15,16 +15,16 @@ class FactoryGroup {
 }
 
 class Factory {
-    constructor(id, name, group, duration_modifier = 1) {
-        check('id', id, 'name', name, 'group', group, 'duration_modifier', duration_modifier);
+    constructor(id, name, groups, duration_modifier = 1) {
+        check('id', id, 'name', name, 'group', groups, 'duration_modifier', duration_modifier);
         this.id = id;
         this.name = name;
-        this.group = group;
+        this.groups = groups;
         this.duration_modifier = duration_modifier;
     }
 
     toString() {
-        return 'Factory: [id: ' + this.id + ', name: ' + this.name + ', group: ' + this.group + ']';
+        return 'Factory: [id: ' + this.id + ', name: ' + this.name + ', group: ' + this.groups + ']';
     }
 
     update_process(p) {
