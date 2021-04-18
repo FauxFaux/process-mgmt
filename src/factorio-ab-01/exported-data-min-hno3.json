@@ -33,31 +33,6 @@
             "energy": 1
         },
         {
-            "name": "sodium-nitrate-acid-processing",
-            "category": "chemistry",
-            "ingredients": [
-                {
-                    "type": "item",
-                    "amount": 5,
-                    "name": "solid-sodium-nitrate"
-                },
-                {
-                    "type": "fluid",
-                    "amount": 40,
-                    "name": "liquid-sulfuric-acid"
-                }
-            ],
-            "products": [
-                {
-                    "type": "fluid",
-                    "name": "liquid-nitric-acid",
-                    "probability": 1,
-                    "amount": 40
-                }
-            ],
-            "energy": 2
-        },
-        {
             "name": "liquid-nitric-acid",
             "category": "chemistry",
             "ingredients": [
@@ -112,31 +87,6 @@
                 }
             ],
             "energy": 2
-        },
-        {
-            "name": "nitric-acid",
-            "category": "chemistry",
-            "ingredients": [
-                {
-                    "type": "fluid",
-                    "amount": 20,
-                    "name": "gas-nitrogen-dioxide"
-                },
-                {
-                    "type": "fluid",
-                    "amount": 20,
-                    "name": "gas-hydrogen-peroxide"
-                }
-            ],
-            "products": [
-                {
-                    "type": "fluid",
-                    "name": "liquid-nitric-acid",
-                    "probability": 1,
-                    "amount": 20
-                }
-            ],
-            "energy": 1
         },
         {
             "name": "nitrogen-dioxide",
@@ -232,26 +182,6 @@
             "energy": 2
         },
         {
-            "name": "gas-ammonia-from-blue-fiber",
-            "category": "liquifying",
-            "ingredients": [
-                {
-                    "type": "item",
-                    "amount": 20,
-                    "name": "blue-cellulose-fiber"
-                }
-            ],
-            "products": [
-                {
-                    "type": "fluid",
-                    "name": "gas-ammonia",
-                    "probability": 1,
-                    "amount": 100
-                }
-            ],
-            "energy": 30
-        },
-        {
             "name": "gas-ammonia",
             "category": "chemistry",
             "ingredients": [
@@ -289,31 +219,6 @@
             "energy": 2
         },
         {
-            "name": "hydrogen-peroxide",
-            "category": "chemistry",
-            "ingredients": [
-                {
-                    "type": "fluid",
-                    "amount": 16,
-                    "name": "gas-hydrogen"
-                },
-                {
-                    "type": "fluid",
-                    "amount": 20,
-                    "name": "gas-oxygen"
-                }
-            ],
-            "products": [
-                {
-                    "type": "fluid",
-                    "name": "gas-hydrogen-peroxide",
-                    "probability": 1,
-                    "amount": 8
-                }
-            ],
-            "energy": 1
-        },
-        {
             "name": "catalyst-metal-red",
             "category": "crafting",
             "ingredients": [
@@ -342,6 +247,48 @@
                 }
             ],
             "energy": 2
+        },
+
+        {
+            "name": "air-separation",
+            "category": "chemistry",
+            "ingredients": [
+                {
+                    "type": "fluid",
+                    "amount": 100,
+                    "name": "gas-compressed-air"
+                }
+            ],
+            "products": [
+                {
+                    "type": "fluid",
+                    "name": "gas-nitrogen",
+                    "probability": 1,
+                    "amount": 50
+                },
+                {
+                    "type": "fluid",
+                    "name": "gas-oxygen",
+                    "probability": 1,
+                    "amount": 50
+                }
+            ],
+            "energy": 2
+        },
+
+        {
+            "name": "angels-air-filtering",
+            "category": "petrochem-air-filtering",
+            "ingredients": [],
+            "products": [
+                {
+                    "type": "fluid",
+                    "name": "gas-compressed-air",
+                    "probability": 1,
+                    "amount": 200
+                }
+            ],
+            "energy": 6
         },
 
         {}
