@@ -32,7 +32,20 @@ class ProcessChain {
     constructor(processes) {
         check('processes', processes);
         this.processes = processes;
-        this.processes_by_output = processes.reduce((acc, cur) => {
+        this.processes_by_output = this._build_processes_by_output();
+        this.settings = {};
+    }
+
+    disable(process_id) {
+        this.processes = this.processes.filter(p => {
+            return p.id != process_id;
+        });
+        this.processes_by_output = this._build_processes_by_output();
+        return this;
+    }
+
+    _build_processes_by_output() {
+        return this.processes.reduce((acc, cur) => {
             cur.outputs.forEach(output => {
                 if (!acc[output.item.id]) { acc[output.item.id] = []; }
                 acc[output.item.id].push(cur);
@@ -134,9 +147,9 @@ class ProcessChain {
             if (id === '__default__') {
                 contents.forEach(item => result.push('  ' + this._render_item_node(item)));
             } else {
-                result.push('  subgraph cluster_' + id + " {");
+                if (this.settings.generate_item_groupings) result.push('  subgraph cluster_' + id + " {");
                 contents.forEach(item => result.push('    ' + this._render_item_node(item)));
-                result.push('  }');
+                if (this.settings.generate_item_groupings) result.push('  }');
             }
         })
 
