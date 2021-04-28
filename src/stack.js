@@ -25,6 +25,9 @@ class Stack {
     mul(scalar) {
         return new Stack(this.item, this.quantity * scalar);
     }
+    toString() {
+        return 'Stack: [item:'+this.item.id+', quantity: '+this.quantity+']';
+    }
 }
 
 class StackSet {

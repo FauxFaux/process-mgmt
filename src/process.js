@@ -24,7 +24,11 @@ class Process {
     }
 
     toString() {
-        return 'Process: [factory: ' + this.factory_group + ' duration:' + this.duration + ' inputs: ' + this.inputs + ' outputs: ' + this.outputs + ']';
+        return 'Process: [factory: ' + this.factory_group
+            + ' duration:' + this.duration
+            + ' inputs: ' + this.inputs.map(i => i.toString()).join(',')
+            + ' outputs: ' + this.outputs.map(i => i.toString()).join(',')
+             + ']';
     }
 }
 

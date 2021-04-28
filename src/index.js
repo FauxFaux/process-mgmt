@@ -68,11 +68,35 @@ const array_disambiguate = function(requirement, options) {
     arr[data.items.liquid_hydrochloric_acid.id] = data.processes.liquid_hydrochloric_acid_solid_sodium_sulfate;
     arr[data.items.liquid_hydrofluoric_acid.id] = data.processes.liquid_hydrofluoric_acid;
     arr[data.items.fluorite_ore.id] = data.processes.angelsore_chunk_mix5_processing;
+
+    arr[data.items.titanium_plate.id] = data.processes.angels_roll_titanium_converting;
+    arr[data.items.angels_roll_titanium.id] = data.processes.roll_titanium_casting_fast;
+
+    // basic:
+    arr[data.items.liquid_molten_titanium.id] = data.processes.molten_titanium_smelting_1;
+    arr[data.items.ingot_titanium.id] = data.processes.sponge_titanium_smelting;
+    arr[data.items.liquid_titanium_tetrachloride.id] = data.processes.processed_titanium_smelting;
+    arr[data.items.solid_carbon.id] = data.processes.carbon;
+
+
     // arr[data.items.fluorite_ore.id] = data.processes.greenyellow_waste_water_purification;
     // arr[solid_salt] = data.green_waste_water_purification;
     arr[data.items.solid_salt.id] = data.processes.salt;
     if (!(arr[requirement]) === true) {
-        throw new Error('No enabled priority for ' + requirement + ' (available: ' + options.map(i => i.id).join(', ') + ')');
+        throw new Error('No enabled priority for ' + requirement + ' (available: ' + options.map(i => i.id).join(', ') + ')\n\n'
+            + options.map(p => {
+                return p.id + ' => \n'
+                    + '  inputs:\n'
+                    + p.inputs.map(i => '    ' + i.toString()).join('\n')
+                    + '\n'
+                    + '  outputs:\n'
+                    + p.outputs.map(i => '    ' + i.toString()).join('\n')
+                    + '\n'
+                    + 'arr[data.items.' + requirement + '.id] = data.processes.' + p.id + ';'
+                    + '\n'
+                }).join('\n')
+
+        );
     }
     return arr[requirement];
 };
@@ -100,7 +124,7 @@ let p = new ProcessChain(Object.values(data.processes))
     // .filter_for_output(new Stack(data.items.electric_motor, 1), array_disambiguate)
     // .filter_for_output(new Stack(data.items.graviton_lens, 1), array_disambiguate)
     .filter_for_output(
-        new Stack(data.items.fluorite_ore, 1),
+        new Stack(data.items.titanium_plate, 1),
         array_disambiguate,
         [
             data.items.water_yellow_waste.id,
@@ -117,6 +141,10 @@ let p = new ProcessChain(Object.values(data.processes))
             // data.items.liquid_hydrofluoric_acid.id,
             data.items.liquid_hydrochloric_acid.id,
             // data.items.fluorite_ore.id,
+            data.items.liquid_coolant.id,
+            data.items.gas_chlorine.id,
+            data.items.coal.id,
+            data.items.rutile_ore.id,
         ]
     )
     // .enable(data.processes.solid_salt_from_saline)
@@ -134,7 +162,7 @@ p = new RateChain(p, {
     'ore_sorting_t3': data.factories['ore_leaching_plant_3'],
 });
 // let r = p.update(new Stack(data.items.circuit, 10));
-p.update(new Stack(data.items.fluorite_ore, 12), [
+p.update(new Stack(data.items.titanium_plate, 30), [
     data.items.liquid_sulfuric_acid.id,
     data.items.liquid_nitric_acid.id,
     data.items.catalysator_orange.id,
