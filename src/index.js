@@ -72,11 +72,27 @@ const array_disambiguate = function(requirement, options) {
     arr[data.items.titanium_plate.id] = data.processes.angels_roll_titanium_converting;
     arr[data.items.angels_roll_titanium.id] = data.processes.roll_titanium_casting_fast;
 
-    // basic:
-    arr[data.items.liquid_molten_titanium.id] = data.processes.molten_titanium_smelting_1;
+    // advanced:
+    arr[data.items.liquid_molten_titanium.id] = data.processes.molten_titanium_smelting_4;
     arr[data.items.ingot_titanium.id] = data.processes.sponge_titanium_smelting;
     arr[data.items.liquid_titanium_tetrachloride.id] = data.processes.processed_titanium_smelting;
     arr[data.items.solid_carbon.id] = data.processes.carbon;
+    arr[data.items.ingot_tin.id] = data.processes.pellet_tin_smelting;
+    arr[data.items.ingot_chrome.id] = data.processes.solid_chrome_oxide_smelting;
+    arr[data.items.solid_chrome_oxide.id] = data.processes.solid_dichromate_smelting;
+    arr[data.items.cobalt_oxide.id] = data.processes.processed_cobalt_smelting;
+    arr[data.items.solid_limestone.id] = data.processes.pellet_titanium_smelting;
+    arr[data.items.solid_calcium_chloride.id] = data.processes.solid_calcium_chloride;
+    arr[data.items.solid_sodium_carbonate.id] = data.processes.coke_purification_2;
+    arr[data.items.gas_oxygen.id] = data.processes.water_separation;
+    arr[data.items.gas_nitrogen.id] = data.processes.air_separation;
+    arr[data.items.solid_coke.id] = data.processes.solid_coke;
+    arr[data.items.solid_sodium_hydroxide.id] = data.processes.brine_electrolysis;
+    arr[data.items.alumina.id] = data.processes.solid_aluminium_hydroxide_smelting;
+
+    arr[data.items.ingot_cobalt.id] = data.processes.solid_cobalt_oxide_smelting;
+    arr[data.items.solid_aluminium_hydroxide.id] = data.processes.processed_aluminium_smelting;
+    arr[data.items.water_saline.id] = data.processes.water_saline;
 
 
     // arr[data.items.fluorite_ore.id] = data.processes.greenyellow_waste_water_purification;
@@ -145,6 +161,10 @@ let p = new ProcessChain(Object.values(data.processes))
             data.items.gas_chlorine.id,
             data.items.coal.id,
             data.items.rutile_ore.id,
+            data.items.stone_crushed.id,
+            data.items.gas_hydrogen_chloride.id,
+            data.items.tin_ore.id,
+            data.items.bauxite_ore.id,
         ]
     )
     // .enable(data.processes.solid_salt_from_saline)
