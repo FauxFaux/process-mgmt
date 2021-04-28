@@ -44,6 +44,12 @@ class ProcessChain {
         return this;
     }
 
+    enable(process) {
+        this.processes.push(process);
+        this.processes_by_output = this._build_processes_by_output();
+        return this;
+    }
+
     _build_processes_by_output() {
         return this.processes.reduce((acc, cur) => {
             cur.outputs.forEach(output => {

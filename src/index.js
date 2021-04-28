@@ -39,7 +39,8 @@ const readline_disambiguate = function(requirement, options) {
 //     arr[data.items.Photon_Combiner.id] = data.processes.Photon_Combiner;
 //     arr[data.items.Energetic_Graphite.id] = data.processes.Energetic_Graphite;
 //     arr[data.items.Crystal_Silicon.id] = data.processes.Crystal_Silicon_Rare;
-//     if (arr[data.items.Diamond.id] === false) {
+//     arr[data.items.Deuterium.id] = data.processes.Deuterium;
+//     if (arr[requirement] === false) {
 //         throw new Error('No enabled priority for ' + requirement + ' (available: ' + options.map(i => i.id).join(', ') + ')');
 //     }
 //     return arr[requirement];
@@ -59,11 +60,14 @@ const array_disambiguate = function(requirement, options) {
     arr[data.items.uranium_ore.id] = data.processes.angelsore_crystal_mix5_processing;
     arr[data.items.silver_ore.id] = data.processes.angelsore_crystal_mix4_processing;
     arr[data.items.cobalt_ore.id] = data.processes.angelsore_crystal_mix3_processing;
-    // arr[data.items.rutile_ore.id] = data.processes.angelsore_crystal_mix1_processing;
+    arr[data.items.rutile_ore.id] = data.processes.angelsore_crystal_mix1_processing;
     arr[data.items.liquid_sulfuric_acid.id] = data.processes.liquid_sulfuric_acid;
     arr[data.items.liquid_nitric_acid.id] = data.processes.liquid_nitric_acid;
     arr[data.items.angels_ore1_crushed.id] = data.processes.angelsore1_crushed;
     arr[data.items.angels_ore3_crushed.id] = data.processes.angelsore3_crushed;
+    arr[data.items.liquid_hydrochloric_acid.id] = data.processes.liquid_hydrochloric_acid_solid_sodium_sulfate;
+    // arr[solid_salt] = data.green_waste_water_purification;
+    arr[data.items.solid_salt.id] = data.processes.salt;
     if (!(arr[requirement]) === true) {
         throw new Error('No enabled priority for ' + requirement + ' (available: ' + options.map(i => i.id).join(', ') + ')');
     }
@@ -87,42 +91,57 @@ let p = new ProcessChain(Object.values(data.processes))
     // .disable(data.processes.Sulphuric_Acid.id)
     // .disable(data.processes.Silicon_Ore.id)
     // .filter_for_output(new Stack(data.items.U_Matrix, 1), array_disambiguate)
+    // .disable(data.processes.Silicon_Ore.id)
+    // .disable(data.processes.Sulphuric_Acid.id)
+    // .filter_for_output(new Stack(data.items.Small_Carrier_Rocket, 1), array_disambiguate)
     // .filter_for_output(new Stack(data.items.electric_motor, 1), array_disambiguate)
     // .filter_for_output(new Stack(data.items.graviton_lens, 1), array_disambiguate)
     .filter_for_output(
-        new Stack(data.items.uranium_ore, 1),
+        new Stack(data.items.liquid_hydrochloric_acid, 1),
         array_disambiguate,
         [
+            data.items.water_yellow_waste.id,
+            data.items.water_greenyellow_waste.id,
+            data.items.water_green_waste.id,
+            data.items.water_red_waste.id,
+            data.items.catalysator_brown.id,
+            data.items.catalysator_green.id,
             data.items.catalysator_orange.id,
             data.items.water_purified.id,
+            data.items.water.id,
             data.items.liquid_nitric_acid.id,
             data.items.liquid_sulfuric_acid.id,
             data.items.liquid_hydrofluoric_acid.id,
-            data.items.liquid_hydrochloric_acid.id,
+            // data.items.liquid_hydrochloric_acid.id,
         ]
     )
+    .enable(data.processes.solid_salt_from_saline)
+    .enable(data.processes.green_waste_water_purification)
     // .filter_for_output(new Stack(data.items['liquid_sulfuric_acid'], 1), array_disambiguate)
     // .filter_for_output(new Stack(data.items.circuit, 1), array_disambiguate)
     // .filter_for_output(new Stack(data.items.liquid_nitric_acid, 1), array_disambiguate)
     ;
 
 // p = new RateChain(p, {'assembler': data.factories.assembler_III});
-p = new RateChain(p, {
-    'ore_sorting': data.factories['ore_crusher_3'],
-    'ore_sorting_t1': data.factories['ore_sorting_facility_4'],
-    'ore_sorting_t2': data.factories['ore_floatation_cell_3'],
-    'ore_sorting_t3': data.factories['ore-leaching-plant-3'],
-});
+// p = new RateChain(p, {
+//     'ore_sorting': data.factories['ore_crusher_3'],
+//     'ore_sorting_t1': data.factories['ore_sorting_facility_4'],
+//     'ore_sorting_t2': data.factories['ore_floatation_cell_3'],
+//     'ore_sorting_t3': data.factories['ore_leaching_plant_3'],
+// });
 // let r = p.update(new Stack(data.items.circuit, 10));
-p.update(new Stack(data.items['uranium_ore'], 36), [
-    data.items.liquid_sulfuric_acid.id,
-    data.items.liquid_nitric_acid.id,
-    data.items.catalysator_orange.id,
-]);
+// p.update(new Stack(data.items.liquid_hydrochloric_acid, 36), [
+//     data.items.liquid_sulfuric_acid.id,
+//     data.items.liquid_nitric_acid.id,
+//     data.items.catalysator_orange.id,
+// ]);
 // p.update(new Stack(data.items['liquid_sulfuric_acid'], 600));
 // p.update(new Stack(data.items['liquid_nitric_acid'], 100));
 // p.update(new Stack(data.items.electric_motor, 8));
-// p.update(new Stack(data.items.U_Matrix, 10), [data.items.Hydrogen.id]);
+// p.update(
+//     new Stack(data.items.Small_Carrier_Rocket, 2),
+//     [data.items.Hydrogen.id, data.items.Silicon_Ore.id, data.items.Sulphuric_Acid.id]
+//     );
 // console.log(r[0], r[1]);
 // let p = new ProcessChain(Object.entries(data.processes).flatMap(
 //  ([id, proc]) => proc
