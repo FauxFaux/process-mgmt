@@ -66,6 +66,9 @@ const array_disambiguate = function(requirement, options) {
     arr[data.items.angels_ore1_crushed.id] = data.processes.angelsore1_crushed;
     arr[data.items.angels_ore3_crushed.id] = data.processes.angelsore3_crushed;
     arr[data.items.liquid_hydrochloric_acid.id] = data.processes.liquid_hydrochloric_acid_solid_sodium_sulfate;
+    arr[data.items.liquid_hydrofluoric_acid.id] = data.processes.liquid_hydrofluoric_acid;
+    arr[data.items.fluorite_ore.id] = data.processes.angelsore_chunk_mix5_processing;
+    // arr[data.items.fluorite_ore.id] = data.processes.greenyellow_waste_water_purification;
     // arr[solid_salt] = data.green_waste_water_purification;
     arr[data.items.solid_salt.id] = data.processes.salt;
     if (!(arr[requirement]) === true) {
@@ -97,7 +100,7 @@ let p = new ProcessChain(Object.values(data.processes))
     // .filter_for_output(new Stack(data.items.electric_motor, 1), array_disambiguate)
     // .filter_for_output(new Stack(data.items.graviton_lens, 1), array_disambiguate)
     .filter_for_output(
-        new Stack(data.items.liquid_hydrochloric_acid, 1),
+        new Stack(data.items.fluorite_ore, 1),
         array_disambiguate,
         [
             data.items.water_yellow_waste.id,
@@ -111,30 +114,31 @@ let p = new ProcessChain(Object.values(data.processes))
             data.items.water.id,
             data.items.liquid_nitric_acid.id,
             data.items.liquid_sulfuric_acid.id,
-            data.items.liquid_hydrofluoric_acid.id,
-            // data.items.liquid_hydrochloric_acid.id,
+            // data.items.liquid_hydrofluoric_acid.id,
+            data.items.liquid_hydrochloric_acid.id,
+            // data.items.fluorite_ore.id,
         ]
     )
-    .enable(data.processes.solid_salt_from_saline)
-    .enable(data.processes.green_waste_water_purification)
+    // .enable(data.processes.solid_salt_from_saline)
+    // .enable(data.processes.greenyellow_waste_water_purification)
     // .filter_for_output(new Stack(data.items['liquid_sulfuric_acid'], 1), array_disambiguate)
     // .filter_for_output(new Stack(data.items.circuit, 1), array_disambiguate)
     // .filter_for_output(new Stack(data.items.liquid_nitric_acid, 1), array_disambiguate)
     ;
 
 // p = new RateChain(p, {'assembler': data.factories.assembler_III});
-// p = new RateChain(p, {
-//     'ore_sorting': data.factories['ore_crusher_3'],
-//     'ore_sorting_t1': data.factories['ore_sorting_facility_4'],
-//     'ore_sorting_t2': data.factories['ore_floatation_cell_3'],
-//     'ore_sorting_t3': data.factories['ore_leaching_plant_3'],
-// });
+p = new RateChain(p, {
+    'ore_sorting': data.factories['ore_crusher_3'],
+    'ore_sorting_t1': data.factories['ore_sorting_facility_4'],
+    'ore_sorting_t2': data.factories['ore_floatation_cell_3'],
+    'ore_sorting_t3': data.factories['ore_leaching_plant_3'],
+});
 // let r = p.update(new Stack(data.items.circuit, 10));
-// p.update(new Stack(data.items.liquid_hydrochloric_acid, 36), [
-//     data.items.liquid_sulfuric_acid.id,
-//     data.items.liquid_nitric_acid.id,
-//     data.items.catalysator_orange.id,
-// ]);
+p.update(new Stack(data.items.fluorite_ore, 12), [
+    data.items.liquid_sulfuric_acid.id,
+    data.items.liquid_nitric_acid.id,
+    data.items.catalysator_orange.id,
+]);
 // p.update(new Stack(data.items['liquid_sulfuric_acid'], 600));
 // p.update(new Stack(data.items['liquid_nitric_acid'], 100));
 // p.update(new Stack(data.items.electric_motor, 8));
