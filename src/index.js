@@ -94,6 +94,15 @@ const array_disambiguate = function(requirement, options) {
     arr[data.items.solid_aluminium_hydroxide.id] = data.processes.processed_aluminium_smelting;
     arr[data.items.water_saline.id] = data.processes.water_saline;
 
+    // coolant
+    arr[data.items.liquid_coolant.id] = data.processes.coolant;
+    // arr[data.items.liquid_mineral_oil.id] = data.processes.oil_refining;
+    arr[data.items.liquid_mineral_oil.id] = data.processes.liquid_mineral_oil_catalyst;
+    arr[data.items.liquid_naphtha.id] = data.processes.residual_oil_refining;
+    arr[data.items.gas_carbon_monoxide.id] = data.processes.carbon_separation_1;
+    arr[data.items.gas_residual.id] = data.processes.steam_cracking_oil_residual;
+    arr[data.items.solid_oil_residual.id] = data.processes.oil_refining;
+    arr[data.items.steam.id] = data.processes.angels_steam_water;
 
     // arr[data.items.fluorite_ore.id] = data.processes.greenyellow_waste_water_purification;
     // arr[solid_salt] = data.green_waste_water_purification;
@@ -140,7 +149,7 @@ let p = new ProcessChain(Object.values(data.processes))
     // .filter_for_output(new Stack(data.items.electric_motor, 1), array_disambiguate)
     // .filter_for_output(new Stack(data.items.graviton_lens, 1), array_disambiguate)
     .filter_for_output(
-        new Stack(data.items.titanium_plate, 1),
+        new Stack(data.items.liquid_coolant, 1),
         array_disambiguate,
         [
             data.items.water_yellow_waste.id,
@@ -157,7 +166,7 @@ let p = new ProcessChain(Object.values(data.processes))
             // data.items.liquid_hydrofluoric_acid.id,
             data.items.liquid_hydrochloric_acid.id,
             // data.items.fluorite_ore.id,
-            data.items.liquid_coolant.id,
+            // data.items.liquid_coolant.id,
             data.items.gas_chlorine.id,
             data.items.coal.id,
             data.items.rutile_ore.id,
@@ -165,8 +174,17 @@ let p = new ProcessChain(Object.values(data.processes))
             data.items.gas_hydrogen_chloride.id,
             data.items.tin_ore.id,
             data.items.bauxite_ore.id,
+            data.items.crude_oil.id,
+            data.items.thermal_water.id,
         ]
     )
+    // .enable(data.processes.residual_oil_refining)
+    // .enable(data.processes.steam_cracking_oil_residual)
+    // .enable(data.processes.liquid_mineral_oil_catalyst)
+    // .enable(data.processes.carbon_separation_1)
+    // .enable()
+    // .enable()
+    // .enable()
     // .enable(data.processes.solid_salt_from_saline)
     // .enable(data.processes.greenyellow_waste_water_purification)
     // .filter_for_output(new Stack(data.items['liquid_sulfuric_acid'], 1), array_disambiguate)
@@ -181,12 +199,24 @@ p = new RateChain(p, {
     'ore_sorting_t2': data.factories['ore_floatation_cell_3'],
     'ore_sorting_t3': data.factories['ore_leaching_plant_3'],
 });
-// let r = p.update(new Stack(data.items.circuit, 10));
-p.update(new Stack(data.items.titanium_plate, 30), [
-    data.items.liquid_sulfuric_acid.id,
-    data.items.liquid_nitric_acid.id,
-    data.items.catalysator_orange.id,
-]);
+// // // let r = p.update(new Stack(data.items.circuit, 10));
+p.update4(new Stack(data.items.liquid_coolant, 150),
+    [// imported
+        data.items.water.id,
+        data.items.water_purified.id,
+        data.items.crude_oil.id,
+        data.items.coal.id,
+        data.items.thermal_water.id,
+        data.items.liquid_fuel_oil.id,
+
+        data.items.liquid_sulfuric_acid.id,
+        data.items.liquid_nitric_acid.id,
+        data.items.catalysator_orange.id,
+    ],
+    [// exported
+        data.items.liquid_coolant.id,
+    ]
+);
 // p.update(new Stack(data.items['liquid_sulfuric_acid'], 600));
 // p.update(new Stack(data.items['liquid_nitric_acid'], 100));
 // p.update(new Stack(data.items.electric_motor, 8));
