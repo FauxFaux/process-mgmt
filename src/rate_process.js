@@ -2,13 +2,6 @@ import { StackSet } from './stack.js';
 import { Factory } from './factory.js';
 import { Process, ProcessChain } from './process.js';
 
-
-import * as fs from 'fs'
-import * as path from 'path'
-import { fileURLToPath } from 'url';
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-
 class RateProcess extends Process {
     constructor(p, factory_type) {
         let p_ = factory_type.update_process(p);
@@ -282,15 +275,6 @@ class RateChain extends ProcessChain {
                     materials.sub(input.mul(process_counts[p.id]));
                 });
             });
-
-        //     {
-        // this.materials = materials;
-        // this.process_counts = process_counts;
-        // let iter = '' + (total_iterations-iterations);
-        // while (iter.length < ('' + total_iterations).length) iter = '0' + iter;
-        // let f = path.join(__dirname, '..', 'iterations', 'iter_' + iter + '.gv');
-        // fs.writeFileSync(f, this.to_graphviz());
-        //     }
 
             let margins = materials.margins_squared([].concat(imported_materials).concat(exported_materials));
             let stack_to_balance = margins.max_total();
