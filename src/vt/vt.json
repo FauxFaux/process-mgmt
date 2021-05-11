@@ -1,0 +1,224 @@
+{
+  "items": [
+    {
+      "id": "stone",
+      "i18n": {
+        "en": "Stone"
+      }
+    },
+    {
+      "id": "stone_brick",
+      "i18n": {
+        "en": "Stone Brick"
+      }
+    },
+    {
+      "id": "gravel",
+      "i18n": {
+        "en": "Gravel"
+      }
+    },
+    {
+      "id": "wood",
+      "i18n": {
+        "en": "Wood"
+      }
+    },
+    {
+      "id": "wood_plank",
+      "i18n": {
+        "en": "Wood Plank"
+      }
+    },
+    {
+      "id": "wood_beam",
+      "i18n": {
+        "en": "Wood Beam"
+      }
+    },
+    {
+      "id": "wood_frame",
+      "i18n": {
+        "en": "Wood Frame"
+      }
+    },
+    {
+      "id": "furniture",
+      "i18n": {
+        "en": "Furniture"
+      }
+    },
+    {
+      "id": "coal",
+      "i18n": {
+        "en": "Coal"
+      }
+    },
+    {
+      "id": "iron_ore",
+      "i18n": {
+        "en": "Iron Ore"
+      }
+    },
+    {
+      "id": "iron_bar",
+      "i18n": {
+        "en": "Iron Bar"
+      }
+    },
+    {
+      "id": "iron_parts",
+      "i18n": {
+        "en": "Iron Parts"
+      }
+    },
+    {
+      "id": "iron_plate",
+      "i18n": {
+        "en": "Iron Plate"
+      }
+    },
+    {
+      "id": "steel_bar",
+      "i18n": {
+        "en": "Steel Bar"
+      }
+    },
+    {
+      "id": "steel_beam",
+      "i18n": {
+        "en": "Steel Beam"
+      }
+    },
+    {}
+  ],
+  "processes": [
+    {
+      "name": "wood_beam",
+      "duration": 5,
+      "factory_group": "circular_saw",
+      "outputs": {
+        "wood_beam": 1
+      },
+      "inputs": {
+        "wood": 1
+      }
+    },
+    {
+      "name": "wood_plank",
+      "duration": 5,
+      "factory_group": "circular_saw",
+      "outputs": {
+        "wood_plank": 2
+      },
+      "inputs": {
+        "wood": 1
+      }
+    },
+    {
+      "name": "furniture",
+      "duration": 5,
+      "factory_group": "carpentry",
+      "outputs": {
+        "furniture": 1
+      },
+      "inputs": {
+        "wood_plank": 2
+      }
+    },
+    {
+      "name": "wood_frame",
+      "duration": 5,
+      "factory_group": "carpentry",
+      "outputs": {
+        "wood_frame": 1
+      },
+      "inputs": {
+        "wood_plank": 2,
+        "iron_parts": 1
+      }
+    },
+    {
+      "name": "iron_bar",
+      "duration": 30,
+      "factory_group": "alloy_smelter",
+      "outputs": {
+        "iron_bar": 1
+      },
+      "inputs": {
+        "iron_ore": 5,
+        "coal": 1
+      }
+    },
+    {
+      "name": "iron_parts",
+      "duration": 5,
+      "factory_group": "press",
+      "outputs": {
+        "iron_parts": 2
+      },
+      "inputs": {
+        "iron_bar": 1
+      }
+    },
+    {
+      "name": "iron_plate",
+      "duration": 5,
+      "factory_group": "press",
+      "outputs": {
+        "iron_plate": 2
+      },
+      "inputs": {
+        "iron_bar": 1
+      }
+    },
+    {
+      "name": "steel_beam",
+      "duration": 5,
+      "factory_group": "press",
+      "outputs": {
+        "steel_beam": 1
+      },
+      "inputs": {
+        "steel_bar": 1
+      }
+    },
+    {
+      "name": "steel_bar",
+      "duration": 30,
+      "factory_group": "alloy_smelter",
+      "outputs": {
+        "steel_bar": 2
+      },
+      "inputs": {
+        "iron_bar": 2,
+        "coal": 1
+      }
+    },
+    {
+      "name": "gravel",
+      "duration": 5,
+      "factory_group": "crusher",
+      "outputs": {
+        "gravel": 1
+      },
+      "inputs": {
+        "stone": 1
+      }
+    },
+    {
+      "name": "stone_brick",
+      "duration": 5,
+      "factory_group": "crusher",
+      "outputs": {
+        "stone_brick": 1
+      },
+      "inputs": {
+        "stone": 1
+      }
+    },
+    {}
+  ],
+  "factory_groups": [],
+  "factory_types": []
+}
