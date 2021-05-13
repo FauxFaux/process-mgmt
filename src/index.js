@@ -1,4 +1,5 @@
 // import { data } from './dsp/data.js';
+// import { data } from './vt/data.js'
 import { data } from './factorio-ab-01/data.js'
 //import { data } from './factorio-ab/data.js'
 import { ProcessChain, RateChain, Stack } from './structures.js';
@@ -24,10 +25,10 @@ const readline = import('readline');
 
 // Object.entries(data.processes).forEach(([id, proc]) => console.log(id));
 
-const readline_disambiguate = function(requirement, options) {
-    console.log('Multiple potential options for ', requirement, ':', options);
+// const readline_disambiguate = function(requirement, options) {
+//     console.log('Multiple potential options for ', requirement, ':', options);
 
-};
+// };
 
 // const array_disambiguate = function(requirement, options) { }
 // const array_disambiguate = function(requirement, options) {
@@ -76,7 +77,7 @@ const array_disambiguate = function(requirement, options) {
     arr[data.items.liquid_molten_titanium.id] = data.processes.molten_titanium_smelting_4;
     arr[data.items.ingot_titanium.id] = data.processes.sponge_titanium_smelting;
     arr[data.items.liquid_titanium_tetrachloride.id] = data.processes.processed_titanium_smelting;
-    arr[data.items.solid_carbon.id] = data.processes.carbon;
+    // arr[data.items.solid_carbon.id] = data.processes.carbon;
     arr[data.items.ingot_tin.id] = data.processes.pellet_tin_smelting;
     arr[data.items.ingot_chrome.id] = data.processes.solid_chrome_oxide_smelting;
     arr[data.items.solid_chrome_oxide.id] = data.processes.solid_dichromate_smelting;
@@ -94,15 +95,21 @@ const array_disambiguate = function(requirement, options) {
     arr[data.items.solid_aluminium_hydroxide.id] = data.processes.processed_aluminium_smelting;
     arr[data.items.water_saline.id] = data.processes.water_saline;
 
+    arr[data.items.crystal_seedling.id] = data.processes.crystal_slurry_filtering_1;
+    arr[data.items.crystal_slurry.id] = data.processes.geode_blue_liquify;
+
     // coolant
     arr[data.items.liquid_coolant.id] = data.processes.coolant;
     // arr[data.items.liquid_mineral_oil.id] = data.processes.oil_refining;
     arr[data.items.liquid_mineral_oil.id] = data.processes.liquid_mineral_oil_catalyst;
     arr[data.items.liquid_naphtha.id] = data.processes.residual_oil_refining;
     arr[data.items.gas_carbon_monoxide.id] = data.processes.carbon_separation_1;
+    arr[data.items.solid_carbon.id] = data.processes.coke_purification;
     arr[data.items.gas_residual.id] = data.processes.steam_cracking_oil_residual;
     arr[data.items.solid_oil_residual.id] = data.processes.oil_refining;
     arr[data.items.steam.id] = data.processes.angels_steam_water;
+    arr[data.items.ingot_nickel.id] = data.processes.solid_nickel_carbonyl_smelting;
+    // arr[data.items.ingot_nickel.id] = data.processes.cathode_nickel_smelting;
 
     // arr[data.items.fluorite_ore.id] = data.processes.greenyellow_waste_water_purification;
     // arr[solid_salt] = data.green_waste_water_purification;
@@ -149,15 +156,19 @@ let p = new ProcessChain(Object.values(data.processes))
     // .filter_for_output(new Stack(data.items.electric_motor, 1), array_disambiguate)
     // .filter_for_output(new Stack(data.items.graviton_lens, 1), array_disambiguate)
     .filter_for_output(
-        new Stack(data.items.liquid_coolant, 1),
+        new Stack(data.items.catalysator_green, 1),
         array_disambiguate,
         [
+            data.items.geode_blue.id,
+            data.items.filter_frame.id,
+            data.items.nickel_ore.id,
+            data.items.sulfur.id,
             data.items.water_yellow_waste.id,
             data.items.water_greenyellow_waste.id,
             data.items.water_green_waste.id,
             data.items.water_red_waste.id,
             data.items.catalysator_brown.id,
-            data.items.catalysator_green.id,
+            // data.items.catalysator_green.id,
             data.items.catalysator_orange.id,
             data.items.water_purified.id,
             data.items.water.id,
@@ -198,9 +209,23 @@ p = new RateChain(p, {
     'ore_sorting_t1': data.factories['ore_sorting_facility_4'],
     'ore_sorting_t2': data.factories['ore_floatation_cell_3'],
     'ore_sorting_t3': data.factories['ore_leaching_plant_3'],
+    'ore_processing': data.factories['ore_processing_machine_4'],
+    'ore_processing_2': data.factories['ore_processing_machine_4'],
+    'ore_processing_3': data.factories['ore_processing_machine_4'],
+    'ore_processing_4': data.factories['ore_processing_machine_4'],
+    'pellet_pressing': data.factories['pellet_press_4'],
+    'pellet_pressing_4': data.factories['pellet_press_4'],
+    'pellet_pressing_4': data.factories['pellet_press_4'],
+    'pellet_pressing_4': data.factories['pellet_press_4'],
+    'liquifying': data.factories['liquifier_4'],
+    'blast_smelting': data.factories['blast_furnace_4'],
+    'filtering': data.factories['filtration_unit_2'],
+    'crystallizing': data.factories['crystallizer_2'],
 });
+
+console.error(data.factories);
 // // // let r = p.update(new Stack(data.items.circuit, 10));
-p.update4(new Stack(data.items.liquid_coolant, 150),
+p.update(new Stack(data.items.catalysator_green, 60),
     [// imported
         data.items.water.id,
         data.items.water_purified.id,
@@ -208,12 +233,15 @@ p.update4(new Stack(data.items.liquid_coolant, 150),
         data.items.coal.id,
         data.items.thermal_water.id,
         data.items.liquid_fuel_oil.id,
+        data.items.filter_frame.id,
 
         data.items.liquid_sulfuric_acid.id,
         data.items.liquid_nitric_acid.id,
         data.items.catalysator_orange.id,
+        data.items.sulfur.id,
     ],
     [// exported
+        data.items.nickel_ore.id,
         data.items.liquid_coolant.id,
     ]
 );
@@ -222,7 +250,8 @@ p.update4(new Stack(data.items.liquid_coolant, 150),
 // p.update(new Stack(data.items.electric_motor, 8));
 // p.update(
 //     new Stack(data.items.Small_Carrier_Rocket, 2),
-//     [data.items.Hydrogen.id, data.items.Silicon_Ore.id, data.items.Sulphuric_Acid.id]
+//     [
+    // data.items.Hydrogen.id, data.items.Silicon_Ore.id, data.items.Sulphuric_Acid.id]
 //     );
 // console.log(r[0], r[1]);
 // let p = new ProcessChain(Object.entries(data.processes).flatMap(
@@ -238,6 +267,9 @@ p.update4(new Stack(data.items.liquid_coolant, 150),
 
 // console.log(p.require_output(new Stack(data.items.circuit, 10)));
 // console.log(p.all_items());
+
+// let p = new ProcessChain(Object.values(data.processes));
+
 console.log(p.to_graphviz());
 
 
