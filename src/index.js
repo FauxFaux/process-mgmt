@@ -111,6 +111,8 @@ const array_disambiguate = function(requirement, options) {
     arr[data.items.ingot_nickel.id] = data.processes.solid_nickel_carbonyl_smelting;
     // arr[data.items.ingot_nickel.id] = data.processes.cathode_nickel_smelting;
 
+    arr[data.items.nitinol_alloy.id] = data.processes.angels_plate_nitinol;
+
     // arr[data.items.fluorite_ore.id] = data.processes.greenyellow_waste_water_purification;
     // arr[solid_salt] = data.green_waste_water_purification;
     arr[data.items.solid_salt.id] = data.processes.salt;
@@ -156,7 +158,7 @@ let p = new ProcessChain(Object.values(data.processes))
     // .filter_for_output(new Stack(data.items.electric_motor, 1), array_disambiguate)
     // .filter_for_output(new Stack(data.items.graviton_lens, 1), array_disambiguate)
     .filter_for_output(
-        new Stack(data.items.catalysator_green, 1),
+        new Stack(data.items.nitinol_alloy, 1),
         array_disambiguate,
         [
             data.items.geode_blue.id,
@@ -187,6 +189,8 @@ let p = new ProcessChain(Object.values(data.processes))
             data.items.bauxite_ore.id,
             data.items.crude_oil.id,
             data.items.thermal_water.id,
+            data.items.ingot_nickel.id,
+            data.items.ingot_titanium.id,
         ]
     )
     // .enable(data.processes.residual_oil_refining)
@@ -221,11 +225,19 @@ p = new RateChain(p, {
     'blast_smelting': data.factories['blast_furnace_4'],
     'filtering': data.factories['filtration_unit_2'],
     'crystallizing': data.factories['crystallizer_2'],
+    'induction_smelting': data.factories.induction_furnace_4,
+    'induction_smelting_2': data.factories.induction_furnace_4,
+    'induction_smelting_3': data.factories.induction_furnace_4,
+    'induction_smelting_4': data.factories.induction_furnace_4,
+    'casting': data.factories.casting_machine_4,
+    'casting_2': data.factories.casting_machine_4,
+    'casting_3': data.factories.casting_machine_4,
+    'casting_4': data.factories.casting_machine_4,
 });
 
 console.error(data.factories);
 // // // let r = p.update(new Stack(data.items.circuit, 10));
-p.update(new Stack(data.items.catalysator_green, 60),
+p.update(new Stack(data.items.nitinol_alloy, 60),
     [// imported
         data.items.water.id,
         data.items.water_purified.id,
