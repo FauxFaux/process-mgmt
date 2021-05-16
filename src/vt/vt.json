@@ -1,9 +1,39 @@
 {
   "items": [
     {
+      "id": "copper_ore",
+      "i18n": {
+        "en": "Copper Ore"
+      }
+    },
+    {
+      "id": "copper_bar",
+      "i18n": {
+        "en": "Copper Bar"
+      }
+    },
+    {
+      "id": "copper_wire",
+      "i18n": {
+        "en": "Copper Wire"
+      }
+    },
+    {
       "id": "stone",
       "i18n": {
         "en": "Stone"
+      }
+    },
+    {
+      "id": "radio",
+      "i18n": {
+        "en": "Radio"
+      }
+    },
+    {
+      "id": "tv",
+      "i18n": {
+        "en": "TV"
       }
     },
     {
@@ -16,6 +46,36 @@
       "id": "gravel",
       "i18n": {
         "en": "Gravel"
+      }
+    },
+    {
+      "id": "sand",
+      "i18n": {
+        "en": "Sand"
+      }
+    },
+    {
+      "id": "vacuum_tube",
+      "i18n": {
+        "en": "Vacuum Tube"
+      }
+    },
+    {
+      "id": "circuit",
+      "i18n": {
+        "en": "Circuit"
+      }
+    },
+    {
+      "id": "concrete_beam",
+      "i18n": {
+        "en": "Concrete Beam"
+      }
+    },
+    {
+      "id": "reinforced_concrete_beam",
+      "i18n": {
+        "en": "Reinforced Concrete Beam"
       }
     },
     {
@@ -90,6 +150,30 @@
         "en": "Steel Beam"
       }
     },
+    {
+      "id": "glass_pane",
+      "i18n": {
+        "en": "Glass Pane"
+      }
+    },
+    {
+      "id": "advanced_wood_frame",
+      "i18n": {
+        "en": "Advanced Wood Frame"
+      }
+    },
+    {
+      "id": "advanced_furniture",
+      "i18n": {
+        "en": "Advanced Furniture"
+      }
+    },
+    {
+      "id": "glass_tube",
+      "i18n": {
+        "en": "Glass Tube"
+      }
+    },
     {}
   ],
   "processes": [
@@ -127,6 +211,30 @@
       }
     },
     {
+      "name": "advanced_furniture",
+      "duration": 5,
+      "factory_group": "carpentry",
+      "outputs": {
+        "advanced_furniture": 1
+      },
+      "inputs": {
+        "furniture": 1,
+        "glass_pane": 1
+      }
+    },
+    {
+      "name": "advanced_wood_frame",
+      "duration": 5,
+      "factory_group": "carpentry",
+      "outputs": {
+        "advanced_wood_frame": 1
+      },
+      "inputs": {
+        "wood_frame": 1,
+        "glass_pane": 1
+      }
+    },
+    {
       "name": "wood_frame",
       "duration": 5,
       "factory_group": "carpentry",
@@ -143,11 +251,82 @@
       "duration": 30,
       "factory_group": "alloy_smelter",
       "outputs": {
-        "iron_bar": 1
+        "iron_bar": 5
       },
       "inputs": {
         "iron_ore": 5,
         "coal": 1
+      }
+    },
+    {
+      "name": "copper_bar",
+      "duration": 30,
+      "factory_group": "alloy_smelter",
+      "outputs": {
+        "copper_bar": 5
+      },
+      "inputs": {
+        "copper_ore": 5,
+        "coal": 1
+      }
+    },
+    {
+      "name": "vacuum_tube",
+      "duration": 5,
+      "factory_group": "electronics_assembler",
+      "outputs": {
+        "vacuum_tube": 1
+      },
+      "inputs": {
+        "glass_tube": 1,
+        "copper_wire": 1
+      }
+    },
+    {
+      "name": "circuit",
+      "duration": 5,
+      "factory_group": "electronics_assembler",
+      "outputs": {
+        "circuit": 1
+      },
+      "inputs": {
+        "vacuum_tube": 1,
+        "iron_plate": 1
+      }
+    },
+    {
+      "name": "tv",
+      "duration": 5,
+      "factory_group": "electronics_assembler",
+      "outputs": {
+        "tv": 1
+      },
+      "inputs": {
+        "circuit": 2,
+        "advanced_wood_frame": 1
+      }
+    },
+    {
+      "name": "radio",
+      "duration": 5,
+      "factory_group": "electronics_assembler",
+      "outputs": {
+        "radio": 1
+      },
+      "inputs": {
+        "circuit": 1,
+        "wood_frame": 1
+      }
+    },
+    {
+      "name": "copper_wire",
+      "duration": 5,
+      "factory_group": "press",
+      "outputs": {
+        "copper_wire": 2
+      },
+      "inputs": {
+        "copper_bar": 1
       }
     },
     {
@@ -215,6 +394,54 @@
       },
       "inputs": {
         "stone": 1
+      }
+    },
+    {
+      "name": "concrete_beam",
+      "duration": 5,
+      "factory_group": "concrete_mixer",
+      "outputs": {
+        "concrete_beam": 1
+      },
+      "inputs": {
+        "gravel": 1,
+        "sand": 1
+      }
+    },
+    {
+      "name": "reinforced_concrete_beam",
+      "duration": 5,
+      "factory_group": "concrete_mixer",
+      "outputs": {
+        "reinforced_concrete_beam": 1
+      },
+      "inputs": {
+        "concrete_beam": 1,
+        "steel_beam": 1
+      }
+    },
+    {
+      "name": "glass_pane",
+      "duration": 5,
+      "factory_group": "glass_furnace",
+      "outputs": {
+        "glass_pane": 3
+      },
+      "inputs": {
+        "sand": 3,
+        "coal": 1
+      }
+    },
+    {
+      "name": "glass_tube",
+      "duration": 5,
+      "factory_group": "glass_furnace",
+      "outputs": {
+        "glass_tube": 6
+      },
+      "inputs": {
+        "sand": 3,
+        "coal": 1
       }
     },
     {}
