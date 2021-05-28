@@ -1,14 +1,11 @@
 // import { data } from './dsp/data.js';
 // import { data } from './vt/data.js'
-// import { data } from './factorio-ab-01/data.js'
+import { data } from './factorio-ab-01/data.js'
 //import { data } from './factorio-ab/data.js'
 import { ProcessChain, RateChain, Stack } from './structures.js';
 // import { inspect } from 'util'
 const readline = import('readline');
 
-
-import { data } from './vt/data.js'
-let p = new ProcessChain(Object.values(data.processes));
 
 // console.log(inspect(data, false, null, true));
 
@@ -116,10 +113,15 @@ const array_disambiguate = function(requirement, options) {
     // arr[data.items.ingot_nickel.id] = data.processes.cathode_nickel_smelting;
 
     arr[data.items.nitinol_alloy.id] = data.processes.angels_plate_nitinol;
+    arr[data.items.tin_plate.id] = data.processes.angels_roll_tin_converting;
+    arr[data.items.angels_roll_tin.id] = data.processes.roll_tin_casting;
 
     // arr[data.items.fluorite_ore.id] = data.processes.greenyellow_waste_water_purification;
     // arr[solid_salt] = data.green_waste_water_purification;
     arr[data.items.solid_salt.id] = data.processes.salt;
+    arr[data.items.liquid_concrete.id] = data.processes.concrete_mixture_2;
+    arr[data.items.solid_cement.id] = data.processes.cement_mixture_1;
+
     if (!(arr[requirement]) === true) {
         throw new Error('No enabled priority for ' + requirement + ' (available: ' + options.map(i => i.id).join(', ') + ')\n\n'
             + options.map(p => {
@@ -162,7 +164,7 @@ let p = new ProcessChain(Object.values(data.processes))
     // .filter_for_output(new Stack(data.items.electric_motor, 1), array_disambiguate)
     // .filter_for_output(new Stack(data.items.graviton_lens, 1), array_disambiguate)
     .filter_for_output(
-        new Stack(data.items.nitinol_alloy, 1),
+        new Stack(data.items.concrete_brick, 1),
         array_disambiguate,
         [
             data.items.geode_blue.id,
@@ -195,6 +197,10 @@ let p = new ProcessChain(Object.values(data.processes))
             data.items.thermal_water.id,
             data.items.ingot_nickel.id,
             data.items.ingot_titanium.id,
+            data.items.steel_plate.id,
+            data.items.quartz.id,
+            data.items.solid_lime.id,
+            data.items.water_thin_mud.id,
         ]
     )
     // .enable(data.processes.residual_oil_refining)
@@ -237,11 +243,16 @@ p = new RateChain(p, {
     'casting_2': data.factories.casting_machine_4,
     'casting_3': data.factories.casting_machine_4,
     'casting_4': data.factories.casting_machine_4,
+    'strand_casting': data.factories.strand_casting_machine_4,
+    'strand_casting_2': data.factories.strand_casting_machine_4,
+    'strand_casting_3': data.factories.strand_casting_machine_4,
+    'strand_casting_4': data.factories.strand_casting_machine_4,
+    'advanced_crafting': data.factories.assembling_machine_6,
 });
 
 console.error(data.factories);
 // // // let r = p.update(new Stack(data.items.circuit, 10));
-p.update(new Stack(data.items.nitinol_alloy, 60),
+p.update(new Stack(data.items.concrete_brick, 10),
     [// imported
         data.items.water.id,
         data.items.water_purified.id,
@@ -255,6 +266,7 @@ p.update(new Stack(data.items.nitinol_alloy, 60),
         data.items.liquid_nitric_acid.id,
         data.items.catalysator_orange.id,
         data.items.sulfur.id,
+        data.items.steel_plate.id,
     ],
     [// exported
         data.items.nickel_ore.id,
@@ -283,9 +295,6 @@ p.update(new Stack(data.items.nitinol_alloy, 60),
 
 // console.log(p.require_output(new Stack(data.items.circuit, 10)));
 // console.log(p.all_items());
-
-import { data } from './vt/data.js'
-let p = new ProcessChain(Object.values(data.processes));
 
 console.log(p.to_graphviz());
 

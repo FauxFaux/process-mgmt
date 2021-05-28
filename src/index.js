@@ -1,3 +1,3 @@
 
-import './index-vt.js'
-// import './index-factorio.js'
+// import './index-vt.js'
+import './index-factorio.js'
