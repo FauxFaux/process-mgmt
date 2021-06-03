@@ -44,8 +44,9 @@ raw.processes.forEach(p => {
 })
 
 
-data.add_factories([
-    new Factory('', '', data.factory_groups.alloy_smelter, 1),
-]);
+data.add_factories(
+    Object.values(data.factory_groups)
+        .map(fg => new Factory(fg.id, fg.id, [fg], 1))
+);
 
 export { data };
