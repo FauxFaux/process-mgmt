@@ -85,7 +85,9 @@ raw.craftingMachines.forEach(machine => {
         data.add_factory(new Factory(
             machine_name,
             machine_name,
-            Object.keys(machine.categories).map(cat => data.factory_groups[cat]),
+            Object.keys(machine.categories)
+                .map(cat => fix_identifier(cat))
+                .map(cat => data.factory_groups[cat]),
             1/machine.craftingSpeed
         ));
     });
