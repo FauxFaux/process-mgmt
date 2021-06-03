@@ -15,5 +15,8 @@
     "esm": "^3.2.25",
     "json-loader": "^0.5.7",
     "mocha": "^8.3.2"
+  },
+  "dependencies": {
+    "yargs": "^17.0.1"
   }
 }

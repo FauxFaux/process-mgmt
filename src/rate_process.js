@@ -22,6 +22,11 @@ class RateProcess extends Process {
 }
 
 class RateChain extends ProcessChain {
+    /**
+     *
+     * @param {ProcessChain} chain Existing ProcessChain
+     * @param {function} factory_type_cb `fn(factory_group): factory` Select a factory for the given factory group.
+     */
     constructor(chain, factory_type_cb) {
         super(chain.processes.map(p => {
             let factory_configured = factory_type_cb(p.factory_group);
