@@ -22,15 +22,10 @@ class RateProcess extends Process {
 }
 
 class RateChain extends ProcessChain {
-    constructor(chain, factory_types) {
+    constructor(chain, factory_type_cb) {
         super(chain.processes.map(p => {
-            let factory = new Factory('__generated__', 'default', 1);
-            if (factory_types[p.factory_group.id]) {
-                factory = factory_types[p.factory_group.id];
-            }
-            if (factory_types[p.id]) {
-                factory = factory_types[p.id];
-            }
+            let factory_configured = factory_type_cb(p.factory_group);
+            let factory = (factory_configured ? factory_configured : new Factory('__generated__', 'default', -1));
             return new RateProcess(p, factory);
         }));
         this.materials = new StackSet();

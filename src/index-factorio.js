@@ -91,111 +91,49 @@ const array_disambiguate = function(requirement, options) {
     return arr[requirement];
 };
 
+let imported = [
+    data.items.water.id,
+    data.items.water_purified.id,
+    data.items.crude_oil.id,
+    data.items.coal.id,
+    data.items.thermal_water.id,
+    data.items.liquid_fuel_oil.id,
+    data.items.filter_frame.id,
+
+    data.items.liquid_sulfuric_acid.id,
+    data.items.liquid_nitric_acid.id,
+    data.items.catalysator_orange.id,
+    data.items.sulfur.id,
+    data.items.steel_plate.id,
+    data.items.copper_ore.id,
+    data.items.liquid_coolant.id,
+];
+
+let exported = [
+    data.items.nickel_ore.id,
+];
+
+const quickest_factory_for_factory_type = function(data, factory_type) {
+    return Object.values(data.factories)
+            .filter(f => {
+                let g = f.groups.filter(ft => {
+                    return ft.id == factory_type.id
+                });
+                return g.length != 0; // When `g` is not empty, the factory can handle the process.
+            })
+            .sort((a, b) => a.duration_modifier - b.duration_modifier)
+            [0]; // after sorting, return the first in the list, which will be the quickest.
+}
 
 let p = new ProcessChain(Object.values(data.processes))
     .filter_for_output(
         new Stack(data.items.copper_plate, 1),
         array_disambiguate,
-        [
-            data.items.geode_blue.id,
-            data.items.filter_frame.id,
-            data.items.nickel_ore.id,
-            data.items.sulfur.id,
-            data.items.water_yellow_waste.id,
-            data.items.water_greenyellow_waste.id,
-            data.items.water_green_waste.id,
-            data.items.water_red_waste.id,
-            data.items.catalysator_brown.id,
-            // data.items.catalysator_green.id,
-            data.items.catalysator_orange.id,
-            data.items.water_purified.id,
-            data.items.water.id,
-            data.items.liquid_nitric_acid.id,
-            data.items.liquid_sulfuric_acid.id,
-            // data.items.liquid_hydrofluoric_acid.id,
-            data.items.liquid_hydrochloric_acid.id,
-            // data.items.fluorite_ore.id,
-            // data.items.liquid_coolant.id,
-            data.items.gas_chlorine.id,
-            data.items.coal.id,
-            data.items.rutile_ore.id,
-            data.items.stone_crushed.id,
-            data.items.gas_hydrogen_chloride.id,
-            data.items.tin_ore.id,
-            data.items.bauxite_ore.id,
-            data.items.crude_oil.id,
-            data.items.thermal_water.id,
-            data.items.ingot_nickel.id,
-            data.items.ingot_titanium.id,
-            data.items.steel_plate.id,
-            data.items.quartz.id,
-            data.items.solid_lime.id,
-            data.items.water_thin_mud.id,
-            data.items.copper_ore.id,
-            data.items.liquid_coolant.id,
-        ]
-    )
-    ;
+        [].concat(imported).concat(exported)
+    );
 
-p = new RateChain(p, {
-    'ore_sorting': data.factories['ore_crusher_3'],
-    'ore_sorting_t1': data.factories['ore_sorting_facility_4'],
-    'ore_sorting_t2': data.factories['ore_floatation_cell_3'],
-    'ore_sorting_t3': data.factories['ore_leaching_plant_3'],
-    'ore_processing': data.factories['ore_processing_machine_4'],
-    'ore_processing_2': data.factories['ore_processing_machine_4'],
-    'ore_processing_3': data.factories['ore_processing_machine_4'],
-    'ore_processing_4': data.factories['ore_processing_machine_4'],
-    'pellet_pressing': data.factories['pellet_press_4'],
-    'pellet_pressing_4': data.factories['pellet_press_4'],
-    'pellet_pressing_4': data.factories['pellet_press_4'],
-    'pellet_pressing_4': data.factories['pellet_press_4'],
-    'liquifying': data.factories['liquifier_4'],
-    'blast_smelting': data.factories['blast_furnace_4'],
-    'filtering': data.factories['filtration_unit_2'],
-    'crystallizing': data.factories['crystallizer_2'],
-    'induction_smelting': data.factories.induction_furnace_4,
-    'induction_smelting_2': data.factories.induction_furnace_4,
-    'induction_smelting_3': data.factories.induction_furnace_4,
-    'induction_smelting_4': data.factories.induction_furnace_4,
-    'casting': data.factories.casting_machine_4,
-    'casting_2': data.factories.casting_machine_4,
-    'casting_3': data.factories.casting_machine_4,
-    'casting_4': data.factories.casting_machine_4,
-    'strand_casting': data.factories.strand_casting_machine_4,
-    'strand_casting_2': data.factories.strand_casting_machine_4,
-    'strand_casting_3': data.factories.strand_casting_machine_4,
-    'strand_casting_4': data.factories.strand_casting_machine_4,
-    'advanced_crafting': data.factories.assembling_machine_6,
-    'chemical_smelting': data.factories.angels_chemical_furnace_4,
-    'chemical_smelting_2': data.factories.angels_chemical_furnace_4,
-    'chemical_smelting_3': data.factories.angels_chemical_furnace_4,
-    'chemical_smelting_4': data.factories.angels_chemical_furnace_4,
-    'petrochem_electrolyser': data.factories.angels_electrolyser_4,
-});
+p = new RateChain(p, f => quickest_factory_for_factory_type(data, f));
 
-p.update(new Stack(data.items.copper_plate, 120),
-    [// imported
-        data.items.water.id,
-        data.items.water_purified.id,
-        data.items.crude_oil.id,
-        data.items.coal.id,
-        data.items.thermal_water.id,
-        data.items.liquid_fuel_oil.id,
-        data.items.filter_frame.id,
-
-        data.items.liquid_sulfuric_acid.id,
-        data.items.liquid_nitric_acid.id,
-        data.items.catalysator_orange.id,
-        data.items.sulfur.id,
-        data.items.steel_plate.id,
-        data.items.copper_ore.id,
-        data.items.liquid_coolant.id,
-    ],
-    [// exported
-        data.items.nickel_ore.id,
-    ]
-);
-
+p.update(new Stack(data.items.copper_plate, 120), imported, exported);
 
 console.log(p.to_graphviz());
