@@ -1,10 +1,10 @@
 #!/bin/bash
 
-set -euxo pipefail
+set -euo pipefail
 
 FILE="$1"
-FILE_TMP_BASE=".1.$FILE"
-FILE_TMP_ADD=".2.$FILE"
+FILE_TMP_BASE=".1.$(basename "$FILE")"
+FILE_TMP_ADD=".2.$(basename "$FILE")"
 
 cp "$FILE" "$FILE_TMP_BASE"
 
