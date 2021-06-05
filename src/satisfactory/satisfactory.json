@@ -1,0 +1,285 @@
+{
+  "items": [
+    {
+      "id": "copper_ore",
+      "i18n": {
+        "en": "Copper Ore"
+      }
+    },
+    {
+      "id": "wood",
+      "i18n": {
+        "en": "Wood"
+      }
+    },
+    {
+      "id": "coal",
+      "i18n": {
+        "en": "Coal"
+      }
+    },
+    {
+      "id": "iron_ore",
+      "i18n": {
+        "en": "Iron Ore"
+      }
+    },
+    {
+      "id": "iron_ingot",
+      "i18n": {
+        "en": "Iron Ingot"
+      }
+    },
+    {
+      "id": "iron_rod",
+      "i18n": {
+        "en": "Iron Rod"
+      }
+    },
+    {
+      "id": "iron_plate",
+      "i18n": {
+        "en": "Iron Plate"
+      }
+    },
+    {
+      "id": "wire",
+      "i18n": {
+        "en": "Wire"
+      }
+    },
+    {
+      "id": "cable",
+      "i18n": {
+        "en": "Cable"
+      }
+    },
+    {
+      "id": "screw",
+      "i18n": {
+        "en": "Screw"
+      }
+    },
+    {
+      "id": "copper_sheet",
+      "i18n": {
+        "en": "Copper Sheet"
+      }
+    },
+    {
+      "id": "rotor",
+      "i18n": {
+        "en": "Rotor"
+      }
+    },
+    {
+      "id": "reinforced_iron_plate",
+      "i18n": {
+        "en": "Reinforced Iron Plate"
+      }
+    },
+    {
+      "id": "smart_plating",
+      "i18n": {
+        "en": "Smart Plating"
+      }
+    },
+    {
+      "id": "leaves",
+      "i18n": {
+        "en": "leaves"
+      }
+    },
+    {
+      "id": "biomass",
+      "i18n": {
+        "en": "Biomass"
+      }
+    },
+    {
+      "id": "solid_biofuel",
+      "i18n": {
+        "en": "Solid Biofuel"
+      }
+    },
+    {
+      "id": "copper_ingot",
+      "i18n": {
+        "en": "Copper Ingot"
+      }
+    }
+  ],
+  "processes": [
+    {
+      "name": "iron_ingot",
+      "duration": "2",
+      "factory_group": "smelter",
+      "inputs": {
+        "iron_ore": 1
+      },
+      "outputs": {
+        "iron_ingot": 1
+      }
+    },
+    {
+      "name": "copper_ingot",
+      "duration": "2",
+      "factory_group": "smelter",
+      "inputs": {
+        "copper_ore": 1
+      },
+      "outputs": {
+        "copper_ingot": 1
+      }
+    },
+    {
+      "name": "wire",
+      "duration": "4",
+      "factory_group": "constructor",
+      "inputs": {
+        "copper_ingot": 1
+      },
+      "outputs": {
+        "wire": 2
+      }
+    },
+    {
+      "name": "cable",
+      "duration": "2",
+      "factory_group": "constructor",
+      "inputs": {
+        "wire": 2
+      },
+      "outputs": {
+        "cable": 1
+      }
+    },
+    {
+      "name": "iron_plate",
+      "duration": "6",
+      "factory_group": "constructor",
+      "inputs": {
+        "iron_ingot": 3
+      },
+      "outputs": {
+        "iron_plate": 2
+      }
+    },
+    {
+      "name": "iron_rod",
+      "duration": "4",
+      "factory_group": "constructor",
+      "inputs": {
+        "iron_ingot": 1
+      },
+      "outputs": {
+        "iron_rod": 1
+      }
+    },
+    {
+      "name": "screw",
+      "duration": "6",
+      "factory_group": "constructor",
+      "inputs": {
+        "iron_rod": 1
+      },
+      "outputs": {
+        "screw": 4
+      }
+    },
+    {
+      "name": "reinforced_iron_plate",
+      "duration": "12",
+      "factory_group": "assembler",
+      "inputs": {
+        "iron_plate": 6,
+        "screw": 12
+      },
+      "outputs": {
+        "reinforced_iron_plate": 1
+      }
+    },
+    {
+      "name": "copper_sheet",
+      "duration": "6",
+      "factory_group": "constructor",
+      "inputs": {
+        "copper_ingot": 2
+      },
+      "outputs": {
+        "copper_sheet": 1
+      }
+    },
+    {
+      "name": "rotor",
+      "duration": "15",
+      "factory_group": "assembler",
+      "inputs": {
+        "iron_rod": 5,
+        "screw": 25
+      },
+      "outputs": {
+        "rotor": 1
+      }
+    },
+    {
+      "name": "rotor_alternate",
+      "duration": "16",
+      "factory_group": "assembler",
+      "inputs": {
+        "copper_sheet": 6,
+        "screw": 52
+      },
+      "outputs": {
+        "rotor": 3
+      }
+    },
+    {
+      "name": "smart_plating",
+      "duration": "30",
+      "factory_group": "assembler",
+      "inputs": {
+        "reinforced_iron_plate": 1,
+        "rotor": 1
+      },
+      "outputs": {
+        "smart_plating": 1
+      }
+    },
+    {
+      "name": "biomass_wood",
+      "duration": "4",
+      "factory_group": "constructor",
+      "inputs": {
+        "wood": 4
+      },
+      "outputs": {
+        "biomass": 20
+      }
+    },
+    {
+      "name": "biomass_leaves",
+      "duration": "5",
+      "factory_group": "constructor",
+      "inputs": {
+        "leaves": 10
+      },
+      "outputs": {
+        "biomass": 5
+      }
+    },
+    {
+      "name": "solid_biofuel",
+      "duration": "4",
+      "factory_group": "constructor",
+      "inputs": {
+        "biomass": 8
+      },
+      "outputs": {
+        "solid_biofuel": 4
+      }
+    }
+  ],
+  "factory_groups": [],
+  "factory_types": []
+}
