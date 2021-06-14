@@ -24,8 +24,8 @@ raw.items.forEach(i => check_add(i, () => {
 
 raw.processes.forEach(p => {
     if (!p.name) return;
-    if (!data.factory_groups[p.factory_group]) {
-        check_add(p, () => data.add_factory_group(new FactoryGroup(p.factory_group)));
+    if (!data.factory_groups["" + p.factory_group]) {
+        check_add(p, () => data.add_factory_group(new FactoryGroup("" + p.factory_group)));
     }
     let inputs = Object.entries(p.inputs).map((e) => {
         return check_add(p, () => new Stack(data.items[e[0]], e[1]));
@@ -39,14 +39,14 @@ raw.processes.forEach(p => {
             inputs,
             outputs,
             p.duration,
-            check_add(p, () => data.factory_groups[p.factory_group])
+            check_add(p, () => data.factory_groups["" + p.factory_group])
     ))});
 })
 
 
 data.add_factories(
     Object.values(data.factory_groups)
-        .map(fg => new Factory(fg.id, fg.id, [fg], 1))
+        .map(fg => new Factory("" + fg.id, "" + fg.id, [fg], 1))
 );
 
 export { data };
