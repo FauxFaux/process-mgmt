@@ -107,6 +107,48 @@
       "i18n": {
         "en": "Copper Ingot"
       }
+    },
+    {
+      "id": "modular_frame",
+      "i18n": {
+        "en": "Modular Frame"
+      }
+    },
+    {
+      "id": "steel_ingot",
+      "i18n": {
+        "en": "Steel Ingot"
+      }
+    },
+    {
+      "id": "steel_pipe",
+      "i18n": {
+        "en": "Steel Pipe"
+      }
+    },
+    {
+      "id": "steel_beam",
+      "i18n": {
+        "en": "Steel Beam"
+      }
+    },
+    {
+      "id": "stator",
+      "i18n": {
+        "en": "Stator"
+      }
+    },
+    {
+      "id": "automated_wiring",
+      "i18n": {
+        "en": "Automated Wiring"
+      }
+    },
+    {
+      "id": "versatile_framework",
+      "i18n": {
+        "en": "Versatile Framework"
+      }
     }
   ],
   "processes": [
@@ -135,7 +177,7 @@
     {
       "name": "wire",
       "duration": "4",
-      "factory_group": "constructor",
+      "factory_group": "construct",
       "inputs": {
         "copper_ingot": 1
       },
@@ -146,7 +188,7 @@
     {
       "name": "cable",
       "duration": "2",
-      "factory_group": "constructor",
+      "factory_group": "construct",
       "inputs": {
         "wire": 2
       },
@@ -157,7 +199,7 @@
     {
       "name": "iron_plate",
       "duration": "6",
-      "factory_group": "constructor",
+      "factory_group": "construct",
       "inputs": {
         "iron_ingot": 3
       },
@@ -168,7 +210,7 @@
     {
       "name": "iron_rod",
       "duration": "4",
-      "factory_group": "constructor",
+      "factory_group": "construct",
       "inputs": {
         "iron_ingot": 1
       },
@@ -179,7 +221,7 @@
     {
       "name": "screw",
       "duration": "6",
-      "factory_group": "constructor",
+      "factory_group": "construct",
       "inputs": {
         "iron_rod": 1
       },
@@ -202,7 +244,7 @@
     {
       "name": "copper_sheet",
       "duration": "6",
-      "factory_group": "constructor",
+      "factory_group": "construct",
       "inputs": {
         "copper_ingot": 2
       },
@@ -249,7 +291,7 @@
     {
       "name": "biomass_wood",
       "duration": "4",
-      "factory_group": "constructor",
+      "factory_group": "construct",
       "inputs": {
         "wood": 4
       },
@@ -260,7 +302,7 @@
     {
       "name": "biomass_leaves",
       "duration": "5",
-      "factory_group": "constructor",
+      "factory_group": "construct",
       "inputs": {
         "leaves": 10
       },
@@ -271,12 +313,106 @@
     {
       "name": "solid_biofuel",
       "duration": "4",
-      "factory_group": "constructor",
+      "factory_group": "construct",
       "inputs": {
         "biomass": 8
       },
       "outputs": {
         "solid_biofuel": 4
+      }
+    },
+    {
+      "name": "modular_frame",
+      "duration": "60",
+      "factory_group": "assembler",
+      "inputs": {
+        "reinforced_iron_plate": 3,
+        "iron_rod": 12
+      },
+      "outputs": {
+        "modular_frame": 2
+      }
+    },
+    {
+      "name": "steel_ingot",
+      "duration": "4",
+      "factory_group": "foundry",
+      "inputs": {
+        "iron_ore": 3,
+        "coal": 3
+      },
+      "outputs": {
+        "steel_ingot": 3
+      }
+    },
+    {
+      "name": "versatile_framework",
+      "duration": "24",
+      "factory_group": "assembler",
+      "inputs": {
+        "modular_frame": 1,
+        "steel_beam": 12
+      },
+      "outputs": {
+        "versatile_framework": 2
+      }
+    },
+    {
+      "name": "steel_beam",
+      "duration": "4",
+      "factory_group": "construct",
+      "inputs": {
+        "steel_ingot": 4
+      },
+      "outputs": {
+        "steel_beam": 1
+      }
+    },
+    {
+      "name": "stator",
+      "duration": "12",
+      "factory_group": "assembler",
+      "inputs": {
+        "steel_pipe": 3,
+        "wire": 8
+      },
+      "outputs": {
+        "stator": 1
+      }
+    },
+    {
+      "name": "steel_pipe",
+      "duration": "6",
+      "factory_group": "construct",
+      "inputs": {
+        "steel_ingot": 3
+      },
+      "outputs": {
+        "steel_pipe": 2
+      }
+    },
+    {
+      "name": "automated_wiring",
+      "duration": "24",
+      "factory_group": "assembler",
+      "inputs": {
+        "stator": 1,
+        "cable": 20
+      },
+      "outputs": {
+        "automated_wiring": 1
+      }
+    },
+    {
+      "name": "steel_ingot_alternate",
+      "duration": "2",
+      "factory_group": "foundry",
+      "inputs": {
+        "iron_ingot": 2,
+        "coal": 2
+      },
+      "outputs": {
+        "steel_ingot": 2
       }
     }
   ],
