@@ -1,9 +1,8 @@
 
-
+import { describe, it } from 'mocha';
 import * as assert from 'assert';
 import { Factory, FactoryGroup } from '../src/factory.js';
-import { Process } from '../src/process.js';
-import { RateProcess } from '../src/rate_process.js';
+import { Process, ProcessChain } from '../src/process.js';
 
 import {Data} from '../src/data.js'
 import {Item} from '../src/item.js'
@@ -40,9 +39,11 @@ describe('cycle discovery', function() {
             let result = proc.find_cycles();
             assert.strictEqual(2, result.length);
             result.sort((a,b) => a.length - b.length)
-            assert.strictEqual()
-            // cycle 1: C+D
-            // cycle 2: C+D+E
+            assert.deepStrictEqual(['C', 'D'], result[0]);
+            assert.deepStrictEqual(['C', 'D', 'E'], result[1]);
+            // cycle 1: C->D
+            // cycle 2: C->D->E
+            // potentially D->C; D->E->C; E->C->D
         });
     });
 });

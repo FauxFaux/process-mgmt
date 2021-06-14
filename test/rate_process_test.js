@@ -1,5 +1,5 @@
 
-
+import { describe, it } from 'mocha';
 import * as assert from 'assert';
 import { Factory, FactoryGroup } from '../src/factory.js';
 import { Process } from '../src/process.js';
@@ -20,6 +20,8 @@ let process_for_c = new Process(
         [new Stack(item_c, 5)],
         1,
         basic_group);
+
+console.log("describe", describe, it);
 
 describe('Rate Process Tests', function() {
     describe("process count for input", function() {

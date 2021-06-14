@@ -124,6 +124,43 @@ class ProcessChain {
         )];
     }
 
+    find_cycles() {
+        let tree = {}; // child:parent relationships
+        let loops = [];
+        let visited_processes = [];
+        let queue = [this.processes[0]];
+        while (queue.length > 0) {
+            let current = queue.pop();
+            visited_processes.push(current.id);
+
+            current.outputs.flatMap(output => {
+                let r = this.processes_by_input[output.item.id];
+                if (r && r.length > 0) {
+                    return r;
+                } else {
+                    return [];
+                }
+            }).forEach(p => {
+                if (visited_processes.includes(p.id)) {
+                    console.log("loop at ", current, p);
+                    let loop = [];
+                    let next = current.id;
+                    while (true) {
+                        loop.push(next);
+                        next = tree[next];
+                        if (!next) break;
+                    }
+                    loops.push(loop.reverse());
+                } else {
+                    tree[p.id] = current.id;
+                    queue.push(p);
+                }
+            });
+        }
+
+        return loops;
+    }
+
     _render_processor_node(node_id, process) {
         let inputs = process.inputs.map((input, index) => {
             return '<i' + index + '> ' + input.item.name;
