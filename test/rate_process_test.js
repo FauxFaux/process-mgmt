@@ -21,7 +21,6 @@ let process_for_c = new Process(
         1,
         basic_group);
 
-console.log("describe", describe, it);
 
 describe('Rate Process Tests', function() {
     describe("process count for input", function() {

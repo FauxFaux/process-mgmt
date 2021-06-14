@@ -142,7 +142,6 @@ class ProcessChain {
                 }
             }).forEach(p => {
                 if (visited_processes.includes(p.id)) {
-                    console.log("loop at ", current, p);
                     let loop = [];
                     let next = current.id;
                     while (true) {
