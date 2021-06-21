@@ -16,7 +16,11 @@ while true; do
     echo "id"
     read id
 
-    if [ -z "$id" -o -z "$name" ]; then
+    if [ -z "$id" ]; then
+        id="$(echo "$name" | tr A-Z a-z | sed 's/[^a-z0-9]/_/g')"
+    fi
+
+    if [ -z "$name" ]; then
         echo "exiting"
         mv "$FILE_TMP_BASE" "$FILE"
         exit
