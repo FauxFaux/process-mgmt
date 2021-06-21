@@ -2,18 +2,6 @@ import { ProcessChain, RateChain, Stack } from './structures.js';
 import * as fs from 'fs'
 import yargs from 'yargs';
 
-const argv = yargs(process.argv)
-    .option('config', {
-        alias: 'c',
-        type: 'string'
-    })
-    .help().alias('h', 'help')
-    .demandOption(['config'])
-    .argv;
-
-let config = JSON.parse(fs.readFileSync(argv.config, 'utf8'));
-let data = (await import('./' + config.data +'/data.js')).data;
-
 const array_disambiguate = function(requirement, options) {
     let arr = Object.entries(config.process_choices).map(e => {
         return [
@@ -58,15 +46,66 @@ const quickest_factory_for_factory_type = function(data, factory_type) {
             [0]; // after sorting, return the first in the list, which will be the quickest.
 }
 
-let p = new ProcessChain(Object.values(data.processes))
-    .filter_for_output(
-        new Stack(data.items[config.requirement.id], 1),
-        array_disambiguate,
-        [].concat(config.imported).concat(config.exported)
-    );
+const command_all = function(argv) {
+    import('./' + argv.data +'/data.js').then(module => {
+        let data = module.data;
+        let p = new ProcessChain(Object.values(data.processes));
+        console.log(p.to_graphviz());
+    });
+};
 
-p = new RateChain(p, f => quickest_factory_for_factory_type(data, f));
+const command_graph = function(argv) {
+    let config = JSON.parse(fs.readFileSync(argv.config, 'utf8')); // TODO enter callback hell.
+    import('./' + config.data +'/data.js').then(module => {
+        let data = module.data;
+        let p = new ProcessChain(Object.values(data.processes))
+            .filter_for_output(
+                new Stack(data.items[config.requirement.id], 1),
+                array_disambiguate,
+                [].concat(config.imported).concat(config.exported)
+            );
+        console.log(p.to_graphviz());
+    });
+};
 
-p.update(new Stack(data.items[config.requirement.id], config.requirement.rate), config.imported, config.exported);
+const command_rate = function(argv) {
+    let config = JSON.parse(fs.readFileSync(argv.config, 'utf8')); // TODO enter callback hell.
+    import('./' + config.data +'/data.js').then(module => {
+        let data = module.data;
+        let p = new ProcessChain(Object.values(data.processes))
+            .filter_for_output(
+                new Stack(data.items[config.requirement.id], 1),
+                array_disambiguate,
+                [].concat(config.imported).concat(config.exported)
+            );
+        p = new RateChain(p, f => quickest_factory_for_factory_type(data, f));
+        p.update(new Stack(data.items[config.requirement.id], config.requirement.rate), config.imported, config.exported);
+        console.log(p.to_graphviz());
+    });
+}
 
-console.log(p.to_graphviz());
+const argv = yargs(process.argv.slice(2))
+    .command('all', 'generate a graph of all the processes', (yargs) => {
+        yargs.option('data', {
+            alias: 'd',
+            type: 'string'
+        })
+        .demandOption(['data'])
+    }, command_all)
+    .command('factory-graph', 'generate a graph filtered to producing a paricular item', (yargs) => {
+        yargs.option('config', {
+            alias: 'c',
+            type: 'string'
+        })
+        .demandOption(['config'])
+    }, command_graph)
+    .command('factory-rate', 'generate a graph filtered to producing a paricular item; with factory counts.', (yargs) => {
+        yargs.option('config', {
+            alias: 'c',
+            type: 'string'
+        })
+        .demandOption(['config'])
+    }, command_rate)
+    .demandCommand()
+    .help().alias('h', 'help')
+    .argv;
