@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+SCRIPT_DIR=$(dirname "$0")
+
 FILE="$1"
 FILE_TMP_BASE=".1.$(basename "$FILE")"
 FILE_TMP_ADD=".2.$(basename "$FILE")"
@@ -16,6 +18,11 @@ function read_var() {
     echo "$v"
 }
 
+function test_item_exists() {
+    local item="$1"
+    jq -r '.items | map(select(.id == "'$item'"))[0].id' "$FILE_TMP_BASE"
+}
+
 function read_io() {
     local name="$1"
     io=""
@@ -25,6 +32,9 @@ function read_io() {
         if [ -z "$i_id" ]; then
             echo "$io";
             return 0
+        fi
+        if [ "$i_id" != "$(test_item_exists "$i_id")" ]; then
+            $SCRIPT_DIR/add_item.sh "$FILE_TMP_BASE" "$i_id"
         fi
         i_q="$(read_var "-- quantity --")"
         if [ -n "$io" ]; then io="$io,"; fi
