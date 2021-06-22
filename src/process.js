@@ -124,13 +124,21 @@ class ProcessChain {
         )];
     }
 
+    /**
+     * Depth-first search of the process graph; when the search
+     * encounters an already visited node, it walks back up the
+     * discovered tree until it finds the already visited node,
+     * adding the intermediate steps to the current cycle.
+     *
+     * @returns [[process_id, ... ], [process_id, ... ]] each inner array is a cycle in the process graph
+     */
     find_cycles() {
-        let tree = {}; // child:parent relationships
+        let tree = {}; // child->parent relationships
         let loops = [];
         let visited_processes = [];
-        let queue = [this.processes[0]];
-        while (queue.length > 0) {
-            let current = queue.pop();
+        let stack = [this.processes[0]];
+        while (stack.length > 0) {
+            let current = stack.pop();
             visited_processes.push(current.id);
 
             current.outputs.flatMap(output => {
@@ -146,13 +154,14 @@ class ProcessChain {
                     let next = current.id;
                     while (true) {
                         loop.push(next);
+                        if (next == p.id) break;
                         next = tree[next];
                         if (!next) break;
                     }
                     loops.push(loop.reverse());
                 } else {
                     tree[p.id] = current.id;
-                    queue.push(p);
+                    stack.push(p);
                 }
             });
         }
