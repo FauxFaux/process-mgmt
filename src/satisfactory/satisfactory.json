@@ -916,6 +916,32 @@
       "outputs": {
         "circuit_board": 1
       }
+    },
+    {
+      "name": "motor",
+      "duration": "12",
+      "factory_group": "assembler",
+      "inputs": {
+        "rotor": 2,
+        "stator": 2
+      },
+      "outputs": {
+        "motor": 1
+      }
+    },
+    {
+      "name": "heavy_modular_frame_alternate",
+      "duration": "64",
+      "factory_group": "manufacturer",
+      "inputs": {
+        "modular_frame": 8,
+        "encased_industrial_beam": 10,
+        "steel_pipe": 36,
+        "concrete": 22
+      },
+      "outputs": {
+        "heavy_modular_frame": 3
+      }
     }
   ],
   "factory_groups": [],
