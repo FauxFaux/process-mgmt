@@ -3,17 +3,18 @@ import { Process } from './process.js';
 
 class ProxyProcess extends Process {
     constructor(cycle) {
-        let existing = cycle[0];
         let inputs = new StackSet();
         let outputs = new StackSet();
 
-        existing.inputs.forEach(i => {
-            inputs.add(i);
-            outputs.sub(i);
-        });
-        existing.outputs.forEach(o => {
-            outputs.add(o);
-            inputs.sub(o);
+        cycle.forEach(existing => {
+            existing.inputs.forEach(i => {
+                inputs.add(i);
+                outputs.sub(i);
+            });
+            existing.outputs.forEach(o => {
+                outputs.add(o);
+                inputs.sub(o);
+            });
         });
 
         var result_in = inputs.items()
