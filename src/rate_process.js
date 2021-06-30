@@ -25,11 +25,11 @@ class RateChain extends ProcessChain {
     /**
      *
      * @param {ProcessChain} chain Existing ProcessChain
-     * @param {function} factory_type_cb `fn(factory_group): factory` Select a factory for the given factory group.
+     * @param {function} factory_type_cb `fn(process, factory_group): factory` Select a factory for the given process
      */
     constructor(chain, factory_type_cb) {
         super(chain.processes.map(p => {
-            let factory_configured = factory_type_cb(p.factory_group);
+            let factory_configured = factory_type_cb(p);
             let factory = (factory_configured ? factory_configured : new Factory('__generated__', 'default', -1));
             return new RateProcess(p, factory);
         }));
@@ -327,6 +327,7 @@ class RateChain extends ProcessChain {
             'shape="record" ' +
             'label="{ {' + inputs + '}' +
                 ' | ' + process.factory_type.name + ' (' + process.factory_group.name + ')' +
+                ' | ' + process.id +
                 ' | { ' + Math.round(process.duration*100)/100 + 's/run | ' + Math.round(process_count*100)/100 + ' factories }' +
                 ' | {' + outputs + '} }"' +
             ']';

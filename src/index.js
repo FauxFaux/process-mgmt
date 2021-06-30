@@ -80,7 +80,17 @@ const command_rate = function(argv) {
                 array_disambiguate(data, config),
                 [].concat(config.imported).concat(config.exported)
             );
-        p = new RateChain(p, f => quickest_factory_for_factory_type(data, f));
+        p = new RateChain(p, (process) => {
+            let output = 1;
+            let speed = 1;
+            if (config.modifiers && config.modifiers[process.id].output) {
+                output = config.modifiers[process.id].output;
+            }
+            if (config.modifiers && config.modifiers[process.id].speed) {
+                speed = config.modifiers[process.id].speed;
+            }
+            return quickest_factory_for_factory_type(data, process.factory_group).modify(speed, output);
+        });
         p.update(new Stack(data.items[config.requirement.id], config.requirement.rate), config.imported, config.exported);
         console.log(p.to_graphviz());
     });
