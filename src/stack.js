@@ -57,6 +57,14 @@ class StackSet {
         return this.stacks[item.id].reduce((p, c) => p.add(c), new Stack(item, 0));
     }
 
+    item_ids() {
+        return Object.keys(this.stacks);
+    }
+
+    items() {
+        return Object.values(this.stacks).map(a => a[0].item)
+    }
+
     max_total(ignoring = []) {
         // Find the item type that has the largest +ive total. Return that stack.
         return this._min_max_total(ignoring, (a, b) => a.quantity > b.quantity);
