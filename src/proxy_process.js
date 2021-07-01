@@ -2,7 +2,12 @@ import { StackSet } from './stack.js';
 import { Process } from './process.js';
 
 class ProxyProcess extends Process {
+    /**
+     * Creates a process
+     * @param {Array[Process]} cycle
+     */
     constructor(cycle) {
+        this.cycle = cycle;
         let inputs = new StackSet();
         let outputs = new StackSet();
 
