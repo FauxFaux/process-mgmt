@@ -341,6 +341,12 @@
       "i18n": {
         "en": "Sulfur"
       }
+    },
+    {
+      "id": "fuel",
+      "i18n": {
+        "en": "Fuel"
+      }
     }
   ],
   "processes": [
@@ -609,7 +615,7 @@
     },
     {
       "name": "modular_frame_alternate",
-      "duration": "16",
+      "duration": "24",
       "factory_group": "assembler",
       "inputs": {
         "reinforced_iron_plate": 3,
@@ -941,6 +947,29 @@
       },
       "outputs": {
         "heavy_modular_frame": 3
+      }
+    },
+    {
+      "name": "fuel",
+      "duration": "6",
+      "factory_group": "refinery",
+      "inputs": {
+        "crude_oil": 6
+      },
+      "outputs": {
+        "fuel": 4,
+        "polymer_resin": 3
+      }
+    },
+    {
+      "name": "screw_alternate",
+      "duration": "24",
+      "factory_group": "construct",
+      "inputs": {
+        "iron_ingot": 5
+      },
+      "outputs": {
+        "screw": 20
       }
     }
   ],
