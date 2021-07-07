@@ -41,7 +41,18 @@ class ProcessChain {
         this.settings = {};
     }
 
-    disable(process_id) {
+    /**
+     * @param arguments process_id, process_id, ...
+     */
+    disable() {
+        this.processes = this.processes.filter(p => {
+            return !(arguments.contains(p.id))
+        });
+        this.processes_by_output = this._build_processes_by_output();
+        this.processes_by_input = this._build_processes_by_input();
+        return this;
+    }
+    _disable(process_id) {
         this.processes = this.processes.filter(p => {
             return p.id != process_id;
         });
@@ -50,8 +61,11 @@ class ProcessChain {
         return this;
     }
 
-    enable(process) {
-        this.processes.push(process);
+    /**
+     * @param arguments process, process, ...
+     */
+    enable() {
+        this.processes.push(...arguments);
         this.processes_by_output = this._build_processes_by_output();
         this.processes_by_input = this._build_processes_by_input();
         return this;

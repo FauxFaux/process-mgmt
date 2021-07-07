@@ -56,6 +56,13 @@ const command_all = function(argv) {
     });
 };
 
+const optional = function(value, def) {
+    if ("undefined" === (typeof value)) {
+        return def;
+    }
+    return value;
+}
+
 const command_graph = function(argv) {
     let config = JSON.parse(fs.readFileSync(argv.config, 'utf8')); // TODO enter callback hell.
     import('./' + config.data +'/data.js').then(module => {
@@ -65,7 +72,7 @@ const command_graph = function(argv) {
                 new Stack(data.items[config.requirement.id], 1),
                 array_disambiguate(data, config),
                 [].concat(config.imported).concat(config.exported)
-            );
+            ).enable(...optional(config.enable, []).map(s => data.processes[s]));
         console.log(p.to_graphviz());
     });
 };
