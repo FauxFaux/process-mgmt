@@ -127,6 +127,9 @@ describe('Cycle discovery', function() {
                 assert.strictEqual(result.outputs[0].item.id, 'd');
                 assert.strictEqual(result.outputs[0].quantity, 1);
             });
+            it('replaces cycle processes with a proxy', function() {
+                assert.strictEqual(1, 2);
+            });
         });
         describe('data with two-element cycle; net producer', function() {
             let data = setup_data();
