@@ -326,8 +326,10 @@ class RateChain extends ProcessChain {
         return node_id + ' [' +
             'shape="record" ' +
             'label="{ {' + inputs + '}' +
-                ' | ' + process.factory_type.name + ' (' + process.factory_group.name + ')' +
-                ' | ' + process.id +
+                ' | process id: ' + process.id +
+                ' | { ' + process.factory_type.name + ' (' + process.factory_group.name + ')' +
+                     ' | speed: ' + (1/process.factory_type.duration_modifier) + 'x' +
+                     ' | output: ' + process.factory_type.output_modifier + 'x }' +
                 ' | { ' + Math.round(process.duration*100)/100 + 's/run | ' + Math.round(process_count*100)/100 + ' factories }' +
                 ' | {' + outputs + '} }"' +
             ']';
