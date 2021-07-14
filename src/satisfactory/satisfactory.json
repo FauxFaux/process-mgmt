@@ -347,6 +347,42 @@
       "i18n": {
         "en": "Fuel"
       }
+    },
+    {
+      "id": "power",
+      "i18n": {
+        "en": "Power"
+      }
+    },
+    {
+      "id": "alien_carapace",
+      "i18n": {
+        "en": "Alien Carapace"
+      }
+    },
+    {
+      "id": "alien_organs",
+      "i18n": {
+        "en": "Alien Organs"
+      }
+    },
+    {
+      "id": "flower_petals",
+      "i18n": {
+        "en": "Flower Petals"
+      }
+    },
+    {
+      "id": "packaged_liquid_biofuel",
+      "i18n": {
+        "en": "Packaged Liquid Biofuel"
+      }
+    },
+    {
+      "id": "compacted_coal",
+      "i18n": {
+        "en": "Compacted Coal"
+      }
     }
   ],
   "processes": [
@@ -970,6 +1006,209 @@
       },
       "outputs": {
         "screw": 20
+      }
+    },
+    {
+      "name": "power_coal",
+      "duration": "4",
+      "factory_group": "coal_generator",
+      "inputs": {
+        "coal": 1,
+        "water": 0.75
+      },
+      "outputs": {
+        "power": 75
+      }
+    },
+    {
+      "name": "power_compacted_coal",
+      "duration": "8.4",
+      "factory_group": "coal_generator",
+      "inputs": {
+        "compacted_coal": 1,
+        "water": 0.75
+      },
+      "outputs": {
+        "power": 75
+      }
+    },
+    {
+      "name": "power_petroleum_coke",
+      "duration": "2.4",
+      "factory_group": "coal_generator",
+      "inputs": {
+        "petroleum_coke": 1,
+        "water": 0.75
+      },
+      "outputs": {
+        "power": 75
+      }
+    },
+    {
+      "name": "water",
+      "duration": "1",
+      "factory_group": "pump",
+      "inputs": {},
+      "outputs": {
+        "water": 2
+      }
+    },
+    {
+      "name": "circuit_board_alternate",
+      "duration": "48",
+      "factory_group": "assembler",
+      "inputs": {
+        "plastic": 10,
+        "quickwire": 30
+      },
+      "outputs": {
+        "circuit_board": 7
+      }
+    },
+    {
+      "name": "caterium_ingot_alternate",
+      "duration": "5",
+      "factory_group": "refinery",
+      "inputs": {
+        "caterium_ore": 2,
+        "water": 2
+      },
+      "outputs": {
+        "caterium_ingot": 1
+      }
+    },
+    {
+      "name": "heavy_oil_residue_alternate",
+      "duration": "6",
+      "factory_group": "refinery",
+      "inputs": {
+        "crude_oil": 3
+      },
+      "outputs": {
+        "heavy_oil_residue": 4,
+        "polymer_resin": 2
+      }
+    },
+    {
+      "name": "power_leaves",
+      "duration": "0.5",
+      "factory_group": "biomass_burner",
+      "inputs": {
+        "leaves": 1
+      },
+      "outputs": {
+        "power": 30
+      }
+    },
+    {
+      "name": "power_wood",
+      "duration": "3.33333333",
+      "factory_group": "biomass_burner",
+      "inputs": {
+        "wood": 1
+      },
+      "outputs": {
+        "power": 30
+      }
+    },
+    {
+      "name": "power_mycelia",
+      "duration": "0.666666666667",
+      "factory_group": "biomass_burner",
+      "inputs": {
+        "mycelia": 1
+      },
+      "outputs": {
+        "power": 30
+      }
+    },
+    {
+      "name": "power_alien_carapace",
+      "duration": "8.333333333333",
+      "factory_group": "biomass_burner",
+      "inputs": {
+        "alien_carapace": 1
+      },
+      "outputs": {
+        "power": 30
+      }
+    },
+    {
+      "name": "power_alien_organs",
+      "duration": "8.333333333333",
+      "factory_group": "biomass_burner",
+      "inputs": {
+        "alien_organs": 1
+      },
+      "outputs": {
+        "power": 30
+      }
+    },
+    {
+      "name": "power_flower_petals",
+      "duration": "3.333333333333",
+      "factory_group": "biomass_burner",
+      "inputs": {
+        "flower_petals": 1
+      },
+      "outputs": {
+        "power": 30
+      }
+    },
+    {
+      "name": "power_fabric",
+      "duration": "0.5",
+      "factory_group": "biomass_burner",
+      "inputs": {
+        "fabric": 1
+      },
+      "outputs": {
+        "power": 30
+      }
+    },
+    {
+      "name": "power_biomass",
+      "duration": "6",
+      "factory_group": "biomass_burner",
+      "inputs": {
+        "biomass": 1
+      },
+      "outputs": {
+        "power": 30
+      }
+    },
+    {
+      "name": "power_solid_biofuel",
+      "duration": "15",
+      "factory_group": "biomass_burner",
+      "inputs": {
+        "solid_biofuel": 1
+      },
+      "outputs": {
+        "power": 30
+      }
+    },
+    {
+      "name": "power_packaged_liquid_biofuel",
+      "duration": "25",
+      "factory_group": "biomass_burner",
+      "inputs": {
+        "packaged_liquid_biofuel": 1
+      },
+      "outputs": {
+        "power": 30
+      }
+    },
+    {
+      "name": "compacted_coal",
+      "duration": "12",
+      "factory_group": "assembler",
+      "inputs": {
+        "coal": 5,
+        "sulfur": 5
+      },
+      "outputs": {
+        "compacted_coal": 5
       }
     }
   ],
