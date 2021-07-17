@@ -47,6 +47,10 @@ while true; do
 
     if [ -z "$id" ]; then
         echo "exiting"
+        jq '.items |= sort_by(.id)' $FILE_TMP_BASE > $FILE_TMP_ADD
+        mv $FILE_TMP_ADD $FILE_TMP_BASE
+        jq '.processes |= sort_by(.name)' $FILE_TMP_BASE > $FILE_TMP_ADD
+        mv $FILE_TMP_ADD $FILE_TMP_BASE
         mv "$FILE_TMP_BASE" "$FILE"
         exit
     fi
