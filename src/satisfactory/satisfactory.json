@@ -1,171 +1,9 @@
 {
   "items": [
     {
-      "id": "copper_ore",
+      "id": "adaptive_control_unit",
       "i18n": {
-        "en": "Copper Ore"
-      }
-    },
-    {
-      "id": "wood",
-      "i18n": {
-        "en": "Wood"
-      }
-    },
-    {
-      "id": "coal",
-      "i18n": {
-        "en": "Coal"
-      }
-    },
-    {
-      "id": "iron_ore",
-      "i18n": {
-        "en": "Iron Ore"
-      }
-    },
-    {
-      "id": "iron_ingot",
-      "i18n": {
-        "en": "Iron Ingot"
-      }
-    },
-    {
-      "id": "iron_rod",
-      "i18n": {
-        "en": "Iron Rod"
-      }
-    },
-    {
-      "id": "iron_plate",
-      "i18n": {
-        "en": "Iron Plate"
-      }
-    },
-    {
-      "id": "wire",
-      "i18n": {
-        "en": "Wire"
-      }
-    },
-    {
-      "id": "cable",
-      "i18n": {
-        "en": "Cable"
-      }
-    },
-    {
-      "id": "screw",
-      "i18n": {
-        "en": "Screw"
-      }
-    },
-    {
-      "id": "copper_sheet",
-      "i18n": {
-        "en": "Copper Sheet"
-      }
-    },
-    {
-      "id": "rotor",
-      "i18n": {
-        "en": "Rotor"
-      }
-    },
-    {
-      "id": "reinforced_iron_plate",
-      "i18n": {
-        "en": "Reinforced Iron Plate"
-      }
-    },
-    {
-      "id": "smart_plating",
-      "i18n": {
-        "en": "Smart Plating"
-      }
-    },
-    {
-      "id": "leaves",
-      "i18n": {
-        "en": "leaves"
-      }
-    },
-    {
-      "id": "biomass",
-      "i18n": {
-        "en": "Biomass"
-      }
-    },
-    {
-      "id": "solid_biofuel",
-      "i18n": {
-        "en": "Solid Biofuel"
-      }
-    },
-    {
-      "id": "copper_ingot",
-      "i18n": {
-        "en": "Copper Ingot"
-      }
-    },
-    {
-      "id": "modular_frame",
-      "i18n": {
-        "en": "Modular Frame"
-      }
-    },
-    {
-      "id": "steel_ingot",
-      "i18n": {
-        "en": "Steel Ingot"
-      }
-    },
-    {
-      "id": "steel_pipe",
-      "i18n": {
-        "en": "Steel Pipe"
-      }
-    },
-    {
-      "id": "steel_beam",
-      "i18n": {
-        "en": "Steel Beam"
-      }
-    },
-    {
-      "id": "stator",
-      "i18n": {
-        "en": "Stator"
-      }
-    },
-    {
-      "id": "automated_wiring",
-      "i18n": {
-        "en": "Automated Wiring"
-      }
-    },
-    {
-      "id": "versatile_framework",
-      "i18n": {
-        "en": "Versatile Framework"
-      }
-    },
-    {
-      "id": "caterium_ore",
-      "i18n": {
-        "en": "Caterium Ore"
-      }
-    },
-    {
-      "id": "caterium_ingot",
-      "i18n": {
-        "en": "Caterium Ingot"
-      }
-    },
-    {
-      "id": "quickwire",
-      "i18n": {
-        "en": "Quickwire"
+        "en": "Adaptive Control Unit"
       }
     },
     {
@@ -175,183 +13,9 @@
       }
     },
     {
-      "id": "crude_oil",
+      "id": "alclad_aluminium_sheet",
       "i18n": {
-        "en": "Crude Oil"
-      }
-    },
-    {
-      "id": "heavy_oil_residue",
-      "i18n": {
-        "en": "Heavy Oil Residue"
-      }
-    },
-    {
-      "id": "rubber",
-      "i18n": {
-        "en": "Rubber"
-      }
-    },
-    {
-      "id": "polymer_resin",
-      "i18n": {
-        "en": "Polymer Resin"
-      }
-    },
-    {
-      "id": "water",
-      "i18n": {
-        "en": "Water"
-      }
-    },
-    {
-      "id": "plastic",
-      "i18n": {
-        "en": "Plastic"
-      }
-    },
-    {
-      "id": "petroleum_coke",
-      "i18n": {
-        "en": "Petroleum Coke"
-      }
-    },
-    {
-      "id": "beacon",
-      "i18n": {
-        "en": "Beacon"
-      }
-    },
-    {
-      "id": "heavy_modular_frame",
-      "i18n": {
-        "en": "Heavy Modular Frame"
-      }
-    },
-    {
-      "id": "encased_industrial_beam",
-      "i18n": {
-        "en": "Encased Industrial Beam"
-      }
-    },
-    {
-      "id": "crystal_oscillator",
-      "i18n": {
-        "en": "Crystal Oscillator"
-      }
-    },
-    {
-      "id": "motor",
-      "i18n": {
-        "en": "Motor"
-      }
-    },
-    {
-      "id": "computer",
-      "i18n": {
-        "en": "Computer"
-      }
-    },
-    {
-      "id": "circuit_board",
-      "i18n": {
-        "en": "Circuit Board"
-      }
-    },
-    {
-      "id": "quartz_crystal",
-      "i18n": {
-        "en": "Quartz Crystal"
-      }
-    },
-    {
-      "id": "modular_engine",
-      "i18n": {
-        "en": "Modular Engine"
-      }
-    },
-    {
-      "id": "adaptive_control_unit",
-      "i18n": {
-        "en": "Adaptive Control Unit"
-      }
-    },
-    {
-      "id": "gas_filter",
-      "i18n": {
-        "en": "Gas Filter"
-      }
-    },
-    {
-      "id": "fabric",
-      "i18n": {
-        "en": "Fabric"
-      }
-    },
-    {
-      "id": "rifle_cartridge",
-      "i18n": {
-        "en": "Rifle Cartridge"
-      }
-    },
-    {
-      "id": "black_powder",
-      "i18n": {
-        "en": "Black Powder"
-      }
-    },
-    {
-      "id": "high_speed_connector",
-      "i18n": {
-        "en": "High Speed Connector"
-      }
-    },
-    {
-      "id": "concrete",
-      "i18n": {
-        "en": "Concrete"
-      }
-    },
-    {
-      "id": "encased_steel_beam",
-      "i18n": {
-        "en": "Encased Steel Beam"
-      }
-    },
-    {
-      "id": "limestone",
-      "i18n": {
-        "en": "Limestone"
-      }
-    },
-    {
-      "id": "raw_quartz",
-      "i18n": {
-        "en": "Raw Quartz"
-      }
-    },
-    {
-      "id": "mycelia",
-      "i18n": {
-        "en": "Mycelia"
-      }
-    },
-    {
-      "id": "sulfur",
-      "i18n": {
-        "en": "Sulfur"
-      }
-    },
-    {
-      "id": "fuel",
-      "i18n": {
-        "en": "Fuel"
-      }
-    },
-    {
-      "id": "power",
-      "i18n": {
-        "en": "Power"
+        "en": "Alclad Aluminium Sheet"
       }
     },
     {
@@ -367,9 +31,225 @@
       }
     },
     {
+      "id": "aluminium_ingot",
+      "i18n": {
+        "en": "Aluminium Ingot"
+      }
+    },
+    {
+      "id": "automated_wiring",
+      "i18n": {
+        "en": "Automated Wiring"
+      }
+    },
+    {
+      "id": "beacon",
+      "i18n": {
+        "en": "Beacon"
+      }
+    },
+    {
+      "id": "biomass",
+      "i18n": {
+        "en": "Biomass"
+      }
+    },
+    {
+      "id": "black_powder",
+      "i18n": {
+        "en": "Black Powder"
+      }
+    },
+    {
+      "id": "cable",
+      "i18n": {
+        "en": "Cable"
+      }
+    },
+    {
+      "id": "caterium_ingot",
+      "i18n": {
+        "en": "Caterium Ingot"
+      }
+    },
+    {
+      "id": "caterium_ore",
+      "i18n": {
+        "en": "Caterium Ore"
+      }
+    },
+    {
+      "id": "circuit_board",
+      "i18n": {
+        "en": "Circuit Board"
+      }
+    },
+    {
+      "id": "coal",
+      "i18n": {
+        "en": "Coal"
+      }
+    },
+    {
+      "id": "compacted_coal",
+      "i18n": {
+        "en": "Compacted Coal"
+      }
+    },
+    {
+      "id": "computer",
+      "i18n": {
+        "en": "Computer"
+      }
+    },
+    {
+      "id": "concrete",
+      "i18n": {
+        "en": "Concrete"
+      }
+    },
+    {
+      "id": "copper_ingot",
+      "i18n": {
+        "en": "Copper Ingot"
+      }
+    },
+    {
+      "id": "copper_ore",
+      "i18n": {
+        "en": "Copper Ore"
+      }
+    },
+    {
+      "id": "copper_sheet",
+      "i18n": {
+        "en": "Copper Sheet"
+      }
+    },
+    {
+      "id": "crude_oil",
+      "i18n": {
+        "en": "Crude Oil"
+      }
+    },
+    {
+      "id": "crystal_oscillator",
+      "i18n": {
+        "en": "Crystal Oscillator"
+      }
+    },
+    {
+      "id": "encased_industrial_beam",
+      "i18n": {
+        "en": "Encased Industrial Beam"
+      }
+    },
+    {
+      "id": "encased_steel_beam",
+      "i18n": {
+        "en": "Encased Steel Beam"
+      }
+    },
+    {
+      "id": "fabric",
+      "i18n": {
+        "en": "Fabric"
+      }
+    },
+    {
       "id": "flower_petals",
       "i18n": {
         "en": "Flower Petals"
+      }
+    },
+    {
+      "id": "fuel",
+      "i18n": {
+        "en": "Fuel"
+      }
+    },
+    {
+      "id": "gas_filter",
+      "i18n": {
+        "en": "Gas Filter"
+      }
+    },
+    {
+      "id": "heavy_modular_frame",
+      "i18n": {
+        "en": "Heavy Modular Frame"
+      }
+    },
+    {
+      "id": "heavy_oil_residue",
+      "i18n": {
+        "en": "Heavy Oil Residue"
+      }
+    },
+    {
+      "id": "high_speed_connector",
+      "i18n": {
+        "en": "High Speed Connector"
+      }
+    },
+    {
+      "id": "iron_ingot",
+      "i18n": {
+        "en": "Iron Ingot"
+      }
+    },
+    {
+      "id": "iron_ore",
+      "i18n": {
+        "en": "Iron Ore"
+      }
+    },
+    {
+      "id": "iron_plate",
+      "i18n": {
+        "en": "Iron Plate"
+      }
+    },
+    {
+      "id": "iron_rod",
+      "i18n": {
+        "en": "Iron Rod"
+      }
+    },
+    {
+      "id": "leaves",
+      "i18n": {
+        "en": "leaves"
+      }
+    },
+    {
+      "id": "limestone",
+      "i18n": {
+        "en": "Limestone"
+      }
+    },
+    {
+      "id": "modular_engine",
+      "i18n": {
+        "en": "Modular Engine"
+      }
+    },
+    {
+      "id": "modular_frame",
+      "i18n": {
+        "en": "Modular Frame"
+      }
+    },
+    {
+      "id": "motor",
+      "i18n": {
+        "en": "Motor"
+      }
+    },
+    {
+      "id": "mycelia",
+      "i18n": {
+        "en": "Mycelia"
       }
     },
     {
@@ -379,22 +259,397 @@
       }
     },
     {
-      "id": "compacted_coal",
+      "id": "petroleum_coke",
       "i18n": {
-        "en": "Compacted Coal"
+        "en": "Petroleum Coke"
+      }
+    },
+    {
+      "id": "plastic",
+      "i18n": {
+        "en": "Plastic"
+      }
+    },
+    {
+      "id": "polymer_resin",
+      "i18n": {
+        "en": "Polymer Resin"
+      }
+    },
+    {
+      "id": "power",
+      "i18n": {
+        "en": "Power"
+      }
+    },
+    {
+      "id": "quartz_crystal",
+      "i18n": {
+        "en": "Quartz Crystal"
+      }
+    },
+    {
+      "id": "quickwire",
+      "i18n": {
+        "en": "Quickwire"
+      }
+    },
+    {
+      "id": "raw_quartz",
+      "i18n": {
+        "en": "Raw Quartz"
+      }
+    },
+    {
+      "id": "reinforced_iron_plate",
+      "i18n": {
+        "en": "Reinforced Iron Plate"
+      }
+    },
+    {
+      "id": "rifle_cartridge",
+      "i18n": {
+        "en": "Rifle Cartridge"
+      }
+    },
+    {
+      "id": "rotor",
+      "i18n": {
+        "en": "Rotor"
+      }
+    },
+    {
+      "id": "rubber",
+      "i18n": {
+        "en": "Rubber"
+      }
+    },
+    {
+      "id": "screw",
+      "i18n": {
+        "en": "Screw"
+      }
+    },
+    {
+      "id": "smart_plating",
+      "i18n": {
+        "en": "Smart Plating"
+      }
+    },
+    {
+      "id": "solid_biofuel",
+      "i18n": {
+        "en": "Solid Biofuel"
+      }
+    },
+    {
+      "id": "stator",
+      "i18n": {
+        "en": "Stator"
+      }
+    },
+    {
+      "id": "steel_beam",
+      "i18n": {
+        "en": "Steel Beam"
+      }
+    },
+    {
+      "id": "steel_ingot",
+      "i18n": {
+        "en": "Steel Ingot"
+      }
+    },
+    {
+      "id": "steel_pipe",
+      "i18n": {
+        "en": "Steel Pipe"
+      }
+    },
+    {
+      "id": "sulfur",
+      "i18n": {
+        "en": "Sulfur"
+      }
+    },
+    {
+      "id": "versatile_framework",
+      "i18n": {
+        "en": "Versatile Framework"
+      }
+    },
+    {
+      "id": "water",
+      "i18n": {
+        "en": "Water"
+      }
+    },
+    {
+      "id": "wire",
+      "i18n": {
+        "en": "Wire"
+      }
+    },
+    {
+      "id": "wood",
+      "i18n": {
+        "en": "Wood"
       }
     }
   ],
   "processes": [
     {
-      "name": "iron_ingot",
-      "duration": "2",
-      "factory_group": "smelter",
+      "name": "adaptive_control_unit",
+      "duration": "120",
+      "factory_group": "manufactory",
       "inputs": {
-        "iron_ore": 1
+        "automated_wiring": 15,
+        "circuit_board": 10,
+        "heavy_modular_frame": 2,
+        "computer": 2
       },
       "outputs": {
-        "iron_ingot": 1
+        "adaptive_control_unit": 2
+      }
+    },
+    {
+      "name": "ai_limiter",
+      "duration": "12",
+      "factory_group": "assembler",
+      "inputs": {
+        "copper_sheet": 5,
+        "quickwire": 20
+      },
+      "outputs": {
+        "ai_limiter": 1
+      }
+    },
+    {
+      "name": "alclad_aluminium_sheet",
+      "duration": "6",
+      "factory_group": "assembler",
+      "inputs": {
+        "aluminium_ingot": 3,
+        "copper_ingot": 1
+      },
+      "outputs": {
+        "alclad_aluminium_sheet": 3
+      }
+    },
+    {
+      "name": "alumina_solution",
+      "duration": "6",
+      "factory_group": "refinery",
+      "inputs": {
+        "bauxite": 12,
+        "water": 18
+      },
+      "outputs": {
+        "alumina_solution": 12,
+        "silica": 5
+      }
+    },
+    {
+      "name": "aluminium_casing",
+      "duration": "2",
+      "factory_group": "construct",
+      "inputs": {
+        "aluminium_ingot": 3
+      },
+      "outputs": {
+        "aluminium_casing": 2
+      }
+    },
+    {
+      "name": "aluminium_casing_alternate",
+      "duration": "8",
+      "factory_group": "assembler",
+      "inputs": {
+        "aluminium_ingot": 20,
+        "copper_ingot": 10
+      },
+      "outputs": {
+        "aluminium_casing": 15
+      }
+    },
+    {
+      "name": "aluminium_ingot",
+      "duration": "4",
+      "factory_group": "foundry",
+      "inputs": {
+        "aluminium_scrap": 6,
+        "silica": 5
+      },
+      "outputs": {
+        "aluminium_ingot": 4
+      }
+    },
+    {
+      "name": "aluminium_scrap",
+      "duration": "1",
+      "factory_group": "refinery",
+      "inputs": {
+        "alumina_solution": 4,
+        "coal": 2
+      },
+      "outputs": {
+        "aluminium_scrap": 6,
+        "water": 2
+      }
+    },
+    {
+      "name": "automated_wiring",
+      "duration": "24",
+      "factory_group": "assembler",
+      "inputs": {
+        "stator": 1,
+        "cable": 20
+      },
+      "outputs": {
+        "automated_wiring": 1
+      }
+    },
+    {
+      "name": "beacon",
+      "duration": "8",
+      "factory_group": "manufactury",
+      "inputs": {
+        "iron_plate": 3,
+        "iron_rod": 1,
+        "wire": 15,
+        "cable": 2
+      },
+      "outputs": {
+        "beacon": 1
+      }
+    },
+    {
+      "name": "biomass_leaves",
+      "duration": "5",
+      "factory_group": "construct",
+      "inputs": {
+        "leaves": 10
+      },
+      "outputs": {
+        "biomass": 5
+      }
+    },
+    {
+      "name": "biomass_wood",
+      "duration": "4",
+      "factory_group": "construct",
+      "inputs": {
+        "wood": 4
+      },
+      "outputs": {
+        "biomass": 20
+      }
+    },
+    {
+      "name": "black_powder",
+      "duration": "8",
+      "factory_group": "assember",
+      "inputs": {
+        "coal": 1,
+        "sulfur": 2
+      },
+      "outputs": {
+        "black_powder": 1
+      }
+    },
+    {
+      "name": "cable",
+      "duration": "2",
+      "factory_group": "construct",
+      "inputs": {
+        "wire": 2
+      },
+      "outputs": {
+        "cable": 1
+      }
+    },
+    {
+      "name": "caterium_ingot",
+      "duration": "4",
+      "factory_group": "smelter",
+      "inputs": {
+        "caterium_ore": 3
+      },
+      "outputs": {
+        "caterium_ingot": 1
+      }
+    },
+    {
+      "name": "caterium_ingot_alternate",
+      "duration": "5",
+      "factory_group": "refinery",
+      "inputs": {
+        "caterium_ore": 2,
+        "water": 2
+      },
+      "outputs": {
+        "caterium_ingot": 1
+      }
+    },
+    {
+      "name": "circuit_board",
+      "duration": "8",
+      "factory_group": "assembler",
+      "inputs": {
+        "copper_sheet": 2,
+        "plastic": 4
+      },
+      "outputs": {
+        "circuit_board": 1
+      }
+    },
+    {
+      "name": "circuit_board_alternate",
+      "duration": "48",
+      "factory_group": "assembler",
+      "inputs": {
+        "plastic": 10,
+        "quickwire": 30
+      },
+      "outputs": {
+        "circuit_board": 7
+      }
+    },
+    {
+      "name": "compacted_coal",
+      "duration": "12",
+      "factory_group": "assembler",
+      "inputs": {
+        "coal": 5,
+        "sulfur": 5
+      },
+      "outputs": {
+        "compacted_coal": 5
+      }
+    },
+    {
+      "name": "computer",
+      "duration": "24",
+      "factory_group": "manufactory",
+      "inputs": {
+        "circuit_board": 10,
+        "cable": 9,
+        "plastic": 18,
+        "screw": 52
+      },
+      "outputs": {
+        "computer": 1
+      }
+    },
+    {
+      "name": "concrete",
+      "duration": "4",
+      "factory_group": "construct",
+      "inputs": {
+        "limestone": 3
+      },
+      "outputs": {
+        "concrete": 1
       }
     },
     {
@@ -409,25 +664,140 @@
       }
     },
     {
-      "name": "wire",
-      "duration": "4",
+      "name": "copper_sheet",
+      "duration": "6",
       "factory_group": "construct",
       "inputs": {
-        "copper_ingot": 1
+        "copper_ingot": 2
       },
       "outputs": {
-        "wire": 2
+        "copper_sheet": 1
       }
     },
     {
-      "name": "cable",
-      "duration": "2",
-      "factory_group": "construct",
+      "name": "crystal_oscillator",
+      "duration": "120",
+      "factory_group": "manufactory",
       "inputs": {
-        "wire": 2
+        "quartz_crystal": 36,
+        "cable": 28,
+        "reinforced_iron_plate": 5
       },
       "outputs": {
-        "cable": 1
+        "crystal_oscillator": 2
+      }
+    },
+    {
+      "name": "encased_industrial_beam",
+      "duration": "10",
+      "factory_group": "assembler",
+      "inputs": {
+        "steel_beam": 4,
+        "concrete": 5
+      },
+      "outputs": {
+        "encased_industrial_beam": 1
+      }
+    },
+    {
+      "name": "fabric",
+      "duration": "4",
+      "factory_group": "assembler",
+      "inputs": {
+        "mycelia": 1,
+        "biomass": 5
+      },
+      "outputs": {
+        "fabric": 1
+      }
+    },
+    {
+      "name": "fuel",
+      "duration": "6",
+      "factory_group": "refinery",
+      "inputs": {
+        "crude_oil": 6
+      },
+      "outputs": {
+        "fuel": 4,
+        "polymer_resin": 3
+      }
+    },
+    {
+      "name": "gas_filter",
+      "duration": "8",
+      "factory_group": "manufactory",
+      "inputs": {
+        "coal": 5,
+        "rubber": 2,
+        "fabric": 2
+      },
+      "outputs": {
+        "gas_filter": 1
+      }
+    },
+    {
+      "name": "heavy_modular_frame",
+      "duration": "30",
+      "factory_group": "manufactory",
+      "inputs": {
+        "modular_frame": 5,
+        "steel_pipe": 15,
+        "encased_industrial_beam": 5,
+        "screw": 100
+      },
+      "outputs": {
+        "heavy_modular_frame": 1
+      }
+    },
+    {
+      "name": "heavy_modular_frame_alternate",
+      "duration": "64",
+      "factory_group": "manufacturer",
+      "inputs": {
+        "modular_frame": 8,
+        "encased_industrial_beam": 10,
+        "steel_pipe": 36,
+        "concrete": 22
+      },
+      "outputs": {
+        "heavy_modular_frame": 3
+      }
+    },
+    {
+      "name": "heavy_oil_residue_alternate",
+      "duration": "6",
+      "factory_group": "refinery",
+      "inputs": {
+        "crude_oil": 3
+      },
+      "outputs": {
+        "heavy_oil_residue": 4,
+        "polymer_resin": 2
+      }
+    },
+    {
+      "name": "high_speed_connector",
+      "duration": "16",
+      "factory_group": "manufactory",
+      "inputs": {
+        "quickwire": 56,
+        "cable": 10,
+        "circuit_board": 1
+      },
+      "outputs": {
+        "high_speed_connector": 1
+      }
+    },
+    {
+      "name": "iron_ingot",
+      "duration": "2",
+      "factory_group": "smelter",
+      "inputs": {
+        "iron_ore": 1
+      },
+      "outputs": {
+        "iron_ingot": 1
       }
     },
     {
@@ -453,106 +823,16 @@
       }
     },
     {
-      "name": "screw",
-      "duration": "6",
-      "factory_group": "construct",
+      "name": "modular_engine",
+      "duration": "60",
+      "factory_group": "manufactory",
       "inputs": {
-        "iron_rod": 1
+        "motor": 2,
+        "rubber": 15,
+        "smart_plating": 2
       },
       "outputs": {
-        "screw": 4
-      }
-    },
-    {
-      "name": "reinforced_iron_plate",
-      "duration": "12",
-      "factory_group": "assembler",
-      "inputs": {
-        "iron_plate": 6,
-        "screw": 12
-      },
-      "outputs": {
-        "reinforced_iron_plate": 1
-      }
-    },
-    {
-      "name": "copper_sheet",
-      "duration": "6",
-      "factory_group": "construct",
-      "inputs": {
-        "copper_ingot": 2
-      },
-      "outputs": {
-        "copper_sheet": 1
-      }
-    },
-    {
-      "name": "rotor",
-      "duration": "15",
-      "factory_group": "assembler",
-      "inputs": {
-        "iron_rod": 5,
-        "screw": 25
-      },
-      "outputs": {
-        "rotor": 1
-      }
-    },
-    {
-      "name": "rotor_alternate",
-      "duration": "16",
-      "factory_group": "assembler",
-      "inputs": {
-        "copper_sheet": 6,
-        "screw": 52
-      },
-      "outputs": {
-        "rotor": 3
-      }
-    },
-    {
-      "name": "smart_plating",
-      "duration": "30",
-      "factory_group": "assembler",
-      "inputs": {
-        "reinforced_iron_plate": 1,
-        "rotor": 1
-      },
-      "outputs": {
-        "smart_plating": 1
-      }
-    },
-    {
-      "name": "biomass_wood",
-      "duration": "4",
-      "factory_group": "construct",
-      "inputs": {
-        "wood": 4
-      },
-      "outputs": {
-        "biomass": 20
-      }
-    },
-    {
-      "name": "biomass_leaves",
-      "duration": "5",
-      "factory_group": "construct",
-      "inputs": {
-        "leaves": 10
-      },
-      "outputs": {
-        "biomass": 5
-      }
-    },
-    {
-      "name": "solid_biofuel",
-      "duration": "4",
-      "factory_group": "construct",
-      "inputs": {
-        "biomass": 8
-      },
-      "outputs": {
-        "solid_biofuel": 4
+        "modular_engine": 1
       }
     },
     {
@@ -568,88 +848,6 @@
       }
     },
     {
-      "name": "steel_ingot",
-      "duration": "4",
-      "factory_group": "foundry",
-      "inputs": {
-        "iron_ore": 3,
-        "coal": 3
-      },
-      "outputs": {
-        "steel_ingot": 3
-      }
-    },
-    {
-      "name": "versatile_framework",
-      "duration": "24",
-      "factory_group": "assembler",
-      "inputs": {
-        "modular_frame": 1,
-        "steel_beam": 12
-      },
-      "outputs": {
-        "versatile_framework": 2
-      }
-    },
-    {
-      "name": "steel_beam",
-      "duration": "4",
-      "factory_group": "construct",
-      "inputs": {
-        "steel_ingot": 4
-      },
-      "outputs": {
-        "steel_beam": 1
-      }
-    },
-    {
-      "name": "stator",
-      "duration": "12",
-      "factory_group": "assembler",
-      "inputs": {
-        "steel_pipe": 3,
-        "wire": 8
-      },
-      "outputs": {
-        "stator": 1
-      }
-    },
-    {
-      "name": "steel_pipe",
-      "duration": "6",
-      "factory_group": "construct",
-      "inputs": {
-        "steel_ingot": 3
-      },
-      "outputs": {
-        "steel_pipe": 2
-      }
-    },
-    {
-      "name": "automated_wiring",
-      "duration": "24",
-      "factory_group": "assembler",
-      "inputs": {
-        "stator": 1,
-        "cable": 20
-      },
-      "outputs": {
-        "automated_wiring": 1
-      }
-    },
-    {
-      "name": "steel_ingot_alternate",
-      "duration": "3",
-      "factory_group": "foundry",
-      "inputs": {
-        "iron_ingot": 2,
-        "coal": 2
-      },
-      "outputs": {
-        "steel_ingot": 3
-      }
-    },
-    {
       "name": "modular_frame_alternate",
       "duration": "24",
       "factory_group": "assembler",
@@ -662,61 +860,39 @@
       }
     },
     {
-      "name": "ai_limiter",
+      "name": "motor",
       "duration": "12",
       "factory_group": "assembler",
       "inputs": {
-        "copper_sheet": 5,
-        "quickwire": 20
+        "rotor": 2,
+        "stator": 2
       },
       "outputs": {
-        "ai_limiter": 1
+        "motor": 1
       }
     },
     {
-      "name": "quickwire",
-      "duration": "5",
-      "factory_group": "construct",
+      "name": "motor_alternate",
+      "duration": "48",
+      "factory_group": "manufactory",
       "inputs": {
-        "caterium_ingot": 1
+        "rotor": 3,
+        "stator": 3,
+        "crystal_oscillator": 1
       },
       "outputs": {
-        "quickwire": 5
+        "motor": 6
       }
     },
     {
-      "name": "caterium_ingot",
-      "duration": "4",
-      "factory_group": "smelter",
-      "inputs": {
-        "caterium_ore": 3
-      },
-      "outputs": {
-        "caterium_ingot": 1
-      }
-    },
-    {
-      "name": "rubber_crude",
+      "name": "petroleum_coke",
       "duration": "6",
       "factory_group": "refinery",
       "inputs": {
-        "crude_oil": 3
+        "heavy_oil_residue": 4
       },
       "outputs": {
-        "rubber": 2,
-        "heavy_oil_residue": 2
-      }
-    },
-    {
-      "name": "rubber_residual",
-      "duration": "6",
-      "factory_group": "refinery",
-      "inputs": {
-        "polymer_resin": 4,
-        "water": 4
-      },
-      "outputs": {
-        "rubber": 2
+        "petroleum_coke": 12
       }
     },
     {
@@ -744,268 +920,36 @@
       }
     },
     {
-      "name": "petroleum_coke",
+      "name": "power_alien_carapace",
+      "duration": "8.333333333333",
+      "factory_group": "biomass_burner",
+      "inputs": {
+        "alien_carapace": 1
+      },
+      "outputs": {
+        "power": 30
+      }
+    },
+    {
+      "name": "power_alien_organs",
+      "duration": "8.333333333333",
+      "factory_group": "biomass_burner",
+      "inputs": {
+        "alien_organs": 1
+      },
+      "outputs": {
+        "power": 30
+      }
+    },
+    {
+      "name": "power_biomass",
       "duration": "6",
-      "factory_group": "refinery",
+      "factory_group": "biomass_burner",
       "inputs": {
-        "heavy_oil_residue": 4
+        "biomass": 1
       },
       "outputs": {
-        "petroleum_coke": 12
-      }
-    },
-    {
-      "name": "beacon",
-      "duration": "8",
-      "factory_group": "manufactury",
-      "inputs": {
-        "iron_plate": 3,
-        "iron_rod": 1,
-        "wire": 15,
-        "cable": 2
-      },
-      "outputs": {
-        "beacon": 1
-      }
-    },
-    {
-      "name": "heavy_modular_frame",
-      "duration": "30",
-      "factory_group": "manufactory",
-      "inputs": {
-        "modular_frame": 5,
-        "steel_pipe": 15,
-        "encased_industrial_beam": 5,
-        "screw": 100
-      },
-      "outputs": {
-        "heavy_modular_frame": 1
-      }
-    },
-    {
-      "name": "motor_alternate",
-      "duration": "48",
-      "factory_group": "manufactory",
-      "inputs": {
-        "rotor": 3,
-        "stator": 3,
-        "crystal_oscillator": 1
-      },
-      "outputs": {
-        "motor": 6
-      }
-    },
-    {
-      "name": "computer",
-      "duration": "24",
-      "factory_group": "manufactory",
-      "inputs": {
-        "circuit_board": 10,
-        "cable": 9,
-        "plastic": 18,
-        "screw": 52
-      },
-      "outputs": {
-        "computer": 1
-      }
-    },
-    {
-      "name": "crystal_oscillator",
-      "duration": "120",
-      "factory_group": "manufactory",
-      "inputs": {
-        "quartz_crystal": 36,
-        "cable": 28,
-        "reinforced_iron_plate": 5
-      },
-      "outputs": {
-        "crystal_oscillator": 2
-      }
-    },
-    {
-      "name": "modular_engine",
-      "duration": "60",
-      "factory_group": "manufactory",
-      "inputs": {
-        "motor": 2,
-        "rubber": 15,
-        "smart_plating": 2
-      },
-      "outputs": {
-        "modular_engine": 1
-      }
-    },
-    {
-      "name": "adaptive_control_unit",
-      "duration": "120",
-      "factory_group": "manufactory",
-      "inputs": {
-        "automated_wiring": 15,
-        "circuit_board": 10,
-        "heavy_modular_frame": 2,
-        "computer": 2
-      },
-      "outputs": {
-        "adaptive_control_unit": 2
-      }
-    },
-    {
-      "name": "gas_filter",
-      "duration": "8",
-      "factory_group": "manufactory",
-      "inputs": {
-        "coal": 5,
-        "rubber": 2,
-        "fabric": 2
-      },
-      "outputs": {
-        "gas_filter": 1
-      }
-    },
-    {
-      "name": "rifle_cartridge",
-      "duration": "20",
-      "factory_group": "manufactory",
-      "inputs": {
-        "beacon": 1,
-        "steel_pipe": 10,
-        "black_powder": 10,
-        "rubber": 10
-      },
-      "outputs": {
-        "rifle_cartridge": 5
-      }
-    },
-    {
-      "name": "high_speed_connector",
-      "duration": "16",
-      "factory_group": "manufactory",
-      "inputs": {
-        "quickwire": 56,
-        "cable": 10,
-        "circuit_board": 1
-      },
-      "outputs": {
-        "high_speed_connector": 1
-      }
-    },
-    {
-      "name": "encased_industrial_beam",
-      "duration": "10",
-      "factory_group": "assembler",
-      "inputs": {
-        "steel_beam": 4,
-        "concrete": 5
-      },
-      "outputs": {
-        "encased_industrial_beam": 1
-      }
-    },
-    {
-      "name": "concrete",
-      "duration": "4",
-      "factory_group": "construct",
-      "inputs": {
-        "limestone": 3
-      },
-      "outputs": {
-        "concrete": 1
-      }
-    },
-    {
-      "name": "quartz_crystal",
-      "duration": "8",
-      "factory_group": "construct",
-      "inputs": {
-        "raw_quartz": 5
-      },
-      "outputs": {
-        "quartz_crystal": 3
-      }
-    },
-    {
-      "name": "fabric",
-      "duration": "4",
-      "factory_group": "assembler",
-      "inputs": {
-        "mycelia": 1,
-        "biomass": 5
-      },
-      "outputs": {
-        "fabric": 1
-      }
-    },
-    {
-      "name": "black_powder",
-      "duration": "8",
-      "factory_group": "assember",
-      "inputs": {
-        "coal": 1,
-        "sulfur": 2
-      },
-      "outputs": {
-        "black_powder": 1
-      }
-    },
-    {
-      "name": "circuit_board",
-      "duration": "8",
-      "factory_group": "assembler",
-      "inputs": {
-        "copper_sheet": 2,
-        "plastic": 4
-      },
-      "outputs": {
-        "circuit_board": 1
-      }
-    },
-    {
-      "name": "motor",
-      "duration": "12",
-      "factory_group": "assembler",
-      "inputs": {
-        "rotor": 2,
-        "stator": 2
-      },
-      "outputs": {
-        "motor": 1
-      }
-    },
-    {
-      "name": "heavy_modular_frame_alternate",
-      "duration": "64",
-      "factory_group": "manufacturer",
-      "inputs": {
-        "modular_frame": 8,
-        "encased_industrial_beam": 10,
-        "steel_pipe": 36,
-        "concrete": 22
-      },
-      "outputs": {
-        "heavy_modular_frame": 3
-      }
-    },
-    {
-      "name": "fuel",
-      "duration": "6",
-      "factory_group": "refinery",
-      "inputs": {
-        "crude_oil": 6
-      },
-      "outputs": {
-        "fuel": 4,
-        "polymer_resin": 3
-      }
-    },
-    {
-      "name": "screw_alternate",
-      "duration": "24",
-      "factory_group": "construct",
-      "inputs": {
-        "iron_ingot": 5
-      },
-      "outputs": {
-        "screw": 20
+        "power": 30
       }
     },
     {
@@ -1033,112 +977,11 @@
       }
     },
     {
-      "name": "power_petroleum_coke",
-      "duration": "2.4",
-      "factory_group": "coal_generator",
-      "inputs": {
-        "petroleum_coke": 1,
-        "water": 0.75
-      },
-      "outputs": {
-        "power": 75
-      }
-    },
-    {
-      "name": "water",
-      "duration": "1",
-      "factory_group": "pump",
-      "inputs": {},
-      "outputs": {
-        "water": 2
-      }
-    },
-    {
-      "name": "circuit_board_alternate",
-      "duration": "48",
-      "factory_group": "assembler",
-      "inputs": {
-        "plastic": 10,
-        "quickwire": 30
-      },
-      "outputs": {
-        "circuit_board": 7
-      }
-    },
-    {
-      "name": "caterium_ingot_alternate",
-      "duration": "5",
-      "factory_group": "refinery",
-      "inputs": {
-        "caterium_ore": 2,
-        "water": 2
-      },
-      "outputs": {
-        "caterium_ingot": 1
-      }
-    },
-    {
-      "name": "heavy_oil_residue_alternate",
-      "duration": "6",
-      "factory_group": "refinery",
-      "inputs": {
-        "crude_oil": 3
-      },
-      "outputs": {
-        "heavy_oil_residue": 4,
-        "polymer_resin": 2
-      }
-    },
-    {
-      "name": "power_leaves",
+      "name": "power_fabric",
       "duration": "0.5",
       "factory_group": "biomass_burner",
       "inputs": {
-        "leaves": 1
-      },
-      "outputs": {
-        "power": 30
-      }
-    },
-    {
-      "name": "power_wood",
-      "duration": "3.33333333",
-      "factory_group": "biomass_burner",
-      "inputs": {
-        "wood": 1
-      },
-      "outputs": {
-        "power": 30
-      }
-    },
-    {
-      "name": "power_mycelia",
-      "duration": "0.666666666667",
-      "factory_group": "biomass_burner",
-      "inputs": {
-        "mycelia": 1
-      },
-      "outputs": {
-        "power": 30
-      }
-    },
-    {
-      "name": "power_alien_carapace",
-      "duration": "8.333333333333",
-      "factory_group": "biomass_burner",
-      "inputs": {
-        "alien_carapace": 1
-      },
-      "outputs": {
-        "power": 30
-      }
-    },
-    {
-      "name": "power_alien_organs",
-      "duration": "8.333333333333",
-      "factory_group": "biomass_burner",
-      "inputs": {
-        "alien_organs": 1
+        "fabric": 1
       },
       "outputs": {
         "power": 30
@@ -1156,33 +999,22 @@
       }
     },
     {
-      "name": "power_fabric",
+      "name": "power_leaves",
       "duration": "0.5",
       "factory_group": "biomass_burner",
       "inputs": {
-        "fabric": 1
+        "leaves": 1
       },
       "outputs": {
         "power": 30
       }
     },
     {
-      "name": "power_biomass",
-      "duration": "6",
+      "name": "power_mycelia",
+      "duration": "0.666666666667",
       "factory_group": "biomass_burner",
       "inputs": {
-        "biomass": 1
-      },
-      "outputs": {
-        "power": 30
-      }
-    },
-    {
-      "name": "power_solid_biofuel",
-      "duration": "15",
-      "factory_group": "biomass_burner",
-      "inputs": {
-        "solid_biofuel": 1
+        "mycelia": 1
       },
       "outputs": {
         "power": 30
@@ -1200,15 +1032,268 @@
       }
     },
     {
-      "name": "compacted_coal",
+      "name": "power_petroleum_coke",
+      "duration": "2.4",
+      "factory_group": "coal_generator",
+      "inputs": {
+        "petroleum_coke": 1,
+        "water": 0.75
+      },
+      "outputs": {
+        "power": 75
+      }
+    },
+    {
+      "name": "power_solid_biofuel",
+      "duration": "15",
+      "factory_group": "biomass_burner",
+      "inputs": {
+        "solid_biofuel": 1
+      },
+      "outputs": {
+        "power": 30
+      }
+    },
+    {
+      "name": "power_wood",
+      "duration": "3.33333333",
+      "factory_group": "biomass_burner",
+      "inputs": {
+        "wood": 1
+      },
+      "outputs": {
+        "power": 30
+      }
+    },
+    {
+      "name": "quartz_crystal",
+      "duration": "8",
+      "factory_group": "construct",
+      "inputs": {
+        "raw_quartz": 5
+      },
+      "outputs": {
+        "quartz_crystal": 3
+      }
+    },
+    {
+      "name": "quickwire",
+      "duration": "5",
+      "factory_group": "construct",
+      "inputs": {
+        "caterium_ingot": 1
+      },
+      "outputs": {
+        "quickwire": 5
+      }
+    },
+    {
+      "name": "reinforced_iron_plate",
       "duration": "12",
       "factory_group": "assembler",
       "inputs": {
-        "coal": 5,
-        "sulfur": 5
+        "iron_plate": 6,
+        "screw": 12
       },
       "outputs": {
-        "compacted_coal": 5
+        "reinforced_iron_plate": 1
+      }
+    },
+    {
+      "name": "rifle_cartridge",
+      "duration": "20",
+      "factory_group": "manufactory",
+      "inputs": {
+        "beacon": 1,
+        "steel_pipe": 10,
+        "black_powder": 10,
+        "rubber": 10
+      },
+      "outputs": {
+        "rifle_cartridge": 5
+      }
+    },
+    {
+      "name": "rotor",
+      "duration": "15",
+      "factory_group": "assembler",
+      "inputs": {
+        "iron_rod": 5,
+        "screw": 25
+      },
+      "outputs": {
+        "rotor": 1
+      }
+    },
+    {
+      "name": "rotor_alternate",
+      "duration": "16",
+      "factory_group": "assembler",
+      "inputs": {
+        "copper_sheet": 6,
+        "screw": 52
+      },
+      "outputs": {
+        "rotor": 3
+      }
+    },
+    {
+      "name": "rubber_crude",
+      "duration": "6",
+      "factory_group": "refinery",
+      "inputs": {
+        "crude_oil": 3
+      },
+      "outputs": {
+        "rubber": 2,
+        "heavy_oil_residue": 2
+      }
+    },
+    {
+      "name": "rubber_residual",
+      "duration": "6",
+      "factory_group": "refinery",
+      "inputs": {
+        "polymer_resin": 4,
+        "water": 4
+      },
+      "outputs": {
+        "rubber": 2
+      }
+    },
+    {
+      "name": "screw",
+      "duration": "6",
+      "factory_group": "construct",
+      "inputs": {
+        "iron_rod": 1
+      },
+      "outputs": {
+        "screw": 4
+      }
+    },
+    {
+      "name": "screw_alternate",
+      "duration": "24",
+      "factory_group": "construct",
+      "inputs": {
+        "iron_ingot": 5
+      },
+      "outputs": {
+        "screw": 20
+      }
+    },
+    {
+      "name": "smart_plating",
+      "duration": "30",
+      "factory_group": "assembler",
+      "inputs": {
+        "reinforced_iron_plate": 1,
+        "rotor": 1
+      },
+      "outputs": {
+        "smart_plating": 1
+      }
+    },
+    {
+      "name": "solid_biofuel",
+      "duration": "4",
+      "factory_group": "construct",
+      "inputs": {
+        "biomass": 8
+      },
+      "outputs": {
+        "solid_biofuel": 4
+      }
+    },
+    {
+      "name": "stator",
+      "duration": "12",
+      "factory_group": "assembler",
+      "inputs": {
+        "steel_pipe": 3,
+        "wire": 8
+      },
+      "outputs": {
+        "stator": 1
+      }
+    },
+    {
+      "name": "steel_beam",
+      "duration": "4",
+      "factory_group": "construct",
+      "inputs": {
+        "steel_ingot": 4
+      },
+      "outputs": {
+        "steel_beam": 1
+      }
+    },
+    {
+      "name": "steel_ingot",
+      "duration": "4",
+      "factory_group": "foundry",
+      "inputs": {
+        "iron_ore": 3,
+        "coal": 3
+      },
+      "outputs": {
+        "steel_ingot": 3
+      }
+    },
+    {
+      "name": "steel_ingot_alternate",
+      "duration": "3",
+      "factory_group": "foundry",
+      "inputs": {
+        "iron_ingot": 2,
+        "coal": 2
+      },
+      "outputs": {
+        "steel_ingot": 3
+      }
+    },
+    {
+      "name": "steel_pipe",
+      "duration": "6",
+      "factory_group": "construct",
+      "inputs": {
+        "steel_ingot": 3
+      },
+      "outputs": {
+        "steel_pipe": 2
+      }
+    },
+    {
+      "name": "versatile_framework",
+      "duration": "24",
+      "factory_group": "assembler",
+      "inputs": {
+        "modular_frame": 1,
+        "steel_beam": 12
+      },
+      "outputs": {
+        "versatile_framework": 2
+      }
+    },
+    {
+      "name": "water",
+      "duration": "1",
+      "factory_group": "pump",
+      "inputs": {},
+      "outputs": {
+        "water": 2
+      }
+    },
+    {
+      "name": "wire",
+      "duration": "4",
+      "factory_group": "construct",
+      "inputs": {
+        "copper_ingot": 1
+      },
+      "outputs": {
+        "wire": 2
       }
     }
   ],
