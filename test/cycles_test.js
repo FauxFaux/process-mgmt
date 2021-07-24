@@ -143,6 +143,7 @@ describe('Cycle discovery', function() {
                 assert.strictEqual(true, chain.processes.some(e => e.id === 'D'));
                 assert.strictEqual(10, chain.process_counts['D']);
                 assert.strictEqual(20, chain.materials.total_positive(data.items['c']).quantity);
+                assert.strictEqual(10, chain.materials.total_positive(data.items['f']).quantity);
                 // console.log(chain.to_graphviz());
             });
         });
@@ -189,13 +190,9 @@ describe('Cycle discovery', function() {
                         return options[0];
                     }, []);
 
-                chain = new RateChain(chain); // hides proxy processes.
+                chain = new RateChain(chain);
 
-                chain = chain.update(new Stack(data.items['f'], 10), [], (item_id, options) => {
-                        let proxy = options.find(e => e.proxy_process);
-                        if (proxy) return proxy;
-                        return options[0];
-                    });
+                chain = chain.update(new Stack(data.items['f'], 10), []);
 
                 chain = chain.expand_proxies();
                 assert.strictEqual(true, chain.processes.every(e => e.id !== 'C')); // proc 'C' should not be included as the proxy should be used instead.
@@ -203,6 +200,7 @@ describe('Cycle discovery', function() {
                 assert.strictEqual(true, chain.processes.some(e => e.id === 'E'));
                 assert.strictEqual(10, chain.process_counts['D']);
                 assert.strictEqual(20, chain.materials.total_positive(data.items['c']).quantity);
+                assert.strictEqual(10, chain.materials.total_positive(data.items['f']).quantity);
                 console.log(chain.to_graphviz());
             });
         });

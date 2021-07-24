@@ -300,7 +300,7 @@ class RateChain extends ProcessChain {
         this.processes.filter(p => p.proxy_process)
             .forEach(proxy_proc => {
                 let replacements = proxy_proc.cycle;
-                this._disable(proxy_proc.id);
+                this._disable([proxy_proc.id]);
                 this._enable(replacements);
                 replacements.forEach(repl => {
                     this.process_counts[repl.id] = this.process_counts[proxy_proc.id];
