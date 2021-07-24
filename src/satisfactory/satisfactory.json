@@ -395,6 +395,36 @@
       "i18n": {
         "en": "Wood"
       }
+    },
+    {
+      "id": "alumina_solution",
+      "i18n": {
+        "en": "Alumina Solution"
+      }
+    },
+    {
+      "id": "bauxite",
+      "i18n": {
+        "en": "Bauxite"
+      }
+    },
+    {
+      "id": "silica",
+      "i18n": {
+        "en": "Silica"
+      }
+    },
+    {
+      "id": "aluminium_casing",
+      "i18n": {
+        "en": "Aluminium Casing"
+      }
+    },
+    {
+      "id": "aluminium_scrap",
+      "i18n": {
+        "en": "Aluminium Scrap"
+      }
     }
   ],
   "processes": [
