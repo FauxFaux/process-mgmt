@@ -13,22 +13,20 @@ class RateProcess extends Process {
             p_.factory_group
         );
         this.factory_type = factory_type;
+        this.rate_process = true;
     }
 
-    process_count_for_rate(input_stack) {
-        let output_stack = this.outputs.find(o => o.item.id === input_stack.item.id);
-        return input_stack.quantity / output_stack.quantity;
-    }
 }
 
 class RateChain extends ProcessChain {
     /**
      *
      * @param {ProcessChain} chain Existing ProcessChain
-     * @param {function} factory_type_cb `fn(process, factory_group): factory` Select a factory for the given process
+     * @param {function} factory_type_cb `fn(process, factory_group): factory` Select a factory for the given process. Callback returns `null` for a default
      */
-    constructor(chain, factory_type_cb) {
+    constructor(chain, factory_type_cb = () => null) {
         super(chain.processes.map(p => {
+            if (p.rate_process) return p;
             let factory_configured = factory_type_cb(p);
             let factory = (factory_configured ? factory_configured : new Factory('__generated__', 'default', -1));
             return new RateProcess(p, factory);
@@ -42,7 +40,7 @@ class RateChain extends ProcessChain {
     // 'imported_materials' are materials that are
     // produced elsewhere and can be transported
     // to this part of the process.
-    update(stack, imported_materials) {
+    update(stack, imported_materials, process_selector) {
         let materials = new StackSet();
         let process_counts = {};
 
@@ -50,7 +48,7 @@ class RateChain extends ProcessChain {
         while(queue.length > 0) {
             let current = queue.pop();
             if (this.processes_by_output[current.item.id]) {
-                let process = this.processes_by_output[current.item.id][0]; // XXX 'pick the first'
+                let process = this._select_process(current.item.id, process_selector);
                 let process_count = process.process_count_for_rate(current);
                 if (!process_counts[process.id]) { process_counts[process.id] = 0; }
                 process_counts[process.id] += process_count;
@@ -76,6 +74,7 @@ class RateChain extends ProcessChain {
         }
         this.materials = materials;
         this.process_counts = process_counts;
+        return this;
     }
 
     // target is to produce stack
@@ -295,6 +294,28 @@ class RateChain extends ProcessChain {
 
         this.materials = materials;
         this.process_counts = process_counts;
+    }
+
+    expand_proxies() {
+        this.processes.filter(p => p.proxy_process)
+            .forEach(proxy_proc => {
+                let replacements = proxy_proc.cycle;
+                this._disable(proxy_proc.id);
+                this._enable(replacements);
+                replacements.forEach(repl => {
+                    this.process_counts[repl.id] = this.process_counts[proxy_proc.id];
+                });
+                delete this.process_counts[proxy_proc.id];
+            });
+        this._rebuild();
+        let materials = new StackSet();
+        this.processes.forEach(proc => {
+            let process_count = this.process_counts[proc.id];
+            proc.outputs.forEach(output => materials.add(output.mul(process_count)));
+            proc.inputs.forEach(input => materials.sub(input.mul(process_count)));
+        });
+        this.materials = materials;
+        return this;
     }
 
     _determine_item_node_colour(produce, consume) {

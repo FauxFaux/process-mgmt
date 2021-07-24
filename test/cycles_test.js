@@ -3,6 +3,7 @@ import { describe, it } from 'mocha';
 import * as assert from 'assert';
 import { Factory, FactoryGroup } from '../src/factory.js';
 import { Process, ProcessChain } from '../src/process.js';
+import { RateProcess, RateChain } from '../src/rate_process.js';
 import { ProxyProcess } from '../src/proxy_process.js';
 
 import {Data} from '../src/data.js'
@@ -128,7 +129,21 @@ describe('Cycle discovery', function() {
                 assert.strictEqual(result.outputs[0].quantity, 1);
             });
             it('replaces cycle processes with a proxy', function() {
-                assert.strictEqual(1, 2);
+                let chain = new RateChain(new ProcessChain(Object.values(data.processes)));
+                chain.replace(['D'], [new ProxyProcess([new RateProcess(data.processes['D'], data.factories['basic'])])]);
+                assert.strictEqual(true, chain.processes.every(e => e.id !== 'D'));
+                // console.log(chain.update(new Stack(data.items['f'], 10), []).to_graphviz());
+            });
+            it('expands proxy processes', function() {
+                let chain = new RateChain(new ProcessChain(Object.values(data.processes)));
+                chain = chain.replace(['D'], [new ProxyProcess([new RateProcess(data.processes['D'], data.factories['basic'])])])
+                    .update(new Stack(data.items['f'], 10), [])
+                    .expand_proxies()
+                    ;
+                assert.strictEqual(true, chain.processes.some(e => e.id === 'D'));
+                assert.strictEqual(10, chain.process_counts['D']);
+                assert.strictEqual(20, chain.materials.total_positive(data.items['c']).quantity);
+                // console.log(chain.to_graphviz());
             });
         });
         describe('data with two-element cycle; net producer', function() {
@@ -150,6 +165,45 @@ describe('Cycle discovery', function() {
                 assert.strictEqual(result.outputs.length, 1);
                 assert.strictEqual(result.outputs[0].item.id, 'c');
                 assert.strictEqual(result.outputs[0].quantity, 1);
+            });
+            it('replaces cycle processes with a proxy', function() {
+                let chain = new RateChain(new ProcessChain(Object.values(data.processes)));
+                chain.replace(['D', 'E'], [new ProxyProcess([
+                    new RateProcess(data.processes['D'], data.factories['basic']),
+                    new RateProcess(data.processes['E'], data.factories['basic'])
+                ])]);
+                assert.strictEqual(true, chain.processes.every(e => e.id !== 'D'));
+                assert.strictEqual(true, chain.processes.every(e => e.id !== 'E'));
+                // console.log(chain.update(new Stack(data.items['f'], 10), []).to_graphviz());
+            });
+            it('expands proxy processes', function() {
+                let chain = new RateChain(new ProcessChain(Object.values(data.processes)));
+                chain = chain.replace(['D', 'E'], [new ProxyProcess([
+                    new RateProcess(data.processes['D'], data.factories['basic']),
+                    new RateProcess(data.processes['E'], data.factories['basic'])
+                ])])
+
+                chain = chain.filter_for_output(new Stack(data.items['f'], 10), (item_id, options) => {
+                        let proxy = options.find(e => e.proxy_process);
+                        if (proxy) return proxy;
+                        return options[0];
+                    }, []);
+
+                chain = new RateChain(chain); // hides proxy processes.
+
+                chain = chain.update(new Stack(data.items['f'], 10), [], (item_id, options) => {
+                        let proxy = options.find(e => e.proxy_process);
+                        if (proxy) return proxy;
+                        return options[0];
+                    });
+
+                chain = chain.expand_proxies();
+                assert.strictEqual(true, chain.processes.every(e => e.id !== 'C')); // proc 'C' should not be included as the proxy should be used instead.
+                assert.strictEqual(true, chain.processes.some(e => e.id === 'D'));
+                assert.strictEqual(true, chain.processes.some(e => e.id === 'E'));
+                assert.strictEqual(10, chain.process_counts['D']);
+                assert.strictEqual(20, chain.materials.total_positive(data.items['c']).quantity);
+                console.log(chain.to_graphviz());
             });
         });
     });

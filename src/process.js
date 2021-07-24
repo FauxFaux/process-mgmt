@@ -15,6 +15,11 @@ class Process {
         return factory_count * this.outputs.find(e => e.item == item).quantity / this.duration;
     }
 
+    process_count_for_rate(input_stack) {
+        let output_stack = this.outputs.find(o => o.item.id === input_stack.item.id);
+        return input_stack.quantity / output_stack.quantity;
+    }
+
     count_for_rate(stack) {
         return stack.quantity / this.production_rate(stack.item);
     }
@@ -45,29 +50,43 @@ class ProcessChain {
      * @param arguments process_id, process_id, ...
      */
     disable() {
-        this.processes = this.processes.filter(p => {
-            return !(arguments.contains(p.id))
-        });
-        this.processes_by_output = this._build_processes_by_output();
-        this.processes_by_input = this._build_processes_by_input();
+        this._disable(arguments);
+        this._rebuild();
         return this;
     }
-    _disable(process_id) {
+    _disable(args) {
         this.processes = this.processes.filter(p => {
-            return p.id != process_id;
+            return !(args.includes(p.id));
         });
-        this.processes_by_output = this._build_processes_by_output();
-        this.processes_by_input = this._build_processes_by_input();
-        return this;
     }
 
     /**
      * @param arguments process, process, ...
      */
     enable() {
-        this.processes.push(...arguments);
+        this._enable(arguments);
+        this._rebuild();
+        return this;
+    }
+    _enable(args) {
+        this.processes.push(...args);
+
+    }
+
+    _rebuild() {
         this.processes_by_output = this._build_processes_by_output();
         this.processes_by_input = this._build_processes_by_input();
+    }
+
+    /**
+     *
+     * @param {Array[process_id, ...]} original
+     * @param {Array[Process, ...]} replacements
+     */
+    replace(original, replacements) {
+        this._disable(original);
+        this._enable(replacements);
+        this._rebuild();
         return this;
     }
 
@@ -91,6 +110,13 @@ class ProcessChain {
         }, {});
     }
 
+    /**
+     *
+     * @param {*} output_stack
+     * @param {callback} priorities fn(process_id, list_of_processes_that_can_be_used) => single_process
+     * @param {*} ignored
+     * @returns
+     */
     filter_for_output(output_stack, priorities, ignored = []) {
         let result = [];
         let visited = [];
@@ -102,17 +128,8 @@ class ProcessChain {
             if (ignored.includes(current)) {
                 continue;
             }
-            let processes_for_current = this.processes_by_output[current];
-            let process = null;
-            if (processes_for_current && processes_for_current.length > 1) {
-                if (!priorities) {
-                    throw new Error('No priority selector enabled');
-                }
-                process = priorities(current, processes_for_current);
-            }
-            if (processes_for_current && processes_for_current.length == 1) {
-                process = processes_for_current[0];
-            }
+            let process = this._select_process(current, priorities);
+
             if (process && !visited_processes.includes(process.id)) {
                 result.push(process);
                 visited_processes.push(process.id);
@@ -123,6 +140,19 @@ class ProcessChain {
             }
         }
         return new ProcessChain(result);
+    }
+
+    _select_process(item_id, callback) {
+        let processes_for_current = this.processes_by_output[item_id];
+        if (processes_for_current && processes_for_current.length > 1) {
+            if (!callback) {
+                throw new Error('No priority selector enabled');
+            }
+            return callback(item_id, processes_for_current);
+        }
+        if (processes_for_current && processes_for_current.length == 1) {
+            return processes_for_current[0];
+        }
     }
 
     require_output(stack) {

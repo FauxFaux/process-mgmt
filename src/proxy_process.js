@@ -1,5 +1,6 @@
 import { StackSet } from './stack.js';
 import { Process } from './process.js';
+import { Factory } from './factory.js';
 
 class ProxyProcess extends Process {
     /**
@@ -7,7 +8,6 @@ class ProxyProcess extends Process {
      * @param {Array[Process]} cycle
      */
     constructor(cycle) {
-        this.cycle = cycle;
         let inputs = new StackSet();
         let outputs = new StackSet();
 
@@ -37,6 +37,10 @@ class ProxyProcess extends Process {
             1, // rate-process is always 1
             'proxy'
         );
+        this.cycle = cycle;
+        this.factory_type = new Factory('__generated__', 'default', -1);
+        this.proxy_process = true;
+        this.rate_process = true;
     }
 }
 
