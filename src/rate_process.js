@@ -284,16 +284,17 @@ class RateChain extends ProcessChain {
             let multiplier = (total_p / total_n) ** 0.5; // p.m = c.m; p/c = m**2; m = (p/c)**0.5
             let processes_in = this.processes_by_input[item_to_balance.id]; // processes that take this type as an input
             let processes_out = this.processes_by_output[item_to_balance.id]; // processes that have this type as an output
-            processes_in.forEach(p => {
+            if (processes_in) { processes_in.forEach(p => {
                 process_counts[p.id] *= multiplier;
-            });
-            processes_out.forEach(p => {
+            });}
+            if (processes_out) { processes_out.forEach(p => {
                 process_counts[p.id] /= multiplier;
-            });
+            });}
         }
 
         this.materials = materials;
         this.process_counts = process_counts;
+        return this;
     }
 
     expand_proxies() {
@@ -308,6 +309,11 @@ class RateChain extends ProcessChain {
                 delete this.process_counts[proxy_proc.id];
             });
         this._rebuild();
+        this.rebuild_materials();
+        return this;
+    }
+
+    rebuild_materials() {
         let materials = new StackSet();
         this.processes.forEach(proc => {
             let process_count = this.process_counts[proc.id];
@@ -315,7 +321,6 @@ class RateChain extends ProcessChain {
             proc.inputs.forEach(input => materials.sub(input.mul(process_count)));
         });
         this.materials = materials;
-        return this;
     }
 
     _determine_item_node_colour(produce, consume) {

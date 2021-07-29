@@ -103,6 +103,60 @@ const command_rate = function(argv) {
     });
 }
 
+const command_manual_rate = function(argv) {
+    let config = JSON.parse(fs.readFileSync(argv.config, 'utf8')); // TODO enter callback hell.
+    import('./' + config.data +'/data.js').then(module => {
+        let data = module.data;
+        let p = new ProcessChain(Object.values(data.processes))
+            .filter_for_output(
+                new Stack(data.items[config.requirement.id], 1),
+                array_disambiguate(data, config),
+                [].concat(config.imported).concat(config.exported)
+            ).enable(...optional(config.enable, []).map(s => data.processes[s]));
+        p = new RateChain(p, (process) => {
+            let output = 1;
+            let speed = 1;
+            if (config.modifiers && config.modifiers[process.id] && config.modifiers[process.id].output) {
+                output = config.modifiers[process.id].output;
+            }
+            if (config.modifiers && config.modifiers[process.id] && config.modifiers[process.id].speed) {
+                speed = config.modifiers[process.id].speed;
+            }
+            return quickest_factory_for_factory_type(data, process.factory_group).modify(speed, output);
+        });
+        p.process_counts = config.process_counts;
+        p.rebuild_materials();
+        console.log(p.to_graphviz());
+    });
+}
+
+
+const command_update4 = function(argv) {
+    let config = JSON.parse(fs.readFileSync(argv.config, 'utf8')); // TODO enter callback hell.
+    import('./' + config.data +'/data.js').then(module => {
+        let data = module.data;
+        let p = new ProcessChain(Object.values(data.processes))
+            .filter_for_output(
+                new Stack(data.items[config.requirement.id], 1),
+                array_disambiguate(data, config),
+                [].concat(config.imported).concat(config.exported)
+            ).enable(...optional(config.enable, []).map(s => data.processes[s]));
+        p = new RateChain(p, (process) => {
+            let output = 1;
+            let speed = 1;
+            if (config.modifiers && config.modifiers[process.id] && config.modifiers[process.id].output) {
+                output = config.modifiers[process.id].output;
+            }
+            if (config.modifiers && config.modifiers[process.id] && config.modifiers[process.id].speed) {
+                speed = config.modifiers[process.id].speed;
+            }
+            return quickest_factory_for_factory_type(data, process.factory_group).modify(speed, output);
+        }).update4(null, config.imported, config.exported)
+        console.log(p.to_graphviz());
+    });
+}
+
+
 const argv = yargs(process.argv.slice(2))
     .command('all', 'generate a graph of all the processes', (yargs) => {
         yargs.option('data', {
@@ -111,20 +165,34 @@ const argv = yargs(process.argv.slice(2))
         })
         .demandOption(['data'])
     }, command_all)
-    .command('factory-graph', 'generate a graph filtered to producing a paricular item', (yargs) => {
+    .command('factory-graph', 'generate a graph filtered to producing a particular item', (yargs) => {
         yargs.option('config', {
             alias: 'c',
             type: 'string'
         })
         .demandOption(['config'])
     }, command_graph)
-    .command('factory-rate', 'generate a graph filtered to producing a paricular item; with factory counts.', (yargs) => {
+    .command('factory-rate', 'generate a graph filtered to producing a particular item; with factory counts.', (yargs) => {
         yargs.option('config', {
             alias: 'c',
             type: 'string'
         })
         .demandOption(['config'])
     }, command_rate)
+    .command('manual-rate', 'generate a graph filtered to producing a particular item; with factory counts provided by the configuration', (yargs) => {
+        yargs.option('config', {
+            alias: 'c',
+            type: 'string'
+        })
+        .demandOption(['config'])
+    }, command_manual_rate)
+    .command('update4', 'experimental', (yargs) => {
+        yargs.option('config', {
+            alias: 'c',
+            type: 'string'
+        })
+        .demandOption(['config'])
+    }, command_update4)
     .demandCommand()
     .help().alias('h', 'help')
     .argv;
