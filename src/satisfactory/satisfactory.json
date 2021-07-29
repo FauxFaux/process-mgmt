@@ -31,15 +31,39 @@
       }
     },
     {
+      "id": "alumina_solution",
+      "i18n": {
+        "en": "Alumina Solution"
+      }
+    },
+    {
+      "id": "aluminium_casing",
+      "i18n": {
+        "en": "Aluminium Casing"
+      }
+    },
+    {
       "id": "aluminium_ingot",
       "i18n": {
         "en": "Aluminium Ingot"
       }
     },
     {
+      "id": "aluminium_scrap",
+      "i18n": {
+        "en": "Aluminium Scrap"
+      }
+    },
+    {
       "id": "automated_wiring",
       "i18n": {
         "en": "Automated Wiring"
+      }
+    },
+    {
+      "id": "bauxite",
+      "i18n": {
+        "en": "Bauxite"
       }
     },
     {
@@ -295,6 +319,12 @@
       }
     },
     {
+      "id": "radio_control_unit",
+      "i18n": {
+        "en": "Radio Control Unit"
+      }
+    },
+    {
       "id": "raw_quartz",
       "i18n": {
         "en": "Raw Quartz"
@@ -328,6 +358,12 @@
       "id": "screw",
       "i18n": {
         "en": "Screw"
+      }
+    },
+    {
+      "id": "silica",
+      "i18n": {
+        "en": "Silica"
       }
     },
     {
@@ -394,36 +430,6 @@
       "id": "wood",
       "i18n": {
         "en": "Wood"
-      }
-    },
-    {
-      "id": "alumina_solution",
-      "i18n": {
-        "en": "Alumina Solution"
-      }
-    },
-    {
-      "id": "bauxite",
-      "i18n": {
-        "en": "Bauxite"
-      }
-    },
-    {
-      "id": "silica",
-      "i18n": {
-        "en": "Silica"
-      }
-    },
-    {
-      "id": "aluminium_casing",
-      "i18n": {
-        "en": "Aluminium Casing"
-      }
-    },
-    {
-      "id": "aluminium_scrap",
-      "i18n": {
-        "en": "Aluminium Scrap"
       }
     }
   ],
@@ -890,6 +896,18 @@
       }
     },
     {
+      "name": "modular_frame_alternate_2",
+      "duration": "60",
+      "factory_group": "assembler",
+      "inputs": {
+        "reinforced_iron_plate": 2,
+        "steel_pipe": 10
+      },
+      "outputs": {
+        "modular_frame": 3
+      }
+    },
+    {
       "name": "motor",
       "duration": "12",
       "factory_group": "assembler",
@@ -1118,6 +1136,19 @@
       }
     },
     {
+      "name": "radio_control_unit",
+      "duration": "48",
+      "factory_group": "manufactury",
+      "inputs": {
+        "aluminium_casing": 32,
+        "crystal_oscillator": 1,
+        "computer": 1
+      },
+      "outputs": {
+        "radio_control_unit": 2
+      }
+    },
+    {
       "name": "reinforced_iron_plate",
       "duration": "12",
       "factory_group": "assembler",
@@ -1127,6 +1158,18 @@
       },
       "outputs": {
         "reinforced_iron_plate": 1
+      }
+    },
+    {
+      "name": "reinforced_iron_plate_alternate",
+      "duration": "32",
+      "factory_group": "assembler",
+      "inputs": {
+        "iron_plate": 10,
+        "wire": 20
+      },
+      "outputs": {
+        "reinforced_iron_plate": 3
       }
     },
     {
@@ -1211,6 +1254,17 @@
       },
       "outputs": {
         "screw": 20
+      }
+    },
+    {
+      "name": "silica",
+      "duration": "8",
+      "factory_group": "construct",
+      "inputs": {
+        "raw_quartz": 3
+      },
+      "outputs": {
+        "silica": 5
       }
     },
     {
