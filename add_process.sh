@@ -34,6 +34,7 @@ function read_io() {
             return 0
         fi
         if [ "$i_id" != "$(test_item_exists "$i_id")" ]; then
+            echo "Adding missing item: $i_id" >&2
             $SCRIPT_DIR/add_item.sh "$FILE_TMP_BASE" "$i_id"
         fi
         i_q="$(read_var "-- quantity --")"
