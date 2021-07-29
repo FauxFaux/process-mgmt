@@ -33,8 +33,12 @@ const check_add = function(item, fn) {
 const convert_ingredient = function(ingredient, recipe) {
     const ingredient_name = fix_identifier(ingredient.name);
     let amount = ingredient.amount;
+    let probability = ingredient.probability;
     if ((typeof amount) === "undefined") {
         amount = (ingredient.amount_min + ingredient.amount_max) / 2
+    }
+    if (probability) {
+        amount = amount * probability;
     }
     return check_add(recipe, () => new Stack(data.items[ingredient_name], amount));
 }
