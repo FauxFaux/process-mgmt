@@ -130,7 +130,6 @@ const command_manual_rate = function(argv) {
     });
 }
 
-
 const command_update4 = function(argv) {
     let config = JSON.parse(fs.readFileSync(argv.config, 'utf8')); // TODO enter callback hell.
     import('./' + config.data +'/data.js').then(module => {
@@ -155,7 +154,6 @@ const command_update4 = function(argv) {
         console.log(p.to_graphviz());
     });
 }
-
 
 const argv = yargs(process.argv.slice(2))
     .command('all', 'generate a graph of all the processes', (yargs) => {
