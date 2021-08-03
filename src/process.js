@@ -243,6 +243,17 @@ class ProcessChain {
         }
     }
 
+    accept(visitor) {
+        visitor.check(this)
+        this.all_items().forEach(e => visitor.visit_item(e, this));
+        this.processes.forEach(p => {
+            visitor.visit_process(p, this);
+            p.inputs.forEach((i, ix) => visitor.visit_item_process_edge(i, p, this, ix));
+            p.outputs.forEach((o, ox) => visitor.visit_process_item_edge(p, o, this, ox));
+        });
+        return visitor.build();
+    }
+
     to_graphviz() {
         let result = [];
         result.push('digraph {');
