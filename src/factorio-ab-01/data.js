@@ -61,7 +61,17 @@ raw.recipes.forEach(recipe => {
         }
     });
     let inputs = recipe.ingredients.map(ing => convert_ingredient(ing, recipe));
-    let outputs = recipe.products.map(ing => convert_ingredient(ing, recipe));
+    let outputs = recipe.products
+        .map(ing => convert_ingredient(ing, recipe))
+        .reduce((acc, cur) => { // collect outputs of processes that output the same type multiple times.
+            if (acc[cur.item.id]) {
+                acc[cur.item.id] = acc[cur.item.id].add(cur);
+            } else {
+                acc[cur.item.id] = cur;
+            }
+            return acc;
+        }, {});
+    outputs = Object.values(outputs);
     const category = fix_identifier(recipe.category);
     if (!data.factory_groups[category]) {
         check_add(recipe, () => data.add_factory_group(new FactoryGroup(category)));
