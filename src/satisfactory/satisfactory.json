@@ -193,6 +193,12 @@
       }
     },
     {
+      "id": "fused_modular_frame",
+      "i18n": {
+        "en": "Fused Modular Frame"
+      }
+    },
+    {
       "id": "gas_filter",
       "i18n": {
         "en": "Gas Filter"
@@ -274,6 +280,12 @@
       "id": "mycelia",
       "i18n": {
         "en": "Mycelia"
+      }
+    },
+    {
+      "id": "nitrogen",
+      "i18n": {
+        "en": "Nitrogen"
       }
     },
     {
@@ -757,6 +769,19 @@
       "outputs": {
         "fuel": 4,
         "polymer_resin": 3
+      }
+    },
+    {
+      "name": "fused_modular_frame",
+      "duration": "40",
+      "factory_group": "blender",
+      "inputs": {
+        "heavy_modular_frame": 1,
+        "aluminium_casing": 50,
+        "nitrogen": 25
+      },
+      "outputs": {
+        "fused_modular_frame": 1
       }
     },
     {
