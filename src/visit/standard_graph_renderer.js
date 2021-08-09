@@ -10,7 +10,9 @@ class StandardGraphRenderer extends ProcessChainVisitor {
         ];
     }
 
-    check(_chain) {}
+    check(chain) {
+        return super.check(chain);
+    }
 
     visit_item(item, _chain) {
         this.out.push('  ' + item.id + ' [shape="oval" label="' + item.name + '"]')

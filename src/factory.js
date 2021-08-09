@@ -17,7 +17,7 @@ class FactoryGroup {
 
 class Factory {
     constructor(id, name, groups, duration_modifier = 1, output_modifier = 1) {
-        check('id', id, 'name', name, 'group', groups, 'duration_modifier', duration_modifier);
+        check('id', id, 'name', name, 'groups', groups, 'duration_modifier', duration_modifier, 'output_modifier', output_modifier);
         this.id = id;
         this.name = name;
         this.groups = groups;

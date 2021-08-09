@@ -1,7 +1,7 @@
 import { ProcessChain, RateChain, Stack } from './structures.js';
 import * as fs from 'fs'
 import yargs from 'yargs';
-import { StandardGraphRenderer } from './standard_graph_renderer.js';
+import { StandardGraphRenderer } from './visit/standard_graph_renderer.js';
 
 const array_disambiguate = function(data, config) {
     return function(requirement, options) {

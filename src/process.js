@@ -17,11 +17,7 @@ class Process {
 
     process_count_for_rate(input_stack) {
         let output_stack = this.outputs.find(o => o.item.id === input_stack.item.id);
-        return input_stack.quantity / output_stack.quantity;
-    }
-
-    count_for_rate(stack) {
-        return stack.quantity / this.production_rate(stack.item);
+        return this.duration * input_stack.quantity / output_stack.quantity;
     }
 
     requirements_for_count(factory_count) {
@@ -244,13 +240,16 @@ class ProcessChain {
     }
 
     accept(visitor) {
-        visitor.check(this)
-        this.all_items().forEach(e => visitor.visit_item(e, this));
-        this.processes.forEach(p => {
-            visitor.visit_process(p, this);
-            p.inputs.forEach((i, ix) => visitor.visit_item_process_edge(i, p, this, ix));
-            p.outputs.forEach((o, ox) => visitor.visit_process_item_edge(p, o, this, ox));
-        });
+        let options = visitor.check(this);
+        if (options.init) visitor.init(this);
+        if (options.visit_item) this.all_items().forEach(e => visitor.visit_item(e, this));
+        if (options.visit_process || options.visit_item_process_edge || options.visit_process_item_edge) {
+            this.processes.forEach(p => {
+                if (options.visit_process) visitor.visit_process(p, this);
+                if (options.visit_item_process_edge) p.inputs.forEach((i, ix) => visitor.visit_item_process_edge(i, p, this, ix));
+                if (options.visit_process_item_edge) p.outputs.forEach((o, ox) => visitor.visit_process_item_edge(p, o, this, ox));
+            });
+        }
         return visitor.build();
     }
 
