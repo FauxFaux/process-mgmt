@@ -9,7 +9,7 @@ class RateProcess extends Process {
             p_.id,
             p_.inputs.map(input => input.div(p_.duration)),
             p_.outputs.map(output => output.div(p_.duration)),
-            p_.duration,
+            p_.duration/p_.duration,
             p_.factory_group
         );
         this.factory_type = factory_type;
