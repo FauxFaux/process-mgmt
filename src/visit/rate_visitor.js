@@ -3,7 +3,9 @@ import { Factory } from "../factory.js";
 import { ProcessChainVisitor } from "./process_chain_visitor.js"
 
 
-
+/**
+ * Output: ProcessChain
+ */
 class RateVisitor extends ProcessChainVisitor {
 
     constructor(factory_type_cb = () => null) {

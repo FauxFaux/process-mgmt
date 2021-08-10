@@ -2,6 +2,7 @@ import { ProcessChain, RateChain, Stack } from './structures.js';
 import * as fs from 'fs'
 import yargs from 'yargs';
 import { StandardGraphRenderer } from './visit/standard_graph_renderer.js';
+import { FilterForOutput } from './visit/filter_for_output_visitor.js';
 
 const array_disambiguate = function(data, config) {
     return function(requirement, options) {
@@ -157,16 +158,20 @@ const command_update4 = function(argv) {
 }
 
 const command_manual_visitor = function(argv) {
-    let config = JSON.parse(fs.readFileSync(argv.config, 'utf8')); // TODO enter callback hell.
-    import('./' + config.data +'/data.js').then(module => {
-        let data = module.data;
-        let p = new ProcessChain(Object.values(data.processes))
-            .filter_for_output(
-                new Stack(data.items[config.requirement.id], 1),
-                array_disambiguate(data, config),
-                [].concat(config.imported).concat(config.exported)
-            ).enable(...optional(config.enable, []).map(s => data.processes[s]));
-        console.log(p.accept(new StandardGraphRenderer()).join('\n'));
+    fs.readFile(argv.config, 'utf8', (err, str) => {
+        let config = JSON.parse(str);
+        import('./' + config.data +'/data.js').then(module => {
+            let data = module.data;
+            let g = new ProcessChain(Object.values(data.processes))
+                .accept(new FilterForOutput(
+                    data.items[config.requirement.id],
+                    array_disambiguate(data, config),
+                    [].concat(config.imported).concat(config.exported),
+                    ...optional(config.enable, []).map(s => data.processes[s])
+                    ))
+                .accept(new StandardGraphRenderer()).join('\n');
+            console.log(g);
+        });
     });
 }
 
