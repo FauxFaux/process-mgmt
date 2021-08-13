@@ -163,6 +163,12 @@
       }
     },
     {
+      "id": "electromagnetic_control_rod",
+      "i18n": {
+        "en": "Electromagnetic Control Rod"
+      }
+    },
+    {
       "id": "encased_industrial_beam",
       "i18n": {
         "en": "Encased Industrial Beam"
@@ -172,6 +178,12 @@
       "id": "encased_steel_beam",
       "i18n": {
         "en": "Encased Steel Beam"
+      }
+    },
+    {
+      "id": "encased_uranium_cell",
+      "i18n": {
+        "en": "Encased Uranium Cell"
       }
     },
     {
@@ -421,6 +433,24 @@
       }
     },
     {
+      "id": "sulfuric_acid",
+      "i18n": {
+        "en": "Sulfuric Acid"
+      }
+    },
+    {
+      "id": "uranium",
+      "i18n": {
+        "en": "Uranium"
+      }
+    },
+    {
+      "id": "uranium_fuel_rod",
+      "i18n": {
+        "en": "Uranium Fuel Rod"
+      }
+    },
+    {
       "id": "versatile_framework",
       "i18n": {
         "en": "Versatile Framework"
@@ -664,6 +694,18 @@
       }
     },
     {
+      "name": "circuit_board_alternate_2",
+      "duration": "12",
+      "factory_group": "assembler",
+      "inputs": {
+        "rubber": 6,
+        "petroleum_coke": 9
+      },
+      "outputs": {
+        "circuit_board": 1
+      }
+    },
+    {
       "name": "compacted_coal",
       "duration": "12",
       "factory_group": "assembler",
@@ -684,6 +726,19 @@
         "cable": 9,
         "plastic": 18,
         "screw": 52
+      },
+      "outputs": {
+        "computer": 1
+      }
+    },
+    {
+      "name": "computer_alternate",
+      "duration": "16",
+      "factory_group": "manufactory",
+      "inputs": {
+        "circuit_board": 7,
+        "quickwire": 28,
+        "rubber": 12
       },
       "outputs": {
         "computer": 1
@@ -712,6 +767,18 @@
       }
     },
     {
+      "name": "copper_ingot_pure",
+      "duration": "24",
+      "factory_group": "refinery",
+      "inputs": {
+        "copper_ore": 6,
+        "water": 4
+      },
+      "outputs": {
+        "copper_ingot": 15
+      }
+    },
+    {
       "name": "copper_sheet",
       "duration": "6",
       "factory_group": "construct",
@@ -720,6 +787,18 @@
       },
       "outputs": {
         "copper_sheet": 1
+      }
+    },
+    {
+      "name": "copper_sheet_alternate",
+      "duration": "8",
+      "factory_group": "refinery",
+      "inputs": {
+        "copper_ingot": 3,
+        "water": 3
+      },
+      "outputs": {
+        "copper_sheet": 3
       }
     },
     {
@@ -736,6 +815,18 @@
       }
     },
     {
+      "name": "electromagnetic_control_rod",
+      "duration": "30",
+      "factory_group": "assembler",
+      "inputs": {
+        "stator": 3,
+        "ai_limiter": 4
+      },
+      "outputs": {
+        "electromagnetic_control_rod": 2
+      }
+    },
+    {
       "name": "encased_industrial_beam",
       "duration": "10",
       "factory_group": "assembler",
@@ -745,6 +836,33 @@
       },
       "outputs": {
         "encased_industrial_beam": 1
+      }
+    },
+    {
+      "name": "encased_uranium_cell",
+      "duration": "12",
+      "factory_group": "blender",
+      "inputs": {
+        "uranium": 10,
+        "concrete": 3,
+        "sulfuric_acid": 8
+      },
+      "outputs": {
+        "encased_uranium_cell": 5,
+        "sulfuric_acid": 2
+      }
+    },
+    {
+      "name": "encased_uranium_cell_wo_loop",
+      "duration": "12",
+      "factory_group": "blender",
+      "inputs": {
+        "uranium": 10,
+        "concrete": 3,
+        "sulfuric_acid": 6
+      },
+      "outputs": {
+        "encased_uranium_cell": 5
       }
     },
     {
@@ -1371,6 +1489,31 @@
       },
       "outputs": {
         "steel_pipe": 2
+      }
+    },
+    {
+      "name": "sulfic_acid",
+      "duration": "6",
+      "factory_group": "refinery",
+      "inputs": {
+        "sulfur": 5,
+        "water": 5
+      },
+      "outputs": {
+        "sulfuric_acid": 5
+      }
+    },
+    {
+      "name": "uranium_fuel_rod",
+      "duration": "150",
+      "factory_group": "manufactory",
+      "inputs": {
+        "encased_uranium_cell": 50,
+        "encased_industrial_beam": 3,
+        "electromagnetic_control_rod": 5
+      },
+      "outputs": {
+        "uranium_fuel_rod": 1
       }
     },
     {
