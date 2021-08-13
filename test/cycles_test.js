@@ -201,7 +201,7 @@ describe('Cycle discovery', function() {
                 assert.strictEqual(10, chain.process_counts['D']);
                 assert.strictEqual(20, chain.materials.total_positive(data.items['c']).quantity);
                 assert.strictEqual(10, chain.materials.total_positive(data.items['f']).quantity);
-                console.log(chain.to_graphviz());
+                // console.log(chain.to_graphviz());
             });
         });
     });

@@ -167,7 +167,7 @@ const command_manual_visitor = function(argv) {
                     data.items[config.requirement.id],
                     array_disambiguate(data, config),
                     [].concat(config.imported).concat(config.exported),
-                    ...optional(config.enable, []).map(s => data.processes[s])
+                    // ...optional(config.enable, []).map(s => data.processes[s])
                     ))
                 .accept(new StandardGraphRenderer()).join('\n');
             console.log(g);
