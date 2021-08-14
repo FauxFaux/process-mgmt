@@ -78,8 +78,8 @@ const command_graph = function(argv) {
                     [].concat(config.imported).concat(config.exported),
                 )).accept(new EnableDisable(
                     data,
-                    config.enable,
-                    config.disable
+                    optional(config.enable, []),
+                    optional(config.disable, [])
                 ))
             console.log(p.to_graphviz());
         });
