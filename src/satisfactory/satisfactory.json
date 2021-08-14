@@ -980,6 +980,18 @@
       }
     },
     {
+      "name": "iron_ingot_alternate",
+      "duration": "6",
+      "factory_group": "foundry",
+      "inputs": {
+        "iron_ore": 2,
+        "copper_ore": 2
+      },
+      "outputs": {
+        "iron_ingot": 5
+      }
+    },
+    {
       "name": "iron_plate",
       "duration": "6",
       "factory_group": "construct",
