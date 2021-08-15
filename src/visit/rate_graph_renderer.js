@@ -42,7 +42,7 @@ class RateGraphRenderer extends ProcessChainVisitor {
             + ']');
     }
 
-    visit_process(process, _chain) {
+    visit_process(process, chain) {
         let process_count = chain.process_counts[process.id];
         let inputs = process.inputs.map((input, index) => {
             return '<i' + index + '> ' + input.item.name + ' (' + (Math.round(input.quantity * process_count * 100)/100) + ')';

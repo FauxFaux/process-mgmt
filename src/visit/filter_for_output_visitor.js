@@ -1,6 +1,7 @@
 import { ProcessChain } from "../../src/process.js";
 import { ProcessChainVisitor } from './process_chain_visitor.js';
 
+import { select_process } from "./process_selection.js";
 
 /**
  * Output: ProcessChain
@@ -32,7 +33,7 @@ class FilterForOutput extends ProcessChainVisitor {
             if (this.ignored.includes(current)) {
                 continue;
             }
-            let process = this._select_process(chain, current, this.priority_cb);
+            let process = select_process(chain, current, this.priority_cb);
 
             if (process && !visited_processes.includes(process.id)) {
                 result.push(process);
@@ -44,19 +45,6 @@ class FilterForOutput extends ProcessChainVisitor {
             }
         }
         this.allowed_processes = result;
-    }
-
-    _select_process(chain, item_id, callback) {
-        let processes_for_current = chain.processes_by_output[item_id];
-        if (processes_for_current && processes_for_current.length > 1) {
-            if (!callback) {
-                throw new Error('No priority selector enabled');
-            }
-            return callback(item_id, processes_for_current);
-        }
-        if (processes_for_current && processes_for_current.length == 1) {
-            return processes_for_current[0];
-        }
     }
 
     build() { return new ProcessChain(this.allowed_processes); }

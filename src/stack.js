@@ -54,7 +54,11 @@ class StackSet {
         }
     }
     total(item) {
-        return this.stacks[item.id].reduce((p, c) => p.add(c), new Stack(item, 0));
+        if (this.stacks[item.id]) {
+            return this.stacks[item.id].reduce((p, c) => p.add(c), new Stack(item, 0));
+        } else {
+            return new Stack(item, 0);
+        }
     }
 
     item_ids() {
