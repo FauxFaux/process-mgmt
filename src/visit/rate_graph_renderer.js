@@ -14,8 +14,9 @@ class RateGraphRenderer extends ProcessChainVisitor {
     }
 
     check(chain) {
-        if (!chain.process_counts) throw new Error("RateGraphRender requires `process_counts`")
-        if (!chain.materials) throw new Error("RateGraphRender requires `materials` (Can be calculated from `process_counts`)")
+        if (!chain.process_counts) throw new Error("`RateGraphRenderer` requires `process_counts` (Provided by `RateCalculator`)")
+        if (!chain.materials) throw new Error("`RateGraphRenderer` requires `materials` (Can be calculated from `process_counts`) (Provided by `RateCalculator`)")
+        if (!chain.processes[0].factory_type) throw new Error("`RateGraphRenderer` processes with assigned factory types (Provided by `RateVisitor`)");
         return {
             visit_item: true,
             visit_process: true,
@@ -67,7 +68,7 @@ class RateGraphRenderer extends ProcessChainVisitor {
         return 'process_' + process.id.replace(/[^_a-zA-Z0-9]/g, '');
     }
 
-    visit_item_process_edge(stack, process, _chain, index) {
+    visit_item_process_edge(stack, process, chain, index) {
         let process_count = chain.process_counts[process.id];
         let input_rate = process.inputs.find(i => i.item.id === stack.item.id);
         let rate = Math.round(input_rate.quantity * process_count * 100)/100;

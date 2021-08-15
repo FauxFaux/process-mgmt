@@ -8,7 +8,7 @@ import { ProcessChainVisitor } from "./process_chain_visitor.js"
  */
 class RateVisitor extends ProcessChainVisitor {
 
-    constructor(factory_type_cb = () => null) {
+    constructor(factory_type_cb = (_process) => null) {
         super();
         this.converted = [];
         this.factory_type_cb = factory_type_cb;
@@ -24,13 +24,15 @@ class RateVisitor extends ProcessChainVisitor {
         let factory_configured = this.factory_type_cb(process);
         let factory = (factory_configured ? factory_configured : new Factory('__generated__', 'default', []));
         let p = factory.update_process(process);
-        this.converted.push(new Process(
+        let result = new Process(
             p.id,
             p.inputs.map(input => input.div(p.duration)),
             p.outputs.map(output => output.div(p.duration)),
             p.duration/p.duration,
             p.factory_group
-        ));
+        );
+        result.factory_type = factory;
+        this.converted.push(result);
     }
 
     build() { return new ProcessChain(this.converted); }

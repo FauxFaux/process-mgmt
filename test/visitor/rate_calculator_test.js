@@ -56,6 +56,3 @@ describe('calculating for output rates', function() {
         });
     });
 });
-
-
-// stack, imported_materials, process_selector) {
