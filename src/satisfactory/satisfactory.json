@@ -439,6 +439,12 @@
       }
     },
     {
+      "id": "supercomputer",
+      "i18n": {
+        "en": "Supercomputer"
+      }
+    },
+    {
       "id": "uranium",
       "i18n": {
         "en": "Uranium"
@@ -1513,6 +1519,20 @@
       },
       "outputs": {
         "sulfuric_acid": 5
+      }
+    },
+    {
+      "name": "supercomputer",
+      "duration": "32",
+      "factory_group": "manufactury",
+      "inputs": {
+        "computer": 2,
+        "ai_limiter": 2,
+        "high_speed_connector": 3,
+        "plastic": 28
+      },
+      "outputs": {
+        "supercomputer": 1
       }
     },
     {
