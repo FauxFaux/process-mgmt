@@ -31,6 +31,7 @@ class StandardGraphRenderer extends ProcessChainVisitor {
         this.out.push('  ' + this._node_id(process) + ' [' +
             'shape="record" ' +
             'label="{ {' + inputs + '} ' +
+                '| ' + process.id + ' ' +
                 '| ' + process.factory_group.name + ' ' +
                 '| ' + process.duration +
                 '| {' + outputs + '} }"' +

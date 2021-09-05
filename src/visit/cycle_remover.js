@@ -1,8 +1,7 @@
+import { ProcessChainVisitor } from "./process_chain_visitor.js";
 
 
-
-
-class CycleRemover {
+class CycleRemover extends ProcessChainVisitor {
 
     check(chain) {
         return {
