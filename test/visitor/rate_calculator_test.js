@@ -24,7 +24,6 @@ describe('calculating for output rates', function() {
         it('calculates process counts', function() {
             let pc = new ProcessChain(Object.values(data.processes));
             let result = pc.accept(new RateCalculator(new Stack(data.items['f'], 1), [], p => null));
-            console.log(result.accept(new StandardGraphRenderer()).join('\n'))
             assert.strictEqual(result.process_counts['F'], 1);
             assert.strictEqual(result.process_counts['E'], 1);
             assert.strictEqual(result.process_counts['D'], 1);
