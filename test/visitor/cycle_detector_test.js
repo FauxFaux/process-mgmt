@@ -51,7 +51,7 @@ describe('Cycle Detection', function() {
             let cycles = pc.accept(new CycleDetector());
             assert.strictEqual(cycles.length, 1);
         });
-        it('detected cycle is D, E', function() {
+        it('detected cycle is E, F', function() {
             let pc = new ProcessChain(Object.values(data.processes));
             let cycles = pc.accept(new CycleDetector());
             assert.deepStrictEqual(cycles, [['E', 'F']]);
@@ -75,12 +75,12 @@ describe('Cycle Detection', function() {
         it('a detected cycle is D', function() {
             let pc = new ProcessChain(Object.values(data.processes));
             let cycles = pc.accept(new CycleDetector());
-            assert.deepStrictEqual(cycles[0], ['D']);
+            assert.deepStrictEqual(cycles[0], ['F']);
         });
         it('a detected cycle is F', function() {
             let pc = new ProcessChain(Object.values(data.processes));
             let cycles = pc.accept(new CycleDetector());
-            assert.deepStrictEqual(cycles[1], ['F']);
+            assert.deepStrictEqual(cycles[1], ['D']);
         });
     });
     describe('multiple, single-process loops, with reuse of inputs', function() {

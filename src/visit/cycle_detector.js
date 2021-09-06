@@ -18,25 +18,37 @@ class CycleDetector extends ProcessChainVisitor {
         this.cycles = [];
     }
 
-    check(chain) {
+    check(_chain) {
         return {
             init: true,
-            visit_item: true,
-            visit_process: true,
-            visit_item_process_edge: true,
-            visit_process_item_edge: true,
         }
     }
-    init(chain) {
-        let tree = {}; // child->parent relationships
-        let visited_processes = [];
 
-        let stack = [chain.processes[0]];
+    _normalise_cycle(cycle) {
+        let smallest_idx = cycle.reduce((prev, _cur, idx, arr) => {
+            if (prev == -1) {
+                return idx;
+            } else {
+                if (arr[prev] < arr[idx]) {
+                    return prev;
+                } else {
+                    return idx;
+                }
+            }
+        }, -1);
+
+        let a = cycle.slice(0, smallest_idx);
+        let b = cycle.slice(smallest_idx);
+        return b.concat(a);
+    }
+
+    init(chain) {
+        let cycles = [];
+        let stack = chain.processes.map(p => [p]);
+
         while (stack.length > 0) {
             let current = stack.pop();
-            visited_processes.push(current.id);
-
-            current.outputs.flatMap(output => {
+            current[current.length-1].outputs.flatMap(output => {
                 let r = chain.processes_by_input[output.item.id];
                 if (r && r.length > 0) {
                     return r;
@@ -44,27 +56,23 @@ class CycleDetector extends ProcessChainVisitor {
                     return [];
                 }
             }).forEach(p => {
-                if (visited_processes.includes(p.id)) {
-                    let loop = [];
-                    let next = current.id;
-                    while (true) {
-                        loop.push(next);
-                        if (next == p.id) break;
-                        next = tree[next];
-                        if (!next) break;
-                    }
-                    this.cycles.push(loop.reverse());
+                if (!current.includes(p)) {
+                    stack.push( current.concat( [p] ) );
                 } else {
-                    tree[p.id] = current.id;
-                    stack.push(p);
+                    let idx = current.indexOf(p);
+                    let cycle = this._normalise_cycle(current.slice(idx));
+                    let cycle_exists = cycles.findIndex(c => {
+                        if (c.length != cycle.length) return false;
+                        return c.every((elem, idx) => elem == cycle[idx]);
+                    });
+                    if (cycle_exists === -1) {
+                        cycles.push(cycle);
+                    }
                 }
             });
         }
+        this.cycles = cycles.map(cycle => cycle.map(p => p.id));
     }
-    visit_item(item, chain) { }
-    visit_process(process, chain) { }
-    visit_item_process_edge(item, process, chain, index) { }
-    visit_process_item_edge(process, item, chain, index) { }
     build() { return this.cycles; }
 }
 
