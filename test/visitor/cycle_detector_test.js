@@ -12,10 +12,6 @@ import { RateGraphRenderer } from '../../src/visit/rate_graph_renderer.js';
 import { StandardGraphRenderer } from '../../src/visit/standard_graph_renderer.js';
 import { CycleDetector } from '../../src/visit/cycle_detector.js';
 
-const conform_cycle = function(cycle) {
-    // ? find the lowest alphabetical order item, re-order so that it is first.
-    return cycle;
-};
 
 describe('Cycle Detection', function() {
     describe('single single-process loop, net producer', function() {
