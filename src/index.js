@@ -7,6 +7,7 @@ import { EnableDisable } from './visit/enable_disable_visitor.js';
 import { RateCalculator } from './visit/rate_calculator.js';
 import { RateGraphRenderer } from './visit/rate_graph_renderer.js';
 import { RateVisitor } from './visit/rate_visitor.js';
+import { Factory } from './factory.js';
 
 const array_disambiguate = function(data, config) {
     return function(requirement, options) {
@@ -133,11 +134,15 @@ const command_rate = function(argv) {
                     [].concat(config.get_imported()).concat(config.get_exported())
                     ))
                 .accept(new RateVisitor(process => {
-                    return quickest_factory_for_factory_type(data, process.factory_group)
-                        .modify(
-                            config.get_modifier_speed(process.id),
-                            config.get_modifier_output(process.id),
-                            );
+                    let f = quickest_factory_for_factory_type(data, process.factory_group);
+                    if ((typeof f) === "undefined") {
+                        console.warn("No factory found for ", process.factory_group);
+                        f = new Factory('__default__', '__default__', null, 1, 1);
+                    }
+                    return f.modify(
+                        config.get_modifier_speed(process.id),
+                        config.get_modifier_output(process.id),
+                        );
                 }))
                 .accept(new RateCalculator(
                     config.get_requirement(data),
