@@ -30,7 +30,6 @@ describe('Cycle Removal', function() {
             assert.strictEqual(pc.accept(new CycleDetector()).length, 0);
         });
     });
-    // v----------------v---------------v----------------v
     describe('single, multi-process loop, net producer', function() {
         let data = setup_data();
         add_items_to_data(data, ['a', 'b', 'c', 'd', 'e', 'f', 'g']);
@@ -40,27 +39,63 @@ describe('Cycle Removal', function() {
             'F': {"in": ['e'], "out": ['f', {"item": 'd', "quantity": 2}]},
             'G': {"in": ['f'], "out": ['g']},
         });
-    });
-    describe('multiple, single-process loops', function() {
-        let data = setup_data();
-        add_items_to_data(data, ['a', 'b', 'c', 'd', 'e', 'f', 'g']);
-        add_processes_to_data(data, {
-            'C': {"in": ['a', 'b'], "out": ['c']},
-            'D': {"in": ['a', 'c', {'item': 'd', 'quantity': 2}], "out": ['d']},
-            'E': {"in": ['d'], "out": ['e']},
-            'F': {"in": [{'item': 'e', 'quantity': 2}], "out": ['e', 'f']},
-            'G': {"in": ['f'], "out": ['g']},
+        it('Removes one cycle', function() {
+            let pc = new ProcessChain(Object.values(data.processes))
+                .accept(new CycleRemover());
+            assert.strictEqual(pc.processes.length, 3);
+            assert.strictEqual(pc.processes.find(p => p.id == 'C').id, 'C');
+            assert.strictEqual(typeof pc.processes.find(p => p.id == 'E'), "undefined");
+            assert.strictEqual(typeof pc.processes.find(p => p.id == 'F'), "undefined");
+            assert.strictEqual(pc.processes.find(p => p.id == 'G').id, 'G');
+            assert.strictEqual(pc.accept(new CycleDetector()).length, 0);
         });
     });
+    describe('multiple, single-process loops, net consumers', function() {
+        let data = setup_data();
+        add_items_to_data(data, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']);
+        add_processes_to_data(data, {
+            'C': {"in": ['a', 'b'], "out": ['d']},
+            'D': {"in": ['c', {'item': 'd', 'quantity': 2}], "out": ['d', 'e']},
+            'E': {"in": ['e'], "out": ['f']},
+            'F': {"in": [{'item': 'f', 'quantity': 2}], "out": ['f', 'g']},
+            'G': {"in": ['g'], "out": ['h']},
+        });
+        it('Removes both cycles', function() {
+            let pc = new ProcessChain(Object.values(data.processes))
+            pc = pc.accept(new CycleRemover());
+            assert.strictEqual(pc.processes.length, 5);
+            assert.strictEqual(pc.processes.find(p => p.id == 'C').id, 'C');
+            assert.strictEqual(typeof pc.processes.find(p => p.id == 'D'), "undefined");
+            assert.strictEqual(pc.processes.find(p => p.id == 'E').id, 'E');
+            assert.strictEqual(typeof pc.processes.find(p => p.id == 'F'), "undefined");
+            assert.strictEqual(pc.processes.find(p => p.id == 'G').id, 'G');
+            assert.strictEqual(pc.accept(new CycleDetector()).length, 0);
+        });
+    });
+    // v----------------v---------------v----------------v
     describe('multiple, single-process loops, with reuse of inputs', function() {
         let data = setup_data();
-        add_items_to_data(data, ['a', 'b', 'c', 'd', 'e', 'f', 'g']);
+        add_items_to_data(data, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']);
         add_processes_to_data(data, {
+            'A': {"in": ['a'], "out": ['d']},
             'C': {"in": ['a', 'b'], "out": ['c']},
-            'D': {"in": ['a', 'c', {'item': 'd', 'quantity': 2}], "out": ['d']},
-            'E': {"in": ['d'], "out": ['e']},
-            'F': {"in": ['c',  {'item': 'e', 'quantity': 2}], "out": ['e', 'f']},
-            'G': {"in": ['f'], "out": ['g']},
+            'D': {"in": ['c', 'a', {'item': 'd', 'quantity': 2}], "out": ['d', 'e']},
+            'E': {"in": ['c', 'e'], "out": ['f']},
+            'F': {"in": ['c',  {'item': 'f', 'quantity': 2}], "out": ['g', 'f']},
+            'G': {"in": ['c', 'g'], "out": ['h']},
+        });
+        it('Removes both cycles', function() {
+            let pc = new ProcessChain(Object.values(data.processes))
+            fs.writeFileSync("before.gv", pc.accept(new StandardGraphRenderer()).join('\n'))
+            pc = pc.accept(new CycleRemover());
+            assert.strictEqual(pc.processes.length, 6);
+            assert.strictEqual(pc.processes.find(p => p.id == 'C').id, 'C');
+            assert.strictEqual(typeof pc.processes.find(p => p.id == 'D'), "undefined");
+            assert.strictEqual(pc.processes.find(p => p.id == 'E').id, 'E');
+            assert.strictEqual(typeof pc.processes.find(p => p.id == 'F'), "undefined");
+            assert.strictEqual(pc.processes.find(p => p.id == 'G').id, 'G');
+            assert.strictEqual(pc.accept(new CycleDetector()).length, 0);
+            fs.writeFileSync("after.gv", pc.accept(new StandardGraphRenderer()).join('\n'))
         });
     });
     //fs.writeFileSync("tmp.gv", pc.accept(new StandardGraphRenderer()).join('\n'))

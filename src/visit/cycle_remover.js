@@ -18,17 +18,23 @@ class CycleRemover extends ProcessChainVisitor {
             init: true,
         }
     }
-    init(chain) {
+    init(in_chain) {
+        let chain = in_chain;
         let cycles = chain.accept(new CycleDetector());
-        cycles.sort((a, b) => a.length > b.length);
+        while (cycles.length > 0) {
+            cycles.sort((a, b) => a.length > b.length);
 
-        let cycle = cycles[0];
-        let cycle_processes = cycle.map(id => {
-            return chain.processes.find(p => p.id === id);
-        })
-        let proxy = this._create_proxy(cycle_processes);
-        let removed = chain.accept(new EnableDisable(null, [], cycle));
-        this.chain = new ProcessChain(removed.processes.concat([proxy]));
+            let cycle = cycles[0];
+            let cycle_processes = cycle.map(id => {
+                return chain.processes.find(p => p.id === id);
+            })
+            let proxy = this._create_proxy(cycle_processes);
+            let removed = chain.accept(new EnableDisable(null, [], cycle));
+            chain = new ProcessChain(removed.processes.concat([proxy]));
+
+            cycles = chain.accept(new CycleDetector());
+        }
+        this.chain = chain;
     }
 
     _create_proxy(cycle) {
