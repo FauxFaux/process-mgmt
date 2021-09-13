@@ -133,6 +133,12 @@
       }
     },
     {
+      "id": "cooling_system",
+      "i18n": {
+        "en": "Cooling System"
+      }
+    },
+    {
       "id": "copper_ingot",
       "i18n": {
         "en": "Copper Ingot"
@@ -214,6 +220,12 @@
       "id": "gas_filter",
       "i18n": {
         "en": "Gas Filter"
+      }
+    },
+    {
+      "id": "heat_sink",
+      "i18n": {
+        "en": "Heat Sink"
       }
     },
     {
@@ -442,6 +454,12 @@
       "id": "supercomputer",
       "i18n": {
         "en": "Supercomputer"
+      }
+    },
+    {
+      "id": "turbo_motor",
+      "i18n": {
+        "en": "Turbo Motor"
       }
     },
     {
@@ -762,6 +780,20 @@
       }
     },
     {
+      "name": "cooling_system",
+      "duration": "10",
+      "factory_group": "blender",
+      "inputs": {
+        "heat_sink": 2,
+        "rubber": 2,
+        "water": 5,
+        "nitrogen": 25
+      },
+      "outputs": {
+        "cooling_system": 1
+      }
+    },
+    {
       "name": "copper_ingot",
       "duration": "2",
       "factory_group": "smelter",
@@ -919,6 +951,18 @@
       },
       "outputs": {
         "gas_filter": 1
+      }
+    },
+    {
+      "name": "heat_sink",
+      "duration": "8",
+      "factory_group": "assembler",
+      "inputs": {
+        "alclad_aluminium_sheet": 5,
+        "copper_sheet": 3
+      },
+      "outputs": {
+        "heat_sink": 1
       }
     },
     {
@@ -1533,6 +1577,20 @@
       },
       "outputs": {
         "supercomputer": 1
+      }
+    },
+    {
+      "name": "turbo_motor",
+      "duration": "32",
+      "factory_group": "manufactury",
+      "inputs": {
+        "cooling_system": 4,
+        "radio_control_unit": 2,
+        "motor": 4,
+        "rubber": 24
+      },
+      "outputs": {
+        "turbo_motor": 1
       }
     },
     {
