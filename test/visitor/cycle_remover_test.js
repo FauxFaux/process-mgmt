@@ -164,15 +164,30 @@ describe('Cycle Removal', function() {
         });
         it('Removes both cycles', function() {
             let pc = new ProcessChain(Object.values(data.processes))
+            pc = pc.accept(new CycleRemover());
+            assert.strictEqual(pc.processes.length, 2);
+            assert.strictEqual(pc.processes.find(p => p.id == 'B').id, 'B');
+            assert.strictEqual(pc.accept(new CycleDetector()).length, 0);
+        });
+    });
+    describe('nested loops, both net producers', function() {
+        let data = setup_data();
+        add_items_to_data(data, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']);
+        add_processes_to_data(data, {
+            'B': {"in": ['a'], "out": ['b']},
+            'D': {"in": ['b', 'c'], "out": [{'item':'c', 'quantity': 2}, 'd']},
+            'E': {"in": ['d'], "out": ['e']},
+            'F': {"in": ['b', 'e'], "out": ['c', {'item': 'b', 'quantity': 2}, 'f']},
+        });
+        it('Removes both cycles', function() {
+            let pc = new ProcessChain(Object.values(data.processes))
             fs.writeFileSync("before.gv", pc.accept(new StandardGraphRenderer()).join('\n'))
             pc = pc.accept(new CycleRemover());
             fs.writeFileSync("after.gv", pc.accept(new StandardGraphRenderer()).join('\n'))
             assert.strictEqual(pc.processes.length, 2);
             assert.strictEqual(pc.processes.find(p => p.id == 'B').id, 'B');
             assert.strictEqual(pc.accept(new CycleDetector()).length, 0);
-        });
-    });
-    describe('nested loops, both net producers', function() {});
+        });});
     describe('nested loops, inner net producer, outer net consumer', function() {});
     describe('nested loops, inner net consumer, outer net producer', function() {});
 
