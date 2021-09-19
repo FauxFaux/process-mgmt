@@ -160,7 +160,7 @@ describe('Cycle Removal', function() {
             'B': {"in": ['a'], "out": ['b']},
             'D': {"in": ['a', {'item': 'c', 'quantity': 2}], "out": ['c', 'd']},
             'E': {"in": ['d'], "out": ['e']},
-            'F': {"in": [{'item': 'e', 'quantity': 2}], "out": ['c', 'e', 'f']},
+            'F': {"in": ['b', {'item': 'e', 'quantity': 2}], "out": ['c', 'e', 'f']},
         });
         it('Removes both cycles', function() {
             let pc = new ProcessChain(Object.values(data.processes))
