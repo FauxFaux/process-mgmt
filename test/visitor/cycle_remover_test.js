@@ -124,9 +124,7 @@ describe('Cycle Removal', function() {
         });
         it('Removes both cycles', function() {
             let pc = new ProcessChain(Object.values(data.processes))
-            fs.writeFileSync("before.gv", pc.accept(new StandardGraphRenderer()).join('\n'))
             pc = pc.accept(new CycleRemover());
-            fs.writeFileSync("after.gv", pc.accept(new StandardGraphRenderer()).join('\n'))
             assert.strictEqual(pc.processes.length, 3);
             assert.strictEqual(pc.processes.find(p => p.id == 'C').id, 'C');
             assert.strictEqual(typeof pc.processes.find(p => p.id == 'D'), "undefined");
@@ -135,9 +133,46 @@ describe('Cycle Removal', function() {
             assert.strictEqual(pc.accept(new CycleDetector()).length, 0);
         });
     });
-    describe('multiple single process loops, net consumers', function() {});
+    describe('multiple single process loops, net consumers', function() {
+        let data = setup_data();
+        add_items_to_data(data, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']);
+        add_processes_to_data(data, {
+            'C': {"in": ['a'], "out": ['c']},
+            'D': {"in": ['a', {'item': 'c', 'quantity': 2}], "out": ['c', 'd']},
+            'E': {"in": ['d'], "out": ['e']},
+            'F': {"in": [{'item': 'e', 'quantity': 2}], "out": ['e', 'f']},
+        });
+        it('Removes both cycles', function() {
+            let pc = new ProcessChain(Object.values(data.processes))
+            pc = pc.accept(new CycleRemover());
+            assert.strictEqual(pc.processes.length, 4);
+            assert.strictEqual(pc.processes.find(p => p.id == 'C').id, 'C');
+            assert.strictEqual(typeof pc.processes.find(p => p.id == 'D'), "undefined");
+            assert.strictEqual(pc.processes.find(p => p.id == 'E').id, 'E');
+            assert.strictEqual(typeof pc.processes.find(p => p.id == 'F'), "undefined");
+            assert.strictEqual(pc.accept(new CycleDetector()).length, 0);
+        });
+    });
+    describe('nested loops, both net consumers', function() {
+        let data = setup_data();
+        add_items_to_data(data, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']);
+        add_processes_to_data(data, {
+            'B': {"in": ['a'], "out": ['b']},
+            'D': {"in": ['a', {'item': 'c', 'quantity': 2}], "out": ['c', 'd']},
+            'E': {"in": ['d'], "out": ['e']},
+            'F': {"in": [{'item': 'e', 'quantity': 2}], "out": ['c', 'e', 'f']},
+        });
+        it('Removes both cycles', function() {
+            let pc = new ProcessChain(Object.values(data.processes))
+            fs.writeFileSync("before.gv", pc.accept(new StandardGraphRenderer()).join('\n'))
+            pc = pc.accept(new CycleRemover());
+            fs.writeFileSync("after.gv", pc.accept(new StandardGraphRenderer()).join('\n'))
+            assert.strictEqual(pc.processes.length, 2);
+            assert.strictEqual(pc.processes.find(p => p.id == 'B').id, 'B');
+            assert.strictEqual(pc.accept(new CycleDetector()).length, 0);
+        });
+    });
     describe('nested loops, both net producers', function() {});
-    describe('nested loops, both net consumers', function() {});
     describe('nested loops, inner net producer, outer net consumer', function() {});
     describe('nested loops, inner net consumer, outer net producer', function() {});
 
