@@ -232,6 +232,40 @@ const command_manual_visitor = function(argv) {
     });
 }
 
+const process_to_pretty_string = function(p) {
+    return p.id + ' => \n'
+        + '  ' + p.factory_group.name
+        + '\n'
+        + '  inputs:\n'
+        + p.inputs.map(i => '    ' + i.item.id + ' (' + i.quantity + ')').join('\n')
+        + '\n'
+        + '  outputs:\n'
+        + p.outputs.map(i => '    ' + i.item.id + ' (' + i.quantity + ')').join('\n')
+        + '\n'
+}
+
+const command_what_produces = function(argv) {
+    import('./' + argv.data + '/data.js').then(module => {
+        let data = module.data;
+        let p = new ProcessChain(Object.values(data.processes));
+        let options = p.processes_by_output[argv.produces];
+        console.log(
+            options.map(process_to_pretty_string).join('\n')
+        );
+    });
+}
+
+const command_what_uses = function(argv) {
+    import('./' + argv.data + '/data.js').then(module => {
+        let data = module.data;
+        let p = new ProcessChain(Object.values(data.processes));
+        let options = p.processes_by_input[argv.uses];
+        console.log(
+            options.map(process_to_pretty_string).join('\n')
+        );
+    });
+}
+
 const argv = yargs(process.argv.slice(2))
     .command('all', 'generate a graph of all the processes', (yargs) => {
         yargs.option('data', {
@@ -275,6 +309,26 @@ const argv = yargs(process.argv.slice(2))
         })
         .demandOption(['config'])
     }, command_manual_visitor)
+    .command('what-produces', '', (yargs) => {
+        yargs.option('data', {
+            alias: 'd',
+            type: 'string'
+        }).option('produces', {
+            alias: 'p',
+            type: 'string'
+        })
+        .demandOption(['data', 'produces'])
+    }, command_what_produces)
+    .command('what-uses', '', (yargs) => {
+        yargs.option('data', {
+            alias: 'd',
+            type: 'string'
+        }).option('uses', {
+            alias: 'p',
+            type: 'string'
+        })
+        .demandOption(['data', 'uses'])
+    }, command_what_uses)
     .demandCommand()
     .help().alias('h', 'help')
     .argv;
