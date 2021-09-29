@@ -147,7 +147,7 @@ const command_rate = function(argv) {
                 .accept(new RateCalculator(
                     config.get_requirement(data),
                     config.get_imported(),
-                    array_disambiguate
+                    array_disambiguate(data, config)
                     ))
                 .accept(new RateGraphRenderer()).join('\n');
             console.log(g);
