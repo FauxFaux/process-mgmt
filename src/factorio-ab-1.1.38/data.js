@@ -45,16 +45,17 @@ Object.values(raw.recipe).forEach(recipe => {
         recipe.ingredients = recipe.normal.ingredients;
         recipe.results = recipe.normal.results;
         recipe.result = recipe.normal.result;
+        recipe.energy_required = recipe.normal.energy_required;
     }
     if (recipe.result) {
         recipe.results = [{"type": "item", "name": recipe.result, "amount": 1}];
     }
     if ("undefined" === typeof(recipe.category)) {
-        console.warn("missing category for ", recipe.name);
+        //console.warn("missing category for ", recipe.name);
         recipe.category = "crafting";
     }
     if ("undefined" === typeof(recipe.energy_required)) {
-        console.warn("missing energy_required for ", recipe.name);
+        //console.warn("missing energy_required for ", recipe.name);
         recipe.energy_required = 1;
     }
     if (
@@ -68,8 +69,6 @@ Object.values(raw.recipe).forEach(recipe => {
     ) {
         recipe.results = [];
     }
-
-
 
     check_add(recipe, function() {
         const name = fix_identifier(recipe.name);
@@ -116,7 +115,9 @@ Object.values(raw.recipe).forEach(recipe => {
     });
 });
 
-Object.values(raw['assembling-machine']).forEach(machine => {
+Object.values(raw['assembling-machine'])
+    .concat(Object.values(raw['furnace']))
+.forEach(machine => {
     if (!machine.name) return; // ignore '{}'
     check_add(machine, function() {
         machine.crafting_categories.forEach(cat => {
