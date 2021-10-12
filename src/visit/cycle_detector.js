@@ -1,4 +1,5 @@
 import { ProcessChainVisitor } from "./process_chain_visitor.js";
+import { Cycle } from "./cycle.js";
 
 
 /**
@@ -42,6 +43,10 @@ class CycleDetector extends ProcessChainVisitor {
         return b.concat(a);
     }
 
+    _find_loop_items(cycle) {
+
+    }
+
     init(chain) {
         let cycles = [];
         let stack = chain.processes.map(p => [p]);
@@ -60,18 +65,17 @@ class CycleDetector extends ProcessChainVisitor {
                     stack.push( current.concat( [p] ) );
                 } else {
                     let idx = current.indexOf(p);
-                    let cycle = this._normalise_cycle(current.slice(idx));
-                    let cycle_exists = cycles.findIndex(c => {
-                        if (c.length != cycle.length) return false;
-                        return c.every((elem, idx) => elem == cycle[idx]);
-                    });
+                    let cycle = new Cycle(null, current.slice(idx));
+                    let loop_items = this._find_loop_items(cycle.processes);
+                    cycle = new Cycle(loop_items, cycle.processes);
+                    let cycle_exists = cycles.findIndex(c => c.normalise_cycle().equals(cycle.normalise_cycle()));
                     if (cycle_exists === -1) {
                         cycles.push(cycle);
                     }
                 }
             });
         }
-        this.cycles = cycles.map(cycle => cycle.map(p => p.id));
+        this.cycles = cycles;
     }
     build() { return this.cycles; }
 }

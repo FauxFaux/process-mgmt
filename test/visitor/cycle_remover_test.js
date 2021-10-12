@@ -192,4 +192,31 @@ describe('Cycle Removal', function() {
     describe('nested loops, inner net consumer, outer net producer', function() {});
 
 
+    describe('multi process loop; intermediate requires many factories, closed loop', function() {
+        let data = setup_data();
+        add_items_to_data(data, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']);
+        add_processes_to_data(data, {
+            'B': {"in": ['a'], "out": ['b']},
+            // 1 machine, 1/s in, 10/s out.
+            'D': {"in": ['b', 'c'], "out": [{'item':'d', 'quantity': 10}]},
+            // each machine: 1/s in, 1/s out. => 10 mchines: 10/s in, 10/s out.
+            'E': {"in": ['d'], "out": ['e']},
+            // each machine: 5/s in, 0.5/s out. => 2 machines: 10/s in, 1/s out.
+            'F': {"in": [{'item':'e', 'quantity': 5}], "out": ['f', {'item':'c', 'quantity': 0.5}]},
+        });
+        it('Removes cycles and calculates machine counts for the proxy', function() {
+            let pc = new ProcessChain(Object.values(data.processes))
+            fs.writeFileSync("before.gv", pc.accept(new StandardGraphRenderer()).join('\n'))
+            pc = pc.accept(new CycleRemover());
+            fs.writeFileSync("after.gv", pc.accept(new StandardGraphRenderer()).join('\n'))
+            assert.strictEqual(pc.processes.length, 2);
+            assert.strictEqual(pc.processes.find(p => p.id == 'B').id, 'B');
+            assert.strictEqual(pc.processes_by_output['f'].length, 1);
+            let proxy = pc.processes_by_output['f'][0];
+            assert.strictEqual(proxy.process_counts['D'], 1);
+            assert.strictEqual(proxy.process_counts['E'], 10);
+            assert.strictEqual(proxy.process_counts['F'], 2);
+        });
+    });
+
 });

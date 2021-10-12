@@ -6,6 +6,7 @@ import { ProcessChainVisitor } from "./process_chain_visitor.js";
 import { Factory } from "../factory.js";
 
 
+
 class CycleRemover extends ProcessChainVisitor {
 
     constructor(data) {
@@ -25,11 +26,9 @@ class CycleRemover extends ProcessChainVisitor {
             cycles.sort((a, b) => a.length > b.length);
 
             let cycle = cycles[0];
-            let cycle_processes = cycle.map(id => {
-                return chain.processes.find(p => p.id === id);
-            })
+            let cycle_processes = cycle.processes;
             let proxy = this._create_proxy(cycle_processes);
-            let removed = chain.accept(new EnableDisable(null, [], cycle));
+            let removed = chain.accept(new EnableDisable(null, [], cycle_processes.map(p => p.id)));
             chain = new ProcessChain(removed.processes.concat([proxy]));
 
             cycles = chain.accept(new CycleDetector());
