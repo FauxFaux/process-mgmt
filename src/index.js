@@ -11,7 +11,7 @@ import { Factory } from './factory.js';
 
 const array_disambiguate = function(data, config) {
     return function(requirement, options) {
-        let arr = Object.entries(config.process_choices).map(e => {
+        let arr = Object.entries(config.get_process_choices()).map(e => {
             return [
                 data.items[e[0]].id,
                 data.processes[e[1]]
@@ -71,6 +71,9 @@ const optional = function(value, def) {
 }
 
 const decorate_config = function(config) {
+    config.get_process_choices = function() {
+        return optional(config.process_choices, []);
+    }
     config.get_requirement = function(data) {
         return new Stack(data.items[config.requirement.id], config.requirement.rate);
     };
