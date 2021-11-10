@@ -10,6 +10,7 @@ import * as path from 'path'
 import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 let raw = JSON.parse(fs.readFileSync(path.join(__dirname, 'exported-data.json'), 'utf8'));
+// import * as raw from './exported-data.json'
 
 let data = new Data('factorio-ab-1.1.38', '0.0.1');
 
@@ -46,9 +47,14 @@ Object.values(raw.recipe).forEach(recipe => {
         recipe.results = recipe.normal.results;
         recipe.result = recipe.normal.result;
         recipe.energy_required = recipe.normal.energy_required;
+        recipe.result_count = recipe.normal.result_count;
     }
     if (recipe.result) {
-        recipe.results = [{"type": "item", "name": recipe.result, "amount": 1}];
+        let result_count = 1;
+        if (recipe.result_count) {
+            result_count = recipe.result_count;
+        }
+        recipe.results = [{"type": "item", "name": recipe.result, "amount": result_count}];
     }
     if ("undefined" === typeof(recipe.category)) {
         //console.warn("missing category for ", recipe.name);
