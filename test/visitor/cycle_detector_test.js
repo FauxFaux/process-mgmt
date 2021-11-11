@@ -30,13 +30,13 @@ describe('Cycle Detection', function() {
         it('detected cycle is D', function() {
             let pc = new ProcessChain(Object.values(data.processes));
             let cycles = pc.accept(new CycleDetector());
-            assert.deepStrictEqual(cycles[0].processes[0].id, 'D');
+            assert.strictEqual(cycles[0].processes[0].id, 'D');
         });
-        it('detected loop item is d', function() {
-            let pc = new ProcessChain(Object.values(data.processes));
-            let cycles = pc.accept(new CycleDetector());
-            assert.deepStrictEqual(cycles[0].loop_items[0].id, 'd');
-        });
+        // it('detected loop item is d', function() {
+        //     let pc = new ProcessChain(Object.values(data.processes));
+        //     let cycles = pc.accept(new CycleDetector());
+        //     assert.strictEqual(cycles[0].loop_items[0].id, 'd');
+        // });
     });
     describe('single, multi-process loop, net producer', function() {
         let data = setup_data();
