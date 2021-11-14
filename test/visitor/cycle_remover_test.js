@@ -206,16 +206,14 @@ describe('Cycle Removal', function() {
         });
         it('Removes cycles and calculates machine counts for the proxy', function() {
             let pc = new ProcessChain(Object.values(data.processes))
-            fs.writeFileSync("before.gv", pc.accept(new StandardGraphRenderer()).join('\n'))
             pc = pc.accept(new CycleRemover());
-            fs.writeFileSync("after.gv", pc.accept(new StandardGraphRenderer()).join('\n'))
             assert.strictEqual(pc.processes.length, 2);
             assert.strictEqual(pc.processes.find(p => p.id == 'B').id, 'B');
             assert.strictEqual(pc.processes_by_output['f'].length, 1);
             let proxy = pc.processes_by_output['f'][0];
-            assert.strictEqual(proxy.process_counts['D'], 1);
-            assert.strictEqual(proxy.process_counts['E'], 10);
-            assert.strictEqual(proxy.process_counts['F'], 2);
+            assert.strictEqual(proxy.process_counts['D'], 0.1);
+            assert.strictEqual(proxy.process_counts['E'], 1);
+            assert.strictEqual(proxy.process_counts['F'], 0.2);
         });
     });
 
