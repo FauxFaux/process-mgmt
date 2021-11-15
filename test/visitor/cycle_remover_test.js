@@ -7,8 +7,11 @@ import { ProcessChain } from '../../src/process.js';
 
 import { add_items_to_data, add_processes_to_data, setup_data } from "./test_data.js";
 import { StandardGraphRenderer } from '../../src/visit/standard_graph_renderer.js';
+import { RateGraphRenderer } from '../../src/visit/rate_graph_renderer.js';
 import { CycleRemover } from '../../src/visit/cycle_remover.js';
 import { CycleDetector } from '../../src/visit/cycle_detector.js';
+import { CycleExpander } from '../../src/visit/cycle_expander.js';
+import { Stack } from '../../src/stack.js';
 
 
 describe('Cycle Removal', function() {
@@ -214,6 +217,22 @@ describe('Cycle Removal', function() {
             assert.strictEqual(proxy.process_counts['D'], 0.1);
             assert.strictEqual(proxy.process_counts['E'], 1);
             assert.strictEqual(proxy.process_counts['F'], 0.2);
+        });
+        it('expands proxy once calculations are complete', function() {
+            let pc = new ProcessChain(Object.values(data.processes))
+            fs.writeFileSync("before.gv", pc.accept(new StandardGraphRenderer()).join('\n'));
+            pc = pc.accept(new CycleRemover());
+            fs.writeFileSync("after_remove.gv", pc.accept(new StandardGraphRenderer()).join('\n'));
+            pc = pc.accept(new RateCalculator(
+                new Stack(data.items['f'], 5),
+                [],
+                p => null
+                ));
+            fs.writeFileSync("after_rate.gv", pc.accept(new RateGraphRenderer()).join('\n'));
+            fs.writeFileSync("after_expand.gv", pc.accept(new CycleExpander()).join('\n'));
+            assert.strictEqual(pc.processes.length, 4);
+
+
         });
     });
 
