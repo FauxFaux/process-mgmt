@@ -1,13 +1,16 @@
 import { ProcessChain, RateChain, Stack } from './structures.js';
 import * as fs from 'fs'
 import yargs from 'yargs';
+import { Factory } from './factory.js';
+
 import { StandardGraphRenderer } from './visit/standard_graph_renderer.js';
 import { FilterForOutput } from './visit/filter_for_output_visitor.js';
 import { EnableDisable } from './visit/enable_disable_visitor.js';
 import { RateCalculator } from './visit/rate_calculator.js';
 import { RateGraphRenderer } from './visit/rate_graph_renderer.js';
 import { RateVisitor } from './visit/rate_visitor.js';
-import { Factory } from './factory.js';
+import { CycleRemover } from './visit/cycle_remover.js';
+import { CycleExpander } from './visit/cycle_expander.js';
 
 const array_disambiguate = function(data, config) {
     return function(requirement, options) {
@@ -158,6 +161,42 @@ const command_rate = function(argv) {
     });
 }
 
+const command_rate_loop = function(argv) {
+    fs.readFile(argv.config, 'utf8', (_err, str) => {
+        let config = decorate_config(JSON.parse(str));
+        import('./' + config.data +'/data.js').then(module => {
+            let data = module.data;
+            let g = new ProcessChain(Object.values(data.processes))
+                .accept(new FilterForOutput(
+                    data.items[config.requirement.id],
+                    array_disambiguate(data, config),
+                    [].concat(config.get_imported()).concat(config.get_exported())
+                    ))
+                .accept(new RateVisitor(process => {
+                    let f = quickest_factory_for_factory_type(data, process.factory_group);
+                    if ((typeof f) === "undefined") {
+                        console.warn("No factory found for ", process.factory_group);
+                        f = new Factory('__default__', '__default__', null, 1, 1);
+                    }
+                    return f.modify(
+                        config.get_modifier_speed(process.id),
+                        config.get_modifier_output(process.id),
+                        );
+                }))
+                .accept(new CycleRemover(data))
+                .accept(new RateCalculator(
+                    config.get_requirement(data),
+                    config.get_imported(),
+                    array_disambiguate(data, config)
+                    ))
+                .accept(new CycleExpander(data))
+                .accept(new RateGraphRenderer()).join('\n');
+            console.log(g);
+        });
+    });
+}
+
+
 const command_manual_rate = function(argv) {
     let config = JSON.parse(fs.readFileSync(argv.config, 'utf8')); // TODO enter callback hell.
     import('./' + config.data +'/data.js').then(module => {
@@ -291,6 +330,13 @@ const argv = yargs(process.argv.slice(2))
         })
         .demandOption(['config'])
     }, command_rate)
+    .command('factory-rate-loop', 'generate a graph filtered to producing a particular item; with factory counts. Finding and removing loops', (yargs) => {
+        yargs.option('config', {
+            alias: 'c',
+            type: 'string'
+        })
+        .demandOption(['config'])
+    }, command_rate_loop)
     .command('manual-rate', 'generate a graph filtered to producing a particular item; with factory counts provided by the configuration', (yargs) => {
         yargs.option('config', {
             alias: 'c',

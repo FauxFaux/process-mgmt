@@ -16,7 +16,7 @@ class RateGraphRenderer extends ProcessChainVisitor {
     check(chain) {
         if (!chain.process_counts) throw new Error("`RateGraphRenderer` requires `process_counts` (Provided by `RateCalculator`)")
         if (!chain.materials) throw new Error("`RateGraphRenderer` requires `materials` (Can be calculated from `process_counts`) (Provided by `RateCalculator`)")
-        if (!chain.processes[0].factory_type) throw new Error("`RateGraphRenderer` processes with assigned factory types (Provided by `RateVisitor`)");
+        if (!chain.processes[0].factory_type) throw new Error("`RateGraphRenderer` requires processes with assigned factory types (Provided by `RateVisitor`)");
         return {
             visit_item: true,
             visit_process: true,

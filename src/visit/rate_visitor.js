@@ -24,7 +24,7 @@ class RateVisitor extends ProcessChainVisitor {
         let factory_configured = this.factory_type_cb(process);
         let factory = (factory_configured ? factory_configured : new Factory('__generated__', 'default', []));
         let p = factory.update_process(process);
-        let result = new Process(
+        let result = p.clone(
             p.id,
             p.inputs.map(input => input.div(p.duration)),
             p.outputs.map(output => output.div(p.duration)),
@@ -32,6 +32,7 @@ class RateVisitor extends ProcessChainVisitor {
             p.factory_group
         );
         result.factory_type = factory;
+        result.clone_fields.push('factory_type');
         this.converted.push(result);
     }
 

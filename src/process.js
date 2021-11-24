@@ -9,6 +9,13 @@ class Process {
         this.outputs = outputs;
         this.duration = duration;
         this.factory_group = factory_group;
+        this.clone_fields = [];
+    }
+
+    clone(id = this.id, inputs = this.inputs, outputs = this.outputs, duration = this.duration, factory_group = this.factory_group) {
+        let result = new Process(id, inputs, outputs, duration, factory_group);
+        this.clone_fields.forEach(f => result[f] = this[f]);
+        return result;
     }
 
     production_rate(item, factory_count = 1) {
