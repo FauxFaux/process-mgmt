@@ -42,11 +42,15 @@ class CycleExpander extends ProcessChainVisitor {
     _expand_proxy_process(proxy, count) {
         proxy.cycle.processes.forEach(process => {
             if (this._is_proxy(process)) {
-                this.expand_proxy_process(process, count * proxy.process_counts[process.id]);
+                this._expand_proxy_process(process, count * proxy.process_counts[process.id]);
             } else {
                 this._add_non_proxy(process, count * proxy.process_counts[process.id]);
             }
         });
+    }
+
+    _handle_process(process, count) {
+
     }
 
     _add_non_proxy(process, count) {
