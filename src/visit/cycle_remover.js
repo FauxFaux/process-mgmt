@@ -23,7 +23,7 @@ class CycleRemover extends ProcessChainVisitor {
         let chain = in_chain;
         let cycles = chain.accept(new CycleDetector());
         while (cycles.length > 0) {
-            cycles.sort((a, b) => a.length > b.length);
+            cycles = cycles.sort((a, b) => a.processes.length - b.processes.length);
 
             let cycle = cycles[0];
             let cycle_processes = cycle.processes;
