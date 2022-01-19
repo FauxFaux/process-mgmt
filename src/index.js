@@ -198,7 +198,7 @@ const command_rate_loop = function(argv) {
 
 
 const command_manual_rate = function(argv) {
-    let config = JSON.parse(fs.readFileSync(argv.config, 'utf8')); // TODO enter callback hell.
+    let config = decorate_config(JSON.parse(fs.readFileSync(argv.config, 'utf8'))); // TODO enter callback hell.
     import('./' + config.data +'/data.js').then(module => {
         let data = module.data;
         let p = new ProcessChain(Object.values(data.processes))
