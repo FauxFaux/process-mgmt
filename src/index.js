@@ -225,7 +225,7 @@ const command_manual_rate = function(argv) {
 }
 
 const command_update4 = function(argv) {
-    let config = JSON.parse(fs.readFileSync(argv.config, 'utf8')); // TODO enter callback hell.
+    let config = decorate_config(JSON.parse(fs.readFileSync(argv.config, 'utf8'))); // TODO enter callback hell.
     import('./' + config.data +'/data.js').then(module => {
         let data = module.data;
         let p = new ProcessChain(Object.values(data.processes))
@@ -245,6 +245,18 @@ const command_update4 = function(argv) {
             }
             return quickest_factory_for_factory_type(data, process.factory_group).modify(speed, output);
         }).update4(null, config.imported, config.exported)
+
+        let produced_quantity = p.materials.total(config.get_requirement(data).item).quantity;
+        let required_quantity = config.get_requirement(data).quantity;
+        let multiplier = required_quantity / produced_quantity;
+        p.process_counts = Object.entries(p.process_counts).map(pair => {
+            return [pair[0], pair[1] * multiplier];
+        }).reduce((prev, pair) => {
+            prev[pair[0]] = pair[1];
+            return prev;
+        }, {})
+        p.rebuild_materials()
+
         console.log(p.to_graphviz());
     });
 }
