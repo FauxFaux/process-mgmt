@@ -148,6 +148,13 @@
       }
     },
     {
+      "id": "Plane_Smelter",
+      "group": "structure",
+      "i18n": {
+        "en": "Plane Smelter"
+      }
+    },
+    {
       "id": "Assembling_Machine_Mk1",
       "group": "structure",
       "i18n": {
