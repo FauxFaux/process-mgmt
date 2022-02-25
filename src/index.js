@@ -9,6 +9,7 @@ import { EnableDisable } from './visit/enable_disable_visitor.js';
 import { RateCalculator } from './visit/rate_calculator.js';
 import { RateGraphRenderer } from './visit/rate_graph_renderer.js';
 import { RateVisitor } from './visit/rate_visitor.js';
+import { LinearAlgebra } from './visit/linear_algebra_visitor.js';
 import { CycleRemover } from './visit/cycle_remover.js';
 import { CycleExpander } from './visit/cycle_expander.js';
 
@@ -124,6 +125,36 @@ const command_graph = function(argv) {
                     config.get_disabled()
                 )).accept(new StandardGraphRenderer()).join('\n');
             console.log(g);
+        });
+    });
+};
+
+const command_linear_algebra = function(argv) {
+    fs.readFile(argv.config, 'utf8', (_err, str) => {
+        let config = decorate_config(JSON.parse(str));
+        import('./' + config.data +'/data.js').then(module => {
+            let data = module.data;
+            let g = new ProcessChain(Object.values(data.processes))
+                .filter_for_output(
+                    config.get_requirement(),
+                    array_disambiguate(data, config),
+                    [].concat(config.get_imported()).concat(config.get_exported())
+                    )
+                .enable(...config.get_enabled().map(s => data.processes[s]))
+                .accept(new RateVisitor(process => {
+                    let f = quickest_factory_for_factory_type(data, process.factory_group);
+                    if ((typeof f) === "undefined") {
+                        console.warn("No factory found for ", process.factory_group);
+                        f = new Factory('__default__', '__default__', null, 1, 1);
+                    }
+                    return f.modify(
+                        config.get_modifier_speed(process.id),
+                        config.get_modifier_output(process.id),
+                        );
+                    })
+                )
+                .accept(new LinearAlgebra(config.get_requirement(), config.get_imported(), config.get_exported()))
+                .accept(new RateGraphRenderer()).join('\n');
         });
     });
 };
@@ -363,6 +394,13 @@ const argv = yargs(process.argv.slice(2))
         })
         .demandOption(['config'])
     }, command_update4)
+    .command('linear', 'experimental, linear-algebra', (yargs) => {
+        yargs.option('config', {
+            alias: 'c',
+            type: 'string'
+        })
+        .demandOption(['config'])
+    }, command_linear_algebra)
     .command('manual-visitor', '', (yargs) => {
         yargs.option('config', {
             alias: 'c',
