@@ -1,5 +1,8 @@
 import { ProcessChainVisitor } from './process_chain_visitor.js';
 
+const fix_identifier = function(id) {
+    return id.replace(/-/g, '_');
+}
 
 /**
  * Output: Array of lines, containing the digraph.
@@ -34,8 +37,8 @@ class RateGraphRenderer extends ProcessChainVisitor {
     visit_item(item, chain) {
         let produce = (Math.round(chain.materials.total_positive(item).quantity*100)/100);
         let consume = (Math.round(chain.materials.total_negative(item).mul(-1).quantity*100)/100);
-        this.out.push('  ' + item.id + ' [shape="record" label="{'
-            + item.name
+        this.out.push('  ' + fix_identifier(item.id) + ' [shape="record" label="{'
+            + fix_identifier(item.name)
             + ' | { produce: ' + produce + '/s'
             + ' | consume: ' + consume + '/s }'
             + '}" '
@@ -46,10 +49,10 @@ class RateGraphRenderer extends ProcessChainVisitor {
     visit_process(process, chain) {
         let process_count = chain.process_counts[process.id];
         let inputs = process.inputs.map((input, index) => {
-            return '<i' + index + '> ' + input.item.name + ' (' + (Math.round(input.quantity * process_count * 100)/100) + ')';
+            return '<i' + index + '> ' + fix_identifier(input.item.name) + ' (' + (Math.round(input.quantity * process_count * 100)/100) + ')';
         }).join(' | ');
         let outputs = process.outputs.map((output, index) => {
-            return '<o' + index + '> ' + output.item.name + ' (' + (Math.round(output.quantity * process_count * 100)/100) + ')';
+            return '<o' + index + '> ' + fix_identifier(output.item.name) + ' (' + (Math.round(output.quantity * process_count * 100)/100) + ')';
         }).join(' | ');
         this.out.push('  ' + this._node_id(process) + ' [' +
             'shape="record" ' +
@@ -72,11 +75,11 @@ class RateGraphRenderer extends ProcessChainVisitor {
         let process_count = chain.process_counts[process.id];
         let input_rate = process.inputs.find(i => i.item.id === stack.item.id);
         let rate = Math.round(input_rate.quantity * process_count * 100)/100;
-        this.out.push('  ' + stack.item.id + ' -> ' + this._node_id(process) + ':i' + index + ' [label="' + rate + '/s"]');
+        this.out.push('  ' + fix_identifier(stack.item.id) + ' -> ' + this._node_id(process) + ':i' + index + ' [label="' + rate + '/s"]');
     }
 
     visit_process_item_edge(process, stack, _chain, index) {
-        this.out.push('  ' + this._node_id(process) + ':o' + index + ' -> ' + stack.item.id);
+        this.out.push('  ' + this._node_id(process) + ':o' + index + ' -> ' + fix_identifier(stack.item.id));
     }
 
     build() {

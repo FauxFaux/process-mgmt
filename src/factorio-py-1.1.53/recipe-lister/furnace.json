@@ -1,0 +1,476 @@
+{
+  "stone-furnace" : {
+    "name" : "stone-furnace",
+    "localised_name" : [
+      "entity-name.stone-furnace"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 90000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 1,
+    "crafting_categories" : {
+      "smelting" : true
+    },
+    "module_inventory_size" : 0,
+    "allowed_effects" : {
+      "consumption" : false,
+      "speed" : false,
+      "productivity" : false,
+      "pollution" : false
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "burner" : {
+        "effectivity" : 1,
+        "fuel_categories" : {
+          "chemical" : true
+        },
+        "emissions" : 3.7037037037037e-07
+      }
+    },
+    "pollution" : 2
+  },
+  "steel-furnace" : {
+    "name" : "steel-furnace",
+    "localised_name" : [
+      "entity-name.steel-furnace"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 90000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 2,
+    "crafting_categories" : {
+      "smelting" : true
+    },
+    "module_inventory_size" : 0,
+    "allowed_effects" : {
+      "consumption" : false,
+      "speed" : false,
+      "productivity" : false,
+      "pollution" : false
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "burner" : {
+        "effectivity" : 1,
+        "fuel_categories" : {
+          "chemical" : true
+        },
+        "emissions" : 7.4074074074074e-07
+      }
+    },
+    "pollution" : 4
+  },
+  "electric-furnace" : {
+    "name" : "electric-furnace",
+    "localised_name" : [
+      "entity-name.electric-furnace"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 180000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 2,
+    "crafting_categories" : {
+      "smelting" : true
+    },
+    "module_inventory_size" : 2,
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : true,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 6000,
+        "emissions" : 9.2592592592593e-08
+      }
+    },
+    "pollution" : 1
+  },
+  "co2-absorber" : {
+    "name" : "co2-absorber",
+    "localised_name" : [
+      "entity-name.co2-absorber"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 200000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 1,
+    "crafting_categories" : {
+      "co2" : true
+    },
+    "module_inventory_size" : 4,
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : true,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 6666.6666666667,
+        "emissions" : -5e-06
+      }
+    },
+    "pollution" : -60
+  },
+  "py-burner" : {
+    "name" : "py-burner",
+    "localised_name" : [
+      "entity-name.py-burner"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 180000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 5,
+    "crafting_categories" : {
+      "py-incineration" : true
+    },
+    "module_inventory_size" : 0,
+    "allowed_effects" : {
+      "consumption" : false,
+      "speed" : false,
+      "productivity" : false,
+      "pollution" : false
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "burner" : {
+        "effectivity" : 0.75,
+        "fuel_categories" : {
+          "chemical" : true
+        },
+        "emissions" : 2.7777777777778e-06
+      }
+    },
+    "pollution" : 30
+  },
+  "py-gas-vent" : {
+    "name" : "py-gas-vent",
+    "localised_name" : [
+      "entity-name.py-gas-vent"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 25000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 2,
+    "crafting_categories" : {
+      "py-venting" : true
+    },
+    "module_inventory_size" : 0,
+    "allowed_effects" : {
+      "consumption" : false,
+      "speed" : false,
+      "productivity" : false,
+      "pollution" : false
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "void" : {
+        "emissions" : 0
+      }
+    },
+    "pollution" : 0
+  },
+  "py-sinkhole" : {
+    "name" : "py-sinkhole",
+    "localised_name" : [
+      "entity-name.py-sinkhole"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 1000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 2,
+    "crafting_categories" : {
+      "py-runoff" : true
+    },
+    "module_inventory_size" : 0,
+    "allowed_effects" : {
+      "consumption" : false,
+      "speed" : false,
+      "productivity" : false,
+      "pollution" : false
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "void" : {
+        "emissions" : 0
+      }
+    },
+    "pollution" : 0
+  },
+  "compost-plant-mk01" : {
+    "name" : "compost-plant-mk01",
+    "localised_name" : [
+      "entity-name.compost-plant-mk01"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 400000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 1,
+    "crafting_categories" : {
+      "compost" : true
+    },
+    "module_inventory_size" : 1,
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : true,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 13333.333333333,
+        "emissions" : 4.1666666666667e-08
+      }
+    },
+    "pollution" : 1
+  },
+  "compost-plant-mk02" : {
+    "name" : "compost-plant-mk02",
+    "localised_name" : [
+      "entity-name.compost-plant-mk02"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 500000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 2,
+    "crafting_categories" : {
+      "compost" : true
+    },
+    "module_inventory_size" : 2,
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : true,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 16666.666666667,
+        "emissions" : 3.3333333333333e-08
+      }
+    },
+    "pollution" : 1
+  },
+  "compost-plant-mk03" : {
+    "name" : "compost-plant-mk03",
+    "localised_name" : [
+      "entity-name.compost-plant-mk03"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 600000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 3,
+    "crafting_categories" : {
+      "compost" : true
+    },
+    "module_inventory_size" : 3,
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : true,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 20000,
+        "emissions" : 2.7777777777778e-08
+      }
+    },
+    "pollution" : 1
+  },
+  "compost-plant-mk04" : {
+    "name" : "compost-plant-mk04",
+    "localised_name" : [
+      "entity-name.compost-plant-mk04"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 800000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 4,
+    "crafting_categories" : {
+      "compost" : true
+    },
+    "module_inventory_size" : 4,
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : true,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 26666.666666667,
+        "emissions" : 2.0833333333333e-08
+      }
+    },
+    "pollution" : 1
+  },
+  "magic-furnace" : {
+    "name" : "magic-furnace",
+    "localised_name" : [
+      "entity-name.magic-furnace"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 180000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 10,
+    "crafting_categories" : {
+      "blackhole-energy" : true
+    },
+    "module_inventory_size" : 0,
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : true,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "void" : {
+        "emissions" : 0
+      }
+    },
+    "pollution" : 0
+  }
+}
