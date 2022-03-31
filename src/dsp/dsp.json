@@ -1990,7 +1990,7 @@
     {
       "name": "T_Matrix",
       "duration": 3,
-      "factory_group": "assembler",
+      "factory_group": "matrix_lab",
       "inputs": {
         "Circuit_Board": 1,
         "Magnetic_Coil": 1
@@ -2089,7 +2089,7 @@
     {
       "name": "U_Matrix",
       "duration": 15,
-      "factory_group": "assembler",
+      "factory_group": "matrix_lab",
       "inputs": {
         "Anti_Matter": 1,
         "C_Matrix": 1,
