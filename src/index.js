@@ -251,7 +251,7 @@ const command_manual_rate = function(argv) {
         });
         p.process_counts = config.process_counts;
         p.rebuild_materials();
-        console.log(p.to_graphviz());
+        console.log(p.accept(new RateGraphRenderer()).join('\n'));
     });
 }
 
