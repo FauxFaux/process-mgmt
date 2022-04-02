@@ -11,13 +11,13 @@
   "author": "",
   "license": "GPL-2.0-only",
   "devDependencies": {
-    "eslint": "^7.23.0",
+    "eslint": "^7.32.0",
     "esm": "^3.2.25",
     "json-loader": "^0.5.7",
-    "mocha": "^9.2.1"
+    "mocha": "^9.2.2"
   },
   "dependencies": {
     "node-matrices": "^1.0.0",
-    "yargs": "^17.0.1"
+    "yargs": "^17.4.0"
   }
 }
