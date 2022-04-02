@@ -105,3 +105,4 @@ dist
 *.png
 *.gv
 *.vscode
+tmp

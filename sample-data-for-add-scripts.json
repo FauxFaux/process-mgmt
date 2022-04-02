@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "id": "id",
+      "i18n": {
+        "en": "na"
+      }
+    },
+    {
+      "id": "i1",
+      "i18n": {
+        "en": "n1"
+      }
+    }
+  ],
+  "processes": [
+    {
+        "name": "iron_plate",
+        "duration": 1,
+        "factory_group": "thingy",
+        "outputs": {
+          "iron_plate": 2
+        },
+        "inputs": {
+          "iron_ingot": 3
+        }
+      }
+  ]
+}
