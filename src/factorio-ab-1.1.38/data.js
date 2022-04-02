@@ -4,13 +4,10 @@ import { Item } from '../item.js';
 import { Data } from '../data.js';
 import { Process } from '../process.js';
 
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+let raw = require('./exported-data.json');
 
-import * as fs from 'fs'
-import * as path from 'path'
-import { fileURLToPath } from 'url';
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-let raw = JSON.parse(fs.readFileSync(path.join(__dirname, 'exported-data.json'), 'utf8'));
-// import * as raw from './exported-data.json'
 
 let data = new Data('factorio-ab-1.1.38', '0.0.1');
 

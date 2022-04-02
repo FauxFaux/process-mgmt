@@ -4,19 +4,12 @@ import { Item } from '../item.js';
 import { Data } from '../data.js';
 import { Process } from '../process.js';
 
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+let recipe_raw = require('./recipe-lister/recipe.json');
 
-import * as fs from 'fs'
-import * as path from 'path'
-import { fileURLToPath } from 'url';
-import { groupCollapsed } from 'console';
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-let recipe_raw = JSON.parse(fs.readFileSync(path.join(__dirname, 'recipe-lister/recipe.json'), 'utf8'));
 
 let data = new Data('factorio-py-1.1.53', '0.0.1');
-
-const fix_identifier = function(id) {
-    return id.replace(/-/g, '_');
-}
 
 const check_add = function(item, fn) {
     try {
@@ -73,16 +66,13 @@ Object.values(recipe_raw).forEach(recipe => {
 });
 
 
-let factories = [
+[
     'recipe-lister/assembling-machine.json',
     'recipe-lister/furnace.json',
     'recipe-lister/rocket-silo.json',
 ].map(
-    n => fs.readFileSync(path.join(__dirname, n), 'utf8')
-).map(
-    buffer => JSON.parse(buffer)
-)
-factories.forEach(group => {
+    f => require('./' + f)
+).forEach(group => {
     Object.values(group).forEach(factory => {
         check_add([factory, factory.crafting_categories], () => {
             Object.keys(factory.crafting_categories).forEach(category_name => {

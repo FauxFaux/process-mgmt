@@ -1,10 +1,9 @@
 import { Data, Item, Stack, FactoryGroup, Factory, Process } from '../structures.js';
 
-import * as fs from 'fs'
-import * as path from 'path'
-import { fileURLToPath } from 'url';
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-let raw = JSON.parse(fs.readFileSync(path.join(__dirname, 'dsp.json'), 'utf8'));
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+let raw = require('./dsp.json');
+
 
 const check_add = function(item, fn) {
     try {
