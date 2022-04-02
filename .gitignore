@@ -102,7 +102,17 @@ dist
 
 # TernJS port file
 .tern-port
+
+
+# Others
 *.png
 *.gv
 *.vscode
 tmp
+
+# Working projects
+factorio_ab/
+factorio_py/
+satisfactory/
+vt/
+dsp/
