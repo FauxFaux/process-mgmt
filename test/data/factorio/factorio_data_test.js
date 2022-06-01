@@ -13,53 +13,53 @@ let ASSEMBLERS = './recipe-lister/assembling-machine.json';
 let FURNACES = './recipe-lister/furnace.json';
 let SILO = './recipe-lister/rocket-silo.json';
 
-import { single_mixed_recipe, single_temperature_recipe, single_solids_recipe } from './fixtures.js';
+import { single_mixed_recipe, multiple_temperature_recipe, single_temperature_recipe, single_solids_recipe } from './fixtures.js';
 
-describe('Data Parsing', function() {
-    describe('standard solid processes', function() {
+describe('Data Parsing', function () {
+    describe('standard solid processes', function () {
         let result = create_data(path => {
-            switch(path) {
+            switch (path) {
                 case RECIPES:
                     return single_solids_recipe;
                 default:
                     return {};
             }
         });
-        it('finds a single process', function() {
+        it('finds a single process', function () {
             assert.deepStrictEqual(Object.keys(result.processes), ['copper-plate']);
         });
-        it('the process has a single input', function() {
+        it('the process has a single input', function () {
             assert.deepStrictEqual(
                 result.processes['copper-plate'].inputs,
                 [new Stack(new Item('copper-ore', 'copper-ore'), 8)]
-                );
+            );
         });
-        it('the process has a single output', function() {
+        it('the process has a single output', function () {
             assert.deepStrictEqual(
                 result.processes['copper-plate'].outputs,
                 [new Stack(new Item('copper-plate', 'copper-plate'), 1)]
-                );
+            );
         });
     });
-    describe('temperature restricted processes', function() {
+    describe('temperature restricted processes', function () {
         let result = create_data(path => {
-            switch(path) {
+            switch (path) {
                 case RECIPES:
                     return single_temperature_recipe;
                 default:
                     return {};
             }
         });
-        it('finds processes', function() {
+        it('finds processes', function () {
             assert.deepStrictEqual(
                 Object.keys(result.processes).sort(),
                 [
-                    'hot-residual-mixture-to-coke',
-                    'warmer-stone-brick-1'
+                    'hot-residual-mixture-to-coke--0',
+                    'warmer-stone-brick-1--0'
                 ]
             );
         });
-        it('data has three fluid variants', function() {
+        it('data has three fluid variants', function () {
             assert.deepStrictEqual(
                 Object.values(result.items)
                     .filter(item => item.name.startsWith('coke-oven-gas'))
@@ -75,23 +75,156 @@ describe('Data Parsing', function() {
                 ]
             )
         });
-        it('the process has a two inputs', function() {
+        it('the process has a two inputs', function () {
             assert.deepStrictEqual(
-                result.processes['warmer-stone-brick-1'].inputs,
+                result.processes['warmer-stone-brick-1--0'].inputs,
                 [
                     new Stack(new Item('warm-stone-brick', 'warm-stone-brick'), 5),
                     new Stack(new Item('coke-oven-gas_500', 'coke-oven-gas (500)'), 100)
                 ]
-                );
+            );
         });
-        it('the process has a two outputs', function() {
+        it('the process has a two outputs', function () {
             assert.deepStrictEqual(
-                result.processes['warmer-stone-brick-1'].outputs,
+                result.processes['warmer-stone-brick-1--0'].outputs,
                 [
                     new Stack(new Item('warmer-stone-brick', 'warmer-stone-brick'), 5),
                     new Stack(new Item('coke-oven-gas_250', 'coke-oven-gas (250)'), 100)
                 ]
-                );
+            );
         });
+    });
+    describe('temperature restricted processes; 2 input options', function () {
+        let result = create_data(path => {
+            switch (path) {
+                case RECIPES:
+                    return multiple_temperature_recipe;
+                default:
+                    return {};
+            }
+        });
+        it('finds processes', function () {
+            assert.deepStrictEqual(
+                Object.keys(result.processes).sort(),
+                [
+                    'coke-oven-gas-300--0',
+                    'coke-oven-gas-500--0',
+                    'warmer-stone-brick-1--0',
+                    'warmer-stone-brick-1--1'
+                ]
+            );
+        });
+        it('data has four fluid variants', function () {
+            assert.deepStrictEqual(
+                Object.values(result.items)
+                    .filter(item => item.name.startsWith('coke-oven-gas'))
+                    .sort((a, b) => {
+                        if (a.name < b.name) return -1;
+                        if (a.name > b.name) return 1;
+                        return 0;
+                    }),
+                [
+                    new Item('coke-oven-gas', 'coke-oven-gas'),
+                    new Item('coke-oven-gas_250', 'coke-oven-gas (250)'),
+                    new Item('coke-oven-gas_300', 'coke-oven-gas (300)'),
+                    new Item('coke-oven-gas_500', 'coke-oven-gas (500)')
+                ]
+            )
+        });
+        it('the process has a two inputs (300)', function () {
+            assert.deepStrictEqual(
+                result.processes['warmer-stone-brick-1--0'].inputs,
+                [
+                    new Stack(new Item('warm-stone-brick', 'warm-stone-brick'), 5),
+                    new Stack(new Item('coke-oven-gas_300', 'coke-oven-gas (300)'), 100)
+                ]
+            );
+        });
+        it('the process has a two outputs (300)', function () {
+            assert.deepStrictEqual(
+                result.processes['warmer-stone-brick-1--0'].outputs,
+                [
+                    new Stack(new Item('warmer-stone-brick', 'warmer-stone-brick'), 5),
+                    new Stack(new Item('coke-oven-gas_250', 'coke-oven-gas (250)'), 100)
+                ]
+            );
+        });
+        it('the process has a two inputs (500)', function () {
+            assert.deepStrictEqual(
+                result.processes['warmer-stone-brick-1--1'].inputs,
+                [
+                    new Stack(new Item('warm-stone-brick', 'warm-stone-brick'), 5),
+                    new Stack(new Item('coke-oven-gas_500', 'coke-oven-gas (500)'), 100)
+                ]
+            );
+        });
+        it('the process has a two outputs (500)', function () {
+            assert.deepStrictEqual(
+                result.processes['warmer-stone-brick-1--1'].outputs,
+                [
+                    new Stack(new Item('warmer-stone-brick', 'warmer-stone-brick'), 5),
+                    new Stack(new Item('coke-oven-gas_250', 'coke-oven-gas (250)'), 100)
+                ]
+            );
+        });
+    });
+});
+
+
+
+const ff = function (input, out) {
+    if (input.length == 0) return out;
+    let entry = input.shift();
+    if (out) {
+        let r = [];
+        out.forEach(o => {
+            entry.forEach(e => {
+                r.push(o.concat(e))
+            });
+        });
+        return ff(input, r);
+    } else {
+        return ff(input, entry.map(e => [e]))
+    }
+}
+
+describe('combinatorics', () => {
+    it('expands 1x1', () => {
+        let result = ff([['x']]);
+        assert.deepStrictEqual(result, [['x']]);
+    });
+    it('expands 1x2', () => {
+        let result = ff([['x', 'y']]);
+        assert.deepStrictEqual(result, [['x'], ['y']]);
+    });
+    it('expands 2x1', () => {
+        let result = ff([['x'], ['y']]);
+        assert.deepStrictEqual(result, [['x', 'y']]);
+    });
+    it('expands 2.1', () => {
+        let result = ff([['x', 'y'], ['a']]);
+            assert.deepStrictEqual(result, [['x', 'a'], ['y', 'a']]);
+    });
+    it('expands 2.2', () => {
+        let result = ff([['x', 'y'], ['a', 'b']]);
+        assert.deepStrictEqual(result, [
+            ['x', 'a'],
+            ['x', 'b'],
+            ['y', 'a'],
+            ['y', 'b']
+        ]);
+    });
+    it('expands 2.2.2', () => {
+        let result = ff([['x', 'y'], ['a', 'b'], ['p', 'q']]);
+        assert.deepStrictEqual(result, [
+            ['x', 'a', 'p'],
+            ['x', 'a', 'q'],
+            ['x', 'b', 'p'],
+            ['x', 'b', 'q'],
+            ['y', 'a', 'p'],
+            ['y', 'a', 'q'],
+            ['y', 'b', 'p'],
+            ['y', 'b', 'q']
+        ]);
     });
 });

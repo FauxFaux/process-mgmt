@@ -93,9 +93,9 @@ const _add_temperature_recipe = function (data, recipe, temperature_based_items)
 
     let ingredient_variations = cross_product_ingredients(data, recipe.ingredients, temperature_based_items);
     check_add(recipe, () => {
-        ingredient_variations.forEach(variation => {
+        ingredient_variations.forEach((variation, idx) => {
             data.add_process(new Process(
-                recipe.name,
+                recipe.name + '--' + idx,
                 variation,
                 recipe.products.map(i => convert_ingredient(data, i)),
                 recipe.energy,
@@ -105,6 +105,23 @@ const _add_temperature_recipe = function (data, recipe, temperature_based_items)
     });
 };
 
+
+const compute_permutations = function (input, out) {
+    if (input.length == 0) return out;
+    let entry = input.shift();
+    if (out) {
+        let r = [];
+        out.forEach(o => {
+            entry.forEach(e => {
+                r.push(o.concat(e))
+            });
+        });
+        return compute_permutations(input, r);
+    } else {
+        return compute_permutations(input, entry.map(e => [e]))
+    }
+}
+
 const cross_product_ingredients = function (data, ingredients, temperature_based_items) {
     let ingredients_with_temperature_lists = ingredients.map(i => {
         if (i.minimum_temperature || i.maximum_temperature) {
@@ -112,13 +129,21 @@ const cross_product_ingredients = function (data, ingredients, temperature_based
                 .filter(t => i.minimum_temperature <= t && t <= i.maximum_temperature)
                 .map(t => temperature_based_items[i.name][t])
                 .map(item => new Stack(item, get_ingredient_amount(i)));
-            return stack_in_range[0];
+            return stack_in_range;
         } else {
-            return [convert_ingredient(data, i)][0];
+            return [convert_ingredient(data, i)];
         }
     });
-    console.log(ingredients_with_temperature_lists);
-    return [ingredients_with_temperature_lists];
+    let permutations = compute_permutations(ingredients_with_temperature_lists
+        .map(ingredient_list => {
+            let r = [];
+            for (let i = 0; i < ingredient_list.length; ++i) r.push(i);
+            return r;
+        }))
+        .map(permutation => {
+            return permutation.map((val, idx) => ingredients_with_temperature_lists[idx][val])
+        });
+    return permutations;
 };
 
 const add_factory_groups = function (data, group) {

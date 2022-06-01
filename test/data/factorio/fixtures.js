@@ -108,12 +108,129 @@ let single_temperature_recipe = {
                 "type": "fluid",
                 "name": "water",
                 "amount": 300
+            }
+        ],
+        "products": [
+            {
+                "type": "item",
+                "name": "coke",
+                "probability": 1,
+                "amount": 40
             },
             {
                 "type": "fluid",
-                "name": "steam",
-                "amount": 300,
-                "something_can_produce_this.temperature": 165
+                "name": "coke-oven-gas",
+                "probability": 1,
+                "amount": 60,
+                "temperature": 500
+            }
+        ]
+    },
+};
+
+
+let multiple_temperature_recipe = {
+    "warmer-stone-brick-1": {
+        "name": "warmer-stone-brick-1",
+        "localised_name": [
+            "item-name.warmer-stone-brick"
+        ],
+        "category": "rhe",
+        "group": {
+            "name": "py-petroleum-handling",
+            "type": "item-group"
+        },
+        "subgroup": {
+            "name": "py-petroleum-handling-hot-air",
+            "type": "item-subgroup"
+        },
+        "enabled": false,
+        "hidden": false,
+        "hidden_from_player_crafting": false,
+        "emissions_multiplier": 1,
+        "energy": 5,
+        "ingredients": [
+            {
+                "type": "item",
+                "name": "warm-stone-brick",
+                "amount": 5
+            },
+            {
+                "type": "fluid",
+                "name": "coke-oven-gas",
+                "amount": 100,
+                "minimum_temperature": 300,
+                "maximum_temperature": 1.7976931348623e+308,
+                "catalyst_amount": 100
+            }
+        ],
+        "products": [
+            {
+                "type": "item",
+                "name": "warmer-stone-brick",
+                "probability": 1,
+                "amount": 5
+            },
+            {
+                "type": "fluid",
+                "name": "coke-oven-gas",
+                "probability": 1,
+                "amount": 100,
+                "temperature": 250,
+                "catalyst_amount": 100
+            }
+        ]
+    },
+    "coke-oven-gas-300": {
+        "name": "coke-oven-gas-300",
+        "localised_name": [
+            "item-name.coke"
+        ],
+        "category": "upgrader",
+        "group": {
+            "name": "py-petroleum-handling",
+            "type": "item-group"
+        },
+        "energy": 6,
+        "ingredients": [
+            {
+                "type": "fluid",
+                "name": "water",
+                "amount": 300
+            }
+        ],
+        "products": [
+            {
+                "type": "item",
+                "name": "coke",
+                "probability": 1,
+                "amount": 30
+            },
+            {
+                "type": "fluid",
+                "name": "coke-oven-gas",
+                "probability": 1,
+                "amount": 60,
+                "temperature": 300
+            }
+        ]
+    },
+    "coke-oven-gas-500": {
+        "name": "coke-oven-gas-500",
+        "localised_name": [
+            "item-name.coke"
+        ],
+        "category": "upgrader",
+        "group": {
+            "name": "py-petroleum-handling",
+            "type": "item-group"
+        },
+        "energy": 6,
+        "ingredients": [
+            {
+                "type": "fluid",
+                "name": "water",
+                "amount": 300
             }
         ],
         "products": [
@@ -177,4 +294,4 @@ let single_mixed_recipe = {
 };
 
 
-export { single_mixed_recipe, single_temperature_recipe, single_solids_recipe };
+export { single_mixed_recipe, multiple_temperature_recipe, single_temperature_recipe, single_solids_recipe };
