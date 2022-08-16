@@ -189,8 +189,6 @@ const create_data = function (require) {
                 let temp = product.temperature;
                 let item = check_add([recipe, product], () => add_item(data, product.name + "_" + temp, product.name + " (" + temp + ")"));
                 _add_temperature_based_item(temperature_based_items, product, item);
-                // let basic_item = check_add([recipe, product], () => add_item(data, product.name, product.name));
-                // temperature_based_items[product.name]['none'] = basic_item; // XXX needed?
             } else {
                 check_add([recipe, product], () => add_item(data, product.name));
             }
