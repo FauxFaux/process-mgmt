@@ -839,7 +839,7 @@
       }
     },
     {
-      "name": "circuit_board",
+      "name": "circuit_board_alternate_3",
       "duration": "9.6",
       "factory_group": "assembler",
       "inputs": {
