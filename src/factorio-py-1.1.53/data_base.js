@@ -208,10 +208,19 @@ const create_data = function (require) {
                     i.minimum_temperature = i.temperature;
                     i.maximum_temperature = i.temperature;
                 }
+                if (i.minimum_temperature > -1e+207) {
+                    let temp = i.minimum_temperature;
+                    let item = check_add([recipe, i], () => add_item(data, i.name + "_" + temp, i.name + " (" + temp + ")"));
+                    _add_temperature_based_item(temperature_based_items, i, item);
+                }
+                if (i.maximum_temperature < 1e+207) {
+                    let temp = i.maximum_temperature;
+                    let item = check_add([recipe, i], () => add_item(data, i.name + "_" + temp, i.name + " (" + temp + ")"));
+                    _add_temperature_based_item(temperature_based_items, i, item);
+                }
             });
 
             if (_recipe_has_fluid_temperature(recipe)) {
-                console.error("Found temperature-restricted recipe: ", recipe);
                 _add_temperature_recipe(data, recipe, temperature_based_items);
             } else {
                 _add_basic_recipe(data, recipe);
