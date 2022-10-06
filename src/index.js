@@ -136,7 +136,7 @@ const command_linear_algebra = function(argv) {
             let data = module.data;
             let g = new ProcessChain(Object.values(data.processes))
                 .filter_for_output(
-                    config.get_requirement(),
+                    config.get_requirement(data),
                     array_disambiguate(data, config),
                     [].concat(config.get_imported()).concat(config.get_exported())
                     )
@@ -153,11 +153,73 @@ const command_linear_algebra = function(argv) {
                         );
                     })
                 )
-                .accept(new LinearAlgebra(config.get_requirement(), config.get_imported(), config.get_exported()))
+                .accept(new LinearAlgebra(config.get_requirement(data), config.get_imported(), config.get_exported()))
                 .accept(new RateGraphRenderer()).join('\n');
         });
     });
 };
+
+const command_rate_with_manual = function(argv) {
+    fs.readFile(argv.config, 'utf8', (_err, str) => {
+        let config = decorate_config(JSON.parse(str));
+        import('./' + config.data +'/data.js').then(module => {
+            let data = module.data;
+            let p = new ProcessChain(Object.values(data.processes))
+                .accept(new FilterForOutput(
+                    data.items[config.requirement.id],
+                    array_disambiguate(data, config),
+                    [].concat(config.get_imported()).concat(config.get_exported())
+                    ))
+                .accept(new RateVisitor(process => {
+                    let f = quickest_factory_for_factory_type(data, process.factory_group);
+                    if ((typeof f) === "undefined") {
+                        console.warn("No factory found for ", process.factory_group);
+                        f = new Factory('__default__', '__default__', null, 1, 1);
+                    }
+                    return f.modify(
+                        config.get_modifier_speed(process.id),
+                        config.get_modifier_output(process.id),
+                        );
+                }))
+                .accept(new RateCalculator(
+                    config.get_requirement(data),
+                    config.get_imported(),
+                    array_disambiguate(data, config)
+                    ));
+            let r = {};
+            Object.entries(p.process_counts).forEach(kv => {
+                r[kv[0]] = kv[1]
+            });
+            Object.entries(config.process_counts).forEach(kv => {
+                if (r[kv[0]]) {
+                    r[kv[0]] = r[kv[0]] + kv[1];
+                } else {
+                    r[kv[0]] = kv[1]
+                }
+            });
+            let to_enable = optional(Object.keys(config.process_counts), [])
+                .filter(pr => !p.processes.map(pp => pp.id).includes(pr))
+                .map(s => data.processes[s])
+            p = p.enable(...to_enable);
+            let pr = new RateChain(p, (process) => {
+                let output = 1;
+                let speed = 1;
+                if (config.modifiers && config.modifiers[process.id] && config.modifiers[process.id].output) {
+                    output = config.modifiers[process.id].output;
+                }
+                if (config.modifiers && config.modifiers[process.id] && config.modifiers[process.id].speed) {
+                    speed = config.modifiers[process.id].speed;
+                }
+                return quickest_factory_for_factory_type(data, process.factory_group).modify(speed, output);
+            })
+            pr.process_counts = r;
+            pr.rebuild_materials();
+            let g = pr.accept(new RateGraphRenderer()).join('\n');
+            console.log(g);
+        });
+    });
+}
+
 
 const command_rate = function(argv) {
     fs.readFile(argv.config, 'utf8', (_err, str) => {
