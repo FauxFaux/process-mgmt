@@ -29,8 +29,6 @@ class LinearAlgebra extends ProcessChainVisitor {
 		this.requirement = requirement;
 		this.imported = imported;
         this.exported = exported;
-        this._column_ref = {};
-        this._row_ref = {};
     }
 
     check(_chain) {
@@ -46,7 +44,7 @@ class LinearAlgebra extends ProcessChainVisitor {
         this.columns = [];
         this.items = [];
     }
-    
+
     visit_process(process, _chain) {
         let c = new Column(process);
         this.columns.push(c);
@@ -63,20 +61,37 @@ class LinearAlgebra extends ProcessChainVisitor {
             if (col_a.process.id < col_b.process.id) return -1;
             return 0;
         });
-        this.columns.forEach((v, i) => {
-            this._column_ref[v.process.id] = i;
-        });
         this.items.sort((item_a, item_b) => {
             if (item_a.id > item_b.id) return 1;
             if (item_a.id < item_b.id) return -1;
             return 0;
         });
-        this.items.forEach((v, i) => {
-            this._row_ref[v.id] = i;
+    }
+
+    _print_columns() {
+        this.columns.forEach(col => {
+            console.log(col.process.id, 'items: ', col.entries.items().flatMap(ssi => {
+                let total = col.entries.total(ssi);
+                return [total.item.name, total.quantity];
+            }).join(', '));
         });
+    }
+    _print_matrix(identifier, matrix) {
+        console.log(identifier);
+        console.table(matrix.data);
+    }
+
+    _add_row_column_headers(matrix, extra_columns = []) {
+        return new Matrix([' '])
+                .combineHorizontal(new Matrix([this.columns.map(c => c.process.id)])
+                .combineHorizontal(new Matrix([extra_columns]))
+        ).combineVertical(
+            new Matrix([this.items.map(i => i.id)]).transpose().combineHorizontal(matrix)
+        );
     }
 
     build() {
+        this._print_columns();
         this._sort_columns_and_rows();
         let rows = this.items.map(item => {
             return this.columns.map(col => {
@@ -84,13 +99,32 @@ class LinearAlgebra extends ProcessChainVisitor {
             });
         });
 		this.initial_matrix = new Matrix(...rows);
+
+        this._print_matrix('initial matrix:', this._add_row_column_headers(this.initial_matrix));
 		let requirements = this.items.map((v, i) => {
             if (v.id == this.requirement.item.id) {
                 return [this.requirement.quantity];
             }
             return [0];
         });
-		this.augmented_matrix = this.initial_matrix.combineHorizontal(new Matrix(...requirements));
+        let imported_items = this.imported.map(item => {
+            return this.items.map(it => {
+                if (it.id == item) return 1;
+                return 0;
+            });
+        }).map(arr => new Matrix([arr]).transpose()
+        ).reduce((prev, mtx) => {
+            if (prev) {
+                return prev.combineHorizontal(mtx);
+            } else {
+                return mtx;
+            }
+        });
+
+		this.augmented_matrix = this.initial_matrix
+                .combineHorizontal(imported_items)
+                .combineHorizontal(new Matrix(...requirements));
+        this._print_matrix('augmented matrix:', this._add_row_column_headers(this.augmented_matrix, this.imported.concat(['req'])));
 
         this.reduced_matrix = this.reduce_matrix(this.augmented_matrix);
 
@@ -115,20 +149,32 @@ class LinearAlgebra extends ProcessChainVisitor {
                     }
                 }
             }
-            if (i !== r) {
-                let ri = m1.getRow(i);
-                let rr = m1.getRow(r);
+            this._print_matrix('before swap r='+r+', lead='+lead+', i='+i+':', this._add_row_column_headers(m1, this.imported.concat(['req'])));
+            if (i !== r) { // swap rows i and r.
+                console.log('rows swapped', i, r);
+                let ri = m1.getRow(i).data[0];
+                let rr = m1.getRow(r).data[0];
                 m1 = this.replace_row(m1, rr, i);
                 m1 = this.replace_row(m1, ri, r);
+                let item_i = this.items[i];
+                let item_r = this.items[r];
+                this.items[r] = item_i;
+                this.items[i] = item_r;
             }
-            m1 = this.replace_row(m1, m1.getRow(i).scale(1/m1.get(i, lead)).data[0], i);
+            this._print_matrix('after swap r='+r+', lead='+lead+', i='+i+':', this._add_row_column_headers(m1, this.imported.concat(['req'])));
+            console.log('row ', r, 'scaled by ', 1/m1.get(r, lead))
+            m1 = this.replace_row(m1, m1.getRow(r).scale(1/m1.get(r, lead)).data[0], r);
+            this._print_matrix('after scale r='+r+', lead='+lead+', i='+i+':', this._add_row_column_headers(m1, this.imported.concat(['req'])));
             for (let ii = 0; ii < m1.numRows(); ++ii) {
                 if (ii !== r) {
                     let sub = m1.getRow(r).scale(m1.get(ii, lead));
                     let replacement = m1.getRow(ii).subtract(sub).data[0];
+                    console.log('row ', ii, '= row (', this.items[ii].id ,')', ii, '- ', m1.get(ii, lead), 'row (', this.items[r].id, ')', r)
                     m1 = this.replace_row(m1, replacement, ii)
                 }
             }
+            this._print_matrix('after subtractions r='+r+', lead='+lead+', i='+i+':', this._add_row_column_headers(m1, this.imported.concat(['req'])));
+
         }
         return m1;
     }
@@ -148,10 +194,10 @@ export { LinearAlgebra };
 
 /*
 
-[1, 2, 3] .  [1,0,0,0] =  
-[2, 2, 3] .  [0,1,0,0] = 
-[3, 2, 3] .  [0,0,1,0] = 
-[4, 2, 3] .            = 
+[1, 2, 3] .  [1,0,0,0] =
+[2, 2, 3] .  [0,1,0,0] =
+[3, 2, 3] .  [0,0,1,0] =
+[4, 2, 3] .            =
 
 */
 
