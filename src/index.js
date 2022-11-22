@@ -79,7 +79,18 @@ const decorate_config = function(config) {
         return optional(config.process_choices, []);
     }
     config.get_requirement = function(data) {
-        return new Stack(data.items[config.requirement.id], config.requirement.rate);
+        if (config.requirement) {
+            return new Stack(data.items[config.requirement.id], config.requirement.rate);
+        } else if (config.requirements) {
+            return new Stack(data.items[config.requirements[0].id], config.requirements[0].rate);
+        }
+    };
+    config.get_requirements = function(data) {
+        if (config.requirement) {
+            return [new Stack(data.items[config.requirement.id], config.requirement.rate)];
+        } else if (config.requirements) {
+            return config.requirements.map(r => new Stack(data.items[r.id], r.rate));
+        }
     };
     config.get_enabled = function() {
         return optional(config.enable, []);
@@ -153,7 +164,7 @@ const command_linear_algebra = function(argv) {
                         );
                     })
                 )
-                .accept(new LinearAlgebra(config.get_requirement(data), config.get_imported(), config.get_exported()))
+                .accept(new LinearAlgebra(config.get_requirements(data), config.get_imported(), config.get_exported()))
                 .accept(new RateGraphRenderer()).join('\n');
         });
     });
@@ -379,16 +390,16 @@ const command_manual_visitor = function(argv) {
     });
 }
 
-const process_to_pretty_string = function(p) {
+const process_to_pretty_string = function(p, data) {
     return p.id + ' => \n'
-        + '  ' + p.factory_group.name
-        + '\n'
+        + '  factory group: ' + p.factory_group.name + '\n'
+        + '  duration: ' + p.duration + '\n'
         + '  inputs:\n'
-        + p.inputs.map(i => '    ' + i.item.id + ' (' + i.quantity + ')').join('\n')
-        + '\n'
+        + p.inputs.map(i => '    ' + i.item.id + ' (' + i.quantity + ')').join('\n') + '\n'
         + '  outputs:\n'
-        + p.outputs.map(i => '    ' + i.item.id + ' (' + i.quantity + ')').join('\n')
-        + '\n'
+        + p.outputs.map(i => '    ' + i.item.id + ' (' + i.quantity + ')').join('\n') + '\n'
+        + '  made in:\n'
+        + Object.values(data.factories).filter(f => f.groups.map(fg => fg.name).includes(p.factory_group.name)).map(f => f.id + ' (duration modifier: ' + f.duration_modifier + ', output modifier: ' + f.output_modifier + ')').map(s => '    ' + s).join('\n')
 }
 
 const command_what_produces = function(argv) {
@@ -397,7 +408,7 @@ const command_what_produces = function(argv) {
         let p = new ProcessChain(Object.values(data.processes));
         let options = p.processes_by_output[argv.produces];
         console.log(
-            options.map(process_to_pretty_string).join('\n')
+            options.map(p => process_to_pretty_string(p, data)).join('\n')
         );
     });
 }
@@ -408,7 +419,7 @@ const command_what_uses = function(argv) {
         let p = new ProcessChain(Object.values(data.processes));
         let options = p.processes_by_input[argv.uses];
         console.log(
-            options.map(process_to_pretty_string).join('\n')
+            options.map(p => process_to_pretty_string(p, data)).join('\n')
         );
     });
 }
