@@ -160,7 +160,7 @@ const add_factory_groups = function (data, group) {
                 factory.name,
                 factory.name,
                 Object.keys(factory.crafting_categories).map(c => data.factory_groups[c]),
-                factory.crafting_speed
+                1/factory.crafting_speed
             ));
         });
     });
