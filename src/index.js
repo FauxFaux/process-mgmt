@@ -92,6 +92,13 @@ const decorate_config = function(config) {
             return config.requirements.map(r => new Stack(data.items[r.id], r.rate));
         }
     };
+    config.get_factory_type = function(data, process_id, fallback_cb) {
+        if (optional(config.factory_types, {})[process_id]) {
+            return data.factories[optional(config.factory_types, {})[process_id]];
+        } else {
+            return fallback_cb();
+        };
+    }
     config.get_enabled = function() {
         return optional(config.enable, []);
     };
@@ -300,7 +307,6 @@ const command_rate_loop = function(argv) {
     });
 }
 
-
 const command_manual_rate = function(argv) {
     let config = decorate_config(JSON.parse(fs.readFileSync(argv.config, 'utf8'))); // TODO enter callback hell.
     import('./' + config.data +'/data.js').then(module => {
@@ -320,7 +326,7 @@ const command_manual_rate = function(argv) {
             if (config.modifiers && config.modifiers[process.id] && config.modifiers[process.id].speed) {
                 speed = config.modifiers[process.id].speed;
             }
-            return quickest_factory_for_factory_type(data, process.factory_group).modify(speed, output);
+            return config.get_factory_type(data, process.id, () => quickest_factory_for_factory_type(data, process.factory_group).modify(speed, output));
         });
         p.process_counts = config.process_counts;
         p.rebuild_materials();
