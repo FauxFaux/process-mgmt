@@ -246,7 +246,7 @@ const command_rate = function(argv) {
             let data = module.data;
             let g = new ProcessChain(Object.values(data.processes))
                 .accept(new FilterForOutput(
-                    data.items[config.requirement.id],
+                    config.get_requirement(data).item,
                     array_disambiguate(data, config),
                     [].concat(config.get_imported()).concat(config.get_exported())
                     ))
