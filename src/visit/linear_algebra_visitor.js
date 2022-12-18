@@ -78,6 +78,7 @@ class LinearAlgebra extends ProcessChainVisitor {
     }
     _print_matrix(identifier, matrix) {
         console.log(identifier);
+        console.log('columns', matrix.numColumns(), 'rows', matrix.numRows())
         let res = {};
         let lookup = [];
         for (let i = 0; i < this.items.length; ++i) {
@@ -101,6 +102,24 @@ class LinearAlgebra extends ProcessChainVisitor {
         );
     }
 
+    _create_import_export_matrix(io, items, value) {
+        if (io.length == 0) return new Matrix();
+        return io.map(item => { // array[item]
+            return items.map(it => {
+                if (it.id == item) return value;
+                return 0; // [...,0,0,0,value,0,...]
+            });
+        })
+        .map(arr => new Matrix([arr]).transpose()) // column matrix
+        .reduce((prev, mtx) => { // combine into one matrix
+            if (prev) {
+                return prev.combineHorizontal(mtx);
+            } else {
+                return mtx;
+            }
+        });
+    }
+
     build() {
         this._print_columns();
         this._sort_columns_and_rows();
@@ -122,27 +141,27 @@ class LinearAlgebra extends ProcessChainVisitor {
             }
             return [0];
         });
-        let imported_items = this.imported.map(item => {
-            return this.items.map(it => {
-                if (it.id == item) return 1;
-                return 0;
-            });
-        }).map(arr => new Matrix([arr]).transpose()
-        ).reduce((prev, mtx) => {
-            if (prev) {
-                return prev.combineHorizontal(mtx);
-            } else {
-                return mtx;
-            }
-        });
 
-        for (let im of this.imported) {
-            this.columns.push({ process: {id: im} });
+        this.augmented_matrix = this.initial_matrix
+        if (this.imported.length > 0) {
+            let imported_items = this._create_import_export_matrix(this.imported, this.items, 1);
+            for (let im of this.imported) {
+                this.columns.push({ process: {id: im} });
+            }
+            this.augmented_matrix = this.augmented_matrix.combineHorizontal(imported_items)
         }
+        if (this.exported.length > 0) {
+            let exported_items = this._create_import_export_matrix(this.exported, this.items, 1);
+            for (let im of this.exported) {
+                this.columns.push({ process: {id: im} });
+            }
+            this.augmented_matrix = this.augmented_matrix.combineHorizontal(exported_items)
+        }
+
         this.columns.push({ process: {id: 'req'} });
-		this.augmented_matrix = this.initial_matrix
-                .combineHorizontal(imported_items)
+		this.augmented_matrix = this.augmented_matrix
                 .combineHorizontal(new Matrix(...requirements));
+
         this._print_matrix('augmented matrix:', this.augmented_matrix);
 
         this.reduced_matrix = this.reduce_matrix(this.augmented_matrix);
@@ -169,9 +188,9 @@ class LinearAlgebra extends ProcessChainVisitor {
                     }
                 }
             }
-            this._print_matrix('before swap r='+r+', lead='+lead+', i='+i+':', m1);
+            // this._print_matrix('before swap r='+r+', lead='+lead+', i='+i+':', m1);
             if (i !== r) { // swap rows i and r.
-                console.log('rows swapped', i, r);
+                // console.log('rows swapped', i, r);
                 let ri = m1.getRow(i).data[0];
                 let rr = m1.getRow(r).data[0];
                 m1 = this.replace_row(m1, rr, i);
@@ -181,19 +200,19 @@ class LinearAlgebra extends ProcessChainVisitor {
                 // this.items[r] = item_i;
                 // this.items[i] = item_r;
             }
-            this._print_matrix('after swap r='+r+', lead='+lead+', i='+i+':', m1);
-            console.log('row ', r, 'scaled by ', 1/m1.get(r, lead))
+            // this._print_matrix('after swap r='+r+', lead='+lead+', i='+i+':', m1);
+            // console.log('row ', r, 'scaled by ', 1/m1.get(r, lead))
             m1 = this.replace_row(m1, m1.getRow(r).scale(1/m1.get(r, lead)).data[0], r);
-            this._print_matrix('after scale r='+r+', lead='+lead+', i='+i+':', m1);
+            // this._print_matrix('after scale r='+r+', lead='+lead+', i='+i+':', m1);
             for (let ii = 0; ii < m1.numRows(); ++ii) {
                 if (ii !== r) {
                     let sub = m1.getRow(r).scale(m1.get(ii, lead));
                     let replacement = m1.getRow(ii).subtract(sub).data[0];
-                    console.log('row (', this.items[ii].id, ') = row (', this.items[ii].id ,')', ' - ', m1.get(ii, lead), 'row (', this.items[r].id, ')')
+                    // console.log('row (', this.items[ii].id, ') = row (', this.items[ii].id ,')', ' - ', m1.get(ii, lead), 'row (', this.items[r].id, ')')
                     m1 = this.replace_row(m1, replacement, ii)
                 }
             }
-            this._print_matrix('after subtractions r='+r+', lead='+lead+', i='+i+':', m1);
+            // this._print_matrix('after subtractions r='+r+', lead='+lead+', i='+i+':', m1);
 
         }
         return m1;

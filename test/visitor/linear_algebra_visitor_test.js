@@ -14,20 +14,32 @@ import { Stack } from '../../src/stack.js';
 import { RateChain } from '../../src/structures.js';
 import Matrix from 'node-matrices';
 
-/**
- * -0 == 0.
- * @param {Matrix} mtx
- *
- */
-const fudge_matrix = function(mtx) {
-    for (let i = 0; i < mtx.data.length; ++i) {
-        for (let j = 0; j < mtx.data[i].length; ++j) {
-            if (-0.00000000001 < mtx.data[i][j] && mtx.data[i][j] < 0.00000000001) {
-                mtx.data[i][j] = 0;
-            }
+const floatingPointDeepStrictEqual = function(actual, expected, compare, message) {
+    let type = (typeof actual);
+    if (Array.isArray(actual)) {
+        assert.strictEqual(actual.length, expected.length, message);
+        for (let i = 0; i < actual.length; ++i) {
+            return floatingPointDeepStrictEqual(actual[i], expected[i], compare, message);
         }
+    } else if (type === "object") {
+        // check property sets
+        compare(Object.keys(actual), Object.keys(expected), message);
+        for (let k in Object.keys(actual)) {
+            return floatingPointDeepStrictEqual(actual[k], expected[k], compare, message);
+        }
+    } else {
+        return compare(actual, expected, message);
+        // return assert.strictEqual(typeof actual, "", "unhandled type: " + (typeof actual));
     }
-    return mtx;
+}
+
+const numericCompare = function(actual, expected, message) {
+    const epsilon = 0.00000001;
+    if ((typeof actual) === "number") {
+        return assert.ok(Math.abs(actual-expected) < epsilon, "expected " + actual + " to be within " + epsilon + " of " + expected)
+    } else {
+        return assert.deepStrictEqual(actual, expected, message);
+    }
 }
 
 describe('Linear Algebra Visitor', function() {
@@ -45,21 +57,21 @@ describe('Linear Algebra Visitor', function() {
     });
     describe('Internal algorithms', function() {
         it('reduces a matrix to row-echelon form', function() {
-            let la = new LinearAlgebra(new Stack(data.items['g'], 1), ['c', 'w'], ['g']);
+            let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], []);
             let input = new Matrix([
                 [ 1,  2,  3, (1*7 + 2*9 + 3*2)],
                 [ 3,  5,  1, (3*7 + 5*9 + 1*2)],
                 [ 4,  6,  2, (4*7 + 6*9 + 2*2)],
             ]);
             let result = la.reduce_matrix(input);
-            assert.deepStrictEqual(fudge_matrix(result), new Matrix(
+            floatingPointDeepStrictEqual(result, new Matrix(
                 [1, 0, 0, 7],
                 [0, 1, 0, 9],
                 [0, 0, 1, 2],
-            ));
+            ), numericCompare);
         });
-        it('kirk', function() {
-            let la = new LinearAlgebra(new Stack(data.items['g'], 1), ['c', 'w'], ['g']);
+        it('example from kirk', function() {
+            let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], []);
             let input = new Matrix([
                 [ -40,   0,  30,   10, 0, 0, 10],
                 [ 30,  -30,  30,   45, 0, 0, 0],
@@ -70,18 +82,18 @@ describe('Linear Algebra Visitor', function() {
             console.table(input.data);
             let result = la.reduce_matrix(input);
             console.table(result.data);
-            assert.deepStrictEqual(fudge_matrix(result), new Matrix(
+            floatingPointDeepStrictEqual(result, new Matrix(
                 [ 1, 0, 0, 0, 0, (-13/400), (-23/12)],
                 [ 0, 1, 0, 0, 0, (-7/400),  (-1/4)],
                 [ 0, 0, 1, 0, 0, (-3/50),  (-10/3)],
                 [ 0, 0, 0, 1, 0, (1/20),  (10/3)],
                 [ 0, 0, 0, 0, 1, 1,     (305/3)],
-            ));
+            ), numericCompare);
         });
     });
     describe('Overall behaviour', function() {
         it('initial matrix is sorted and filled', function() {
-            let la = new LinearAlgebra(new Stack(data.items['g'], 100), ['c', 'w'], ['g']);
+            let la = new LinearAlgebra([new Stack(data.items['g'], 100)], ['c', 'w'], []);
             let pc = new ProcessChain(Object.values(data.processes))
                 .accept(la);
             assert.deepStrictEqual(la.initial_matrix.data, [
@@ -91,11 +103,12 @@ describe('Linear Algebra Visitor', function() {
                 [  25, -40,   0], // h
                 [  45,  30, -30], // l
                 [ -50, -30, -30]  // w
-            ])
+            ],
+            )
         });
 
         it('augmented matrix is added', function() {
-            let la = new LinearAlgebra(new Stack(data.items['g'], 360), ['c', 'w'], ['g'], [data.items['c'], data.items['w']]);
+            let la = new LinearAlgebra([new Stack(data.items['g'], 360)], ['c', 'w'], [], [data.items['c'], data.items['w']]);
 
             let p = new ProcessChain(Object.values(data.processes));
             p = new RateChain(p);
@@ -117,8 +130,8 @@ describe('Linear Algebra Visitor', function() {
                 [ -50, -30, -30,   0,   1,   0]  // w
             ])
         });
-        it('aufgrdnjkisgmented matrix is added 2', function() {
-            let la = new LinearAlgebra(new Stack(data.items['g'], 360), ['c', 'w'], ['g'], [data.items['c'], data.items['w']]);
+        it('augmented matrix is added 2', function() {
+            let la = new LinearAlgebra([new Stack(data.items['g'], 360)], ['c', 'w'], [], [data.items['c'], data.items['w']]);
 
             let p = new ProcessChain(Object.values(data.processes));
             p = new RateChain(p);
@@ -132,13 +145,38 @@ describe('Linear Algebra Visitor', function() {
             fs.writeFileSync("linear-sample.gv", p.accept(new RateGraphRenderer()).join('\n'));
             let pc = new ProcessChain(Object.values(data.processes))
                 .accept(la);
+            // assert.deepStrictEqual(la.augmented_matrix.data, [
+            floatingPointDeepStrictEqual(la.augmented_matrix.data, [
+            //     AD   HC   LC    C    W  REQ
+                [-100,   0,   0,   1,   0,   0], // c
+                [  55,   0,  20,   0,   0, 360], // g
+                [  10, -40,   0,   0,   0,   0], // h
+                [  45,  30, -30,   0,   0,   0], // l
+                [ -50, -30, -30,   0,   1,   0]  // w
+            ],
+            numericCompare)
+        });
+        it('augmented matrix is added with exports', function() {
+            let la = new LinearAlgebra([new Stack(data.items['g'], 360)], ['c', 'w'], ['h'], [data.items['c'], data.items['w']]);
+
+            let p = new ProcessChain(Object.values(data.processes));
+            p = new RateChain(p);
+            p.process_counts = {
+                'HC': 1,
+                'LC': 7,
+                'AO': 4
+            };
+            p.rebuild_materials();
+            fs.writeFileSync("linear-sample.gv", p.accept(new RateGraphRenderer()).join('\n'));
+            let pc = new ProcessChain(Object.values(data.processes))
+                .accept(la);
             assert.deepStrictEqual(la.augmented_matrix.data, [
-            //     AD   BO   HC   LC    C    W  REQ
-                [-100, -100,   0,   0,   1,   0,   0], // c
-                [  55, 40,  0,  20,   0,   0, 360], // g
-                [  10, 30, -40,   0,   0,   0,   0], // h
-                [  45, 30, 30, -30,   0,   0,   0], // l
-                [ -50, 0,-30, -30,   0,   1,   0]  // w
+            //     AD   HC   LC    C    W    H   REQ
+                [-100,   0,   0,   1,   0,   0,   0], // c
+                [  55,   0,  20,   0,   0,   0,   360], // g
+                [  25, -40,   0,   0,   0,   1,   0], // h
+                [  45,  30, -30,   0,   0,   0,   0], // l
+                [ -50, -30, -30,   0,   1,   0,   0]  // w
             ])
         });
     });

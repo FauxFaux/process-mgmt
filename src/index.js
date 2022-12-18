@@ -315,7 +315,7 @@ const command_manual_rate = function(argv) {
         let data = module.data;
         let p = new ProcessChain(Object.values(data.processes))
             .filter_for_output(
-                new Stack(data.items[config.requirement.id], 1),
+                config.get_requirement(data),
                 array_disambiguate(data, config),
                 [].concat(config.imported).concat(config.exported)
             ).enable(...optional(config.enable, []).map(s => data.processes[s]));
