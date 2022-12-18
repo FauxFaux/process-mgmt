@@ -12,6 +12,7 @@ import { RateVisitor } from './visit/rate_visitor.js';
 import { LinearAlgebra } from './visit/linear_algebra_visitor.js';
 import { CycleRemover } from './visit/cycle_remover.js';
 import { CycleExpander } from './visit/cycle_expander.js';
+import { ProcessCountVisitor } from './visit/process_count_visitor.js';
 
 const array_disambiguate = function(data, config) {
     return function(requirement, options) {
@@ -171,8 +172,10 @@ const command_linear_algebra = function(argv) {
                         );
                     })
                 )
+                .accept(new ProcessCountVisitor())
                 .accept(new LinearAlgebra(config.get_requirements(data), config.get_imported(), config.get_exported()))
                 .accept(new RateGraphRenderer()).join('\n');
+            console.log(g);
         });
     });
 };
@@ -332,6 +335,16 @@ const command_manual_rate = function(argv) {
         });
         p.process_counts = config.process_counts;
         p.rebuild_materials();
+        let material_output = p.materials.items().map(item => {
+            let produce = Math.abs(p.materials.total_positive(item).quantity);
+            let consume = Math.abs(p.materials.total_negative(item).quantity);
+            return [item.id, 
+                "produce", produce, 
+                "consume", consume, 
+                "producer count multiplier", (consume / produce),
+                "consumer count multiplier", (produce / consume)];
+        }).sort((a, b) => a[0].localeCompare(b[0]));
+        material_output.forEach(arr => console.error(...arr));
         console.log(p.accept(new RateGraphRenderer()).join('\n'));
     });
 }

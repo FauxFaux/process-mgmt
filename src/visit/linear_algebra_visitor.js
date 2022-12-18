@@ -20,6 +20,8 @@ class Column {
     count_for(item) {
         return this.entries.total(item).quantity;
     }
+
+    is_process_column() { return true; }
 }
 
 class LinearAlgebra extends ProcessChainVisitor {
@@ -31,7 +33,8 @@ class LinearAlgebra extends ProcessChainVisitor {
         this.exported = exported;
     }
 
-    check(_chain) {
+    check(chain) {
+        if (!chain.rebuild_materials) throw new Error("`LinearAlgebra` requires `rebuild_materials` (Provided by `ProcessCountVisitor`)")
         return {
             init: true,
             visit_process: true,
@@ -69,6 +72,7 @@ class LinearAlgebra extends ProcessChainVisitor {
     }
 
     _print_columns() {
+        return;
         this.columns.forEach(col => {
             console.log(col.process.id, 'items: ', col.entries.items().flatMap(ssi => {
                 let total = col.entries.total(ssi);
@@ -76,7 +80,9 @@ class LinearAlgebra extends ProcessChainVisitor {
             }).join(', '));
         });
     }
+
     _print_matrix(identifier, matrix) {
+        return;
         console.log(identifier);
         console.log('columns', matrix.numColumns(), 'rows', matrix.numRows())
         let res = {};
@@ -146,14 +152,14 @@ class LinearAlgebra extends ProcessChainVisitor {
         if (this.imported.length > 0) {
             let imported_items = this._create_import_export_matrix(this.imported, this.items, 1);
             for (let im of this.imported) {
-                this.columns.push({ process: {id: im} });
+                this.columns.push({ process: {id: "import: " + im} });
             }
             this.augmented_matrix = this.augmented_matrix.combineHorizontal(imported_items)
         }
         if (this.exported.length > 0) {
-            let exported_items = this._create_import_export_matrix(this.exported, this.items, 1);
-            for (let im of this.exported) {
-                this.columns.push({ process: {id: im} });
+            let exported_items = this._create_import_export_matrix(this.exported, this.items, -1);
+            for (let ex of this.exported) {
+                this.columns.push({ process: {id: "export: " + ex} });
             }
             this.augmented_matrix = this.augmented_matrix.combineHorizontal(exported_items)
         }
@@ -165,9 +171,24 @@ class LinearAlgebra extends ProcessChainVisitor {
         this._print_matrix('augmented matrix:', this.augmented_matrix);
 
         this.reduced_matrix = this.reduce_matrix(this.augmented_matrix);
-        this._print_matrix('reduced matrix:', this.reduced_matrix);
+        this._print_matrix('reduced matrix, rows mean nothing:', this.reduced_matrix);
+
+        this.chain.process_counts = this._calculate_process_counts();
+        this.chain.rebuild_materials();
 
         return this.chain;
+    }
+
+    _calculate_process_counts() {
+        let req_column = this.reduced_matrix.getColumn(this.reduced_matrix.numColumns()-1).transpose().data[0];
+        return this.columns
+            .filter(c => c.is_process_column)
+            .map((c, idx) => [c.process.id, req_column[idx]])
+            .reduce((p, a) => { 
+                p[a[0]] = a[1];
+                return p;
+            }, {})
+        ;
     }
 
     reduce_matrix(m) {
@@ -230,44 +251,3 @@ class LinearAlgebra extends ProcessChainVisitor {
 }
 
 export { LinearAlgebra };
-
-/*
-
-[1, 2, 3] .  [1,0,0,0] =
-[2, 2, 3] .  [0,1,0,0] =
-[3, 2, 3] .  [0,0,1,0] =
-[4, 2, 3] .            =
-
-*/
-
-/*
-function ToReducedRowEchelonForm(Matrix M) is
-    lead := 0
-    rowCount := the number of rows in M
-    columnCount := the number of columns in M
-    for 0 ≤ r < rowCount do
-        if columnCount ≤ lead then
-            stop function
-        end if
-        i = r
-        while M[i, lead] = 0 do
-            i = i + 1
-            if rowCount = i then
-                i = r
-                lead = lead + 1
-                if columnCount = lead then
-                    stop function
-                end if
-            end if
-        end while
-        if i ≠ r then Swap rows i and r
-        Divide row r by M[r, lead]
-        for 0 ≤ i < rowCount do
-            if i ≠ r do
-                Subtract M[i, lead] multiplied by row r from row i
-            end if
-        end for
-        lead = lead + 1
-    end for
-end function
-*/
