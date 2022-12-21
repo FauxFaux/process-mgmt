@@ -161,7 +161,7 @@ const command_linear_algebra = function(argv) {
                     )
                 .enable(...config.get_enabled().map(s => data.processes[s]))
                 .accept(new RateVisitor(process => {
-                    let f = quickest_factory_for_factory_type(data, process.factory_group);
+                    let f = config.get_factory_type(data, process.id, () => quickest_factory_for_factory_type(data, process.factory_group).modify(speed, output));
                     if ((typeof f) === "undefined") {
                         console.warn("No factory found for ", process.factory_group);
                         f = new Factory('__default__', '__default__', null, 1, 1);
@@ -338,9 +338,9 @@ const command_manual_rate = function(argv) {
         let material_output = p.materials.items().map(item => {
             let produce = Math.abs(p.materials.total_positive(item).quantity);
             let consume = Math.abs(p.materials.total_negative(item).quantity);
-            return [item.id, 
-                "produce", produce, 
-                "consume", consume, 
+            return [item.id,
+                "produce", produce,
+                "consume", consume,
                 "producer count multiplier", (consume / produce),
                 "consumer count multiplier", (produce / consume)];
         }).sort((a, b) => a[0].localeCompare(b[0]));
