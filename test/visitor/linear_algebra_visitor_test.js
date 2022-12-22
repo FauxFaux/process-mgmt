@@ -22,16 +22,16 @@ const floatingPointDeepStrictEqual = function(actual, expected, compare, message
     if (Array.isArray(actual)) {
         assert.strictEqual(actual.length, expected.length, message);
         for (let i = 0; i < actual.length; ++i) {
-            return floatingPointDeepStrictEqual(actual[i], expected[i], compare, message);
+            floatingPointDeepStrictEqual(actual[i], expected[i], compare, message);
         }
     } else if (type === "object") {
         // check property sets
         compare(Object.keys(actual), Object.keys(expected), message);
         for (let k in actual) {
-            return floatingPointDeepStrictEqual(actual[k], expected[k], compare, message);
+            floatingPointDeepStrictEqual(actual[k], expected[k], compare, message);
         }
     } else {
-        return compare(actual, expected, message);
+        compare(actual, expected, message);
         // return assert.strictEqual(typeof actual, "", "unhandled type: " + (typeof actual));
     }
 }
@@ -93,6 +93,29 @@ describe('Linear Algebra Visitor', function() {
                 [ 0, 0, 0, 0, 1, 1,     (305/3)],
             ), numericCompare);
         });
+        it('reduces, without touching the last column', function() {
+            let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], [], true);
+            let x=1;
+            let y=2;
+            let z=3;
+            let input = new Matrix([
+                [ 2, 1, 3, (2*x + 1*y + 3*z)],
+                [ 3, 7, 4, (3*x + 7*y + 4*z)],
+                [ 4, 3, 1, (4*x + 3*y + 1*z)],
+                [ 5, 2, 6, (5*x + 2*y + 6*z)],
+                [ 6, 5, 7, (6*x + 5*y + 7*z)],
+            ]);
+            console.table(input.data);
+            let result = la.reduce_matrix(input, -1);
+            console.table(result.data);
+            floatingPointDeepStrictEqual(result, new Matrix([
+                [ 1, 0, 0, x],
+                [ 0, 1, 0, y],
+                [ 0, 0, 1, z],
+                [ 0, 0, 0, 0],
+                [ 0, 0, 0, 0],
+            ]), numericCompare);
+        })
     });
     describe('Overall behaviour', function() {
         it('initial matrix is sorted and filled', function() {
@@ -157,7 +180,7 @@ describe('Linear Algebra Visitor', function() {
             floatingPointDeepStrictEqual(la.augmented_matrix.data, [
             //     AO   HC   LC    C    W  REQ
                 [ -20,   0,   0,   1,   0,   0], // c
-                [  11,   0,  10,   0,   0, 390], // g
+                [  11,   0,  10,   0,   0, 360], // g
                 [   5, -20,   0,   0,   0,   0], // h
                 [   9,  15, -15,   0,   0,   0], // l
                 [ -10, -15, -15,   0,   1,   0]  // w

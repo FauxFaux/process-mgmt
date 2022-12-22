@@ -161,7 +161,7 @@ const command_linear_algebra = function(argv) {
                     )
                 .enable(...config.get_enabled().map(s => data.processes[s]))
                 .accept(new RateVisitor(process => {
-                    let f = config.get_factory_type(data, process.id, () => quickest_factory_for_factory_type(data, process.factory_group).modify(speed, output));
+                    let f = config.get_factory_type(data, process.id, () => quickest_factory_for_factory_type(data, process.factory_group));
                     if ((typeof f) === "undefined") {
                         console.warn("No factory found for ", process.factory_group);
                         f = new Factory('__default__', '__default__', null, 1, 1);

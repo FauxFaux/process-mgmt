@@ -26,11 +26,12 @@ class Column {
 
 class LinearAlgebra extends ProcessChainVisitor {
 
-    constructor(requirements, imported, exported) {
+    constructor(requirements, imported, exported, print_matricies = false) {
 		super();
 		this.requirements = requirements;
 		this.imported = imported;
         this.exported = exported;
+        this.print_matricies = print_matricies;
     }
 
     check(chain) {
@@ -72,6 +73,7 @@ class LinearAlgebra extends ProcessChainVisitor {
     }
 
     _print_columns() {
+        if (!this.print_matricies) return;
         this.columns.forEach(col => {
             console.log(col.process.id, 'items: ', col.entries.items().flatMap(ssi => {
                 let total = col.entries.total(ssi);
@@ -81,8 +83,13 @@ class LinearAlgebra extends ProcessChainVisitor {
     }
 
     _print_matrix(identifier, matrix) {
+        if (!this.print_matricies) return;
         console.log(identifier);
         console.log('columns', matrix.numColumns(), 'rows', matrix.numRows())
+        if (!!!this.items) {
+            console.table(matrix.data);
+            return;
+        }
         let res = {};
         let lookup = [];
         for (let i = 0; i < this.items.length; ++i) {
@@ -171,15 +178,15 @@ class LinearAlgebra extends ProcessChainVisitor {
         this.columns.push({ process: {id: 'req'} });
 		this.augmented_matrix = this.augmented_matrix.combineHorizontal(this._build_requirements());
 
-        this.reduced_matrix = this.reduce_matrix(this.augmented_matrix);
+        this.reduced_matrix = this.reduce_matrix(this.augmented_matrix, -1);
 
-        if (this.reduced_matrix.numColumns() !== (this.reduced_matrix.numRows() + 1)) {
-            this._print_matrix('initial matrix:', this.initial_matrix);
-            this._print_matrix('augmented matrix:', this.augmented_matrix);
-            this._print_matrix('reduced matrix, rows mean nothing:', this.reduced_matrix);
+        // if (this.reduced_matrix.numColumns() !== (this.reduced_matrix.numRows() + 1)) {
+            // this._print_matrix('initial matrix:', this.initial_matrix);
+            // this._print_matrix('augmented matrix:', this.augmented_matrix);
+            // this._print_matrix('reduced matrix, rows mean nothing:', this.reduced_matrix);
 
-            throw new Error("matrix must be square");
-        }
+            // throw new Error("matrix must be square");
+        // }
 
         this.chain.process_counts = this._calculate_process_counts();
         this.chain.rebuild_materials();
@@ -199,11 +206,11 @@ class LinearAlgebra extends ProcessChainVisitor {
         ;
     }
 
-    reduce_matrix(m) {
+    reduce_matrix(m, column_slice = 0) {
         let m1 = m.scale(1);
         let lead = 0;
         for (let r = 0; r < m1.numRows(); ++r) {
-            if (m1.numColumns() <= lead) {
+            if ((m1.numColumns()+column_slice) <= lead) {
                 return m1;
             }
             let i = r;
@@ -212,7 +219,7 @@ class LinearAlgebra extends ProcessChainVisitor {
                 if (i === m1.numRows()) {
                     i = r;
                     lead = lead + 1;
-                    if (m1.numColumns() === lead) {
+                    if ((m1.numColumns()+column_slice) === lead) {
                         return m1;
                     }
                 }
@@ -231,6 +238,7 @@ class LinearAlgebra extends ProcessChainVisitor {
                     m1 = this.replace_row(m1, replacement, ii)
                 }
             }
+            this._print_matrix("lead: " + lead + " r: " + r, m1);
         }
         return m1;
     }
