@@ -180,14 +180,6 @@ class LinearAlgebra extends ProcessChainVisitor {
 
         this.reduced_matrix = this.reduce_matrix(this.augmented_matrix, -1);
 
-        // if (this.reduced_matrix.numColumns() !== (this.reduced_matrix.numRows() + 1)) {
-            // this._print_matrix('initial matrix:', this.initial_matrix);
-            // this._print_matrix('augmented matrix:', this.augmented_matrix);
-            // this._print_matrix('reduced matrix, rows mean nothing:', this.reduced_matrix);
-
-            // throw new Error("matrix must be square");
-        // }
-
         this.chain.process_counts = this._calculate_process_counts();
         this.chain.rebuild_materials();
 
