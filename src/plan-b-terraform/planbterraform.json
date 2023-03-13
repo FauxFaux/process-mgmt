@@ -1,0 +1,204 @@
+{
+  "items": [
+    {
+      "id": "aluminium_bar",
+      "i18n": {
+        "en": "Aluminium Bar"
+      }
+    },
+    {
+      "id": "aluminium_ore",
+      "i18n": {
+        "en": "Aluminium Ore"
+      }
+    },
+    {
+      "id": "carbon",
+      "i18n": {
+        "en": "Carbon"
+      }
+    },
+    {
+      "id": "concrete",
+      "i18n": {
+        "en": "Concrete"
+      }
+    },
+    {
+      "id": "high_tech_parts",
+      "i18n": {
+        "en": "High Tech Parts"
+      }
+    },
+    {
+      "id": "iron_ore",
+      "i18n": {
+        "en": "Iron Ore"
+      }
+    },
+    {
+      "id": "mechanical_parts",
+      "i18n": {
+        "en": "Mechanical Parts"
+      }
+    },
+    {
+      "id": "metal_waste",
+      "i18n": {
+        "en": "Metal Waste"
+      }
+    },
+    {
+      "id": "oxygen",
+      "i18n": {
+        "en": "Oxygen"
+      }
+    },
+    {
+      "id": "plastic_waste",
+      "i18n": {
+        "en": "Plastic Waste"
+      }
+    },
+    {
+      "id": "polymer_bar",
+      "i18n": {
+        "en": "Polymer Bar"
+      }
+    },
+    {
+      "id": "reinforced_concrete",
+      "i18n": {
+        "en": "Reinforced Concrete"
+      }
+    },
+    {
+      "id": "steel_bar",
+      "i18n": {
+        "en": "Steel Bar"
+      }
+    },
+    {
+      "id": "sulfur",
+      "i18n": {
+        "en": "Sulfur"
+      }
+    }
+  ],
+  "processes": [
+    {
+      "name": "aluminium_bar",
+      "duration": "1/30",
+      "factory_group": "factory",
+      "inputs": {
+        "aluminium_ore": 2
+      },
+      "outputs": {
+        "aluminium_bar": 1
+      }
+    },
+    {
+      "name": "atmospheric_extractor",
+      "duration": "1/12",
+      "factory_group": "atmospheric_extractor",
+      "inputs": {},
+      "outputs": {
+        "carbon": 1,
+        "oxygen": 1
+      }
+    },
+    {
+      "name": "concrete",
+      "duration": "1/30",
+      "factory_group": "factory",
+      "inputs": {
+        "sulfur": 3
+      },
+      "outputs": {
+        "concrete": 1
+      }
+    },
+    {
+      "name": "high_tech_parts",
+      "duration": "1/30",
+      "factory_group": "factory",
+      "inputs": {
+        "aluminium_bar": 3,
+        "polymer_bar": 1
+      },
+      "outputs": {
+        "high_tech_parts": 3
+      }
+    },
+    {
+      "name": "mechanical_parts",
+      "duration": "1/30",
+      "factory_group": "factory",
+      "inputs": {
+        "steel_bar": 1
+      },
+      "outputs": {
+        "mechanical_parts": 1
+      }
+    },
+    {
+      "name": "polymer_bar",
+      "duration": "1/30",
+      "factory_group": "factory",
+      "inputs": {
+        "carbon": 3
+      },
+      "outputs": {
+        "polymer_bar": 1
+      }
+    },
+    {
+      "name": "recycle_metal_waste",
+      "duration": "1/30",
+      "factory_group": "recycling_centre",
+      "inputs": {
+        "metal_waste": 3
+      },
+      "outputs": {
+        "steel_bar": 2,
+        "aluminium_bar": 1
+      }
+    },
+    {
+      "name": "recycle_plastic_waste",
+      "duration": "1/30",
+      "factory_group": "recycling_centre",
+      "inputs": {
+        "plastic_waste": 2
+      },
+      "outputs": {
+        "polymer_bar": 1
+      }
+    },
+    {
+      "name": "reinforced_concrete",
+      "duration": "1/30",
+      "factory_group": "factory",
+      "inputs": {
+        "concrete": 1,
+        "steel_bar": 1
+      },
+      "outputs": {
+        "reinforced_concrete": 1
+      }
+    },
+    {
+      "name": "steel_bar",
+      "duration": "1/30",
+      "factory_group": "factory",
+      "inputs": {
+        "iron_ore": 3
+      },
+      "outputs": {
+        "steel_bar": 1
+      }
+    }
+  ],
+  "factory_groups": [],
+  "factory_types": []
+}
