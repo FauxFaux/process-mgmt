@@ -239,7 +239,8 @@ class LinearAlgebra extends ProcessChainVisitor {
         let m1 = m.scale(1);
         let c = 0;
         while (c < row.length) {
-            m1 = m1.replace(idx, c, row[c]);
+            // can fix floating point things here?
+            m1 = m1.replace(idx, c, parseFloat(row[c].toPrecision(8)));
             c++;
         }
         return m1;
