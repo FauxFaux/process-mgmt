@@ -93,12 +93,12 @@ const decorate_config = function(config) {
             return config.requirements.map(r => new Stack(data.items[r.id], r.rate));
         }
     };
-    config.get_factory_type = function(data, process_id, fallback_cb) {
-        if (optional(config.factory_types, {})[process_id]) {
-            return data.factories[optional(config.factory_types, {})[process_id]];
-        } else {
-            return fallback_cb();
-        };
+    config.get_factory_type = function(data, process_id, process_factory_group_id, fallback_cb) {
+        let per_process = optional(config.factory_types, {})[process_id]
+        if (per_process) return data.factories[per_process];
+        let per_group = optional(config.factory_type_defaults, {})[process_factory_group_id]
+        if (per_group) return data.factories[per_group];
+        return fallback_cb();
     }
     config.get_enabled = function() {
         return optional(config.enable, []);
@@ -161,7 +161,12 @@ const command_linear_algebra = function(argv) {
                     )
                 .enable(...config.get_enabled().map(s => data.processes[s]))
                 .accept(new RateVisitor(process => {
-                    let f = config.get_factory_type(data, process.id, () => quickest_factory_for_factory_type(data, process.factory_group));
+                    let f = config.get_factory_type(
+                        data,
+                        process.id,
+                        process.factory_group.id,
+                        () => quickest_factory_for_factory_type(data, process.factory_group)
+                    );
                     if ((typeof f) === "undefined") {
                         console.warn("No factory found for ", process.factory_group);
                         f = new Factory('__default__', '__default__', null, 1, 1);
@@ -256,6 +261,7 @@ const command_rate = function(argv) {
                 .accept(new RateVisitor(process => {
                     let f = config.get_factory_type(data,
                         process.id,
+                        process.factory_group.id,
                         () => quickest_factory_for_factory_type(data, process.factory_group));
                     if ((typeof f) === "undefined") {
                         console.warn("No factory found for ", process.factory_group);
@@ -331,7 +337,12 @@ const command_manual_rate = function(argv) {
             if (config.modifiers && config.modifiers[process.id] && config.modifiers[process.id].speed) {
                 speed = config.modifiers[process.id].speed;
             }
-            return config.get_factory_type(data, process.id, () => quickest_factory_for_factory_type(data, process.factory_group).modify(speed, output));
+            return config.get_factory_type(
+                data,
+                process.id,
+                process.factory_type.id,
+                () => quickest_factory_for_factory_type(data, process.factory_group).modify(speed, output)
+            );
         });
         p.process_counts = config.process_counts;
         p.rebuild_materials();
