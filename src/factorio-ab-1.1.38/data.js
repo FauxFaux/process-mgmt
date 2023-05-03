@@ -17,7 +17,7 @@ const check_add = function(item, fn) {
     }
 }
 
-const convert_ingredient = function(ingredient, recipe) {
+const convert_ingredient = function(data, ingredient, recipe) {
     const ingredient_name = fix_identifier(ingredient.name);
     let amount = ingredient.amount;
     let probability = ingredient.probability;
@@ -87,9 +87,9 @@ let data_p = import('./exported-data.json', {assert: { type: 'json'}})
                     }
                 });
             });
-            let inputs = recipe.ingredients.map(ing => convert_ingredient(ing, recipe));
+            let inputs = recipe.ingredients.map(ing => convert_ingredient(data, ing, recipe));
             let outputs = recipe.results
-                .map(ing => convert_ingredient(ing, recipe))
+                .map(ing => convert_ingredient(data, ing, recipe))
                 .reduce((acc, cur) => { // collect outputs of processes that output the same type multiple times.
                     if (acc[cur.item.id]) {
                         acc[cur.item.id] = acc[cur.item.id].add(cur);
