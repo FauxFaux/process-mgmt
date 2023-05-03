@@ -122,4 +122,4 @@ data.add_processes([
     )
 ]);
 
-export { data };
+export default data;
