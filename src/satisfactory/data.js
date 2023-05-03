@@ -46,6 +46,7 @@ let data_p = import('./satisfactory.json', {assert: { type: 'json'}})
             Object.values(data.factory_groups)
                 .map(fg => new Factory("" + fg.id, "" + fg.id, [fg], 1))
         );
+        return data;
 });
 
 export default await data_p;
