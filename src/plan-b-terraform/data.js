@@ -46,9 +46,4 @@ raw.processes.forEach(p => {
     ))});
 })
 
-
-// data.add_factories([
-    // new Factory('extractor', 'extractor', [data.factory_groups.extractor], 1/1),
-// ]);
-
 export { data };
