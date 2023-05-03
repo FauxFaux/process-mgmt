@@ -111,8 +111,10 @@ dist
 tmp
 
 # Working projects
-factorio_ab/
-factorio_py/
-satisfactory/
-vt/
-dsp/
+/factorio_ab/
+/factorio_py/
+/factorio_ff/
+/plan-b-terraform/
+/satisfactory/
+/vt/
+/dsp/
