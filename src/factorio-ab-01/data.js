@@ -34,7 +34,7 @@ const convert_ingredient = function(ingredient, recipe) {
 }
 
 
-let data_p = import('./dsp.json', {assert: { type: 'json'}})
+let data_p = import('./exported-data.json', {assert: { type: 'json'}})
     .then(module => module.default)
     .then(raw => {
         let data = new Data('factorio-ab-01', '0.0.1');
