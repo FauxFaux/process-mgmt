@@ -151,8 +151,10 @@ const command_graph = function(argv) {
 const command_linear_algebra = function(argv) {
     fs.readFile(argv.config, 'utf8', (_err, str) => {
         let config = decorate_config(JSON.parse(str));
-        import('./' + config.data +'/data.js').then(module => {
-            let data = module.data;
+        import('./' + config.data +'/data.js')
+            .catch(e => console.log('failed to import', config.data, e))
+            .then(module => module.default)
+            .then(data => {
             let g = new ProcessChain(Object.values(data.processes))
                 .filter_for_output(
                     config.get_requirement(data),
