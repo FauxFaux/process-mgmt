@@ -1,8 +1,4 @@
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
 
-import { create_data } from './data_base.js';
+import { default as create_data } from './data_base.js';
 
-let data = create_data(require);
-
-export { data };
+export default await create_data('factorio-py-1.1.53', '0.0.1');
