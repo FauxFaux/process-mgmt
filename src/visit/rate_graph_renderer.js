@@ -1,7 +1,7 @@
 import { ProcessChainVisitor } from './process_chain_visitor.js';
 
 const fix_identifier = function(id) {
-    return id.replace(/-/g, '_');
+    return id.replace(/-/g, '_').replace(/^([0-9])/, 'id_$1');
 }
 
 /**
@@ -38,7 +38,7 @@ class RateGraphRenderer extends ProcessChainVisitor {
         let produce = (Math.round(chain.materials.total_positive(item).quantity*100)/100);
         let consume = (Math.round(chain.materials.total_negative(item).mul(-1).quantity*100)/100);
         this.out.push('  ' + fix_identifier(item.id) + ' [shape="record" label="{'
-            + fix_identifier(item.name)
+            + item.name
             + ' | { produce: ' + produce + '/s'
             + ' | consume: ' + consume + '/s }'
             + '}" '
