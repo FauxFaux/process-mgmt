@@ -240,7 +240,9 @@ class LinearAlgebra extends ProcessChainVisitor {
         let c = 0;
         while (c < row.length) {
             // can fix floating point things here?
-            m1 = m1.replace(idx, c, parseFloat(row[c].toPrecision(8)));
+            let val = parseFloat(row[c].toPrecision(8));
+            if (Math.abs(val) < 1e-5) val = 0;
+            m1 = m1.replace(idx, c, val);
             c++;
         }
         return m1;
