@@ -37,7 +37,7 @@ const floatingPointDeepStrictEqual = function(actual, expected, compare, message
 }
 
 const numericCompare = function(actual, expected, message) {
-    const epsilon = 0.00000001;
+    const epsilon = 0.0000_0000_0000_1;
     if ((typeof actual) === "number") {
         return assert.ok(Math.abs(actual-expected) < epsilon, "expected " + actual + " to be within " + epsilon + " of " + expected)
     } else {
@@ -71,6 +71,21 @@ describe('Linear Algebra Visitor', function() {
                 [1, 0, 0, 7],
                 [0, 1, 0, 9],
                 [0, 0, 1, 2],
+            ), numericCompare);
+        });
+        it('reduces a matrix to row-echelon form, avoiding floating point issues', function() {
+            let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], []);
+            let [x, y, z] = [7, 9, 13];
+            let input = new Matrix([
+                [ 1.1,      -0.2,       0.3,      (7.7      + -1.8      +  3.9)],
+                [ 0.1,       0.2,       1,        (0.7      +  1.8      + 13  )],
+                [ 1.000001,  2.000002,  3.000003, (7.000007 + 18.000018 + 39.000039)],
+            ]);
+            let result = la.reduce_matrix(input);
+            floatingPointDeepStrictEqual(result, new Matrix(
+                [1, 0, 0, x],
+                [0, 1, 0, y],
+                [0, 0, 1, z],
             ), numericCompare);
         });
         it('example from kirk', function() {
@@ -219,7 +234,7 @@ describe('Linear Algebra Visitor', function() {
                 .accept(new ProcessCountVisitor())
                 .accept(la);
             fs.writeFileSync("linear-sample3.gv", pc.accept(new RateGraphRenderer()).join('\n'));
-            floatingPointDeepStrictEqual(pc.process_counts, 
+            floatingPointDeepStrictEqual(pc.process_counts,
                 {
                     'AO': 20,
                     'HC': 5,
