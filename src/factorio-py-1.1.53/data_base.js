@@ -174,8 +174,8 @@ const _add_temperature_based_item = function (temperature_based_items, product, 
 };
 
 const _import_file = function(name) {
-    return import(name, {assert: { type: 'json'}})
-    .catch(e => {
+    return import('./recipe-lister/' + name, {assert: { type: 'json'}})
+        .catch(e => {
         console.log('failed to read recipe.json:', e);
     })
     .then(m => m.default)
@@ -183,7 +183,7 @@ const _import_file = function(name) {
 
 async function create_data(game, version, json_promise_cb) {
     if (!!!json_promise_cb) json_promise_cb = _import_file;
-    let data_p = json_promise_cb('./recipe-lister/recipe.json')
+    let data_p = json_promise_cb('recipe.json')
         .then(recipe_raw => {
             let data = new Data(game, version);
 
@@ -243,11 +243,7 @@ async function create_data(game, version, json_promise_cb) {
         'assembling-machine.json',
         'furnace.json',
         'rocket-silo.json',
-    ].map(
-        f => import('./recipe-lister/' + f, {assert: { type: 'json'}})
-            .then(m => m.default)
-            .catch(e => console.error('failed to read .json:', f, e))
-    )
+    ].map(_import_file)
     return Promise.all([data_p, ...groups_p])
         .then(arr => {
             let data = arr.shift();

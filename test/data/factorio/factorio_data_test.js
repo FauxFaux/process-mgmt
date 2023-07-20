@@ -8,10 +8,10 @@ import { Stack } from '../../../src/stack.js'
 
 import { default as create_data } from '../../../src/factorio-py-1.1.53/data_base.js';
 
-let RECIPES = './recipe-lister/recipe.json';
-let ASSEMBLERS = './recipe-lister/assembling-machine.json';
-let FURNACES = './recipe-lister/furnace.json';
-let SILO = './recipe-lister/rocket-silo.json';
+let RECIPES = 'recipe.json';
+let ASSEMBLERS = 'assembling-machine.json';
+let FURNACES = 'furnace.json';
+let SILO = 'rocket-silo.json';
 
 import { single_mixed_recipe, multiple_temperature_recipe, single_temperature_recipe, single_solids_recipe } from './fixtures.js';
 
