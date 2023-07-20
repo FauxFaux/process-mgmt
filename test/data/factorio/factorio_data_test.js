@@ -6,7 +6,7 @@ import { Process } from '../../../src/process.js';
 import { Item } from '../../../src/item.js'
 import { Stack } from '../../../src/stack.js'
 
-import { create_data } from '../../../src/factorio-py-1.1.53/data_base.js';
+import { default as create_data } from '../../../src/factorio-py-1.1.53/data_base.js';
 
 let RECIPES = './recipe-lister/recipe.json';
 let ASSEMBLERS = './recipe-lister/assembling-machine.json';
@@ -17,49 +17,58 @@ import { single_mixed_recipe, multiple_temperature_recipe, single_temperature_re
 
 describe('Data Parsing', function () {
     describe('standard solid processes', function () {
-        let result = create_data(path => {
+        let result = create_data("f", "1", path => {
             switch (path) {
                 case RECIPES:
-                    return single_solids_recipe;
+                    return new Promise((rs, _) => rs(single_solids_recipe));
                 default:
-                    return {};
+                    return new Promise((rs, _) => rs({}));
             }
         });
         it('finds a single process', function () {
-            assert.deepStrictEqual(Object.keys(result.processes), ['copper-plate']);
+            result.then(data => {
+                assert.deepStrictEqual(Object.keys(data.processes), ['copper-plate']);
+            });
         });
         it('the process has a single input', function () {
-            assert.deepStrictEqual(
-                result.processes['copper-plate'].inputs,
-                [new Stack(new Item('copper-ore', 'copper-ore'), 8)]
-            );
+            result.then(data => {
+                assert.deepStrictEqual(
+                    data.processes['copper-plate'].inputs,
+                    [new Stack(new Item('copper-ore', 'copper-ore'), 8)]
+                );
+            });
         });
         it('the process has a single output', function () {
-            assert.deepStrictEqual(
-                result.processes['copper-plate'].outputs,
-                [new Stack(new Item('copper-plate', 'copper-plate'), 1)]
-            );
+            result.then(data => {
+                assert.deepStrictEqual(
+                    data.processes['copper-plate'].outputs,
+                    [new Stack(new Item('copper-plate', 'copper-plate'), 1)]
+                );
+            });
         });
     });
     describe('temperature restricted processes', function () {
-        let result = create_data(path => {
+        let result = create_data("f", "1", path => {
             switch (path) {
                 case RECIPES:
-                    return single_temperature_recipe;
+                    return new Promise((rs, _) => rs(single_temperature_recipe));
                 default:
-                    return {};
+                    return new Promise((rs, _) => rs({}));
             }
         });
         it('finds processes', function () {
-            assert.deepStrictEqual(
-                Object.keys(result.processes).sort(),
-                [
-                    'hot-residual-mixture-to-coke--0',
-                    'warmer-stone-brick-1--0'
-                ]
-            );
+            result.then(data => {
+                assert.deepStrictEqual(
+                    Object.keys(result.processes).sort(),
+                    [
+                        'hot-residual-mixture-to-coke--0',
+                        'warmer-stone-brick-1--0'
+                    ]
+                );
+            });
         });
         it('data has three fluid variants', function () {
+            result.then(data => {
             assert.deepStrictEqual(
                 Object.values(result.items)
                     .filter(item => item.name.startsWith('coke-oven-gas'))
@@ -68,79 +77,91 @@ describe('Data Parsing', function () {
                         if (a.name > b.name) return 1;
                         return 0;
                     }),
-                [
-                    new Item('coke-oven-gas', 'coke-oven-gas'),
-                    new Item('coke-oven-gas_250', 'coke-oven-gas (250)'),
-                    new Item('coke-oven-gas_500', 'coke-oven-gas (500)')
-                ]
-            )
+                    [
+                        new Item('coke-oven-gas', 'coke-oven-gas'),
+                        new Item('coke-oven-gas_250', 'coke-oven-gas (250)'),
+                        new Item('coke-oven-gas_500', 'coke-oven-gas (500)')
+                    ]
+                );
+            });
         });
         it('the process has a two inputs', function () {
-            assert.deepStrictEqual(
-                result.processes['warmer-stone-brick-1--0'].inputs,
-                [
-                    new Stack(new Item('warm-stone-brick', 'warm-stone-brick'), 5),
-                    new Stack(new Item('coke-oven-gas_500', 'coke-oven-gas (500)'), 100)
-                ]
-            );
+            result.then(data => {
+                assert.deepStrictEqual(
+                    result.processes['warmer-stone-brick-1--0'].inputs,
+                    [
+                        new Stack(new Item('warm-stone-brick', 'warm-stone-brick'), 5),
+                        new Stack(new Item('coke-oven-gas_500', 'coke-oven-gas (500)'), 100)
+                    ]
+                );
+            });
         });
         it('the process has a two outputs', function () {
-            assert.deepStrictEqual(
-                result.processes['warmer-stone-brick-1--0'].outputs,
-                [
-                    new Stack(new Item('warmer-stone-brick', 'warmer-stone-brick'), 5),
-                    new Stack(new Item('coke-oven-gas_250', 'coke-oven-gas (250)'), 100)
-                ]
-            );
+            result.then(data => {
+                assert.deepStrictEqual(
+                    result.processes['warmer-stone-brick-1--0'].outputs,
+                    [
+                        new Stack(new Item('warmer-stone-brick', 'warmer-stone-brick'), 5),
+                        new Stack(new Item('coke-oven-gas_250', 'coke-oven-gas (250)'), 100)
+                    ]
+                );
+            });
         });
     });
     describe('temperature restricted processes; 2 input options', function () {
-        let result = create_data(path => {
+        let result = create_data("f", "1", path => {
             switch (path) {
                 case RECIPES:
-                    return multiple_temperature_recipe;
+                    return new Promise((rs, _) => rs(multiple_temperature_recipe));
                 default:
-                    return {};
+                    return new Promise((rs, _) => rs({}));
             }
         });
         it('finds processes', function () {
-            assert.deepStrictEqual(
-                Object.keys(result.processes).sort(),
-                [
-                    'coke-oven-gas-300--0',
-                    'coke-oven-gas-500--0',
-                    'warmer-stone-brick-1--0',
-                    'warmer-stone-brick-1--1'
-                ]
-            );
+            result.then(data => {
+                assert.deepStrictEqual(
+                    Object.keys(result.processes).sort(),
+                    [
+                        'coke-oven-gas-300--0',
+                        'coke-oven-gas-500--0',
+                        'warmer-stone-brick-1--0',
+                        'warmer-stone-brick-1--1'
+                    ]
+                );
+            });
         });
         it('data has four fluid variants', function () {
-            assert.deepStrictEqual(
-                Object.values(result.items)
-                    .filter(item => item.name.startsWith('coke-oven-gas'))
-                    .sort((a, b) => {
-                        if (a.name < b.name) return -1;
-                        if (a.name > b.name) return 1;
-                        return 0;
-                    }),
-                [
-                    new Item('coke-oven-gas', 'coke-oven-gas'),
-                    new Item('coke-oven-gas_250', 'coke-oven-gas (250)'),
-                    new Item('coke-oven-gas_300', 'coke-oven-gas (300)'),
-                    new Item('coke-oven-gas_500', 'coke-oven-gas (500)')
-                ]
-            )
+            result.then(data => {
+                assert.deepStrictEqual(
+                    Object.values(result.items)
+                        .filter(item => item.name.startsWith('coke-oven-gas'))
+                        .sort((a, b) => {
+                            if (a.name < b.name) return -1;
+                            if (a.name > b.name) return 1;
+                            return 0;
+                        }),
+                    [
+                        new Item('coke-oven-gas', 'coke-oven-gas'),
+                        new Item('coke-oven-gas_250', 'coke-oven-gas (250)'),
+                        new Item('coke-oven-gas_300', 'coke-oven-gas (300)'),
+                        new Item('coke-oven-gas_500', 'coke-oven-gas (500)')
+                    ]
+                );
+            });
         });
         it('the process has a two inputs (300)', function () {
-            assert.deepStrictEqual(
-                result.processes['warmer-stone-brick-1--0'].inputs,
-                [
-                    new Stack(new Item('warm-stone-brick', 'warm-stone-brick'), 5),
-                    new Stack(new Item('coke-oven-gas_300', 'coke-oven-gas (300)'), 100)
-                ]
-            );
+            result.then(data => {
+                assert.deepStrictEqual(
+                    result.processes['warmer-stone-brick-1--0'].inputs,
+                    [
+                        new Stack(new Item('warm-stone-brick', 'warm-stone-brick'), 5),
+                        new Stack(new Item('coke-oven-gas_300', 'coke-oven-gas (300)'), 100)
+                    ]
+                );
+            });
         });
         it('the process has a two outputs (300)', function () {
+            result.then(data => {
             assert.deepStrictEqual(
                 result.processes['warmer-stone-brick-1--0'].outputs,
                 [
@@ -148,24 +169,29 @@ describe('Data Parsing', function () {
                     new Stack(new Item('coke-oven-gas_250', 'coke-oven-gas (250)'), 100)
                 ]
             );
+            });
         });
         it('the process has a two inputs (500)', function () {
-            assert.deepStrictEqual(
-                result.processes['warmer-stone-brick-1--1'].inputs,
-                [
-                    new Stack(new Item('warm-stone-brick', 'warm-stone-brick'), 5),
-                    new Stack(new Item('coke-oven-gas_500', 'coke-oven-gas (500)'), 100)
-                ]
-            );
+            result.then(data => {
+                assert.deepStrictEqual(
+                    result.processes['warmer-stone-brick-1--1'].inputs,
+                    [
+                        new Stack(new Item('warm-stone-brick', 'warm-stone-brick'), 5),
+                        new Stack(new Item('coke-oven-gas_500', 'coke-oven-gas (500)'), 100)
+                    ]
+                );
+            });
         });
         it('the process has a two outputs (500)', function () {
-            assert.deepStrictEqual(
-                result.processes['warmer-stone-brick-1--1'].outputs,
-                [
-                    new Stack(new Item('warmer-stone-brick', 'warmer-stone-brick'), 5),
-                    new Stack(new Item('coke-oven-gas_250', 'coke-oven-gas (250)'), 100)
-                ]
-            );
+            result.then(data => {
+                assert.deepStrictEqual(
+                    result.processes['warmer-stone-brick-1--1'].outputs,
+                    [
+                        new Stack(new Item('warmer-stone-brick', 'warmer-stone-brick'), 5),
+                        new Stack(new Item('coke-oven-gas_250', 'coke-oven-gas (250)'), 100)
+                    ]
+                );
+            });
         });
     });
 });

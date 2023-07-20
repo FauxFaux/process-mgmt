@@ -173,12 +173,17 @@ const _add_temperature_based_item = function (temperature_based_items, product, 
     temperature_based_items[product.name][product.temperature] = item;
 };
 
-async function create_data(game, version) {
-    let data_p = import('./recipe-lister/recipe.json', {assert: { type: 'json'}})
-        .catch(e => {
-            console.log('failed to read recipe.json:', e);
-        })
-        .then(m => m.default)
+const _import_file = function(name) {
+    return import(name, {assert: { type: 'json'}})
+    .catch(e => {
+        console.log('failed to read recipe.json:', e);
+    })
+    .then(m => m.default)
+};
+
+async function create_data(game, version, json_promise_cb) {
+    if (!!!json_promise_cb) json_promise_cb = _import_file;
+    let data_p = json_promise_cb('./recipe-lister/recipe.json')
         .then(recipe_raw => {
             let data = new Data(game, version);
 
