@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.js"],
+  "exclude": ["**/*.test.ts"]
+}
