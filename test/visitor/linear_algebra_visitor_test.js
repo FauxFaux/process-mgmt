@@ -61,12 +61,14 @@ describe('Linear Algebra Visitor', function() {
     describe('Internal algorithms', function() {
         it('reduces a matrix to row-echelon form', function() {
             let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], []);
+            // prettier-ignore
             let input = new Matrix([
                 [ 1,  2,  3, (1*7 + 2*9 + 3*2)],
                 [ 3,  5,  1, (3*7 + 5*9 + 1*2)],
                 [ 4,  6,  2, (4*7 + 6*9 + 2*2)],
             ]);
             let result = la.reduce_matrix(input);
+            // prettier-ignore
             floatingPointDeepStrictEqual(result, new Matrix(
                 [1, 0, 0, 7],
                 [0, 1, 0, 9],
@@ -76,12 +78,14 @@ describe('Linear Algebra Visitor', function() {
         it('reduces a matrix to row-echelon form, avoiding floating point issues', function() {
             let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], []);
             let [x, y, z] = [7, 9, 13];
+            // prettier-ignore
             let input = new Matrix([
                 [ 1.1,      -0.2,       0.3,      (7.7      + -1.8      +  3.9)],
                 [ 0.1,       0.2,       1,        (0.7      +  1.8      + 13  )],
                 [ 1.000001,  2.000002,  3.000003, (7.000007 + 18.000018 + 39.000039)],
             ]);
             let result = la.reduce_matrix(input);
+            // prettier-ignore
             floatingPointDeepStrictEqual(result, new Matrix(
                 [1, 0, 0, x],
                 [0, 1, 0, y],
@@ -90,6 +94,7 @@ describe('Linear Algebra Visitor', function() {
         });
         it('example from kirk', function() {
             let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], []);
+            // prettier-ignore
             let input = new Matrix([
                 [ -40,   0,  30,   10, 0, 0, 10],
                 [ 30,  -30,  30,   45, 0, 0, 0],
@@ -100,6 +105,7 @@ describe('Linear Algebra Visitor', function() {
             console.table(input.data);
             let result = la.reduce_matrix(input);
             console.table(result.data);
+            // prettier-ignore
             floatingPointDeepStrictEqual(result, new Matrix(
                 [ 1, 0, 0, 0, 0, (-13/400), (-23/12)],
                 [ 0, 1, 0, 0, 0, (-7/400),  (-1/4)],
@@ -113,6 +119,7 @@ describe('Linear Algebra Visitor', function() {
             let x=1;
             let y=2;
             let z=3;
+            // prettier-ignore
             let input = new Matrix([
                 [ 2, 1, 3, (2*x + 1*y + 3*z)],
                 [ 3, 7, 4, (3*x + 7*y + 4*z)],
@@ -123,6 +130,7 @@ describe('Linear Algebra Visitor', function() {
             console.table(input.data);
             let result = la.reduce_matrix(input, -1);
             console.table(result.data);
+            // prettier-ignore
             floatingPointDeepStrictEqual(result, new Matrix([
                 [ 1, 0, 0, x],
                 [ 0, 1, 0, y],
@@ -139,6 +147,7 @@ describe('Linear Algebra Visitor', function() {
                 .accept(new RateVisitor(p => new Factory('__default__', '__default__', null, 1, 1)))
                 .accept(new ProcessCountVisitor())
                 .accept(la);
+            // prettier-ignore
             assert.deepStrictEqual(la.initial_matrix.data, [
             //     AO   HC   LC
                 [ -20,   0,   0], // c
@@ -166,6 +175,7 @@ describe('Linear Algebra Visitor', function() {
                 .accept(new RateVisitor(p => new Factory('__default__', '__default__', null, 1, 1)))
                 .accept(new ProcessCountVisitor())
                 .accept(la);
+            // prettier-ignore
             assert.deepStrictEqual(la.augmented_matrix.data, [
             //     AD   HC   LC    C    W  REQ
                 [ -20,   0,   0,   1,   0,   0], // c
@@ -192,6 +202,7 @@ describe('Linear Algebra Visitor', function() {
                 .accept(new RateVisitor(p => new Factory('__default__', '__default__', null, 1, 1)))
                 .accept(new ProcessCountVisitor())
                 .accept(la);
+            // prettier-ignore
             floatingPointDeepStrictEqual(la.augmented_matrix.data, [
             //     AO   HC   LC    C    W  REQ
                 [ -20,   0,   0,   1,   0,   0], // c
@@ -218,6 +229,7 @@ describe('Linear Algebra Visitor', function() {
                 .accept(new RateVisitor(p => new Factory('__default__', '__default__', null, 1, 1)))
                 .accept(new ProcessCountVisitor())
                 .accept(la);
+            // prettier-ignore
             assert.deepStrictEqual(la.augmented_matrix.data, [
             //     AD   HC   LC    C    W    H   REQ
                 [ -20,   0,   0,   1,   0,   0,   0], // c
