@@ -1,14 +1,11 @@
-import { StackSet } from "../stack.js";
-import { Process, ProcessChain } from "../process.js";
-import { CycleDetector } from "./cycle_detector.js";
-import { EnableDisable } from "./enable_disable_visitor.js";
-import { ProcessChainVisitor } from "./process_chain_visitor.js";
-import { Factory } from "../factory.js";
-
-
+import { StackSet } from '../stack.js';
+import { Process, ProcessChain } from '../process.js';
+import { CycleDetector } from './cycle_detector.js';
+import { EnableDisable } from './enable_disable_visitor.js';
+import { ProcessChainVisitor } from './process_chain_visitor.js';
+import { Factory } from '../factory.js';
 
 class CycleRemover extends ProcessChainVisitor {
-
     constructor(data) {
         super();
         this.data = data;
@@ -17,7 +14,7 @@ class CycleRemover extends ProcessChainVisitor {
     check(_chain) {
         return {
             init: true,
-        }
+        };
     }
     init(in_chain) {
         let chain = in_chain;
@@ -28,7 +25,13 @@ class CycleRemover extends ProcessChainVisitor {
             let cycle = cycles[0];
             let cycle_processes = cycle.processes;
             let proxy = this._create_proxy(cycle);
-            let removed = chain.accept(new EnableDisable(null, [], cycle_processes.map(p => p.id)));
+            let removed = chain.accept(
+                new EnableDisable(
+                    null,
+                    [],
+                    cycle_processes.map(p => p.id),
+                ),
+            );
             chain = new ProcessChain(removed.processes.concat([proxy]));
 
             cycles = chain.accept(new CycleDetector());
@@ -44,15 +47,17 @@ class CycleRemover extends ProcessChainVisitor {
     }
 
     _calculate_process_counts(cycle) {
-        return cycle.processes
-            .reduceRight((acc, cur, idx, arr) => {
-                if (Object.keys(acc).length == 0) { acc[cur.id] = 1; return acc; }
-                let prev = arr[idx+1];
-                let required_inputs = prev.requirements_for_count(acc[prev.id]);
-                let linking_stack = this._find_linking_item(cur, required_inputs);
-                acc[cur.id] = cur.process_count_for_rate(linking_stack);
+        return cycle.processes.reduceRight((acc, cur, idx, arr) => {
+            if (Object.keys(acc).length == 0) {
+                acc[cur.id] = 1;
                 return acc;
-            }, {});
+            }
+            let prev = arr[idx + 1];
+            let required_inputs = prev.requirements_for_count(acc[prev.id]);
+            let linking_stack = this._find_linking_item(cur, required_inputs);
+            acc[cur.id] = cur.process_count_for_rate(linking_stack);
+            return acc;
+        }, {});
     }
 
     _calculate_proxy_materials(cycle, counts) {
@@ -71,12 +76,14 @@ class CycleRemover extends ProcessChainVisitor {
             });
         });
         return {
-            'input': inputs.items()
+            input: inputs
+                .items()
                 .map(i => inputs.total(i))
                 .filter(i => i.quantity > 0),
-            'output': inputs.items()
+            output: inputs
+                .items()
                 .map(o => outputs.total(o))
-                .filter(o => o.quantity > 0)
+                .filter(o => o.quantity > 0),
         };
     }
 
@@ -86,11 +93,11 @@ class CycleRemover extends ProcessChainVisitor {
         let materials = this._calculate_proxy_materials(cycle, counts);
 
         let proxy = new Process(
-            "proxy_for_" + cycle.processes.map(p => p.id).join("_"),
+            'proxy_for_' + cycle.processes.map(p => p.id).join('_'),
             materials['input'],
             materials['output'],
             1, // rate-process is always 1
-            'proxy'
+            'proxy',
         );
         proxy.cycle = cycle;
         proxy.process_counts = counts;
@@ -99,8 +106,9 @@ class CycleRemover extends ProcessChainVisitor {
         return proxy;
     }
 
-    build() { return this.chain; }
+    build() {
+        return this.chain;
+    }
 }
-
 
 export { CycleRemover };

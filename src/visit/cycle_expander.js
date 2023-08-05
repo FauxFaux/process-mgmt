@@ -1,14 +1,11 @@
-import { StackSet } from "../stack.js";
-import { Process, ProcessChain } from "../process.js";
-import { CycleDetector } from "./cycle_detector.js";
-import { EnableDisable } from "./enable_disable_visitor.js";
-import { ProcessChainVisitor } from "./process_chain_visitor.js";
-import { Factory } from "../factory.js";
-
-
+import { StackSet } from '../stack.js';
+import { Process, ProcessChain } from '../process.js';
+import { CycleDetector } from './cycle_detector.js';
+import { EnableDisable } from './enable_disable_visitor.js';
+import { ProcessChainVisitor } from './process_chain_visitor.js';
+import { Factory } from '../factory.js';
 
 class CycleExpander extends ProcessChainVisitor {
-
     constructor(data) {
         super();
         this.data = data;
@@ -21,14 +18,14 @@ class CycleExpander extends ProcessChainVisitor {
         return {
             visit_process: true,
             init: true,
-        }
+        };
     }
     init(chain) {
         this.chain = chain;
     }
 
     _is_proxy(process) {
-        return (typeof process.cycle) !== 'undefined';
+        return typeof process.cycle !== 'undefined';
     }
 
     visit_process(process, chain) {
@@ -68,6 +65,5 @@ class CycleExpander extends ProcessChainVisitor {
         return result;
     }
 }
-
 
 export { CycleExpander };

@@ -22,20 +22,22 @@ class ProxyProcess extends Process {
             });
         });
 
-        var result_in = inputs.items()
+        var result_in = inputs
+            .items()
             .map(i => inputs.total(i))
             .filter(i => i.quantity > 0);
 
-        var result_out = inputs.items()
+        var result_out = inputs
+            .items()
             .map(o => outputs.total(o))
             .filter(o => o.quantity > 0);
 
         super(
-            "proxy_for_" + cycle.join("_"),
+            'proxy_for_' + cycle.join('_'),
             result_in,
             result_out,
             1, // rate-process is always 1
-            'proxy'
+            'proxy',
         );
         this.cycle = cycle;
         this.factory_type = new Factory('__generated__', 'default', -1);

@@ -1,13 +1,12 @@
-import { ProcessChain } from "../../src/process.js";
+import { ProcessChain } from '../../src/process.js';
 import { ProcessChainVisitor } from './process_chain_visitor.js';
 
-import { select_process } from "./process_selection.js";
+import { select_process } from './process_selection.js';
 
 /**
  * Output: ProcessChain
  */
 class FilterForOutput extends ProcessChainVisitor {
-
     constructor(output_item, priority_cb = () => null, ignored = []) {
         super();
         this.output_item = output_item;
@@ -19,7 +18,7 @@ class FilterForOutput extends ProcessChainVisitor {
     check(_chain) {
         return {
             init: true,
-        }
+        };
     }
 
     init(chain) {
@@ -47,7 +46,9 @@ class FilterForOutput extends ProcessChainVisitor {
         this.allowed_processes = result;
     }
 
-    build() { return new ProcessChain(this.allowed_processes); }
+    build() {
+        return new ProcessChain(this.allowed_processes);
+    }
 }
 
 export { FilterForOutput };

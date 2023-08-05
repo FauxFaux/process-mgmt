@@ -9,13 +9,12 @@ class RateProcess extends Process {
             p_.id,
             p_.inputs.map(input => input.div(p_.duration)),
             p_.outputs.map(output => output.div(p_.duration)),
-            p_.duration/p_.duration,
-            p_.factory_group
+            p_.duration / p_.duration,
+            p_.factory_group,
         );
         this.factory_type = factory_type;
         this.rate_process = true;
     }
-
 }
 
 class RateChain extends ProcessChain {
@@ -25,12 +24,14 @@ class RateChain extends ProcessChain {
      * @param {function} factory_type_cb `fn(process, factory_group): factory` Select a factory for the given process. Callback returns `null` for a default
      */
     constructor(chain, factory_type_cb = () => null) {
-        super(chain.processes.map(p => {
-            if (p.rate_process) return p;
-            let factory_configured = factory_type_cb(p);
-            let factory = (factory_configured ? factory_configured : new Factory('__generated__', 'default', -1));
-            return new RateProcess(p, factory);
-        }));
+        super(
+            chain.processes.map(p => {
+                if (p.rate_process) return p;
+                let factory_configured = factory_type_cb(p);
+                let factory = factory_configured ? factory_configured : new Factory('__generated__', 'default', -1);
+                return new RateProcess(p, factory);
+            }),
+        );
         this.materials = new StackSet();
         this.process_counts = {};
     }
@@ -45,12 +46,14 @@ class RateChain extends ProcessChain {
         let process_counts = {};
 
         let queue = [stack];
-        while(queue.length > 0) {
+        while (queue.length > 0) {
             let current = queue.pop();
             if (this.processes_by_output[current.item.id]) {
                 let process = this._select_process(current.item.id, process_selector);
                 let process_count = process.process_count_for_rate(current);
-                if (!process_counts[process.id]) { process_counts[process.id] = 0; }
+                if (!process_counts[process.id]) {
+                    process_counts[process.id] = 0;
+                }
                 process_counts[process.id] += process_count;
                 process.outputs.forEach(input => {
                     materials.add(input.mul(process_count));
@@ -90,11 +93,13 @@ class RateChain extends ProcessChain {
             // deal with 'current'
             let processes = this.processes_by_output[current.item.id];
             if (processes.length > 1) {
-                throw new Error("p > 1");
+                throw new Error('p > 1');
             } else {
                 process = processes[0];
-                if (!process_counts[process.id]) { process_counts[process.id] = 0; }
-                process_counts[process.id] += 1
+                if (!process_counts[process.id]) {
+                    process_counts[process.id] = 0;
+                }
+                process_counts[process.id] += 1;
                 process.outputs.forEach(input => {
                     materials.add(input.mul(1));
                 });
@@ -113,13 +118,10 @@ class RateChain extends ProcessChain {
     // imported_materials are allowed to have any -ive material count.
     // exported_materials are allowed to have any +ive material count.
     update0(stack, imported_materials, exported_materials) {
-        let process_counts = this.processes.reduce(
-            (acc, cur) => {
-                acc[cur.id] = 1;
-                return acc;
-            },
-            {}
-        );
+        let process_counts = this.processes.reduce((acc, cur) => {
+            acc[cur.id] = 1;
+            return acc;
+        }, {});
 
         // let process_counts = {};
         // process_counts['coolant'] = 6;
@@ -159,10 +161,10 @@ class RateChain extends ProcessChain {
         let total_n = materials.total_negative(min_stack.item);
         let process = this.processes_by_input[min_stack.item.id][0]; // XXX assume first only.
         let multiplier = 1;
-        if (total_p.quantity < (total_n.quantity*-1)) {
-            multiplier = total_p.quantity / total_n.quantity * -1;
+        if (total_p.quantity < total_n.quantity * -1) {
+            multiplier = (total_p.quantity / total_n.quantity) * -1;
         } else {
-            multiplier = total_n.quantity / total_p.quantity * -1;
+            multiplier = (total_n.quantity / total_p.quantity) * -1;
         }
         process_counts[process.id] *= multiplier;
 
@@ -174,17 +176,15 @@ class RateChain extends ProcessChain {
     // imported_materials are allowed to have any -ive material count.
     // exported_materials are allowed to have any +ive material count.
     update3(stack, imported_materials, exported_materials) {
-        let process_counts = this.processes.reduce(
-            (acc, cur) => {
-                acc[cur.id] = 1;
-                return acc;
-            },
-            {}
-        );
+        let process_counts = this.processes.reduce((acc, cur) => {
+            acc[cur.id] = 1;
+            return acc;
+        }, {});
 
         let materials = new StackSet();
         let iterations = 10000;
-        while (iterations-- > 0) { // effectively `while (true)`
+        while (iterations-- > 0) {
+            // effectively `while (true)`
             materials = new StackSet();
             this.processes.forEach(p => {
                 p.outputs.forEach(input => {
@@ -201,14 +201,13 @@ class RateChain extends ProcessChain {
             let total_n = materials.total_negative(min_stack.item);
             let process = this.processes_by_input[min_stack.item.id][0]; // XXX assume first only.
             let multiplier = 1;
-            if (total_p.quantity < (total_n.quantity*-1)) {
-                multiplier = total_p.quantity / total_n.quantity * -1;
+            if (total_p.quantity < total_n.quantity * -1) {
+                multiplier = (total_p.quantity / total_n.quantity) * -1;
             } else {
-                multiplier = total_n.quantity / total_p.quantity * -1;
+                multiplier = (total_n.quantity / total_p.quantity) * -1;
             }
             process_counts[process.id] *= multiplier;
         }
-
 
         // iterations = 10000;
         // while (iterations-- > 0) { // effectively `while (true)`
@@ -253,18 +252,16 @@ class RateChain extends ProcessChain {
     // imported_materials are allowed to have any -ive material count.
     // exported_materials are allowed to have any +ive material count.
     update4(stack, imported_materials, exported_materials) {
-        let process_counts = this.processes.reduce(
-            (acc, cur) => {
-                acc[cur.id] = 1;
-                return acc;
-            },
-            {}
-        );
+        let process_counts = this.processes.reduce((acc, cur) => {
+            acc[cur.id] = 1;
+            return acc;
+        }, {});
 
         let materials = new StackSet();
         let total_iterations = 10000;
         let iterations = total_iterations;
-        while (iterations-- > 0) { // `while (true)` with a limit.
+        while (iterations-- > 0) {
+            // `while (true)` with a limit.
             materials = new StackSet();
             this.processes.forEach(p => {
                 p.outputs.forEach(input => {
@@ -280,16 +277,20 @@ class RateChain extends ProcessChain {
             if (stack_to_balance.quantity < 0.0001) break;
             let item_to_balance = stack_to_balance.item;
             let total_p = materials.total_positive(item_to_balance).quantity; // produced
-            let total_n = materials.total_negative(item_to_balance).quantity*-1; // consumed
+            let total_n = materials.total_negative(item_to_balance).quantity * -1; // consumed
             let multiplier = (total_p / total_n) ** 0.5; // p.m = c.m; p/c = m**2; m = (p/c)**0.5
             let processes_in = this.processes_by_input[item_to_balance.id]; // processes that take this type as an input
             let processes_out = this.processes_by_output[item_to_balance.id]; // processes that have this type as an output
-            if (processes_in) { processes_in.forEach(p => {
-                process_counts[p.id] *= multiplier;
-            });}
-            if (processes_out) { processes_out.forEach(p => {
-                process_counts[p.id] /= multiplier;
-            });}
+            if (processes_in) {
+                processes_in.forEach(p => {
+                    process_counts[p.id] *= multiplier;
+                });
+            }
+            if (processes_out) {
+                processes_out.forEach(p => {
+                    process_counts[p.id] /= multiplier;
+                });
+            }
         }
 
         this.materials = materials;
@@ -298,7 +299,8 @@ class RateChain extends ProcessChain {
     }
 
     expand_proxies() {
-        this.processes.filter(p => p.proxy_process)
+        this.processes
+            .filter(p => p.proxy_process)
             .forEach(proxy_proc => {
                 let replacements = proxy_proc.cycle;
                 this._disable([proxy_proc.id]);
@@ -324,53 +326,102 @@ class RateChain extends ProcessChain {
     }
 
     _determine_item_node_colour(produce, consume) {
-        if (produce > consume) return "red";
-        if (consume > produce) return "green";
-        return "";
+        if (produce > consume) return 'red';
+        if (consume > produce) return 'green';
+        return '';
     }
 
     _render_item_node(item) {
-        let produce = (Math.round(this.materials.total_positive(item).quantity*100)/100);
-        let consume = (Math.round(this.materials.total_negative(item).mul(-1).quantity*100)/100);
-        return item.id + ' [shape="record" label="{'
-            + item.name
-            + ' | { produce: ' + produce + '/s'
-            + ' | consume: ' + consume + '/s }'
-            + '}" '
-            + 'style="filled" fillcolor="' + this._determine_item_node_colour(produce, consume) + '"'
-            + ']';
+        let produce = Math.round(this.materials.total_positive(item).quantity * 100) / 100;
+        let consume = Math.round(this.materials.total_negative(item).mul(-1).quantity * 100) / 100;
+        return (
+            item.id +
+            ' [shape="record" label="{' +
+            item.name +
+            ' | { produce: ' +
+            produce +
+            '/s' +
+            ' | consume: ' +
+            consume +
+            '/s }' +
+            '}" ' +
+            'style="filled" fillcolor="' +
+            this._determine_item_node_colour(produce, consume) +
+            '"' +
+            ']'
+        );
     }
 
     _render_processor_node(node_id, process) {
         let process_count = this.process_counts[process.id];
-        let inputs = process.inputs.map((input, index) => {
-            return '<i' + index + '> ' + input.item.name + ' (' + (Math.round(input.quantity * process_count * 100)/100) + ')';
-        }).join(' | ');
-        let outputs = process.outputs.map((output, index) => {
-            return '<o' + index + '> ' + output.item.name + ' (' + (Math.round(output.quantity * process_count * 100)/100) + ')';
-        }).join(' | ');
-        return node_id + ' [' +
+        let inputs = process.inputs
+            .map((input, index) => {
+                return (
+                    '<i' +
+                    index +
+                    '> ' +
+                    input.item.name +
+                    ' (' +
+                    Math.round(input.quantity * process_count * 100) / 100 +
+                    ')'
+                );
+            })
+            .join(' | ');
+        let outputs = process.outputs
+            .map((output, index) => {
+                return (
+                    '<o' +
+                    index +
+                    '> ' +
+                    output.item.name +
+                    ' (' +
+                    Math.round(output.quantity * process_count * 100) / 100 +
+                    ')'
+                );
+            })
+            .join(' | ');
+        return (
+            node_id +
+            ' [' +
             'shape="record" ' +
-            'label="{ {' + inputs + '}' +
-                ' | process id: ' + process.id +
-                ' | { ' + process.factory_type.name + ' (' + process.factory_group.name + ')' +
-                     ' | speed: ' + (1/process.factory_type.duration_modifier) + 'x' +
-                     ' | output: ' + process.factory_type.output_modifier + 'x }' +
-                ' | { ' + Math.round(process.duration*100)/100 + 's/run | ' + Math.round(process_count*100)/100 + ' factories }' +
-                ' | {' + outputs + '} }"' +
-            ']';
+            'label="{ {' +
+            inputs +
+            '}' +
+            ' | process id: ' +
+            process.id +
+            ' | { ' +
+            process.factory_type.name +
+            ' (' +
+            process.factory_group.name +
+            ')' +
+            ' | speed: ' +
+            1 / process.factory_type.duration_modifier +
+            'x' +
+            ' | output: ' +
+            process.factory_type.output_modifier +
+            'x }' +
+            ' | { ' +
+            Math.round(process.duration * 100) / 100 +
+            's/run | ' +
+            Math.round(process_count * 100) / 100 +
+            ' factories }' +
+            ' | {' +
+            outputs +
+            '} }"' +
+            ']'
+        );
     }
 
-
     _render_edge(node_id, from, to, index) {
-        if (from.factory_group) { // XXX need a better way to detect the orientation of the edge.
+        if (from.factory_group) {
+            // XXX need a better way to detect the orientation of the edge.
             // outbound from a process to an item
-            return node_id + ':o' + index + ' -> ' + to.item.id;// + ' [label=\'' + to.quantity + '\']';
+            return node_id + ':o' + index + ' -> ' + to.item.id; // + ' [label=\'' + to.quantity + '\']';
         } else {
             // inbound from an item to a process
             let process_count = this.process_counts[to.id];
             let input_rate = to.inputs.find(i => i.item.id === from.item.id);
-            let rate = Math.round(input_rate.quantity * process_count * 100)/100;
+            let rate = Math.round(input_rate.quantity * process_count * 100) / 100;
             return from.item.id + ' -> ' + node_id + ':i' + index + ' [label="' + rate + '/s"]';
         }
     }

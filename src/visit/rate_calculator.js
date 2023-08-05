@@ -5,7 +5,6 @@ import { ProcessChainVisitor } from './process_chain_visitor.js';
 import { select_process } from './process_selection.js';
 
 class RateCalculator extends ProcessChainVisitor {
-
     constructor(requested_stack, imported_materials, process_selector) {
         super();
         this.requested_stack = requested_stack;
@@ -18,7 +17,7 @@ class RateCalculator extends ProcessChainVisitor {
     check(_chain) {
         return {
             init: true,
-        }
+        };
     }
     init(chain) {
         this.chain = chain;
@@ -26,12 +25,14 @@ class RateCalculator extends ProcessChainVisitor {
         let process_counts = {};
 
         let queue = [this.requested_stack];
-        while(queue.length > 0) {
+        while (queue.length > 0) {
             let current = queue.pop();
             if (chain.processes_by_output[current.item.id]) {
                 let process = select_process(chain, current.item.id, this.process_selector);
                 let process_count = process.process_count_for_rate(current);
-                if (!process_counts[process.id]) { process_counts[process.id] = 0; }
+                if (!process_counts[process.id]) {
+                    process_counts[process.id] = 0;
+                }
                 process_counts[process.id] += process_count;
                 process.outputs.forEach(output => {
                     materials.add(output.mul(process_count));
@@ -75,6 +76,5 @@ class RateCalculator extends ProcessChainVisitor {
         return result;
     }
 }
-
 
 export { RateCalculator };

@@ -1,6 +1,5 @@
-import { ProcessChainVisitor } from "./process_chain_visitor.js";
-import { Cycle } from "./cycle.js";
-
+import { ProcessChainVisitor } from './process_chain_visitor.js';
+import { Cycle } from './cycle.js';
 
 /**
  * Depth-first search of the process graph; when the search
@@ -22,7 +21,7 @@ class CycleDetector extends ProcessChainVisitor {
     check(_chain) {
         return {
             init: true,
-        }
+        };
     }
 
     _normalise_cycle(cycle) {
@@ -43,9 +42,7 @@ class CycleDetector extends ProcessChainVisitor {
         return b.concat(a);
     }
 
-    _find_loop_items(cycle) {
-
-    }
+    _find_loop_items(cycle) {}
 
     init(chain) {
         let cycles = [];
@@ -53,32 +50,35 @@ class CycleDetector extends ProcessChainVisitor {
 
         while (stack.length > 0) {
             let current = stack.pop();
-            current[current.length-1].outputs.flatMap(output => {
-                let r = chain.processes_by_input[output.item.id];
-                if (r && r.length > 0) {
-                    return r;
-                } else {
-                    return [];
-                }
-            }).forEach(p => {
-                if (!current.includes(p)) {
-                    stack.push( current.concat( [p] ) );
-                } else {
-                    let idx = current.indexOf(p);
-                    let cycle = new Cycle(null, current.slice(idx));
-                    let loop_items = this._find_loop_items(cycle.processes);
-                    cycle = new Cycle(loop_items, cycle.processes);
-                    let cycle_exists = cycles.findIndex(c => c.normalise_cycle().equals(cycle.normalise_cycle()));
-                    if (cycle_exists === -1) {
-                        cycles.push(cycle);
+            current[current.length - 1].outputs
+                .flatMap(output => {
+                    let r = chain.processes_by_input[output.item.id];
+                    if (r && r.length > 0) {
+                        return r;
+                    } else {
+                        return [];
                     }
-                }
-            });
+                })
+                .forEach(p => {
+                    if (!current.includes(p)) {
+                        stack.push(current.concat([p]));
+                    } else {
+                        let idx = current.indexOf(p);
+                        let cycle = new Cycle(null, current.slice(idx));
+                        let loop_items = this._find_loop_items(cycle.processes);
+                        cycle = new Cycle(loop_items, cycle.processes);
+                        let cycle_exists = cycles.findIndex(c => c.normalise_cycle().equals(cycle.normalise_cycle()));
+                        if (cycle_exists === -1) {
+                            cycles.push(cycle);
+                        }
+                    }
+                });
         }
         this.cycles = cycles;
     }
-    build() { return this.cycles; }
+    build() {
+        return this.cycles;
+    }
 }
-
 
 export { CycleDetector };

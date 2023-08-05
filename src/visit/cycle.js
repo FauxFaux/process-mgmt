@@ -1,5 +1,3 @@
-
-
 class Cycle {
     /**
      *
@@ -20,7 +18,7 @@ class Cycle {
      * @returns boolean if this equals other.
      */
     equals(other) {
-        if ((typeof other) === "undefined") return false;
+        if (typeof other === 'undefined') return false;
         if (this.processes.length != other.processes.length) return false;
         return this.processes.every((elem, idx) => elem == other.processes[idx]);
     }

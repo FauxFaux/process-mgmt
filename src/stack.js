@@ -1,7 +1,5 @@
 import { check } from './structures_base.js';
 
-
-
 class Stack {
     constructor(item, quantity) {
         check('item', item, 'quantity', quantity);
@@ -13,7 +11,13 @@ class Stack {
     }
     add(other) {
         if (other) {
-            if (other.item !== this.item) throw new Error('unable to add different item types together, found (this) ' + this.item.id + ' and (other) ' + other.item.id);
+            if (other.item !== this.item)
+                throw new Error(
+                    'unable to add different item types together, found (this) ' +
+                        this.item.id +
+                        ' and (other) ' +
+                        other.item.id,
+                );
             return new Stack(this.item, this.quantity + other.quantity);
         } else {
             return this.clone();
@@ -32,7 +36,7 @@ class Stack {
         return new Stack(this.item, this.quantity ** scalar);
     }
     toString() {
-        return 'Stack: [item:'+this.item.id+', quantity: '+this.quantity+']';
+        return 'Stack: [item:' + this.item.id + ', quantity: ' + this.quantity + ']';
     }
 }
 
@@ -66,7 +70,7 @@ class StackSet {
     }
 
     items() {
-        return Object.values(this.stacks).map(a => a[0].item)
+        return Object.values(this.stacks).map(a => a[0].item);
     }
 
     max_total(ignoring = []) {
@@ -78,15 +82,17 @@ class StackSet {
         return this._min_max_total(ignoring, (a, b) => a.quantity < b.quantity);
     }
     _min_max_total(ignoring, fn) {
-        return Object.keys(this.stacks)
-            // .map(e => {console.log(e); return e;})
-            .filter(i => !ignoring.includes(i))
-            .map(id => this.total(this.stacks[id][0].item))
-            // .map(e => {console.log(e); return e;})
-            .reduce( (acc, cur) => {
-                if (fn(acc, cur)) return acc;
-                return cur;
-            } )
+        return (
+            Object.keys(this.stacks)
+                // .map(e => {console.log(e); return e;})
+                .filter(i => !ignoring.includes(i))
+                .map(id => this.total(this.stacks[id][0].item))
+                // .map(e => {console.log(e); return e;})
+                .reduce((acc, cur) => {
+                    if (fn(acc, cur)) return acc;
+                    return cur;
+                })
+        );
     }
 
     // calculate the error margins for each stack type
@@ -108,7 +114,10 @@ class StackSet {
                 let margin = total.div(total_p.sub(total_n).quantity); // m = total / (p + (-1*n))
                 return margin;
             })
-            .reduce((acc, m) => {acc.add(m); return acc;}, new StackSet());
+            .reduce((acc, m) => {
+                acc.add(m);
+                return acc;
+            }, new StackSet());
     }
 
     // See 'margins'; except the values are squared to get the magnitudes.
@@ -124,23 +133,22 @@ class StackSet {
                 return margin;
             })
             .map(m => m.pow(2))
-            .reduce((acc, m) => {acc.add(m); return acc;}, new StackSet());
+            .reduce((acc, m) => {
+                acc.add(m);
+                return acc;
+            }, new StackSet());
     }
 
     total_positive(item) {
         if (this.stacks[item.id]) {
-            return this.stacks[item.id]
-            .filter(s => s.quantity > 0)
-            .reduce((p, c) => p.add(c), new Stack(item, 0));
+            return this.stacks[item.id].filter(s => s.quantity > 0).reduce((p, c) => p.add(c), new Stack(item, 0));
         } else {
             return new Stack(item, 0);
         }
     }
     total_negative(item) {
         if (this.stacks[item.id]) {
-            return this.stacks[item.id]
-                .filter(s => s.quantity < 0)
-                .reduce((p, c) => p.add(c), new Stack(item, 0));
+            return this.stacks[item.id].filter(s => s.quantity < 0).reduce((p, c) => p.add(c), new Stack(item, 0));
         } else {
             return new Stack(item, 0);
         }
