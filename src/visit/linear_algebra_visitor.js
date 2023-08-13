@@ -199,11 +199,11 @@ class LinearAlgebra extends ProcessChainVisitor {
     }
 
     reduce_matrix(m, column_slice = 0) {
-        let m1 = m.scale(1);
+        const m1 = Reductionist.fromLegacy(m);
         let lead = 0;
         for (let r = 0; r < m1.numRows(); ++r) {
             if ((m1.numColumns()+column_slice) <= lead) {
-                return m1;
+                return m1.toLegacy();
             }
             let i = r;
             while (m1.get(i, lead) === 0) {
@@ -212,39 +212,129 @@ class LinearAlgebra extends ProcessChainVisitor {
                     i = r;
                     lead = lead + 1;
                     if ((m1.numColumns()+column_slice) === lead) {
-                        return m1;
+                        return m1.toLegacy();
                     }
                 }
             }
             if (i !== r) { // swap rows i and r.
-                let ri = m1.getRow(i).data[0];
-                let rr = m1.getRow(r).data[0];
-                m1 = this.replace_row(m1, rr, i);
-                m1 = this.replace_row(m1, ri, r);
+                let ri = m1.getRow(i);
+                let rr = m1.getRow(r);
+                m1.replace_row(rr, i);
+                m1.replace_row(ri, r);
             }
-            m1 = this.replace_row(m1, m1.getRow(r).scale(1/m1.get(r, lead)).data[0], r);
+            m1.replace_row(m1.getRow(r).scale(1/m1.get(r, lead)), r);
             for (let ii = 0; ii < m1.numRows(); ++ii) {
                 if (ii !== r) {
-                    let sub = m1.getRow(r).scale(m1.get(ii, lead));
-                    let replacement = m1.getRow(ii).subtract(sub).data[0];
-                    m1 = this.replace_row(m1, replacement, ii)
+                    let sub = m1.getRow(r).scale(-m1.get(ii, lead));
+                    let replacement = m1.getRow(ii).add(sub);
+                    m1.replace_row(replacement, ii)
                 }
             }
-            this._print_matrix("lead: " + lead + " r: " + r, m1);
+            this._print_matrix("lead: " + lead + " r: " + r, m1.toLegacy());
         }
-        return m1;
+        return m1.toLegacy();
+    }
+}
+
+class Reductionist {
+    /** @type {Float64Array} */
+    #data;
+    #rows;
+    #cols;
+
+    constructor(rows, cols, data) {
+        if (data.length !== rows * cols) {
+            throw new Error('data length does not match rows and columns');
+        }
+        this.#rows = rows;
+        this.#cols = cols;
+        this.#data = data;
     }
 
-    replace_row(m, row, idx) {
-        let m1 = m.scale(1);
-        let c = 0;
-        while (c < row.length) {
-            // fix floating point things here?
-            let val = (Math.abs(row[c]) < 1e-12) ? 0 : row[c];
-            m1 = m1.replace(idx, c, val);
-            c++;
+    /** @param {Matrix} m */
+    static fromLegacy(m) {
+        const rows = m.numRows();
+        const cols = m.numColumns();
+        const data = new Float64Array(rows * cols);
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                data[r * cols + c] = m.get(r, c);
+            }
         }
-        return m1;
+        return new Reductionist(rows, cols, data);
+    }
+
+    /** @returns {number} */
+    get(r, c) {
+        return this.#data[r * this.#cols + c];
+    }
+
+    /** copies
+     * @returns {Reductionist} */
+    getRow(r) {
+        return new Reductionist(1, this.#cols, this.#data.slice(r * this.#cols, (r+1) * this.#cols));
+    }
+
+    /** @param {Reductionist} row
+     * @param {number} idx */
+    replace_row(row, idx) {
+        if (row.numRows() !== 1) {
+            throw new Error('replacement must be a single row');
+        }
+        if (row.numColumns() !== this.#cols) {
+            throw new Error('replacement must have the same number of columns');
+        }
+        row.epsilonToZero();
+        this.#data.set(row.#data, idx * this.#cols);
+    }
+
+    /** does *not* copy
+     * @returns {this} */
+    scale(s) {
+        for (let i = 0; i < this.#data.length; i++) {
+            this.#data[i] *= s;
+        }
+
+        return this;
+    }
+
+    epsilonToZero() {
+        for (let i = 0; i < this.#data.length; i++) {
+            if (Math.abs(this.#data[i]) < 1e-12) {
+                this.#data[i] = 0;
+            }
+        }
+        return this;
+    }
+
+    add(val) {
+        if (val.numRows() !== this.#rows || val.numColumns() !== this.#cols) {
+            throw new Error('dimensions must match');
+        }
+        for (let i = 0; i < this.#data.length; i++) {
+            this.#data[i] += val.#data[i];
+        }
+        return this;
+    }
+
+    numRows() {
+        return this.#rows;
+    }
+
+    numColumns() {
+        return this.#cols;
+    }
+
+    toLegacy() {
+        const rows = [];
+        for (let r = 0; r < this.#rows; r++) {
+            let row = [];
+            for (let c = 0; c < this.#cols; c++) {
+                row.push(this.get(r, c));
+            }
+            rows.push(row);
+        }
+        return new Matrix(rows);
     }
 }
 
