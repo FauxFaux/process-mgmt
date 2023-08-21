@@ -59,8 +59,73 @@ describe('Linear Algebra Visitor', function() {
         //         "out": [{"item": 'h', "quantity": 30}, {"item": 'l', "quantity": 30}, {"item": 'g', "quantity": 40}]}
     });
     describe('Internal algorithms', function() {
+
+        it('attempts to reduce', function() {
+            let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], [], true)
+            let [x,y,z] = [3,4,1]
+            let input = new Matrix([
+                [ 1,  2,  3, ((1*x) + (2*y) + (3*z))],
+                [ 2,  5,  6, ((2*x) + (5*y) + (6*z))],
+                [ 7,  3,  9, ((7*x) + (3*y) + (9*z))],
+            ]);
+            let result = la.reduce_matrix(input);
+            floatingPointDeepStrictEqual(result, new Matrix(
+                [1, 0, 0, x],
+                [0, 1, 0, y],
+                [0, 0, 1, z],
+            ), numericCompare);
+        });
+        it('attempts to reduce 2', function() {
+            let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c','w'], [], true)
+            let mtx = [
+                [0.625,0,0,0,0,0,0,0,-0.375,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0.5,-0.8571428571428572,-3.125,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,-4.2857142857142865,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0],
+                [0,0,3.428571428571429,-0.625,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0.625,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10],
+                [0,0,0,0,0.5,-0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0.1,0.5,-0.375,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0.25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,-1.5,0,0,0,0,1,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0],
+                [0,0,0,-3.125,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,-0.8571428571428572,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0],
+                [0.625,0,0,0,0,0,0.375,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0.18749999999999997,0,0,0,0,0,0.1875,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,0,0],
+                [0,0,0,0,0,0,0,0,-112.5,-150,0,-100,0,0,1,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,0],
+                [0,0,0,0,0,0,0,-5,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,50,-18.75,0,-37.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,37.5,-50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,50,-37.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,37.5,-50,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,-50,0,0,0,0,0,0,0,0,0,50,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,-2.5,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,-100,0,0,0,0,600,0,0,0,0,0,0,0,0,0,0,0,0],
+            ];
+            let input = new Matrix(mtx);
+            let result = la.reduce_matrix(input);
+            console.log(result);
+        });
+        it('pivot selection; should pivot on abs(remaining rows)', function() {
+            let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], [], true)
+            let [x,y,z] = [3,4,1]
+            // first pivot should be the 3rd row as 7 > 2 > 1
+            // second pivot should be the 3rd row as abs(-12) > 1 > 0
+            let input = new Matrix([
+                [ 1,  2,  3, ((1*x) + (2*y) + (3*z))],
+                [ 2,  5,  6, ((2*x) + (5*y) + (6*z))],
+                [ 7,  2,  9, ((7*x) + (2*y) + (9*z))],
+            ]);
+            let result = la.reduce_matrix(input);
+            floatingPointDeepStrictEqual(result, new Matrix(
+                [1, 0, 0, x],
+                [0, 1, 0, y],
+                [0, 0, 1, z],
+            ), numericCompare);
+        });
         it('reduces a matrix to row-echelon form', function() {
-            let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], []);
+            let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], [], false)
             let input = new Matrix([
                 [ 1,  2,  3, (1*7 + 2*9 + 3*2)],
                 [ 3,  5,  1, (3*7 + 5*9 + 1*2)],
@@ -74,12 +139,12 @@ describe('Linear Algebra Visitor', function() {
             ), numericCompare);
         });
         it('reduces a matrix to row-echelon form, avoiding floating point issues', function() {
-            let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], []);
+            let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], [], false);
             let [x, y, z] = [7, 9, 13];
             let input = new Matrix([
-                [ 1.1,      -0.2,       0.3,      (7.7      + -1.8      +  3.9)],
-                [ 0.1,       0.2,       1,        (0.7      +  1.8      + 13  )],
-                [ 1.000001,  2.000002,  3.000003, (7.000007 + 18.000018 + 39.000039)],
+                [ 1.1,      -0.2,       0, (7.7      + -1.8      +  0)],
+                [ 0.1,       0.2,       0, (0.7      +  1.8      +  0)],
+                [ 1.000001,  2.000002,  1, (7.000007 + 18.000018 + 13)],
             ]);
             let result = la.reduce_matrix(input);
             floatingPointDeepStrictEqual(result, new Matrix(
@@ -89,7 +154,7 @@ describe('Linear Algebra Visitor', function() {
             ), numericCompare);
         });
         it('example from kirk', function() {
-            let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], []);
+            let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], [], false);
             let input = new Matrix([
                 [ -40,   0,  30,   10, 0, 0, 10],
                 [ 30,  -30,  30,   45, 0, 0, 0],
@@ -97,9 +162,7 @@ describe('Linear Algebra Visitor', function() {
                 [ -30, -30,   0,  -50, 1, 0, 0],
                 [ 0,     0,-100, -100, 0, 1, 0],
             ]);
-            console.table(input.data);
             let result = la.reduce_matrix(input);
-            console.table(result.data);
             floatingPointDeepStrictEqual(result, new Matrix(
                 [ 1, 0, 0, 0, 0, (-13/400), (-23/12)],
                 [ 0, 1, 0, 0, 0, (-7/400),  (-1/4)],
@@ -109,7 +172,7 @@ describe('Linear Algebra Visitor', function() {
             ), numericCompare);
         });
         it('reduces, without touching the last column', function() {
-            let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], [], true);
+            let la = new LinearAlgebra([new Stack(data.items['g'], 1)], ['c', 'w'], [], false);
             let x=1;
             let y=2;
             let z=3;
@@ -120,9 +183,7 @@ describe('Linear Algebra Visitor', function() {
                 [ 5, 2, 6, (5*x + 2*y + 6*z)],
                 [ 6, 5, 7, (6*x + 5*y + 7*z)],
             ]);
-            console.table(input.data);
             let result = la.reduce_matrix(input, -1);
-            console.table(result.data);
             floatingPointDeepStrictEqual(result, new Matrix([
                 [ 1, 0, 0, x],
                 [ 0, 1, 0, y],
@@ -134,7 +195,7 @@ describe('Linear Algebra Visitor', function() {
     });
     describe('Overall behaviour', function() {
         it('initial matrix is sorted and filled', function() {
-            let la = new LinearAlgebra([new Stack(data.items['g'], 100)], ['c', 'w'], []);
+            let la = new LinearAlgebra([new Stack(data.items['g'], 100)], ['c', 'w'], [], false);
             let pc = new ProcessChain(Object.values(data.processes))
                 .accept(new RateVisitor(p => new Factory('__default__', '__default__', null, 1, 1)))
                 .accept(new ProcessCountVisitor())
@@ -146,12 +207,11 @@ describe('Linear Algebra Visitor', function() {
                 [   5, -20,   0], // h
                 [   9,  15, -15], // l
                 [ -10, -15, -15]  // w
-            ],
-            )
+            ])
         });
 
         it('augmented matrix is added', function() {
-            let la = new LinearAlgebra([new Stack(data.items['g'], 390)], ['c', 'w'], [], [data.items['c'], data.items['w']]);
+            let la = new LinearAlgebra([new Stack(data.items['g'], 390)], ['c', 'w'], [], false);
 
             let p = new ProcessChain(Object.values(data.processes));
             p = new RateChain(p);
@@ -176,7 +236,7 @@ describe('Linear Algebra Visitor', function() {
             ])
         });
         it('augmented matrix is added 2', function() {
-            let la = new LinearAlgebra([new Stack(data.items['g'], 360)], ['c', 'w'], [], [data.items['c'], data.items['w']]);
+            let la = new LinearAlgebra([new Stack(data.items['g'], 360)], ['c', 'w'], [], false);
 
             let p = new ProcessChain(Object.values(data.processes));
             p = new RateChain(p);
@@ -203,7 +263,7 @@ describe('Linear Algebra Visitor', function() {
             numericCompare)
         });
         it('augmented matrix is added with exports', function() {
-            let la = new LinearAlgebra([new Stack(data.items['g'], 390)], ['c', 'w'], ['h'], [data.items['c'], data.items['w']]);
+            let la = new LinearAlgebra([new Stack(data.items['g'], 390)], ['c', 'w'], ['h'], false);
 
             let p = new ProcessChain(Object.values(data.processes));
             p = new RateChain(p);
@@ -213,7 +273,7 @@ describe('Linear Algebra Visitor', function() {
                 'AO': 20
             };
             p.rebuild_materials();
-            fs.writeFileSync("linear-sample2.gv", p.accept(new RateGraphRenderer()).join('\n'));
+            // fs.writeFileSync("linear-sample2.gv", p.accept(new RateGraphRenderer()).join('\n'));
             let pc = new ProcessChain(Object.values(data.processes))
                 .accept(new RateVisitor(p => new Factory('__default__', '__default__', null, 1, 1)))
                 .accept(new ProcessCountVisitor())
@@ -228,7 +288,7 @@ describe('Linear Algebra Visitor', function() {
             ])
         });
         it('adds process counts', function() {
-            let la = new LinearAlgebra([new Stack(data.items['g'], 390)], ['c', 'w'], [], [data.items['c'], data.items['w']]);
+            let la = new LinearAlgebra([new Stack(data.items['g'], 390)], ['c', 'w'], [], false);
             let pc = new ProcessChain(Object.values(data.processes))
                 .accept(new RateVisitor(p => new Factory('__default__', '__default__', null, 1, 1)))
                 .accept(new ProcessCountVisitor())
