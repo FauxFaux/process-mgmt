@@ -1,0 +1,212 @@
+{
+  "chcs-solar-fluid" : {
+    "name" : "chcs-solar-fluid",
+    "localised_name" : [
+      "",
+      [
+        "fluid-name.chcs-solar-fluid"
+      ],
+      "[color=255,255,51] ■[\/color]"
+    ],
+    "order" : "",
+    "default_temperature" : 0,
+    "max_temperature" : 600,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "fluid-unknown" : {
+    "name" : "fluid-unknown",
+    "localised_name" : [
+      "",
+      [
+        "fluid-name.fluid-unknown"
+      ],
+      "[color=0,0,0] ■[\/color]"
+    ],
+    "order" : "",
+    "default_temperature" : 0,
+    "max_temperature" : 0,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "used-up-breeder-fuel-cell-solution" : {
+    "name" : "used-up-breeder-fuel-cell-solution",
+    "localised_name" : [
+      "",
+      [
+        "fluid-name.used-up-breeder-fuel-cell-solution"
+      ],
+      "[color=127,102,153] ■[\/color]"
+    ],
+    "order" : "",
+    "default_temperature" : 0,
+    "max_temperature" : 0,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "used-up-uranium-fuel-cell-solution" : {
+    "name" : "used-up-uranium-fuel-cell-solution",
+    "localised_name" : [
+      "",
+      [
+        "fluid-name.used-up-uranium-fuel-cell-solution"
+      ],
+      "[color=140,153,102] ■[\/color]"
+    ],
+    "order" : "",
+    "default_temperature" : 0,
+    "max_temperature" : 0,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "cb_alien_cold_extract" : {
+    "name" : "cb_alien_cold_extract",
+    "localised_name" : [
+      "",
+      [
+        "fluid-name.cb_alien_cold_extract"
+      ],
+      "[color=0,25,204] ■[\/color]"
+    ],
+    "order" : "a[fluid]-a[alien]",
+    "default_temperature" : -1,
+    "max_temperature" : 2,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "water" : {
+    "name" : "water",
+    "localised_name" : [
+      "",
+      [
+        "fluid-name.water"
+      ],
+      "[color=0,86,153] ■[\/color]"
+    ],
+    "order" : "a[fluid]-a[water]",
+    "default_temperature" : 15,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "crude-oil" : {
+    "name" : "crude-oil",
+    "localised_name" : [
+      "",
+      [
+        "fluid-name.crude-oil"
+      ],
+      "[color=0,0,0] ■[\/color]"
+    ],
+    "order" : "a[fluid]-b[crude-oil]",
+    "default_temperature" : 25,
+    "max_temperature" : 25,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "steam" : {
+    "name" : "steam",
+    "localised_name" : [
+      "",
+      [
+        "fluid-name.steam"
+      ],
+      "[color=127,127,127] ■[\/color]"
+    ],
+    "order" : "a[fluid]-b[steam]",
+    "default_temperature" : 15,
+    "max_temperature" : 1000,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "heavy-oil" : {
+    "name" : "heavy-oil",
+    "localised_name" : [
+      "",
+      [
+        "fluid-name.heavy-oil"
+      ],
+      "[color=127,10,0] ■[\/color]"
+    ],
+    "order" : "a[fluid]-c[heavy-oil]",
+    "default_temperature" : 25,
+    "max_temperature" : 25,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "light-oil" : {
+    "name" : "light-oil",
+    "localised_name" : [
+      "",
+      [
+        "fluid-name.light-oil"
+      ],
+      "[color=145,84,0] ■[\/color]"
+    ],
+    "order" : "a[fluid]-d[light-oil]",
+    "default_temperature" : 25,
+    "max_temperature" : 25,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "petroleum-gas" : {
+    "name" : "petroleum-gas",
+    "localised_name" : [
+      "",
+      [
+        "fluid-name.petroleum-gas"
+      ],
+      "[color=76,25,76] ■[\/color]"
+    ],
+    "order" : "a[fluid]-e[petroleum-gas]",
+    "default_temperature" : 25,
+    "max_temperature" : 25,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "sulfuric-acid" : {
+    "name" : "sulfuric-acid",
+    "localised_name" : [
+      "",
+      [
+        "fluid-name.sulfuric-acid"
+      ],
+      "[color=191,165,25] ■[\/color]"
+    ],
+    "order" : "a[fluid]-f[sulfuric-acid]",
+    "default_temperature" : 25,
+    "max_temperature" : 25,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "lubricant" : {
+    "name" : "lubricant",
+    "localised_name" : [
+      "",
+      [
+        "fluid-name.lubricant"
+      ],
+      "[color=38,81,7] ■[\/color]"
+    ],
+    "order" : "e[lubricant]",
+    "default_temperature" : 25,
+    "max_temperature" : 25,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "ff-tailings-water" : {
+    "name" : "ff-tailings-water",
+    "localised_name" : [
+      "",
+      [
+        "fluid-name.ff-tailings-water"
+      ],
+      "[color=25,51,76] ■[\/color]"
+    ],
+    "order" : "f[tailings]",
+    "default_temperature" : 15,
+    "max_temperature" : 15,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  }
+}

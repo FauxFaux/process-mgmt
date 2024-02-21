@@ -1,0 +1,123 @@
+{
+  "hcraft-equipment" : {
+    "name" : "hcraft-equipment",
+    "localised_name" : [
+      "equipment-grid-name.hcraft-equipment"
+    ],
+    "equipment_categories" : [
+      "armor"
+    ],
+    "width" : 2,
+    "height" : 2
+  },
+  "large-equipment-grid" : {
+    "name" : "large-equipment-grid",
+    "localised_name" : [
+      "equipment-grid-name.large-equipment-grid"
+    ],
+    "equipment_categories" : [
+      "armor"
+    ],
+    "width" : 10,
+    "height" : 10
+  },
+  "lex-flying-cargo-grid" : {
+    "name" : "lex-flying-cargo-grid",
+    "localised_name" : [
+      "equipment-grid-name.lex-flying-cargo-grid"
+    ],
+    "equipment_categories" : [
+      "armor"
+    ],
+    "width" : 10,
+    "height" : 4
+  },
+  "lex-flying-gunship-grid" : {
+    "name" : "lex-flying-gunship-grid",
+    "localised_name" : [
+      "equipment-grid-name.lex-flying-gunship-grid"
+    ],
+    "equipment_categories" : [
+      "armor"
+    ],
+    "width" : 10,
+    "height" : 4
+  },
+  "lex-flying-heavyship-grid" : {
+    "name" : "lex-flying-heavyship-grid",
+    "localised_name" : [
+      "equipment-grid-name.lex-flying-heavyship-grid"
+    ],
+    "equipment_categories" : [
+      "armor"
+    ],
+    "width" : 10,
+    "height" : 8
+  },
+  "mcraft-equipment" : {
+    "name" : "mcraft-equipment",
+    "localised_name" : [
+      "equipment-grid-name.mcraft-equipment"
+    ],
+    "equipment_categories" : [
+      "armor"
+    ],
+    "width" : 4,
+    "height" : 2
+  },
+  "medium-equipment-grid" : {
+    "name" : "medium-equipment-grid",
+    "localised_name" : [
+      "equipment-grid-name.medium-equipment-grid"
+    ],
+    "equipment_categories" : [
+      "armor"
+    ],
+    "width" : 7,
+    "height" : 7
+  },
+  "shuttle-train" : {
+    "name" : "shuttle-train",
+    "localised_name" : [
+      "equipment-grid-name.shuttle-train"
+    ],
+    "equipment_categories" : [
+      "shuttle-train"
+    ],
+    "width" : 2,
+    "height" : 2
+  },
+  "small-equipment-grid" : {
+    "name" : "small-equipment-grid",
+    "localised_name" : [
+      "equipment-grid-name.small-equipment-grid"
+    ],
+    "equipment_categories" : [
+      "armor"
+    ],
+    "width" : 5,
+    "height" : 5
+  },
+  "sp-spiderling-equipment-grid" : {
+    "name" : "sp-spiderling-equipment-grid",
+    "localised_name" : [
+      "equipment-grid-name.sp-spiderling-equipment-grid"
+    ],
+    "equipment_categories" : [
+      "armor"
+    ],
+    "width" : 10,
+    "height" : 4
+  },
+  "spidertron-equipment-grid" : {
+    "name" : "spidertron-equipment-grid",
+    "localised_name" : [
+      "equipment-grid-name.spidertron-equipment-grid"
+    ],
+    "equipment_categories" : [
+      "armor"
+    ],
+    "width" : 10,
+    "height" : 6
+  }
+}
