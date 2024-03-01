@@ -2156,6 +2156,63 @@
       }
     }
   ],
-  "factory_groups": [],
-  "factory_types": []
+  "factory_groups": [
+
+  ],
+  "factory_types": [
+    {
+      "id": "assembler_I",
+      "name": "Assembler I",
+      "factory_groups": [
+        "assembler"
+      ],
+      "duration_modifier": 1,
+      "output_modifier": 1
+    },
+    {
+      "id": "assembler_II",
+      "name": "Assembler II",
+      "factory_groups": [
+        "assembler"
+      ],
+      "duration_modifier": 0.8,
+      "output_modifier": 1
+    },
+    {
+      "id": "assembler_III",
+      "name": "Assembler III",
+      "factory_groups": [
+        "assembler"
+      ],
+      "duration_modifier": 0.66666666666666,
+      "output_modifier": 1
+    },
+    {
+      "id": "smelter",
+      "name": "Smelter",
+      "factory_groups": [
+        "smelter"
+      ],
+      "duration_modifier": 1,
+      "output_modifier": 1
+    },
+    {
+      "id": "plane_smelter",
+      "name": "Plane Smelter",
+      "factory_groups": [
+        "assembler"
+      ],
+      "duration_modifier": 0.5,
+      "output_modifier": 1
+    },
+    {
+      "id": "particle_collider",
+      "name": "Particicle Collider",
+      "factory_groups": [
+        "particle_collider"
+      ],
+      "duration_modifier": 1,
+      "output_modifier": 1
+    }
+  ]
 }

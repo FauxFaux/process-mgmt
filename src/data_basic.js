@@ -42,10 +42,10 @@ function data_from_standard_json(name, version, json_import_p) {
                 ))});
             })
 
-            data.add_factories(
-                Object.values(data.factory_groups)
-                    .map(fg => new Factory("" + fg.id, "" + fg.id, [fg], 1))
-            );
+            raw.factory_types
+                .map(f => [f, new Factory("" + f.id, "" + f.name, f.factory_groups.map(id => data.factory_groups[id]), f.duration_modifier, f.output_modifier)])
+                .forEach(ff => check_add(ff[0], () => data.add_factory(ff[1])))
+
             return data;
     });
 }
