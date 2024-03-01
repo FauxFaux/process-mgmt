@@ -171,51 +171,6 @@ class ProcessChain {
         )];
     }
 
-    /**
-     * Depth-first search of the process graph; when the search
-     * encounters an already visited node, it walks back up the
-     * discovered tree until it finds the already visited node,
-     * adding the intermediate steps to the current cycle.
-     *
-     * @returns [[process_id, ... ], [process_id, ... ]] each inner array is a cycle in the process graph
-     */
-    find_cycles() {
-        let tree = {}; // child->parent relationships
-        let loops = [];
-        let visited_processes = [];
-        let stack = [this.processes[0]];
-        while (stack.length > 0) {
-            let current = stack.pop();
-            visited_processes.push(current.id);
-
-            current.outputs.flatMap(output => {
-                let r = this.processes_by_input[output.item.id];
-                if (r && r.length > 0) {
-                    return r;
-                } else {
-                    return [];
-                }
-            }).forEach(p => {
-                if (visited_processes.includes(p.id)) {
-                    let loop = [];
-                    let next = current.id;
-                    while (true) {
-                        loop.push(next);
-                        if (next == p.id) break;
-                        next = tree[next];
-                        if (!next) break;
-                    }
-                    loops.push(loop.reverse());
-                } else {
-                    tree[p.id] = current.id;
-                    stack.push(p);
-                }
-            });
-        }
-
-        return loops;
-    }
-
     _render_processor_node(node_id, process) {
         let inputs = process.inputs.map((input, index) => {
             return '<i' + index + '> ' + input.item.name;
