@@ -1,7 +1,7 @@
 import { describe, it } from 'mocha';
 import * as assert from 'assert';
 
-import { ProcessChain } from '../../src/process.ts';
+import { ProcessChain } from '../../src/process.js';
 import { RateCalculator } from '../../src/visit/rate_calculator.js';
 
 import {
@@ -9,7 +9,7 @@ import {
     add_processes_to_data,
     setup_data,
 } from './test_data.js';
-import { Stack } from '../../src/stack.ts';
+import { Stack } from '../../src/stack.js';
 import { RateGraphRenderer } from '../../src/visit/rate_graph_renderer.js';
 import { StandardGraphRenderer } from '../../src/visit/standard_graph_renderer.js';
 

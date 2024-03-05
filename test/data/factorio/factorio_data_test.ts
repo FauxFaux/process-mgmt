@@ -1,12 +1,12 @@
 import { describe, it } from 'mocha';
 import * as assert from 'assert';
-import { Factory, FactoryGroup } from '../../../src/factory.ts';
-import { Process } from '../../../src/process.ts';
+import { Factory, FactoryGroup } from '../../../src/factory.js';
+import { Process } from '../../../src/process.js';
 
-import { Item } from '../../../src/item.ts';
-import { Stack } from '../../../src/stack.ts';
+import { Item } from '../../../src/item.js';
+import { Stack } from '../../../src/stack.js';
 
-import { default as create_data } from '../../../src/factorio-py-1.1.53/data_base.ts';
+import { default as create_data } from '../../../src/factorio-py-1.1.53/data_base.js';
 
 const RECIPES = 'recipe.json';
 const ASSEMBLERS = 'assembling-machine.json';
@@ -65,6 +65,7 @@ describe('Data Parsing', function () {
         });
         it('finds processes', function () {
             result.then((data) => {
+                // @ts-expect-error
                 assert.deepStrictEqual(Object.keys(result.processes).sort(), [
                     'hot-residual-mixture-to-coke--0',
                     'warmer-stone-brick-1--0',
@@ -74,9 +75,12 @@ describe('Data Parsing', function () {
         it('data has three fluid variants', function () {
             result.then((data) => {
                 assert.deepStrictEqual(
+                    // @ts-expect-error
                     Object.values(result.items)
-                        .filter((item) => item.name.startsWith('coke-oven-gas'))
-                        .sort((a, b) => {
+                        .filter((item: any) =>
+                            item.name.startsWith('coke-oven-gas'),
+                        )
+                        .sort((a: any, b: any) => {
                             if (a.name < b.name) return -1;
                             if (a.name > b.name) return 1;
                             return 0;
@@ -92,6 +96,7 @@ describe('Data Parsing', function () {
         it('the process has a two inputs', function () {
             result.then((data) => {
                 assert.deepStrictEqual(
+                    // @ts-expect-error
                     result.processes['warmer-stone-brick-1--0'].inputs,
                     [
                         new Stack(
@@ -112,6 +117,7 @@ describe('Data Parsing', function () {
         it('the process has a two outputs', function () {
             result.then((data) => {
                 assert.deepStrictEqual(
+                    // @ts-expect-error
                     result.processes['warmer-stone-brick-1--0'].outputs,
                     [
                         new Stack(
@@ -146,6 +152,7 @@ describe('Data Parsing', function () {
         });
         it('finds processes', function () {
             result.then((data) => {
+                // @ts-expect-error
                 assert.deepStrictEqual(Object.keys(result.processes).sort(), [
                     'coke-oven-gas-300--0',
                     'coke-oven-gas-500--0',
@@ -157,9 +164,12 @@ describe('Data Parsing', function () {
         it('data has four fluid variants', function () {
             result.then((data) => {
                 assert.deepStrictEqual(
+                    // @ts-expect-error
                     Object.values(result.items)
-                        .filter((item) => item.name.startsWith('coke-oven-gas'))
-                        .sort((a, b) => {
+                        .filter((item: any) =>
+                            item.name.startsWith('coke-oven-gas'),
+                        )
+                        .sort((a: any, b: any) => {
                             if (a.name < b.name) return -1;
                             if (a.name > b.name) return 1;
                             return 0;
@@ -176,6 +186,7 @@ describe('Data Parsing', function () {
         it('the process has a two inputs (300)', function () {
             result.then((data) => {
                 assert.deepStrictEqual(
+                    // @ts-expect-error
                     result.processes['warmer-stone-brick-1--0'].inputs,
                     [
                         new Stack(
@@ -196,6 +207,7 @@ describe('Data Parsing', function () {
         it('the process has a two outputs (300)', function () {
             result.then((data) => {
                 assert.deepStrictEqual(
+                    // @ts-expect-error
                     result.processes['warmer-stone-brick-1--0'].outputs,
                     [
                         new Stack(
@@ -219,6 +231,7 @@ describe('Data Parsing', function () {
         it('the process has a two inputs (500)', function () {
             result.then((data) => {
                 assert.deepStrictEqual(
+                    // @ts-expect-error
                     result.processes['warmer-stone-brick-1--1'].inputs,
                     [
                         new Stack(
@@ -239,6 +252,7 @@ describe('Data Parsing', function () {
         it('the process has a two outputs (500)', function () {
             result.then((data) => {
                 assert.deepStrictEqual(
+                    // @ts-expect-error
                     result.processes['warmer-stone-brick-1--1'].outputs,
                     [
                         new Stack(
@@ -262,11 +276,11 @@ describe('Data Parsing', function () {
     });
 });
 
-const ff = function (input, out) {
+const ff = function (input, out?) {
     if (input.length == 0) return out;
     const entry = input.shift();
     if (out) {
-        const r = [];
+        const r: any[] = [];
         for (const o of out) {
             for (const e of entry) {
                 r.push(o.concat(e));

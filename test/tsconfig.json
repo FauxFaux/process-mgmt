@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.json",
+  "outDir": "./.lint/dist",
+  "compilerOptions": {
+    "noEmit": true,
+    "incremental": true
+  },
+  "include": ["../src/**/*.ts", "../test/**/*.ts"]
+}

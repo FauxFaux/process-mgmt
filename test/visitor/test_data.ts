@@ -1,8 +1,8 @@
-import { Factory, FactoryGroup } from '../../src/factory.ts';
-import { Process } from '../../src/process.ts';
-import { Stack } from '../../src/stack.ts';
-import { Data } from '../../src/data.ts';
-import { Item } from '../../src/item.ts';
+import { Factory, FactoryGroup } from '../../src/factory.js';
+import { Process } from '../../src/process.js';
+import { Stack } from '../../src/stack.js';
+import { Data } from '../../src/data.js';
+import { Item } from '../../src/item.js';
 
 /*
         let data = setup_data();
@@ -33,7 +33,7 @@ const add_items_to_data = function (data, items) {
  * processes: object with entries like 'C': {"in": ['a', 'b'], "out": ['c']}
  */
 const add_processes_to_data = function (data, processes) {
-    for (const e of Object.entries(processes)) {
+    for (const e of Object.entries(processes) as [string, any][]) {
         data.add_process(
             new Process(
                 e[0], // id

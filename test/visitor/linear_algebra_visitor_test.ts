@@ -2,8 +2,8 @@ import { describe, it } from 'mocha';
 import * as assert from 'assert';
 import * as fs from 'fs';
 
-import { ProcessChain } from '../../src/process.ts';
-import { Factory } from '../../src/structures.ts';
+import { ProcessChain } from '../../src/process.js';
+import { Factory } from '../../src/structures.js';
 import { EnableDisable } from '../../src/visit/enable_disable_visitor.js';
 import { RateCalculator } from '../../src/visit/rate_calculator.js';
 import { RateGraphRenderer } from '../../src/visit/rate_graph_renderer.js';
@@ -14,8 +14,8 @@ import {
     add_processes_to_data,
     setup_data,
 } from './test_data.js';
-import { Stack } from '../../src/stack.ts';
-import { RateChain } from '../../src/structures.ts';
+import { Stack } from '../../src/stack.js';
+import { RateChain } from '../../src/structures.js';
 import Matrix from 'node-matrices';
 import { RateVisitor } from '../../src/visit/rate_visitor.js';
 import { ProcessCountVisitor } from '../../src/visit/process_count_visitor.js';
@@ -24,7 +24,7 @@ const floatingPointDeepStrictEqual = function (
     actual,
     expected,
     compare,
-    message,
+    message?,
 ) {
     const type = typeof actual;
     if (Array.isArray(actual)) {
@@ -393,8 +393,9 @@ describe('Linear Algebra Visitor', function () {
                 false,
             );
 
-            let p = new ProcessChain(Object.values(data.processes));
-            p = new RateChain(p);
+            const p = new RateChain(
+                new ProcessChain(Object.values(data.processes)),
+            );
             p.process_counts = {
                 HC: 5,
                 LC: 17,
@@ -437,8 +438,9 @@ describe('Linear Algebra Visitor', function () {
                 false,
             );
 
-            let p = new ProcessChain(Object.values(data.processes));
-            p = new RateChain(p);
+            const p = new RateChain(
+                new ProcessChain(Object.values(data.processes)),
+            );
             p.process_counts = {
                 HC: 5,
                 LC: 17,
@@ -486,8 +488,9 @@ describe('Linear Algebra Visitor', function () {
                 false,
             );
 
-            let p = new ProcessChain(Object.values(data.processes));
-            p = new RateChain(p);
+            const p = new RateChain(
+                new ProcessChain(Object.values(data.processes)),
+            );
             p.process_counts = {
                 HC: 5,
                 LC: 17,

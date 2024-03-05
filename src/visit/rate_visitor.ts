@@ -9,7 +9,7 @@ class RateVisitor extends ProcessChainVisitor {
     factory_type_cb;
     converted;
 
-    constructor(factory_type_cb = (_process) => null) {
+    constructor(factory_type_cb = (_process): any => null) {
         super();
         this.converted = [];
         this.factory_type_cb = factory_type_cb;

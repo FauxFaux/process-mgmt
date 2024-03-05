@@ -1,7 +1,7 @@
 import { describe, it } from 'mocha';
 import * as assert from 'assert';
 
-import { ProcessChain } from '../../src/process.ts';
+import { ProcessChain } from '../../src/process.js';
 import { EnableDisable } from '../../src/visit/enable_disable_visitor.js';
 
 import {
