@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Managing factory processes",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "prepare": "tsc",
     "test": "mocha --recursive",
     "format": "prettier --write 'src/**/*.?s' 'test/**/*.?s'",
     "run": "tsx src/index.ts"

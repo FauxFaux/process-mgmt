@@ -115,7 +115,7 @@ class ProcessChain {
     /**
      * @param arguments process, process, ...
      */
-    enable() {
+    enable(..._args) {
         this._enable(arguments);
         this._rebuild();
         return this;

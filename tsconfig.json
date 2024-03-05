@@ -6,6 +6,5 @@
     "noImplicitAny": false,
     "outDir": "dist"
   },
-  "include": ["src/**/*.js"],
-  "exclude": ["**/*.test.ts"]
+  "include": ["src/**/*.?s"],
 }

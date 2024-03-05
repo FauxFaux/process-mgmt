@@ -15,7 +15,7 @@ import { ProcessCountVisitor } from './visit/process_count_visitor.js';
 const array_disambiguate = function (data, config) {
     return function (requirement, options) {
         const arr = Object.entries(config.get_process_choices())
-            .map((e) => {
+            .map((e: [string, any]) => {
                 return [data.items[e[0]].id, data.processes[e[1]]];
             })
             .reduce((acc, cur) => {
@@ -70,13 +70,13 @@ const array_disambiguate = function (data, config) {
 
 const quickest_factory_for_factory_type = function (data, factory_type) {
     return Object.values(data.factories)
-        .filter((f) => {
+        .filter((f: any) => {
             const g = f.groups.filter((ft) => {
                 return ft.id == factory_type.id;
             });
             return g.length != 0; // When `g` is not empty, the factory can handle the process.
         })
-        .sort((a, b) => a.duration_modifier - b.duration_modifier)[0]; // after sorting, return the first in the list, which will be the quickest.
+        .sort((a: any, b: any) => a.duration_modifier - b.duration_modifier)[0]; // after sorting, return the first in the list, which will be the quickest.
 };
 
 const command_all = function (argv) {
@@ -261,11 +261,11 @@ const process_to_pretty_string = function (p, data) {
         '\n' +
         '  made in:\n' +
         Object.values(data.factories)
-            .filter((f) =>
+            .filter((f: any) =>
                 f.groups.map((fg) => fg.name).includes(p.factory_group.name),
             )
             .map(
-                (f) =>
+                (f: any) =>
                     f.id +
                     ' (duration modifier: ' +
                     f.duration_modifier +
