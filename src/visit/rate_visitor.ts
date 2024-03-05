@@ -1,11 +1,14 @@
-import { Process, ProcessChain } from '../process.ts';
-import { Factory } from '../factory.ts';
+import { Process, ProcessChain } from '../process.js';
+import { Factory } from '../factory.js';
 import { ProcessChainVisitor } from './process_chain_visitor.js';
 
 /**
  * Output: ProcessChain
  */
 class RateVisitor extends ProcessChainVisitor {
+    factory_type_cb;
+    converted;
+
     constructor(factory_type_cb = (_process) => null) {
         super();
         this.converted = [];

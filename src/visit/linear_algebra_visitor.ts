@@ -1,10 +1,13 @@
-import { Item } from '../item.ts';
+import { Item } from '../item.js';
 import { ProcessChainVisitor } from './process_chain_visitor.js';
 
 import Matrix from 'node-matrices';
-import { StackSet } from '../stack.ts';
+import { StackSet } from '../stack.js';
 
 class Column {
+    process;
+    entries;
+
     constructor(process) {
         this.process = process;
         this.entries = new StackSet();
@@ -26,6 +29,20 @@ class Column {
 }
 
 class LinearAlgebra extends ProcessChainVisitor {
+    requirements;
+    imported;
+    exported;
+    print_matricies;
+
+    columns;
+    items;
+
+    initial_matrix;
+    augmented_matrix;
+    reduced_matrix;
+
+    chain;
+
     constructor(requirements, imported, exported, print_matricies = false) {
         super();
         this.requirements = requirements;
@@ -101,7 +118,7 @@ class LinearAlgebra extends ProcessChainVisitor {
             return;
         }
         const res = {};
-        const lookup = [];
+        const lookup: any[] = [];
         for (let i = 0; i < this.items.length; ++i) {
             res[this.items[i].id] = {};
             lookup[i] = this.items[i].id;

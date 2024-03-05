@@ -4,6 +4,8 @@ import { ProcessChainVisitor } from './process_chain_visitor.js';
  * Output: Array of lines, containing the digraph.
  */
 class StandardGraphRenderer extends ProcessChainVisitor {
+    out: string[];
+
     constructor() {
         super();
         this.out = ['digraph {'];

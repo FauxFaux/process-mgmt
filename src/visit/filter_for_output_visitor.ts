@@ -7,6 +7,11 @@ import { select_process } from './process_selection.js';
  * Output: ProcessChain
  */
 class FilterForOutput extends ProcessChainVisitor {
+    output_item;
+    priority_cb;
+    ignored;
+    allowed_processes;
+
     constructor(output_item, priority_cb = () => null, ignored = []) {
         super();
         this.output_item = output_item;
@@ -22,9 +27,9 @@ class FilterForOutput extends ProcessChainVisitor {
     }
 
     init(chain) {
-        const result = [];
-        const visited_item_ids = [];
-        const visited_processes = [];
+        const result: any[] = [];
+        const visited_item_ids: any[] = [];
+        const visited_processes: any[] = [];
         const queue = [this.output_item.id];
         while (queue.length > 0) {
             const current = queue.shift();

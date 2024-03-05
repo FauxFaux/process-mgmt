@@ -1,10 +1,17 @@
-import { ProcessChain } from '../process.ts';
-import { StackSet } from '../stack.ts';
+import { ProcessChain } from '../process.js';
+import { StackSet } from '../stack.js';
 import { ProcessChainVisitor } from './process_chain_visitor.js';
 
 import { select_process } from './process_selection.js';
 
 class RateCalculator extends ProcessChainVisitor {
+    requested_stack;
+    imported_materials;
+    process_selector;
+    materials;
+    process_counts;
+    chain;
+
     constructor(requested_stack, imported_materials, process_selector) {
         super();
         this.requested_stack = requested_stack;

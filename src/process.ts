@@ -90,6 +90,9 @@ class ProcessChain {
     processes_by_input;
     settings;
 
+    materials;
+    process_counts;
+
     constructor(processes) {
         check('processes', processes);
         this.processes = processes;

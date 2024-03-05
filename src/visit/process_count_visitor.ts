@@ -1,6 +1,8 @@
-import { StackSet } from '../stack.ts';
+import { StackSet } from '../stack.js';
 
 class ProcessCountVisitor {
+    chain;
+
     check(chain) {
         return {
             init: true,
