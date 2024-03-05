@@ -5,7 +5,7 @@
   "description": "Managing factory processes",
   "main": "dist/index.js",
   "scripts": {
-    "prepare": "tsc",
+    "prepare": "tsc && rsync --relative --archive --include '*/' --include='*.json' --exclude='*' src/./ dist",
     "test": "mocha --recursive",
     "lint": "tsc -p test/tsconfig.json && eslint 'src/**/*.?s' 'test/**/*.?s'",
     "format": "prettier --write 'src/**/*.?s' 'test/**/*.?s'",
