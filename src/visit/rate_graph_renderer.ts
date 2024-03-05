@@ -7,7 +7,7 @@ const fix_identifier = function (id) {
 /**
  * Output: Array of lines, containing the digraph.
  */
-class RateGraphRenderer extends ProcessChainVisitor {
+class RateGraphRenderer extends ProcessChainVisitor<string[]> {
     out: string[];
 
     constructor() {

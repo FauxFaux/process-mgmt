@@ -1,9 +1,10 @@
 import { StackSet } from '../stack.js';
+import { VisitorOptions } from './process_chain_visitor.js';
 
 class ProcessCountVisitor {
     chain;
 
-    check(chain) {
+    check(chain): VisitorOptions {
         return {
             init: true,
             visit_item: false,

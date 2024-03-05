@@ -1,5 +1,8 @@
-import { ProcessChain } from '../process.ts';
-import { ProcessChainVisitor } from './process_chain_visitor.js';
+import { ProcessChain } from '../process.js';
+import {
+    ProcessChainVisitor,
+    VisitorOptions,
+} from './process_chain_visitor.js';
 
 import { select_process } from './process_selection.js';
 
@@ -20,7 +23,7 @@ class FilterForOutput extends ProcessChainVisitor {
         this.allowed_processes = [];
     }
 
-    check(_chain) {
+    check(_chain): VisitorOptions {
         return {
             init: true,
         };

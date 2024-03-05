@@ -1,5 +1,15 @@
-class ProcessChainVisitor {
-    check(chain) {
+import { ProcessChain } from '../process.js';
+
+export interface VisitorOptions {
+    init?: boolean;
+    visit_item?: boolean;
+    visit_process?: boolean;
+    visit_item_process_edge?: boolean;
+    visit_process_item_edge?: boolean;
+}
+
+class ProcessChainVisitor<T = ProcessChain> {
+    check(chain: ProcessChain): VisitorOptions {
         return {
             init: true,
             visit_item: true,
@@ -13,8 +23,8 @@ class ProcessChainVisitor {
     visit_process(process, chain) {}
     visit_item_process_edge(item, process, chain, index) {}
     visit_process_item_edge(process, item, chain, index) {}
-    build() {
-        return null;
+    build(): T {
+        throw new Error('not implemented');
     }
 }
 

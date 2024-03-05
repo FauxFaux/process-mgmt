@@ -1,5 +1,8 @@
 import { Item } from '../item.js';
-import { ProcessChainVisitor } from './process_chain_visitor.js';
+import {
+    ProcessChainVisitor,
+    VisitorOptions,
+} from './process_chain_visitor.js';
 
 import Matrix from 'node-matrices';
 import { StackSet } from '../stack.js';
@@ -51,7 +54,7 @@ class LinearAlgebra extends ProcessChainVisitor {
         this.print_matricies = print_matricies;
     }
 
-    check(chain) {
+    check(chain): VisitorOptions {
         if (!chain.rebuild_materials)
             throw new Error(
                 '`LinearAlgebra` requires `rebuild_materials` (Provided by `ProcessCountVisitor`)',
