@@ -5,7 +5,7 @@ import {
     FactoryGroup,
     Factory,
     Process,
-} from '../structures.ts';
+} from '../structures.js';
 
 const data = new Data('factorio-ab', '0.0.1');
 

@@ -1,8 +1,8 @@
-import { Factory, FactoryGroup } from '../factory.ts';
-import { Stack } from '../stack.ts';
-import { Item } from '../item.ts';
-import { Data } from '../data.ts';
-import { Process } from '../process.ts';
+import { Factory, FactoryGroup } from '../factory.js';
+import { Stack } from '../stack.js';
+import { Item } from '../item.js';
+import { Data } from '../data.js';
+import { Process } from '../process.js';
 
 const fix_identifier = function (id) {
     return id.replace(/-/g, '_');
@@ -35,9 +35,9 @@ const convert_ingredient = function (data, ingredient, recipe) {
 
 const data_p = import('./exported-data.json', { assert: { type: 'json' } })
     .then((module) => module.default)
-    .then((raw) => {
+    .then((raw: any) => {
         const data = new Data('factorio-ab-1.1.38', '0.0.1');
-        for (const recipe of Object.values(raw.recipe)) {
+        for (const recipe of Object.values(raw.recipe) as any[]) {
             if (!recipe.name) continue; // ignore '{}'
             if (recipe.normal) {
                 recipe.ingredients = recipe.normal.ingredients;
@@ -134,7 +134,7 @@ const data_p = import('./exported-data.json', { assert: { type: 'json' } })
 
         for (const machine of Object.values(raw['assembling-machine']).concat(
             Object.values(raw['furnace']),
-        )) {
+        ) as any[]) {
             if (!machine.name) continue; // ignore '{}'
             check_add(machine, function () {
                 for (const cat of machine.crafting_categories) {

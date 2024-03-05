@@ -5,7 +5,7 @@ class Item {
     name;
     group;
 
-    constructor(id, name, group) {
+    constructor(id, name, group?) {
         check('id', id, 'name', name);
         this.id = id;
         this.name = name;

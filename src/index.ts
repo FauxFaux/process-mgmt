@@ -80,7 +80,7 @@ const quickest_factory_for_factory_type = function (data, factory_type) {
 };
 
 const command_all = function (argv) {
-    import('./' + argv.data + '/data.js').then((module) => {
+    import('./' + argv.data + '/data.ts').then((module) => {
         const data = module.data;
         const p = new ProcessChain(Object.values(data.processes));
         console.log(p.to_graphviz());
@@ -178,7 +178,7 @@ const decorate_config = function (config) {
 const command_linear_algebra = function (argv) {
     fs.readFile(argv.config, 'utf8', (_err, str) => {
         const config = decorate_config(JSON.parse(str));
-        import('./' + config.data + '/data.js')
+        import('./' + config.data + '/data.ts')
             .catch((e) => console.log('failed to import', config.data, e))
             .then((module) => module.default)
             .then((data) => {
@@ -279,7 +279,7 @@ const process_to_pretty_string = function (p, data) {
 };
 
 const command_what_produces = function (argv) {
-    import('./' + argv.data + '/data.js').then((module) => {
+    import('./' + argv.data + '/data.ts').then((module) => {
         const data = module.data;
         const p = new ProcessChain(Object.values(data.processes));
         const options = p.processes_by_output[argv.produces];
@@ -290,7 +290,7 @@ const command_what_produces = function (argv) {
 };
 
 const command_what_uses = function (argv) {
-    import('./' + argv.data + '/data.js').then((module) => {
+    import('./' + argv.data + '/data.ts').then((module) => {
         const data = module.data;
         const p = new ProcessChain(Object.values(data.processes));
         const options = p.processes_by_input[argv.uses];

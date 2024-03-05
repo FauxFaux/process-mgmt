@@ -6,7 +6,7 @@ import { Process } from '../../../src/process.ts';
 import { Item } from '../../../src/item.ts';
 import { Stack } from '../../../src/stack.ts';
 
-import { default as create_data } from '../../../src/factorio-py-1.1.53/data_base.js';
+import { default as create_data } from '../../../src/factorio-py-1.1.53/data_base.ts';
 
 const RECIPES = 'recipe.json';
 const ASSEMBLERS = 'assembling-machine.json';

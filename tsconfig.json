@@ -3,7 +3,10 @@
   "compilerOptions": {
     "allowJs": true,
     "declaration": true,
+
     "noImplicitAny": false,
+    "resolveJsonModule": true,
+
     "outDir": "dist"
   },
   "include": ["src/**/*.?s"],
