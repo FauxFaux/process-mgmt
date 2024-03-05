@@ -3,6 +3,9 @@ import { Stack } from './stack.js';
 import { check } from './structures_base.js';
 
 class FactoryGroup {
+    id;
+    name;
+
     constructor(name) {
         check('name', name);
         this.id = name;
@@ -15,6 +18,12 @@ class FactoryGroup {
 }
 
 class Factory {
+    id;
+    name;
+    groups;
+    duration_modifier;
+    output_modifier;
+
     constructor(id, name, groups, duration_modifier = 1, output_modifier = 1) {
         check(
             'id',

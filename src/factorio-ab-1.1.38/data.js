@@ -1,8 +1,8 @@
-import { Factory, FactoryGroup } from '../factory.js';
-import { Stack } from '../stack.js';
+import { Factory, FactoryGroup } from '../factory.ts';
+import { Stack } from '../stack.ts';
 import { Item } from '../item.ts';
-import { Data } from '../data.js';
-import { Process } from '../process.js';
+import { Data } from '../data.ts';
+import { Process } from '../process.ts';
 
 const fix_identifier = function (id) {
     return id.replace(/-/g, '_');

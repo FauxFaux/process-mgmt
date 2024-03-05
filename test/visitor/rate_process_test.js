@@ -1,10 +1,10 @@
 import { describe, it } from 'mocha';
 import * as assert from 'assert';
 
-import { Factory, FactoryGroup } from '../../src/factory.js';
-import { Process, ProcessChain } from '../../src/process.js';
+import { Factory, FactoryGroup } from '../../src/factory.ts';
+import { Process, ProcessChain } from '../../src/process.ts';
 import { Item } from '../../src/item.ts';
-import { Stack } from '../../src/stack.js';
+import { Stack } from '../../src/stack.ts';
 
 import { RateVisitor } from '../../src/visit/rate_visitor.js';
 

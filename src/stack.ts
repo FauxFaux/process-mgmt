@@ -1,6 +1,9 @@
 import { check } from './structures_base.js';
 
 class Stack {
+    item;
+    quantity;
+
     constructor(item, quantity) {
         check('item', item, 'quantity', quantity);
         this.item = item;
@@ -47,6 +50,8 @@ class Stack {
 }
 
 class StackSet {
+    stacks: Record<string, any>;
+
     constructor() {
         this.stacks = {};
     }
@@ -112,7 +117,7 @@ class StackSet {
     // type A has +3 & -4.
     // type B has +50 & -60.
     // Type A has the larger effective difference.
-    margins(ignoring = []) {
+    margins(ignoring: any[] = []) {
         return Object.keys(this.stacks)
             .filter((i) => !ignoring.includes(i))
             .map((id) => this.stacks[id][0].item)
@@ -130,7 +135,7 @@ class StackSet {
     }
 
     // See 'margins'; except the values are squared to get the magnitudes.
-    margins_squared(ignoring = []) {
+    margins_squared(ignoring: any[] = []) {
         return Object.keys(this.stacks)
             .filter((i) => !ignoring.includes(i))
             .map((id) => this.stacks[id][0].item)

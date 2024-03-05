@@ -5,7 +5,7 @@ import {
     FactoryGroup,
     Factory,
     Process,
-} from '../structures.js';
+} from '../structures.ts';
 
 const data = new Data('dsp', '0.0.1');
 

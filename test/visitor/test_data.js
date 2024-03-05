@@ -1,8 +1,8 @@
-import { Factory, FactoryGroup } from '../../src/factory.js';
-import { Process } from '../../src/process.js';
-import { Stack } from '../../src/stack.js';
-import { Data } from '../../src/data.js';
-import { Item } from '../../src/item.js';
+import { Factory, FactoryGroup } from '../../src/factory.ts';
+import { Process } from '../../src/process.ts';
+import { Stack } from '../../src/stack.ts';
+import { Data } from '../../src/data.ts';
+import { Item } from '../../src/item.ts';
 
 /*
         let data = setup_data();

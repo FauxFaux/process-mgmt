@@ -1,5 +1,5 @@
-import { Process, ProcessChain } from '../process.js';
-import { Factory } from '../factory.js';
+import { Process, ProcessChain } from '../process.ts';
+import { Factory } from '../factory.ts';
 import { ProcessChainVisitor } from './process_chain_visitor.js';
 
 /**

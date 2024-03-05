@@ -1,5 +1,5 @@
-import { ProcessChain } from '../process.js';
-import { StackSet } from '../stack.js';
+import { ProcessChain } from '../process.ts';
+import { StackSet } from '../stack.ts';
 import { ProcessChainVisitor } from './process_chain_visitor.js';
 
 import { select_process } from './process_selection.js';

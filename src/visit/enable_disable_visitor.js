@@ -1,4 +1,4 @@
-import { ProcessChain } from '../process.js';
+import { ProcessChain } from '../process.ts';
 import { ProcessChainVisitor } from './process_chain_visitor.js';
 
 class EnableDisable extends ProcessChainVisitor {

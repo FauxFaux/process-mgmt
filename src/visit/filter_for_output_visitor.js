@@ -1,4 +1,4 @@
-import { ProcessChain } from '../../src/process.js';
+import { ProcessChain } from '../process.ts';
 import { ProcessChainVisitor } from './process_chain_visitor.js';
 
 import { select_process } from './process_selection.js';

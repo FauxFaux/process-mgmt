@@ -1,10 +1,10 @@
 import { describe, it } from 'mocha';
 import * as assert from 'assert';
-import { Factory, FactoryGroup } from '../../../src/factory.js';
-import { Process } from '../../../src/process.js';
+import { Factory, FactoryGroup } from '../../../src/factory.ts';
+import { Process } from '../../../src/process.ts';
 
 import { Item } from '../../../src/item.ts';
-import { Stack } from '../../../src/stack.js';
+import { Stack } from '../../../src/stack.ts';
 
 import { default as create_data } from '../../../src/factorio-py-1.1.53/data_base.js';
 

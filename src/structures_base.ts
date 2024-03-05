@@ -1,4 +1,4 @@
-function check() {
+function check(..._args) {
     for (let i = 0; i < arguments.length; i += 2) {
         const n = arguments[i];
         const v = arguments[i + 1];

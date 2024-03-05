@@ -3,6 +3,9 @@ import { Factory } from './factory.js';
 import { Process, ProcessChain } from './process.js';
 
 class RateProcess extends Process {
+    factory_type;
+    rate_process;
+
     constructor(p, factory_type) {
         const p_ = factory_type.update_process(p);
         super(
@@ -18,12 +21,15 @@ class RateProcess extends Process {
 }
 
 class RateChain extends ProcessChain {
+    materials;
+    process_counts;
+
     /**
      *
      * @param {ProcessChain} chain Existing ProcessChain
      * @param {function} factory_type_cb `fn(process, factory_group): factory` Select a factory for the given process. Callback returns `null` for a default
      */
-    constructor(chain, factory_type_cb = () => null) {
+    constructor(chain, factory_type_cb = (p) => null) {
         super(
             chain.processes.map((p) => {
                 if (p.rate_process) return p;

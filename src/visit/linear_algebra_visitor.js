@@ -2,7 +2,7 @@ import { Item } from '../item.ts';
 import { ProcessChainVisitor } from './process_chain_visitor.js';
 
 import Matrix from 'node-matrices';
-import { StackSet } from '../stack.js';
+import { StackSet } from '../stack.ts';
 
 class Column {
     constructor(process) {

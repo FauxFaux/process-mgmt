@@ -7,7 +7,7 @@
   "scripts": {
     "test": "mocha --recursive",
     "format": "prettier --write 'src/**/*.?s' 'test/**/*.?s'",
-    "run": "tsx src/index.js"
+    "run": "tsx src/index.ts"
   },
   "author": "",
   "license": "GPL-2.0-only",

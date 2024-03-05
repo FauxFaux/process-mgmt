@@ -1,6 +1,10 @@
 import { check } from './structures_base.js';
 
 class Item {
+    id;
+    name;
+    group;
+
     constructor(id, name, group) {
         check('id', id, 'name', name);
         this.id = id;

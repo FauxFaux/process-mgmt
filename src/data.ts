@@ -1,6 +1,13 @@
 import { check } from './structures_base.js';
 
 class Data {
+    game;
+    version;
+    items;
+    factory_groups;
+    factories;
+    processes;
+
     constructor(game, version) {
         check('game', game, 'version', version);
         this.game = game;

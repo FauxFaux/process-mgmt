@@ -1,4 +1,4 @@
-import { data_from_standard_json } from '../data_basic.js';
+import { data_from_standard_json } from '../data_basic.ts';
 
 const data_p = data_from_standard_json(
     'dsp',
