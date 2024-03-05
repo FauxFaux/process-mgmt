@@ -1,5 +1,5 @@
 import { ProcessChain } from '../process.js';
-import { StackSet } from '../stack.js';
+import { Stack, StackSet } from '../stack.js';
 import { ProcessChainVisitor } from './process_chain_visitor.js';
 
 import { select_process } from './process_selection.js';
@@ -57,12 +57,13 @@ class RateCalculator extends ProcessChainVisitor {
                     // ==> subtract from materials. if total <= 0, push positive extra requirement onto the queue.
                     const required_for_count = input.mul(process_count);
                     const existing_requirement = materials.total(input.item);
-                    let requirement_to_push = null;
+                    let requirement_to_push: Stack | null = null;
                     if (existing_requirement.quantity <= 0) {
                         requirement_to_push = required_for_count;
                     } else {
                         const remaining_required =
                             existing_requirement.sub(required_for_count);
+                        // @ts-expect-error
                         if (remaining_required < 0) {
                             requirement_to_push = remaining_required.mul(-1);
                         }

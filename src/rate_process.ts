@@ -36,7 +36,7 @@ class RateChain extends ProcessChain {
                 const factory_configured = factory_type_cb(p);
                 const factory = factory_configured
                     ? factory_configured
-                    : new Factory('__generated__', 'default', -1);
+                    : new Factory('__generated__', 'default', null);
                 return new RateProcess(p, factory);
             }),
         );

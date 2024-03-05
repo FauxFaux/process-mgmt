@@ -375,7 +375,7 @@ describe('Linear Algebra Visitor', function () {
                 )
                 .accept(new ProcessCountVisitor())
                 .accept(la);
-            assert.deepStrictEqual(la.initial_matrix.data, [
+            assert.deepStrictEqual(la.initial_matrix!.data, [
                 //     AO   HC   LC
                 [-20, 0, 0], // c
                 [11, 0, 10], // g
@@ -421,7 +421,7 @@ describe('Linear Algebra Visitor', function () {
                 )
                 .accept(new ProcessCountVisitor())
                 .accept(la);
-            assert.deepStrictEqual(la.augmented_matrix.data, [
+            assert.deepStrictEqual(la.augmented_matrix!.data, [
                 //     AD   HC   LC    C    W  REQ
                 [-20, 0, 0, 1, 0, 0], // c
                 [11, 0, 10, 0, 0, 390], // g
@@ -468,7 +468,7 @@ describe('Linear Algebra Visitor', function () {
                 .accept(new ProcessCountVisitor())
                 .accept(la);
             floatingPointDeepStrictEqual(
-                la.augmented_matrix.data,
+                la.augmented_matrix!.data,
                 [
                     //     AO   HC   LC    C    W  REQ
                     [-20, 0, 0, 1, 0, 0], // c
@@ -513,7 +513,7 @@ describe('Linear Algebra Visitor', function () {
                 )
                 .accept(new ProcessCountVisitor())
                 .accept(la);
-            assert.deepStrictEqual(la.augmented_matrix.data, [
+            assert.deepStrictEqual(la.augmented_matrix!.data, [
                 //     AD   HC   LC    C    W    H   REQ
                 [-20, 0, 0, 1, 0, 0, 0], // c
                 [11, 0, 10, 0, 0, 0, 390], // g

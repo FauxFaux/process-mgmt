@@ -6,10 +6,12 @@ import { ProcessChainVisitor } from './process_chain_visitor.js';
  * Output: ProcessChain
  */
 class RateVisitor extends ProcessChainVisitor {
-    factory_type_cb;
+    factory_type_cb: (process: Process) => Factory | undefined;
     converted;
 
-    constructor(factory_type_cb = (_process): any => null) {
+    constructor(
+        factory_type_cb: RateVisitor['factory_type_cb'] = () => undefined,
+    ) {
         super();
         this.converted = [];
         this.factory_type_cb = factory_type_cb;

@@ -1,7 +1,10 @@
 import { StackSet } from '../stack.js';
-import { VisitorOptions } from './process_chain_visitor.js';
+import {
+    ProcessChainVisitor,
+    VisitorOptions,
+} from './process_chain_visitor.js';
 
-class ProcessCountVisitor {
+class ProcessCountVisitor extends ProcessChainVisitor {
     chain;
 
     check(chain): VisitorOptions {

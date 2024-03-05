@@ -12,6 +12,9 @@ import { RateVisitor } from './visit/rate_visitor.js';
 import { LinearAlgebra } from './visit/linear_algebra_visitor.js';
 import { ProcessCountVisitor } from './visit/process_count_visitor.js';
 
+import type Matrix from 'node-matrices';
+export type { Matrix };
+
 const array_disambiguate = function (data, config) {
     return function (requirement, options) {
         const arr = Object.entries(config.get_process_choices())

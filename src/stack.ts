@@ -1,10 +1,11 @@
 import { check } from './structures_base.js';
+import { Item, ItemId } from './item.js';
 
 class Stack {
-    item;
-    quantity;
+    item: Item;
+    quantity: number;
 
-    constructor(item, quantity) {
+    constructor(item: Item, quantity: number) {
         check('item', item, 'quantity', quantity);
         this.item = item;
         this.quantity = quantity;
@@ -12,7 +13,9 @@ class Stack {
     clone() {
         return new Stack(this.item, this.quantity);
     }
-    add(other) {
+
+    // TODO: insane type
+    add(other: Stack | undefined | null): Stack {
         if (other) {
             if (other.item !== this.item)
                 throw new Error(
@@ -29,13 +32,13 @@ class Stack {
     sub(other) {
         return this.add(other.mul(-1));
     }
-    div(scalar) {
+    div(scalar: number) {
         return new Stack(this.item, this.quantity / scalar);
     }
-    mul(scalar) {
+    mul(scalar: number) {
         return new Stack(this.item, this.quantity * scalar);
     }
-    pow(scalar) {
+    pow(scalar: number) {
         return new Stack(this.item, this.quantity ** scalar);
     }
     toString() {
@@ -50,7 +53,7 @@ class Stack {
 }
 
 class StackSet {
-    stacks: Record<string, any>;
+    stacks: Record<ItemId, Stack[]>;
 
     constructor() {
         this.stacks = {};
@@ -153,7 +156,7 @@ class StackSet {
             }, new StackSet());
     }
 
-    total_positive(item) {
+    total_positive(item: Item) {
         if (this.stacks[item.id]) {
             return this.stacks[item.id]
                 .filter((s) => s.quantity > 0)
@@ -162,7 +165,7 @@ class StackSet {
             return new Stack(item, 0);
         }
     }
-    total_negative(item) {
+    total_negative(item: Item) {
         if (this.stacks[item.id]) {
             return this.stacks[item.id]
                 .filter((s) => s.quantity < 0)

@@ -32,10 +32,11 @@ describe('calculating for output rates', function () {
                     (p) => null,
                 ),
             );
-            assert.strictEqual(result.process_counts['F'], 1);
-            assert.strictEqual(result.process_counts['E'], 1);
-            assert.strictEqual(result.process_counts['D'], 1);
-            assert.strictEqual(result.process_counts['C'], 2);
+            const process_counts = result.process_counts!;
+            assert.strictEqual(process_counts['F'], 1);
+            assert.strictEqual(process_counts['E'], 1);
+            assert.strictEqual(process_counts['D'], 1);
+            assert.strictEqual(process_counts['C'], 2);
         });
         it('calculates material counts', function () {
             const pc = new ProcessChain(Object.values(data.processes));
@@ -49,57 +50,59 @@ describe('calculating for output rates', function () {
             // "positive" indicates that the set of processes is producing that rate of the item.
             // "negative" indicates that the set of processes is consuming that rate of the item.
             // For intermediate steps, "positive" == abs("negative")
+            const materials = result.materials!;
+
             assert.strictEqual(
-                result.materials.total_positive(data.items['a']).quantity,
+                materials.total_positive(data.items['a']).quantity,
                 0,
             );
             assert.strictEqual(
-                result.materials.total_negative(data.items['a']).quantity,
+                materials.total_negative(data.items['a']).quantity,
                 -2,
             );
 
             assert.strictEqual(
-                result.materials.total_positive(data.items['b']).quantity,
+                materials.total_positive(data.items['b']).quantity,
                 0,
             );
             assert.strictEqual(
-                result.materials.total_negative(data.items['b']).quantity,
+                materials.total_negative(data.items['b']).quantity,
                 -2,
             );
 
             assert.strictEqual(
-                result.materials.total_positive(data.items['c']).quantity,
+                materials.total_positive(data.items['c']).quantity,
                 2,
             );
             assert.strictEqual(
-                result.materials.total_negative(data.items['c']).quantity,
+                materials.total_negative(data.items['c']).quantity,
                 -2,
             );
 
             assert.strictEqual(
-                result.materials.total_positive(data.items['d']).quantity,
+                materials.total_positive(data.items['d']).quantity,
                 1,
             );
             assert.strictEqual(
-                result.materials.total_negative(data.items['d']).quantity,
+                materials.total_negative(data.items['d']).quantity,
                 -1,
             );
 
             assert.strictEqual(
-                result.materials.total_positive(data.items['e']).quantity,
+                materials.total_positive(data.items['e']).quantity,
                 1,
             );
             assert.strictEqual(
-                result.materials.total_negative(data.items['e']).quantity,
+                materials.total_negative(data.items['e']).quantity,
                 -1,
             );
 
             assert.strictEqual(
-                result.materials.total_positive(data.items['f']).quantity,
+                materials.total_positive(data.items['f']).quantity,
                 1,
             );
             assert.strictEqual(
-                result.materials.total_negative(data.items['f']).quantity,
+                materials.total_negative(data.items['f']).quantity,
                 0,
             );
         });

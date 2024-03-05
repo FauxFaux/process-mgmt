@@ -37,18 +37,20 @@ function data_from_standard_json(name, version, json_import_p) {
                         ),
                     );
                 }
-                const inputs = Object.entries(p.inputs).map((e) => {
+                const inputs = Object.entries(p.inputs).map((e: [any, any]) => {
                     return check_add(
                         p,
                         () => new Stack(data.items[e[0]], e[1]),
                     );
                 });
-                const outputs = Object.entries(p.outputs).map((e) => {
-                    return check_add(
-                        p,
-                        () => new Stack(data.items[e[0]], e[1]),
-                    );
-                });
+                const outputs = Object.entries(p.outputs).map(
+                    (e: [any, any]) => {
+                        return check_add(
+                            p,
+                            () => new Stack(data.items[e[0]], e[1]),
+                        );
+                    },
+                );
                 check_add(p, () => {
                     data.add_process(
                         new Process(

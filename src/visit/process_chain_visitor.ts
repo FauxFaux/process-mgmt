@@ -1,4 +1,6 @@
-import { ProcessChain } from '../process.js';
+import { Process, ProcessChain } from '../process.js';
+import type { Item } from '../item.js';
+import type { Stack } from '../stack.js';
 
 export interface VisitorOptions {
     init?: boolean;
@@ -18,11 +20,21 @@ class ProcessChainVisitor<T = ProcessChain> {
             visit_process_item_edge: true,
         };
     }
-    init(chain) {}
-    visit_item(item, chain) {}
-    visit_process(process, chain) {}
-    visit_item_process_edge(item, process, chain, index) {}
-    visit_process_item_edge(process, item, chain, index) {}
+    init(chain: ProcessChain): void {}
+    visit_item(item: Item, chain: ProcessChain): void {}
+    visit_process(process: Process, chain: ProcessChain): void {}
+    visit_item_process_edge(
+        stack: Stack,
+        process: Process,
+        chain: ProcessChain,
+        index: number,
+    ): void {}
+    visit_process_item_edge(
+        process: Process,
+        stack: Stack,
+        chain: ProcessChain,
+        index: number,
+    ): void {}
     build(): T {
         throw new Error('not implemented');
     }

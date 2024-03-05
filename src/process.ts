@@ -1,15 +1,27 @@
 import { check } from './structures_base.js';
-import { Stack } from './stack.js';
+import { Stack, StackSet } from './stack.js';
+import { ProcessChainVisitor } from './visit/process_chain_visitor.js';
+import { Factory, FactoryGroup } from './factory.js';
+import { ItemId } from './item.js';
 
 class Process {
-    id;
-    inputs;
-    outputs;
-    duration;
-    factory_group;
-    clone_fields;
+    id: string;
+    inputs: Stack[];
+    outputs: Stack[];
+    duration: number;
+    factory_group: FactoryGroup;
+    clone_fields: (keyof Process)[];
 
-    constructor(id, inputs, outputs, duration, factory_group) {
+    // stashed here by RateVisitor during computation
+    factory_type?: Factory;
+
+    constructor(
+        id: string,
+        inputs: Stack[],
+        outputs: Stack[],
+        duration: number,
+        factory_group: FactoryGroup,
+    ) {
         check(
             'id',
             id,
@@ -44,14 +56,14 @@ class Process {
             duration,
             factory_group,
         );
-        for (const f of this.clone_fields) result[f] = this[f];
+        for (const f of this.clone_fields) (result[f] as any) = this[f];
         return result;
     }
 
     production_rate(item, factory_count = 1) {
         return (
             (factory_count *
-                this.outputs.find((e) => e.item == item).quantity) /
+                this.outputs.find((e) => e.item == item)!.quantity) /
             this.duration
         );
     }
@@ -59,7 +71,7 @@ class Process {
     process_count_for_rate(input_stack) {
         const output_stack = this.outputs.find(
             (o) => o.item.id === input_stack.item.id,
-        );
+        )!;
         return (this.duration * input_stack.quantity) / output_stack.quantity;
     }
 
@@ -85,15 +97,17 @@ class Process {
 }
 
 class ProcessChain {
-    processes;
-    processes_by_output;
-    processes_by_input;
-    settings;
+    processes: Process[];
+    // TODO: insane type
+    processes_by_output: Record<ItemId, unknown> | unknown[];
+    // TODO: insane type
+    processes_by_input: Record<ItemId, unknown> | unknown[];
+    settings: { generate_item_groupings?: boolean };
 
-    materials;
-    process_counts;
+    materials?: StackSet;
+    process_counts?: Record<string, number>;
 
-    constructor(processes) {
+    constructor(processes: Process[]) {
         check('processes', processes);
         this.processes = processes;
         this.processes_by_output = this._build_processes_by_output();
@@ -104,7 +118,7 @@ class ProcessChain {
     /**
      * @param arguments process_id, process_id, ...
      */
-    disable() {
+    disable(...args) {
         this._disable(arguments);
         this._rebuild();
         return this;
@@ -295,7 +309,7 @@ class ProcessChain {
         }
     }
 
-    accept(visitor) {
+    accept<T>(visitor: ProcessChainVisitor<T>): T {
         const options = visitor.check(this);
         if (options.init) visitor.init(this);
         if (options.visit_item)
