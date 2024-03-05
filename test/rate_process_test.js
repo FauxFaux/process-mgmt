@@ -4,7 +4,7 @@ import { Factory, FactoryGroup } from '../src/factory.js';
 import { Process } from '../src/process.js';
 import { RateProcess } from '../src/rate_process.js';
 
-import { Item } from '../src/item.js';
+import { Item } from '../src/item.ts';
 import { Stack } from '../src/stack.js';
 
 const item_a = new Item('a', 'A');

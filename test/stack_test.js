@@ -1,7 +1,7 @@
 import { describe, it } from 'mocha';
 import * as assert from 'assert';
 
-import { Item } from '../src/item.js';
+import { Item } from '../src/item.ts';
 import { Stack, StackSet } from '../src/stack.js';
 
 const item_a = new Item('a', 'A');

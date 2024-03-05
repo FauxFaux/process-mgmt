@@ -1,4 +1,4 @@
-import { Item } from '../item.js';
+import { Item } from '../item.ts';
 import { ProcessChainVisitor } from './process_chain_visitor.js';
 
 import Matrix from 'node-matrices';

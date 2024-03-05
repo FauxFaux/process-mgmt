@@ -10,8 +10,6 @@ import { RateCalculator } from './visit/rate_calculator.js';
 import { RateGraphRenderer } from './visit/rate_graph_renderer.js';
 import { RateVisitor } from './visit/rate_visitor.js';
 import { LinearAlgebra } from './visit/linear_algebra_visitor.js';
-import { CycleRemover } from './visit/cycle_remover.js';
-import { CycleExpander } from './visit/cycle_expander.js';
 import { ProcessCountVisitor } from './visit/process_count_visitor.js';
 
 const array_disambiguate = function (data, config) {

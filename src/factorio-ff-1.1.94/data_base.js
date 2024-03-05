@@ -1,6 +1,6 @@
 import { Factory, FactoryGroup } from '../factory.js';
 import { Stack } from '../stack.js';
-import { Item } from '../item.js';
+import { Item } from '../item.ts';
 import { Data } from '../data.js';
 import { Process } from '../process.js';
 

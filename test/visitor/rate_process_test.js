@@ -3,7 +3,7 @@ import * as assert from 'assert';
 
 import { Factory, FactoryGroup } from '../../src/factory.js';
 import { Process, ProcessChain } from '../../src/process.js';
-import { Item } from '../../src/item.js';
+import { Item } from '../../src/item.ts';
 import { Stack } from '../../src/stack.js';
 
 import { RateVisitor } from '../../src/visit/rate_visitor.js';
