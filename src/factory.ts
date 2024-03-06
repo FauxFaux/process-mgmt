@@ -76,7 +76,7 @@ class Factory {
         );
     }
 
-    update_process(p) {
+    update_process(p: Process) {
         return new Process(
             p.id,
             p.inputs,

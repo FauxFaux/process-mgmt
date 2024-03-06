@@ -2,10 +2,12 @@ import { check } from './structures_base.js';
 import { Stack, StackSet } from './stack.js';
 import { ProcessChainVisitor } from './visit/process_chain_visitor.js';
 import { Factory, FactoryGroup } from './factory.js';
-import { ItemId } from './item.js';
+import { Item, ItemId } from './item.js';
+
+export type ProcessId = string;
 
 class Process {
-    id: string;
+    id: ProcessId;
     inputs: Stack[];
     outputs: Stack[];
     duration: number;
@@ -14,6 +16,8 @@ class Process {
 
     // stashed here by RateVisitor during computation
     factory_type?: Factory;
+
+    rate_process?: unknown;
 
     constructor(
         id: string,
@@ -60,7 +64,7 @@ class Process {
         return result;
     }
 
-    production_rate(item, factory_count = 1) {
+    production_rate(item: Item, factory_count = 1) {
         return (
             (factory_count *
                 this.outputs.find((e) => e.item == item)!.quantity) /
@@ -68,14 +72,14 @@ class Process {
         );
     }
 
-    process_count_for_rate(input_stack) {
+    process_count_for_rate(input_stack: Stack) {
         const output_stack = this.outputs.find(
             (o) => o.item.id === input_stack.item.id,
         )!;
         return (this.duration * input_stack.quantity) / output_stack.quantity;
     }
 
-    requirements_for_count(factory_count) {
+    requirements_for_count(factory_count: number) {
         return this.inputs.map(
             (i) => new Stack(i.item, i.quantity * factory_count),
         );
@@ -116,28 +120,28 @@ class ProcessChain {
     }
 
     /**
-     * @param arguments process_id, process_id, ...
+     * @param args process_id, process_id, ...
      */
-    disable(...args) {
-        this._disable(arguments);
+    disable(...args: ProcessId[]) {
+        this._disable(...args);
         this._rebuild();
         return this;
     }
-    _disable(args) {
+    _disable(...args: ProcessId[]) {
         this.processes = this.processes.filter((p) => {
             return !args.includes(p.id);
         });
     }
 
     /**
-     * @param arguments process, process, ...
+     * @param args process, process, ...
      */
-    enable(..._args) {
-        this._enable(arguments);
+    enable(...args: Process[]) {
+        this._enable(...args);
         this._rebuild();
         return this;
     }
-    _enable(args) {
+    _enable(...args: Process[]) {
         this.processes.push(...args);
     }
 
@@ -151,35 +155,41 @@ class ProcessChain {
      * @param {Array[process_id, ...]} original
      * @param {Array[Process, ...]} replacements
      */
-    replace(original, replacements) {
-        this._disable(original);
-        this._enable(replacements);
+    replace(original: ProcessId[], replacements: Process[]) {
+        this._disable(...original);
+        this._enable(...replacements);
         this._rebuild();
         return this;
     }
 
     _build_processes_by_output() {
-        return this.processes.reduce((acc, cur) => {
-            for (const output of cur.outputs) {
-                if (!acc[output.item.id]) {
-                    acc[output.item.id] = [];
+        return this.processes.reduce(
+            (acc, cur) => {
+                for (const output of cur.outputs) {
+                    if (!acc[output.item.id]) {
+                        acc[output.item.id] = [];
+                    }
+                    acc[output.item.id].push(cur);
                 }
-                acc[output.item.id].push(cur);
-            }
-            return acc;
-        }, {});
+                return acc;
+            },
+            {} as Record<ItemId, Process[]>,
+        );
     }
 
     _build_processes_by_input() {
-        return this.processes.reduce((acc, cur) => {
-            for (const input of cur.inputs) {
-                if (!acc[input.item.id]) {
-                    acc[input.item.id] = [];
+        return this.processes.reduce(
+            (acc, cur) => {
+                for (const input of cur.inputs) {
+                    if (!acc[input.item.id]) {
+                        acc[input.item.id] = [];
+                    }
+                    acc[input.item.id].push(cur);
                 }
-                acc[input.item.id].push(cur);
-            }
-            return acc;
-        }, {});
+                return acc;
+            },
+            {} as Record<ItemId, Process[]>,
+        );
     }
 
     /**
@@ -189,13 +199,17 @@ class ProcessChain {
      * @param {*} ignored
      * @returns
      */
-    filter_for_output(output_stack, priorities, ignored: any[] = []) {
-        const result: any[] = [];
-        const visited: any[] = [];
-        const visited_processes: any[] = [];
+    filter_for_output(
+        output_stack: Stack,
+        priorities: PriorityCallback,
+        ignored: ItemId[] = [],
+    ) {
+        const result: Process[] = [];
+        const visited: ItemId[] = [];
+        const visited_processes: ProcessId[] = [];
         const queue = [output_stack.item.id];
         while (queue.length > 0) {
-            const current = queue.shift();
+            const current = queue.shift()!;
             visited.push(current);
             if (ignored.includes(current)) {
                 continue;
@@ -214,7 +228,7 @@ class ProcessChain {
         return new ProcessChain(result);
     }
 
-    _select_process(item_id, callback) {
+    _select_process(item_id: ItemId, callback: PriorityCallback): Process {
         const processes_for_current = this.processes_by_output[item_id];
         if (processes_for_current && processes_for_current.length > 1) {
             if (!callback) {
@@ -225,16 +239,19 @@ class ProcessChain {
         if (processes_for_current && processes_for_current.length == 1) {
             return processes_for_current[0];
         }
+
+        throw new Error('No process found for item: ' + item_id);
     }
 
-    require_output(stack) {
+    require_output(stack: Stack) {
         return (
             stack.quantity /
+            // @ts-expect-error
             this.processes_by_output[stack.item][0].production_rate(stack.item)
         );
     }
 
-    all_items(): any[] {
+    all_items(): Item[] {
         return [
             ...new Set(
                 this.processes.flatMap((cur) => {
@@ -246,7 +263,7 @@ class ProcessChain {
         ];
     }
 
-    _render_processor_node(node_id, process) {
+    _render_processor_node(node_id: unknown, process: Process) {
         const inputs = process.inputs
             .map((input, index) => {
                 return '<i' + index + '> ' + input.item.name;
@@ -276,22 +293,28 @@ class ProcessChain {
         );
     }
 
-    _render_item_node(item) {
+    _render_item_node(item: Item) {
         return item.id + ' [shape="oval" label="' + item.name + '"]';
     }
 
-    _render_edge(node_id, from, to, index) {
-        if (from.factory_group) {
+    _render_edge(
+        node_id: unknown,
+        from: Stack | Process,
+        to: Stack | Process,
+        index: number,
+    ): string {
+        if ('factory_group' in from) {
             // XXX need a better way to detect
             // outbound from a process to an item
+            const so = to as Stack;
             return (
                 node_id +
                 ':o' +
                 index +
                 ' -> ' +
-                to.item.id +
+                so.item.id +
                 ' [label="' +
-                to.quantity +
+                so.quantity +
                 '"]'
             );
         } else {
@@ -336,20 +359,23 @@ class ProcessChain {
         const result: any[] = [];
         result.push('digraph {');
         for (const g of Object.entries(
-            this.all_items().reduce((acc, cur) => {
-                let g = cur.group;
-                if (!g) {
-                    g = '__default__';
-                }
-                if (!acc[g]) {
-                    acc[g] = [];
-                }
-                acc[g].push(cur);
-                return acc;
-            }, {}),
+            this.all_items().reduce(
+                (acc, cur) => {
+                    let g = cur.group;
+                    if (!g) {
+                        g = '__default__';
+                    }
+                    if (!acc[g]) {
+                        acc[g] = [];
+                    }
+                    acc[g].push(cur);
+                    return acc;
+                },
+                {} as Record<string, Item[]>,
+            ),
         )) {
             const id = g[0];
-            const contents: any = g[1];
+            const contents = g[1];
             if (id === '__default__') {
                 for (const item of contents)
                     result.push('  ' + this._render_item_node(item));
@@ -387,5 +413,10 @@ class ProcessChain {
         return result.join('\n');
     }
 }
+
+export type PriorityCallback = (
+    process_id: ProcessId,
+    list_of_processes_that_can_be_used: Process[],
+) => Process;
 
 export { Process, ProcessChain };

@@ -6,12 +6,13 @@ import {
 
 import Matrix from 'node-matrices';
 import { Stack, StackSet } from '../stack.js';
+import { Process, ProcessChain, ProcessId } from '../process.js';
 
 class Column {
-    process;
-    entries;
+    process: Process;
+    entries: StackSet;
 
-    constructor(process) {
+    constructor(process: Process) {
         this.process = process;
         this.entries = new StackSet();
         for (const s of process.inputs) this.entries.sub(s);
@@ -22,7 +23,7 @@ class Column {
         return this.entries.items();
     }
 
-    count_for(item) {
+    count_for(item: Item) {
         return this.entries.total(item).quantity;
     }
 
@@ -32,19 +33,19 @@ class Column {
 }
 
 class LinearAlgebra extends ProcessChainVisitor {
-    requirements;
-    imported;
-    exported;
-    print_matricies;
+    requirements: Stack[];
+    imported: ItemId[];
+    exported: ItemId[];
+    print_matricies: boolean;
 
-    columns;
+    columns?: Column /*| { process: Process }*/[];
     items?: Item[];
 
     initial_matrix?: Matrix;
     augmented_matrix?: Matrix;
     reduced_matrix?: Matrix;
 
-    chain;
+    chain?: ProcessChain;
 
     constructor(
         requirements: Stack[],
@@ -59,8 +60,8 @@ class LinearAlgebra extends ProcessChainVisitor {
         this.print_matricies = print_matricies;
     }
 
-    check(chain): VisitorOptions {
-        if (!chain.rebuild_materials)
+    check(chain: ProcessChain): VisitorOptions {
+        if (!('rebuild_materials' in chain))
             throw new Error(
                 '`LinearAlgebra` requires `rebuild_materials` (Provided by `ProcessCountVisitor`)',
             );
@@ -70,15 +71,15 @@ class LinearAlgebra extends ProcessChainVisitor {
         };
     }
 
-    init(chain) {
+    init(chain: ProcessChain) {
         this.chain = chain;
         this.columns = [];
         this.items = [];
     }
 
-    visit_process(process, _chain) {
+    visit_process(process: Process, _chain: ProcessChain) {
         const c = new Column(process);
-        this.columns.push(c);
+        this.columns!.push(c);
         for (const i of c.items()) {
             if (!this.items!.includes(i)) {
                 this.items!.push(i);
@@ -87,7 +88,7 @@ class LinearAlgebra extends ProcessChainVisitor {
     }
 
     _sort_columns_and_rows() {
-        this.columns.sort((col_a, col_b) => {
+        this.columns!.sort((col_a, col_b) => {
             if (col_a.process.id > col_b.process.id) return 1;
             if (col_a.process.id < col_b.process.id) return -1;
             return 0;
@@ -101,7 +102,7 @@ class LinearAlgebra extends ProcessChainVisitor {
 
     _print_columns() {
         if (!this.print_matricies) return;
-        for (const col of this.columns) {
+        for (const col of this.columns!) {
             console.log(
                 col.process.id,
                 'items: ',
@@ -116,7 +117,7 @@ class LinearAlgebra extends ProcessChainVisitor {
         }
     }
 
-    _print_matrix(identifier, matrix) {
+    _print_matrix(identifier: unknown, matrix: Matrix) {
         if (!this.print_matricies) return;
         console.log(identifier);
         console.log('columns', matrix.numColumns(), 'rows', matrix.numRows());
@@ -124,7 +125,7 @@ class LinearAlgebra extends ProcessChainVisitor {
             console.table(matrix.data);
             return;
         }
-        const res = {};
+        const res: Record<ItemId, Record<ProcessId, number>> = {};
         const lookup: any[] = [];
         for (let i = 0; i < this.items.length; ++i) {
             res[this.items[i].id] = {};
@@ -132,17 +133,17 @@ class LinearAlgebra extends ProcessChainVisitor {
         }
         for (let r = 0; r < matrix.data.length; ++r) {
             for (let c = 0; c < matrix.data[r].length; ++c) {
-                res[lookup[r]][this.columns[c].process.id] = matrix.data[r][c];
+                res[lookup[r]][this.columns![c].process.id] = matrix.data[r][c];
             }
         }
         console.table(res);
     }
 
-    _add_row_column_headers(matrix, extra_columns = []) {
+    _add_row_column_headers(matrix: Matrix, extra_columns: number[] = []) {
         return new Matrix([' '])
             .combineHorizontal(
                 new Matrix([
-                    this.columns.map((c) => c.process.id),
+                    this.columns!.map((c) => c.process.id),
                 ]).combineHorizontal(new Matrix([extra_columns])),
             )
             .combineVertical(
@@ -152,7 +153,7 @@ class LinearAlgebra extends ProcessChainVisitor {
             );
     }
 
-    _create_import_export_matrix(io, items, value) {
+    _create_import_export_matrix(io: ItemId[], items: Item[], value: number) {
         if (io.length == 0) return new Matrix();
         return io
             .map((item) => {
@@ -175,7 +176,7 @@ class LinearAlgebra extends ProcessChainVisitor {
 
     _build_initial_matrix() {
         const rows = this.items!.map((item) => {
-            return this.columns.map((col) => {
+            return this.columns!.map((col) => {
                 return col.count_for(item);
             });
         });
@@ -183,10 +184,13 @@ class LinearAlgebra extends ProcessChainVisitor {
     }
 
     _build_requirements() {
-        const this_reqs_map = this.requirements.reduce((prev, cur) => {
-            prev[cur.item.id] = cur.quantity;
-            return prev;
-        }, {});
+        const this_reqs_map = this.requirements.reduce(
+            (prev, cur) => {
+                prev[cur.item.id] = cur.quantity;
+                return prev;
+            },
+            {} as Record<ItemId, number>,
+        );
         const req = this.items!.map((v, i) => {
             if (this_reqs_map[v.id]) {
                 return [this_reqs_map[v.id]];
@@ -196,7 +200,12 @@ class LinearAlgebra extends ProcessChainVisitor {
         return new Matrix(...req);
     }
 
-    _augment_matrix_with_imports_or_exports(augmented, arr, items, value) {
+    _augment_matrix_with_imports_or_exports(
+        augmented: Matrix,
+        arr: ItemId[],
+        items: Item[],
+        value: number,
+    ) {
         if (arr.length > 0) {
             return augmented.combineHorizontal(
                 this._create_import_export_matrix(arr, items, value),
@@ -205,7 +214,7 @@ class LinearAlgebra extends ProcessChainVisitor {
         return augmented;
     }
 
-    _create_imports_exports_columns(arr, name) {
+    _create_imports_exports_columns(arr: unknown[], name: unknown) {
         return arr.map((im) => {
             return { process: { id: name + ': ' + im } };
         });
@@ -219,49 +228,54 @@ class LinearAlgebra extends ProcessChainVisitor {
         this.augmented_matrix = this._augment_matrix_with_imports_or_exports(
             this.augmented_matrix,
             this.imported,
-            this.items,
+            this.items!,
             1,
         );
-        this.columns.push(
+        this.columns!.push(
+            // @ts-expect-error
             ...this._create_imports_exports_columns(this.imported, 'import'),
         );
         this.augmented_matrix = this._augment_matrix_with_imports_or_exports(
             this.augmented_matrix,
             this.exported,
-            this.items,
+            this.items!,
             -1,
         );
-        this.columns.push(
+        this.columns!.push(
+            // @ts-expect-error
             ...this._create_imports_exports_columns(this.exported, 'export'),
         );
 
-        this.columns.push({ process: { id: 'req' } });
+        // @ts-expect-error
+        this.columns!.push({ process: { id: 'req' } });
         this.augmented_matrix = this.augmented_matrix!.combineHorizontal(
             this._build_requirements(),
         );
 
         this.reduced_matrix = this.reduce_matrix(this.augmented_matrix, -1);
 
-        this.chain.process_counts = this._calculate_process_counts();
-        this.chain.rebuild_materials();
+        this.chain!.process_counts = this._calculate_process_counts();
+        (this.chain as any).rebuild_materials();
 
-        return this.chain;
+        return this.chain!;
     }
 
     _calculate_process_counts() {
         const req_column = this.reduced_matrix!.getColumn(
             this.reduced_matrix!.numColumns() - 1,
         ).transpose().data[0];
-        return this.columns
-            .filter((c) => c.is_process_column)
-            .map((c, idx) => [c.process.id, req_column[idx]])
-            .reduce((p, a) => {
-                p[a[0]] = a[1];
-                return p;
-            }, {});
+        return this.columns!.filter((c) => c.is_process_column)
+            .map((c, idx) => [c.process.id, req_column[idx]] as const)
+            .reduce(
+                (p, a) => {
+                    p[a[0]] = a[1];
+                    return p;
+                },
+                {} as Record<string, number>,
+            );
     }
 
-    reduce_matrix(m, column_slice = 0) {
+    reduce_matrix(m: Matrix, column_slice = 0) {
         let m1 = m.scale(1);
         let lead = 0;
         for (let r = 0; r < m1.numRows(); ++r) {
@@ -303,7 +317,7 @@ class LinearAlgebra extends ProcessChainVisitor {
         return m1;
     }
 
-    replace_row(m, row, idx) {
+    replace_row(m: Matrix, row: number[], idx: number) {
         const m1 = m.scale(1);
         let c = 0;
         while (c < row.length) {

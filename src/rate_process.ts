@@ -1,12 +1,13 @@
-import { StackSet } from './stack.js';
+import { Stack, StackSet } from './stack.js';
 import { Factory } from './factory.js';
 import { Process, ProcessChain } from './process.js';
+import { Item, ItemId } from './item.js';
 
 class RateProcess extends Process {
     factory_type;
     rate_process;
 
-    constructor(p, factory_type) {
+    constructor(p: Process, factory_type: Factory) {
         const p_ = factory_type.update_process(p);
         super(
             p_.id,
@@ -21,15 +22,14 @@ class RateProcess extends Process {
 }
 
 class RateChain extends ProcessChain {
-    materials;
-    process_counts;
+    materials: StackSet;
 
     /**
      *
      * @param {ProcessChain} chain Existing ProcessChain
      * @param {function} factory_type_cb `fn(process, factory_group): factory` Select a factory for the given process. Callback returns `null` for a default
      */
-    constructor(chain, factory_type_cb = (p) => null) {
+    constructor(chain: ProcessChain, factory_type_cb = (p) => null) {
         super(
             chain.processes.map((p) => {
                 if (p.rate_process) return p;
@@ -49,13 +49,13 @@ class RateChain extends ProcessChain {
     // 'imported_materials' are materials that are
     // produced elsewhere and can be transported
     // to this part of the process.
-    update(stack, imported_materials, process_selector) {
+    update(stack: Stack, imported_materials: ItemId[], process_selector) {
         const materials = new StackSet();
         const process_counts = {};
 
         const queue = [stack];
         while (queue.length > 0) {
-            const current = queue.pop();
+            const current = queue.pop()!;
             if (this.processes_by_output[current.item.id]) {
                 const process = this._select_process(
                     current.item.id,
@@ -94,7 +94,7 @@ class RateChain extends ProcessChain {
     rebuild_materials() {
         const materials = new StackSet();
         for (const proc of this.processes) {
-            const process_count = this.process_counts[proc.id];
+            const process_count = this.process_counts![proc.id];
             for (const output of proc.outputs)
                 materials.add(output.mul(process_count));
             for (const input of proc.inputs)
@@ -103,13 +103,13 @@ class RateChain extends ProcessChain {
         this.materials = materials;
     }
 
-    _determine_item_node_colour(produce, consume) {
+    _determine_item_node_colour(produce: number, consume: number) {
         if (produce > consume) return 'red';
         if (consume > produce) return 'green';
         return '';
     }
 
-    _render_item_node(item) {
+    _render_item_node(item: Item) {
         const produce =
             Math.round(this.materials.total_positive(item).quantity * 100) /
             100;
@@ -135,8 +135,8 @@ class RateChain extends ProcessChain {
         );
     }
 
-    _render_processor_node(node_id, process) {
-        const process_count = this.process_counts[process.id];
+    _render_processor_node(node_id: unknown, process: Process) {
+        const process_count = this.process_counts![process.id];
         const inputs = process.inputs
             .map((input, index) => {
                 return (
@@ -173,15 +173,15 @@ class RateChain extends ProcessChain {
             ' | process id: ' +
             process.id +
             ' | { ' +
-            process.factory_type.name +
+            process.factory_type!.name +
             ' (' +
             process.factory_group.name +
             ')' +
             ' | speed: ' +
-            1 / process.factory_type.duration_modifier +
+            1 / process.factory_type!.duration_modifier +
             'x' +
             ' | output: ' +
-            process.factory_type.output_modifier +
+            process.factory_type!.output_modifier +
             'x }' +
             ' | { ' +
             Math.round(process.duration * 100) / 100 +
@@ -202,7 +202,7 @@ class RateChain extends ProcessChain {
             return node_id + ':o' + index + ' -> ' + to.item.id; // + ' [label=\'' + to.quantity + '\']';
         } else {
             // inbound from an item to a process
-            const process_count = this.process_counts[to.id];
+            const process_count = this.process_counts![to.id];
             const input_rate = to.inputs.find(
                 (i) => i.item.id === from.item.id,
             );

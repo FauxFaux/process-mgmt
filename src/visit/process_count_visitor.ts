@@ -3,11 +3,12 @@ import {
     ProcessChainVisitor,
     VisitorOptions,
 } from './process_chain_visitor.js';
+import { ProcessChain } from '../process.js';
 
 class ProcessCountVisitor extends ProcessChainVisitor {
-    chain;
+    chain?: ProcessChain;
 
-    check(chain): VisitorOptions {
+    check(chain: ProcessChain): VisitorOptions {
         return {
             init: true,
             visit_item: false,
@@ -16,14 +17,15 @@ class ProcessCountVisitor extends ProcessChainVisitor {
             visit_process_item_edge: false,
         };
     }
-    init(chain) {
+    init(chain: ProcessChain) {
         this.chain = chain;
     }
     build() {
-        this.chain.rebuild_materials = function () {
+        // can't add rebuild_materials to the root because it breaks overload expectations
+        (this.chain! as any).rebuild_materials = function (this: ProcessChain) {
             const materials = new StackSet();
             for (const proc of this.processes) {
-                const process_count = this.process_counts[proc.id];
+                const process_count = this.process_counts![proc.id];
                 for (const output of proc.outputs)
                     materials.add(output.mul(process_count));
                 for (const input of proc.inputs)
@@ -31,7 +33,7 @@ class ProcessCountVisitor extends ProcessChainVisitor {
             }
             this.materials = materials;
         };
-        return this.chain;
+        return this.chain!;
     }
 }
 

@@ -7,7 +7,7 @@ import { ProcessChainVisitor } from './process_chain_visitor.js';
  */
 class RateVisitor extends ProcessChainVisitor {
     factory_type_cb: (process: Process) => Factory | undefined;
-    converted;
+    converted: Process[];
 
     constructor(
         factory_type_cb: RateVisitor['factory_type_cb'] = () => undefined,
@@ -17,13 +17,13 @@ class RateVisitor extends ProcessChainVisitor {
         this.factory_type_cb = factory_type_cb;
     }
 
-    check(_chain) {
+    check(_chain: ProcessChain) {
         return {
             visit_process: true,
         };
     }
 
-    visit_process(process, _chain) {
+    visit_process(process: Process, _chain: ProcessChain) {
         const factory_configured = this.factory_type_cb(process);
         const factory = factory_configured
             ? factory_configured

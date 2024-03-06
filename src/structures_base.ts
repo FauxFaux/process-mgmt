@@ -1,7 +1,7 @@
-function check(..._args) {
-    for (let i = 0; i < arguments.length; i += 2) {
-        const n = arguments[i];
-        const v = arguments[i + 1];
+function check(...args: unknown[]) {
+    for (let i = 0; i < args.length; i += 2) {
+        const n = args[i];
+        const v = args[i + 1];
         if (typeof v === 'undefined') {
             throw new Error(n + ' must not be undefined');
         }

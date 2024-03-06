@@ -29,7 +29,7 @@ class Stack {
             return this.clone();
         }
     }
-    sub(other) {
+    sub(other: Stack) {
         return this.add(other.mul(-1));
     }
     div(scalar: number) {
@@ -58,20 +58,20 @@ class StackSet {
     constructor() {
         this.stacks = {};
     }
-    add(stack) {
+    add(stack: Stack) {
         this._ensure_stack(stack);
         this.stacks[stack.item.id].push(stack);
     }
-    sub(stack) {
+    sub(stack: Stack) {
         this._ensure_stack(stack);
         this.stacks[stack.item.id].push(stack.mul(-1));
     }
-    _ensure_stack(stack) {
+    _ensure_stack(stack: Stack) {
         if (!this.stacks[stack.item.id]) {
             this.stacks[stack.item.id] = [];
         }
     }
-    total(item) {
+    total(item: Item) {
         if (this.stacks[item.id]) {
             return this.stacks[item.id].reduce(
                 (p, c) => p.add(c),
@@ -98,7 +98,7 @@ class StackSet {
         // Find the item type that has the largest -ive total. Return that stack.
         return this._min_max_total(ignoring, (a, b) => a.quantity < b.quantity);
     }
-    _min_max_total(ignoring, fn) {
+    _min_max_total(ignoring: ItemId[], fn: (a: Stack, b: Stack) => boolean) {
         return (
             Object.keys(this.stacks)
                 // .map(e => {console.log(e); return e;})
