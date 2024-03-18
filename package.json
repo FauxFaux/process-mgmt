@@ -6,15 +6,25 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive",
+    "format": "prettier --write 'src/**/*.?s' 'test/**/*.?s'",
     "run": "node src/index.js"
   },
   "author": "",
   "license": "GPL-2.0-only",
   "devDependencies": {
-    "eslint": "^7.32.0",
+    "@tsconfig/node20": "^20.1.2",
+    "@types/node": "^18.17.0",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-unicorn": "^51.0.1",
     "esm": "^3.2.25",
     "json-loader": "^0.5.7",
-    "mocha": "^9.2.2"
+    "mocha": "^9.2.2",
+    "prettier": "~3.2.5",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.7.1",
+    "typescript": "~5.1.6"
   },
   "dependencies": {
     "node-matrices": "^1.0.0",
