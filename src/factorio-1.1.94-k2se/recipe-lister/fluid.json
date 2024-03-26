@@ -1,0 +1,618 @@
+{
+  "fluid-unknown" : {
+    "name" : "fluid-unknown",
+    "localised_name" : [
+      "fluid-name.fluid-unknown"
+    ],
+    "order" : "",
+    "default_temperature" : 0,
+    "max_temperature" : 0,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-beryllium-hydroxide" : {
+    "name" : "se-beryllium-hydroxide",
+    "localised_name" : [
+      "fluid-name.se-beryllium-hydroxide"
+    ],
+    "order" : "a-c",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "water" : {
+    "name" : "water",
+    "localised_name" : [
+      "fluid-name.water"
+    ],
+    "order" : "a[fluid]-a[water]",
+    "default_temperature" : 15,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "crude-oil" : {
+    "name" : "crude-oil",
+    "localised_name" : [
+      "fluid-name.crude-oil"
+    ],
+    "order" : "a[fluid]-b[crude-oil]",
+    "default_temperature" : 25,
+    "max_temperature" : 25,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-decompressing-steam" : {
+    "name" : "se-decompressing-steam",
+    "localised_name" : [
+      "fluid-name.se-decompressing-steam"
+    ],
+    "order" : "a[fluid]-b[steam]",
+    "default_temperature" : 15,
+    "max_temperature" : 5000,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-methane-gas" : {
+    "name" : "se-methane-gas",
+    "localised_name" : [
+      "fluid-name.se-methane-gas"
+    ],
+    "order" : "a[fluid]-b[steam]",
+    "default_temperature" : 15,
+    "max_temperature" : 1000,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "steam" : {
+    "name" : "steam",
+    "localised_name" : [
+      "fluid-name.steam"
+    ],
+    "order" : "a[fluid]-b[steam]",
+    "default_temperature" : 15,
+    "max_temperature" : 5000,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "heavy-oil" : {
+    "name" : "heavy-oil",
+    "localised_name" : [
+      "fluid-name.heavy-oil"
+    ],
+    "order" : "a[fluid]-c[heavy-oil]",
+    "default_temperature" : 25,
+    "max_temperature" : 25,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "light-oil" : {
+    "name" : "light-oil",
+    "localised_name" : [
+      "fluid-name.light-oil"
+    ],
+    "order" : "a[fluid]-d[light-oil]",
+    "default_temperature" : 25,
+    "max_temperature" : 25,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "petroleum-gas" : {
+    "name" : "petroleum-gas",
+    "localised_name" : [
+      "fluid-name.petroleum-gas"
+    ],
+    "order" : "a[fluid]-e[petroleum-gas]",
+    "default_temperature" : 25,
+    "max_temperature" : 25,
+    "fuel_value" : 900000,
+    "emissions_multiplier" : 1.25
+  },
+  "sulfuric-acid" : {
+    "name" : "sulfuric-acid",
+    "localised_name" : [
+      "fluid-name.sulfuric-acid"
+    ],
+    "order" : "a[fluid]-f[sulfuric-acid]",
+    "default_temperature" : 25,
+    "max_temperature" : 25,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-molten-iron" : {
+    "name" : "se-molten-iron",
+    "localised_name" : [
+      "fluid-name.se-molten-iron"
+    ],
+    "order" : "a[molten]-a",
+    "default_temperature" : 1600,
+    "max_temperature" : 1600,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-molten-copper" : {
+    "name" : "se-molten-copper",
+    "localised_name" : [
+      "fluid-name.se-molten-copper"
+    ],
+    "order" : "a[molten]-b",
+    "default_temperature" : 1100,
+    "max_temperature" : 1100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-molten-beryllium" : {
+    "name" : "se-molten-beryllium",
+    "localised_name" : [
+      "fluid-name.se-molten-beryllium"
+    ],
+    "order" : "a[molten]-c",
+    "default_temperature" : 1300,
+    "max_temperature" : 1300,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-molten-holmium" : {
+    "name" : "se-molten-holmium",
+    "localised_name" : [
+      "fluid-name.se-molten-holmium"
+    ],
+    "order" : "a[molten]-d",
+    "default_temperature" : 1400,
+    "max_temperature" : 1400,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "lubricant" : {
+    "name" : "lubricant",
+    "localised_name" : [
+      "fluid-name.lubricant"
+    ],
+    "order" : "e[lubricant]",
+    "default_temperature" : 25,
+    "max_temperature" : 25,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-liquid-rocket-fuel" : {
+    "name" : "se-liquid-rocket-fuel",
+    "localised_name" : [
+      "fluid-name.se-liquid-rocket-fuel"
+    ],
+    "order" : "p-z-a",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 2000000,
+    "emissions_multiplier" : 1
+  },
+  "hydrogen" : {
+    "name" : "hydrogen",
+    "localised_name" : [
+      "fluid-name.hydrogen"
+    ],
+    "order" : "ya01[hydrogen]",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 50000,
+    "emissions_multiplier" : 1
+  },
+  "mineral-water" : {
+    "name" : "mineral-water",
+    "localised_name" : [
+      "fluid-name.mineral-water"
+    ],
+    "order" : "ya01[mineral-water]",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "chlorine" : {
+    "name" : "chlorine",
+    "localised_name" : [
+      "fluid-name.chlorine"
+    ],
+    "order" : "ya02[chlorine]",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "dirty-water-ho" : {
+    "name" : "dirty-water-ho",
+    "localised_name" : [
+      "fluid-name.dirty-water-ho"
+    ],
+    "order" : "ya03[dirty-water-ho]",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "dirty-water-ir" : {
+    "name" : "dirty-water-ir",
+    "localised_name" : [
+      "fluid-name.dirty-water-ir"
+    ],
+    "order" : "ya03[dirty-water-ir-ho]",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "dirty-water" : {
+    "name" : "dirty-water",
+    "localised_name" : [
+      "fluid-name.dirty-water"
+    ],
+    "order" : "ya03[dirty-water]",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "oxygen" : {
+    "name" : "oxygen",
+    "localised_name" : [
+      "fluid-name.oxygen"
+    ],
+    "order" : "ya03[oxygen]",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "nitrogen" : {
+    "name" : "nitrogen",
+    "localised_name" : [
+      "fluid-name.nitrogen"
+    ],
+    "order" : "ya04[nitrogen]",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "ammonia" : {
+    "name" : "ammonia",
+    "localised_name" : [
+      "fluid-name.ammonia"
+    ],
+    "order" : "ya05[ammonia]",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "nitric-acid" : {
+    "name" : "nitric-acid",
+    "localised_name" : [
+      "fluid-name.nitric-acid"
+    ],
+    "order" : "ya06[nitric-acid]",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "hydrogen-chloride" : {
+    "name" : "hydrogen-chloride",
+    "localised_name" : [
+      "fluid-name.hydrogen-chloride"
+    ],
+    "order" : "ya07[hydrogen-chloride]",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "biomethanol" : {
+    "name" : "biomethanol",
+    "localised_name" : [
+      "fluid-name.biomethanol"
+    ],
+    "order" : "ya08[biomethanol]",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 750000,
+    "emissions_multiplier" : 0.8
+  },
+  "heavy-water" : {
+    "name" : "heavy-water",
+    "localised_name" : [
+      "fluid-name.heavy-water"
+    ],
+    "order" : "ya09[heavy-water]",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "matter" : {
+    "name" : "matter",
+    "localised_name" : [
+      "fluid-name.matter"
+    ],
+    "order" : "ym00[k-matter]",
+    "default_temperature" : 25,
+    "max_temperature" : 1000000,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-contaminated-space-water" : {
+    "name" : "se-contaminated-space-water",
+    "localised_name" : [
+      "fluid-name.se-contaminated-space-water"
+    ],
+    "order" : "a[fluid]-a[water]",
+    "default_temperature" : 15,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-space-water" : {
+    "name" : "se-space-water",
+    "localised_name" : [
+      "fluid-name.se-space-water"
+    ],
+    "order" : "a[fluid]-a[water]",
+    "default_temperature" : 15,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-pyroflux" : {
+    "name" : "se-pyroflux",
+    "localised_name" : [
+      "fluid-name.se-pyroflux"
+    ],
+    "order" : "a[resource-fluid]-a",
+    "default_temperature" : 50,
+    "max_temperature" : 10000,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-cryonite-slush" : {
+    "name" : "se-cryonite-slush",
+    "localised_name" : [
+      "fluid-name.se-cryonite-slush"
+    ],
+    "order" : "a[resource-fluid]-b",
+    "default_temperature" : 0,
+    "max_temperature" : 25,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-vitalic-acid" : {
+    "name" : "se-vitalic-acid",
+    "localised_name" : [
+      "fluid-name.se-vitalic-acid"
+    ],
+    "order" : "a[resource-fluid]-d",
+    "default_temperature" : 25,
+    "max_temperature" : 25,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-kr-imersium-sulfide" : {
+    "name" : "se-kr-imersium-sulfide",
+    "localised_name" : [
+      "fluid-name.se-kr-imersium-sulfide"
+    ],
+    "order" : "a[resource-fluid]-k2",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-bio-sludge" : {
+    "name" : "se-bio-sludge",
+    "localised_name" : [
+      "fluid-name.se-bio-sludge"
+    ],
+    "order" : "q-a",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-contaminated-bio-sludge" : {
+    "name" : "se-contaminated-bio-sludge",
+    "localised_name" : [
+      "fluid-name.se-contaminated-bio-sludge"
+    ],
+    "order" : "q-b",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-chemical-gel" : {
+    "name" : "se-chemical-gel",
+    "localised_name" : [
+      "fluid-name.se-chemical-gel"
+    ],
+    "order" : "q-c",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-nutrient-gel" : {
+    "name" : "se-nutrient-gel",
+    "localised_name" : [
+      "fluid-name.se-nutrient-gel"
+    ],
+    "order" : "q-d",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-neural-gel" : {
+    "name" : "se-neural-gel",
+    "localised_name" : [
+      "fluid-name.se-neural-gel"
+    ],
+    "order" : "q-e",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-neural-gel-2" : {
+    "name" : "se-neural-gel-2",
+    "localised_name" : [
+      "fluid-name.se-neural-gel-2"
+    ],
+    "order" : "q-f",
+    "default_temperature" : 25,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-plasma-stream" : {
+    "name" : "se-plasma-stream",
+    "localised_name" : [
+      "fluid-name.se-plasma-stream"
+    ],
+    "order" : "r-a",
+    "default_temperature" : 5000,
+    "max_temperature" : 100000,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-ion-stream" : {
+    "name" : "se-ion-stream",
+    "localised_name" : [
+      "fluid-name.se-ion-stream"
+    ],
+    "order" : "r-b",
+    "default_temperature" : 5000,
+    "max_temperature" : 100000,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-proton-stream" : {
+    "name" : "se-proton-stream",
+    "localised_name" : [
+      "fluid-name.se-proton-stream"
+    ],
+    "order" : "r-d",
+    "default_temperature" : 5000,
+    "max_temperature" : 100000,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-particle-stream" : {
+    "name" : "se-particle-stream",
+    "localised_name" : [
+      "fluid-name.se-particle-stream"
+    ],
+    "order" : "r-e",
+    "default_temperature" : 5000,
+    "max_temperature" : 100000,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-space-coolant-hot" : {
+    "name" : "se-space-coolant-hot",
+    "localised_name" : [
+      "fluid-name.se-space-coolant-hot"
+    ],
+    "order" : "t-a",
+    "default_temperature" : 25,
+    "max_temperature" : 5000,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-space-coolant-warm" : {
+    "name" : "se-space-coolant-warm",
+    "localised_name" : [
+      "fluid-name.se-space-coolant-warm"
+    ],
+    "order" : "t-b",
+    "default_temperature" : -10,
+    "max_temperature" : 5000,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-space-coolant-cold" : {
+    "name" : "se-space-coolant-cold",
+    "localised_name" : [
+      "fluid-name.se-space-coolant-cold"
+    ],
+    "order" : "t-c",
+    "default_temperature" : -100,
+    "max_temperature" : 5000,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-space-coolant-supercooled" : {
+    "name" : "se-space-coolant-supercooled",
+    "localised_name" : [
+      "fluid-name.se-space-coolant-supercooled"
+    ],
+    "order" : "t-d",
+    "default_temperature" : -273,
+    "max_temperature" : 5000,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "se-antimatter-stream" : {
+    "name" : "se-antimatter-stream",
+    "localised_name" : [
+      "fluid-name.se-antimatter-stream"
+    ],
+    "order" : "z",
+    "default_temperature" : 10000,
+    "max_temperature" : 100000,
+    "fuel_value" : 20000000,
+    "emissions_multiplier" : 1
+  },
+  "ltn-cargo-warning" : {
+    "name" : "ltn-cargo-warning",
+    "localised_name" : [
+      "fluid-name.ltn-cargo-warning"
+    ],
+    "order" : "v0",
+    "default_temperature" : 15,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "ltn-cargo-alert" : {
+    "name" : "ltn-cargo-alert",
+    "localised_name" : [
+      "fluid-name.ltn-cargo-alert"
+    ],
+    "order" : "v1",
+    "default_temperature" : 15,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "ltn-depot-warning" : {
+    "name" : "ltn-depot-warning",
+    "localised_name" : [
+      "fluid-name.ltn-depot-warning"
+    ],
+    "order" : "v2",
+    "default_temperature" : 15,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  },
+  "ltn-depot-empty" : {
+    "name" : "ltn-depot-empty",
+    "localised_name" : [
+      "fluid-name.ltn-depot-empty"
+    ],
+    "order" : "v3",
+    "default_temperature" : 15,
+    "max_temperature" : 100,
+    "fuel_value" : 0,
+    "emissions_multiplier" : 1
+  }
+}

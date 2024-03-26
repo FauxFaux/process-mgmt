@@ -1,0 +1,333 @@
+{
+  "burner-mining-drill" : {
+    "name" : "burner-mining-drill",
+    "localised_name" : [
+      "entity-name.burner-mining-drill"
+    ],
+    "energy_usage" : 100000,
+    "mining_speed" : 0.25,
+    "resource_categories" : {
+      "basic-solid" : true
+    },
+    "allowed_effects" : {
+      "consumption" : false,
+      "speed" : false,
+      "productivity" : false,
+      "pollution" : false
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "burner" : {
+        "effectivity" : 1,
+        "fuel_categories" : {
+          "chemical" : true,
+          "processed-chemical" : true,
+          "vehicle-fuel" : true
+        },
+        "emissions" : 8.3333333333333e-07
+      }
+    },
+    "pollution" : 5
+  },
+  "electric-mining-drill" : {
+    "name" : "electric-mining-drill",
+    "localised_name" : [
+      "entity-name.electric-mining-drill"
+    ],
+    "energy_usage" : 100000,
+    "mining_speed" : 0.5,
+    "resource_categories" : {
+      "basic-solid" : true
+    },
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : true,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 0,
+        "emissions" : 1.25e-06
+      }
+    },
+    "pollution" : 7.5
+  },
+  "kr-electric-mining-drill-mk2" : {
+    "name" : "kr-electric-mining-drill-mk2",
+    "localised_name" : [
+      "entity-name.kr-electric-mining-drill-mk2"
+    ],
+    "energy_usage" : 125000,
+    "mining_speed" : 0.75,
+    "resource_categories" : {
+      "basic-solid" : true
+    },
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : true,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 0,
+        "emissions" : 1.3333333333333e-06
+      }
+    },
+    "pollution" : 10
+  },
+  "area-mining-drill" : {
+    "name" : "area-mining-drill",
+    "localised_name" : [
+      "entity-name.area-mining-drill"
+    ],
+    "energy_usage" : 500000,
+    "mining_speed" : 1,
+    "resource_categories" : {
+      "basic-solid" : true,
+      "hard-resource" : true
+    },
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : true,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 0,
+        "emissions" : 6.6666666666667e-07
+      }
+    },
+    "pollution" : 20
+  },
+  "kr-electric-mining-drill-mk3" : {
+    "name" : "kr-electric-mining-drill-mk3",
+    "localised_name" : [
+      "entity-name.kr-electric-mining-drill-mk3"
+    ],
+    "energy_usage" : 500000,
+    "mining_speed" : 1.2,
+    "resource_categories" : {
+      "basic-solid" : true,
+      "hard-resource" : true
+    },
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : true,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 0,
+        "emissions" : 5e-07
+      }
+    },
+    "pollution" : 15
+  },
+  "kr-quarry-drill" : {
+    "name" : "kr-quarry-drill",
+    "localised_name" : [
+      "entity-name.kr-quarry-drill"
+    ],
+    "energy_usage" : 2500000,
+    "mining_speed" : 10,
+    "resource_categories" : {
+      "kr-quarry" : true
+    },
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : true,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 0,
+        "emissions" : 6.6666666666667e-07
+      }
+    },
+    "pollution" : 100
+  },
+  "kr-mineral-water-pumpjack" : {
+    "name" : "kr-mineral-water-pumpjack",
+    "localised_name" : [
+      "entity-name.kr-mineral-water-pumpjack"
+    ],
+    "energy_usage" : 100000,
+    "mining_speed" : 2,
+    "resource_categories" : {
+      "basic-fluid" : true
+    },
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : true,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 0,
+        "emissions" : 1.6666666666667e-06
+      }
+    },
+    "pollution" : 10
+  },
+  "pumpjack" : {
+    "name" : "pumpjack",
+    "localised_name" : [
+      "entity-name.kr-oil-pumpjack"
+    ],
+    "energy_usage" : 100000,
+    "mining_speed" : 2,
+    "resource_categories" : {
+      "oil" : true
+    },
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : true,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 0,
+        "emissions" : 1.6666666666667e-06
+      }
+    },
+    "pollution" : 10
+  },
+  "se-core-miner-drill" : {
+    "name" : "se-core-miner-drill",
+    "localised_name" : [
+      "entity-name.se-core-miner-drill"
+    ],
+    "energy_usage" : 25000000,
+    "mining_speed" : 100,
+    "resource_categories" : {
+      "se-core-mining" : true
+    },
+    "allowed_effects" : {
+      "consumption" : false,
+      "speed" : false,
+      "productivity" : false,
+      "pollution" : false
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 0,
+        "emissions" : 1.3333333333333e-07
+      }
+    },
+    "pollution" : 200
+  }
+}

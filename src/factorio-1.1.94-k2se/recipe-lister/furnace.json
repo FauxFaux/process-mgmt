@@ -1,0 +1,352 @@
+{
+  "se-spaceship-rocket-engine" : {
+    "name" : "se-spaceship-rocket-engine",
+    "localised_name" : [
+      "entity-name.se-spaceship-rocket-engine"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 100000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 1,
+    "crafting_categories" : {
+      "spaceship-rocket-engine" : true
+    },
+    "module_inventory_size" : 0,
+    "allowed_effects" : {
+      "consumption" : false,
+      "speed" : false,
+      "productivity" : false,
+      "pollution" : false
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 3333.3333333333,
+        "emissions" : 6.6666666666667e-07
+      }
+    },
+    "pollution" : 4
+  },
+  "se-spaceship-ion-engine" : {
+    "name" : "se-spaceship-ion-engine",
+    "localised_name" : [
+      "entity-name.se-spaceship-ion-engine"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 10000000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 1,
+    "crafting_categories" : {
+      "spaceship-ion-engine" : true
+    },
+    "module_inventory_size" : 0,
+    "allowed_effects" : {
+      "consumption" : false,
+      "speed" : false,
+      "productivity" : false,
+      "pollution" : false
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 333333.33333333,
+        "emissions" : 6.6666666666667e-09
+      }
+    },
+    "pollution" : 4
+  },
+  "se-spaceship-antimatter-engine" : {
+    "name" : "se-spaceship-antimatter-engine",
+    "localised_name" : [
+      "entity-name.se-spaceship-antimatter-engine"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 1000000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 1,
+    "crafting_categories" : {
+      "spaceship-antimatter-engine" : true
+    },
+    "module_inventory_size" : 0,
+    "allowed_effects" : {
+      "consumption" : false,
+      "speed" : false,
+      "productivity" : false,
+      "pollution" : false
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 33333.333333333,
+        "emissions" : 6.6666666666667e-08
+      }
+    },
+    "pollution" : 4
+  },
+  "se-big-turbine" : {
+    "name" : "se-big-turbine",
+    "localised_name" : [
+      "entity-name.se-big-turbine"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 0.1,
+    "ingredient_count" : 1,
+    "crafting_speed" : 1,
+    "crafting_categories" : {
+      "big-turbine" : true
+    },
+    "module_inventory_size" : 0,
+    "allowed_effects" : {
+      "consumption" : false,
+      "speed" : false,
+      "productivity" : false,
+      "pollution" : false
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "void" : {
+        "emissions" : 0
+      }
+    },
+    "pollution" : 0
+  },
+  "se-condenser-turbine" : {
+    "name" : "se-condenser-turbine",
+    "localised_name" : [
+      "entity-name.se-condenser-turbine"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 0.1,
+    "ingredient_count" : 1,
+    "crafting_speed" : 1,
+    "crafting_categories" : {
+      "condenser-turbine" : true
+    },
+    "module_inventory_size" : 0,
+    "allowed_effects" : {
+      "consumption" : false,
+      "speed" : false,
+      "productivity" : false,
+      "pollution" : false
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "void" : {
+        "emissions" : 0
+      }
+    },
+    "pollution" : 0
+  },
+  "kr-crusher" : {
+    "name" : "kr-crusher",
+    "localised_name" : [
+      "entity-name.kr-crusher"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 225000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 1,
+    "crafting_categories" : {
+      "crushing" : true,
+      "void-crushing" : true
+    },
+    "module_inventory_size" : 4,
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : true,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 7500,
+        "emissions" : 1.4814814814815e-06
+      }
+    },
+    "pollution" : 20
+  },
+  "kr-fluid-burner" : {
+    "name" : "kr-fluid-burner",
+    "localised_name" : [
+      "entity-name.kr-fluid-burner"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 100000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 1,
+    "crafting_categories" : {
+      "fuel-burning" : true
+    },
+    "module_inventory_size" : 1,
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : false,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 3333.3333333333,
+        "emissions" : 8.3333333333333e-07
+      }
+    },
+    "pollution" : 5
+  },
+  "kr-stabilizer-charging-station" : {
+    "name" : "kr-stabilizer-charging-station",
+    "localised_name" : [
+      "entity-name.kr-stabilizer-charging-station"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 1000000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 2,
+    "crafting_categories" : {
+      "stabilizer-charging" : true
+    },
+    "module_inventory_size" : 2,
+    "allowed_effects" : {
+      "consumption" : true,
+      "speed" : true,
+      "productivity" : false,
+      "pollution" : true
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 33333.333333333,
+        "emissions" : 1.6666666666667e-08
+      }
+    },
+    "pollution" : 1
+  },
+  "kr-air-purifier" : {
+    "name" : "kr-air-purifier",
+    "localised_name" : [
+      "entity-name.kr-air-purifier"
+    ],
+    "type" : "furnace",
+    "energy_usage" : 75000,
+    "ingredient_count" : 1,
+    "crafting_speed" : 1,
+    "crafting_categories" : {
+      "air-purification" : true
+    },
+    "module_inventory_size" : 0,
+    "allowed_effects" : {
+      "consumption" : false,
+      "speed" : false,
+      "productivity" : false,
+      "pollution" : false
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 2500,
+        "emissions" : -1.6666666666667e-05
+      }
+    },
+    "pollution" : -75
+  }
+}

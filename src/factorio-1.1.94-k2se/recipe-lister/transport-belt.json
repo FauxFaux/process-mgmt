@@ -1,0 +1,310 @@
+{
+  "se-deep-space-transport-belt-black" : {
+    "name" : "se-deep-space-transport-belt-black",
+    "localised_name" : [
+      "entity-name.se-deep-space-transport-belt-black"
+    ],
+    "belt_speed" : 11.25,
+    "friendly_map_color" : {
+      "r" : 204,
+      "g" : 160,
+      "b" : 71,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      
+    }
+  },
+  "se-deep-space-transport-belt-blue" : {
+    "name" : "se-deep-space-transport-belt-blue",
+    "localised_name" : [
+      "entity-name.se-deep-space-transport-belt-blue"
+    ],
+    "belt_speed" : 11.25,
+    "friendly_map_color" : {
+      "r" : 204,
+      "g" : 160,
+      "b" : 71,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      
+    }
+  },
+  "se-deep-space-transport-belt-cyan" : {
+    "name" : "se-deep-space-transport-belt-cyan",
+    "localised_name" : [
+      "entity-name.se-deep-space-transport-belt-cyan"
+    ],
+    "belt_speed" : 11.25,
+    "friendly_map_color" : {
+      "r" : 204,
+      "g" : 160,
+      "b" : 71,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      
+    }
+  },
+  "se-deep-space-transport-belt-green" : {
+    "name" : "se-deep-space-transport-belt-green",
+    "localised_name" : [
+      "entity-name.se-deep-space-transport-belt-green"
+    ],
+    "belt_speed" : 11.25,
+    "friendly_map_color" : {
+      "r" : 204,
+      "g" : 160,
+      "b" : 71,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      
+    }
+  },
+  "se-deep-space-transport-belt-magenta" : {
+    "name" : "se-deep-space-transport-belt-magenta",
+    "localised_name" : [
+      "entity-name.se-deep-space-transport-belt-magenta"
+    ],
+    "belt_speed" : 11.25,
+    "friendly_map_color" : {
+      "r" : 204,
+      "g" : 160,
+      "b" : 71,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      
+    }
+  },
+  "se-deep-space-transport-belt-red" : {
+    "name" : "se-deep-space-transport-belt-red",
+    "localised_name" : [
+      "entity-name.se-deep-space-transport-belt-red"
+    ],
+    "belt_speed" : 11.25,
+    "friendly_map_color" : {
+      "r" : 204,
+      "g" : 160,
+      "b" : 71,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      
+    }
+  },
+  "se-deep-space-transport-belt-white" : {
+    "name" : "se-deep-space-transport-belt-white",
+    "localised_name" : [
+      "entity-name.se-deep-space-transport-belt-white"
+    ],
+    "belt_speed" : 11.25,
+    "friendly_map_color" : {
+      "r" : 204,
+      "g" : 160,
+      "b" : 71,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      
+    }
+  },
+  "se-deep-space-transport-belt-yellow" : {
+    "name" : "se-deep-space-transport-belt-yellow",
+    "localised_name" : [
+      "entity-name.se-deep-space-transport-belt-yellow"
+    ],
+    "belt_speed" : 11.25,
+    "friendly_map_color" : {
+      "r" : 204,
+      "g" : 160,
+      "b" : 71,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      
+    }
+  },
+  "transport-belt" : {
+    "name" : "transport-belt",
+    "localised_name" : [
+      "entity-name.transport-belt"
+    ],
+    "belt_speed" : 1.875,
+    "friendly_map_color" : {
+      "r" : 204,
+      "g" : 160,
+      "b" : 71,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      
+    }
+  },
+  "fast-transport-belt" : {
+    "name" : "fast-transport-belt",
+    "localised_name" : [
+      "entity-name.fast-transport-belt"
+    ],
+    "belt_speed" : 3.75,
+    "friendly_map_color" : {
+      "r" : 204,
+      "g" : 160,
+      "b" : 71,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      
+    }
+  },
+  "express-transport-belt" : {
+    "name" : "express-transport-belt",
+    "localised_name" : [
+      "entity-name.express-transport-belt"
+    ],
+    "belt_speed" : 5.625,
+    "friendly_map_color" : {
+      "r" : 204,
+      "g" : 160,
+      "b" : 71,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      
+    }
+  },
+  "kr-advanced-transport-belt" : {
+    "name" : "kr-advanced-transport-belt",
+    "localised_name" : [
+      "entity-name.kr-advanced-transport-belt"
+    ],
+    "belt_speed" : 7.5,
+    "friendly_map_color" : {
+      "r" : 204,
+      "g" : 160,
+      "b" : 71,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      
+    }
+  },
+  "kr-superior-transport-belt" : {
+    "name" : "kr-superior-transport-belt",
+    "localised_name" : [
+      "entity-name.kr-superior-transport-belt"
+    ],
+    "belt_speed" : 11.25,
+    "friendly_map_color" : {
+      "r" : 204,
+      "g" : 160,
+      "b" : 71,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      
+    }
+  },
+  "se-space-transport-belt" : {
+    "name" : "se-space-transport-belt",
+    "localised_name" : [
+      "entity-name.se-space-transport-belt"
+    ],
+    "belt_speed" : 5.625,
+    "friendly_map_color" : {
+      "r" : 204,
+      "g" : 160,
+      "b" : 71,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      
+    }
+  }
+}

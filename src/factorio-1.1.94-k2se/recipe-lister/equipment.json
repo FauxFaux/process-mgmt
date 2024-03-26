@@ -1,0 +1,3266 @@
+{
+  "cyber-potato-equipment" : {
+    "name" : "cyber-potato-equipment",
+    "type" : "generator-equipment",
+    "localised_name" : [
+      "equipment-name.cyber-potato-equipment"
+    ],
+    "shape" : {
+      "width" : 4,
+      "height" : 4
+    },
+    "energy_production" : 83333.333333333,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "dummy-defense-equipment" : {
+    "name" : "dummy-defense-equipment",
+    "type" : "active-defense-equipment",
+    "localised_name" : [
+      "equipment-name.dummy-defense-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "armor"
+    ],
+    "attack_parameters" : {
+      "type" : "projectile",
+      "range" : 10,
+      "min_range" : 0,
+      "turn_range" : 1,
+      "fire_penalty" : 0,
+      "rotate_penalty" : 0,
+      "health_penalty" : 0,
+      "range_mode" : "center-to-center",
+      "min_attack_distance" : 10,
+      "damage_modifier" : 10,
+      "ammo_consumption_modifier" : 1,
+      "cooldown" : 150,
+      "warmup" : 0,
+      "movement_slow_down_factor" : 1,
+      "movement_slow_down_cooldown" : 150,
+      "ammo_type" : {
+        "action" : [
+          {
+            "type" : "area",
+            "action_delivery" : [
+              {
+                "type" : "instant",
+                "target_effects" : [
+                  {
+                    "type" : "create-sticker",
+                    "repeat_count" : 1,
+                    "repeat_count_deviation" : 0,
+                    "probability" : 1,
+                    "affects_target" : false,
+                    "show_in_tooltip" : false,
+                    "sticker" : "stun-sticker",
+                    "trigger_created_entity" : false
+                  },
+                  {
+                    "type" : "push-back",
+                    "repeat_count" : 1,
+                    "repeat_count_deviation" : 0,
+                    "probability" : 1,
+                    "affects_target" : false,
+                    "show_in_tooltip" : true,
+                    "distance" : 4
+                  }
+                ]
+              },
+              {
+                "type" : "beam",
+                "beam" : "electric-beam-no-sound",
+                "add_to_shooter" : false,
+                "max_length" : 16,
+                "duration" : 15,
+                "source_offset" : {
+                  "x" : 0,
+                  "y" : -0.5
+                }
+              }
+            ],
+            "entity_flags" : {
+              "not-rotatable" : true,
+              "placeable-neutral" : true,
+              "placeable-player" : true,
+              "placeable-enemy" : true,
+              "placeable-off-grid" : true,
+              "player-creation" : true,
+              "building-direction-8-way" : true,
+              "filter-directions" : true,
+              "fast-replaceable-no-build-while-moving" : true,
+              "breaths-air" : true,
+              "not-repairable" : true,
+              "not-on-map" : true,
+              "not-deconstructable" : true,
+              "not-blueprintable" : true,
+              "hidden" : true,
+              "hide-alt-info" : true,
+              "fast-replaceable-no-cross-type-while-moving" : true,
+              "no-gap-fill-while-building" : true,
+              "not-flammable" : true,
+              "no-automated-item-removal" : true,
+              "no-automated-item-insertion" : true,
+              "no-copy-paste" : true,
+              "not-selectable-in-game" : true,
+              "not-upgradable" : true,
+              "not-in-kill-statistics" : true
+            },
+            "ignore_collision_condition" : false,
+            "collision_mask" : {
+              "doodad-layer" : true,
+              "floor-layer" : true,
+              "ghost-layer" : true,
+              "ground-tile" : true,
+              "item-layer" : true,
+              "layer-13" : true,
+              "layer-14" : true,
+              "layer-15" : true,
+              "layer-16" : true,
+              "layer-17" : true,
+              "layer-18" : true,
+              "layer-19" : true,
+              "layer-20" : true,
+              "layer-21" : true,
+              "layer-22" : true,
+              "layer-23" : true,
+              "layer-24" : true,
+              "layer-25" : true,
+              "layer-26" : true,
+              "layer-27" : true,
+              "layer-28" : true,
+              "layer-29" : true,
+              "layer-30" : true,
+              "layer-31" : true,
+              "layer-32" : true,
+              "layer-33" : true,
+              "layer-34" : true,
+              "layer-35" : true,
+              "layer-36" : true,
+              "layer-37" : true,
+              "layer-38" : true,
+              "layer-39" : true,
+              "layer-40" : true,
+              "layer-41" : true,
+              "layer-42" : true,
+              "layer-43" : true,
+              "layer-44" : true,
+              "layer-45" : true,
+              "layer-46" : true,
+              "layer-47" : true,
+              "layer-48" : true,
+              "layer-49" : true,
+              "layer-50" : true,
+              "layer-51" : true,
+              "layer-52" : true,
+              "layer-53" : true,
+              "layer-54" : true,
+              "layer-55" : true,
+              "object-layer" : true,
+              "player-layer" : true,
+              "rail-layer" : true,
+              "resource-layer" : true,
+              "train-layer" : true,
+              "transport-belt-layer" : true,
+              "water-tile" : true
+            },
+            "trigger_target_mask" : {
+              "common" : true,
+              "ground-unit" : true,
+              "ground-static" : true,
+              "rock" : true,
+              "tree" : true,
+              "flying" : true,
+              "biological" : true,
+              "mechanical" : true,
+              "character" : true,
+              "kr-tesla-coil-trigger" : true,
+              "flammable" : true
+            },
+            "force" : "enemy",
+            "repeat_count" : 1,
+            "probability" : 1,
+            "radius" : 8,
+            "trigger_from_target" : false,
+            "target_entities" : true,
+            "collision_mode" : "distance-from-collision-box",
+            "show_in_tooltip" : true
+          }
+        ],
+        "target_type" : "entity",
+        "clamp_position" : false,
+        "category" : "electric",
+        "energy_consumption" : 2000000,
+        "range_modifier" : 1,
+        "cooldown_modifier" : 1,
+        "consumption_modifier" : 1
+      },
+      "projectile_center" : {
+        "x" : 0,
+        "y" : 0
+      },
+      "projectile_creation_distance" : 0.60000002384186,
+      "projectile_orientation_offset" : 0
+    },
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "perfect-night-glasses" : {
+    "name" : "perfect-night-glasses",
+    "type" : "night-vision-equipment",
+    "localised_name" : [
+      "equipment-name.perfect-night-glasses"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 16.666666666667,
+    "equipment_categories" : [
+      "armor"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "shuttle-train" : {
+    "name" : "shuttle-train",
+    "type" : "solar-panel-equipment",
+    "localised_name" : [
+      "equipment-name.shuttle-train"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 1.6666666666667,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "shuttle-train"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "shuttle-train-manual" : {
+    "name" : "shuttle-train-manual",
+    "type" : "solar-panel-equipment",
+    "localised_name" : [
+      "equipment-name.shuttle-train-manual"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 1.6666666666667,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "shuttle-train"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "small-portable-generator" : {
+    "name" : "small-portable-generator",
+    "type" : "generator-equipment",
+    "localised_name" : [
+      "equipment-name.small-portable-generator"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 3333.3333333333,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "portable-generator" : {
+    "name" : "portable-generator",
+    "type" : "generator-equipment",
+    "localised_name" : [
+      "equipment-name.portable-generator"
+    ],
+    "shape" : {
+      "width" : 3,
+      "height" : 3
+    },
+    "energy_production" : 9000,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "nuclear-reactor-equipment" : {
+    "name" : "nuclear-reactor-equipment",
+    "type" : "generator-equipment",
+    "localised_name" : [
+      "equipment-name.nuclear-reactor-equipment"
+    ],
+    "shape" : {
+      "width" : 4,
+      "height" : 4
+    },
+    "energy_production" : 40000,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "reactor-equipment",
+      "reactor-tier-1"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "fusion-reactor-equipment" : {
+    "name" : "fusion-reactor-equipment",
+    "type" : "generator-equipment",
+    "localised_name" : [
+      "equipment-name.fusion-reactor-equipment"
+    ],
+    "shape" : {
+      "width" : 4,
+      "height" : 4
+    },
+    "energy_production" : 53333.333333333,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "reactor-equipment",
+      "reactor-tier-2"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "antimatter-reactor-equipment" : {
+    "name" : "antimatter-reactor-equipment",
+    "type" : "generator-equipment",
+    "localised_name" : [
+      "equipment-name.antimatter-reactor-equipment"
+    ],
+    "shape" : {
+      "width" : 4,
+      "height" : 4
+    },
+    "energy_production" : 66666.666666667,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "reactor-equipment",
+      "reactor-tier-3"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "se-rtg-equipment" : {
+    "name" : "se-rtg-equipment",
+    "type" : "generator-equipment",
+    "localised_name" : [
+      "equipment-name.se-rtg-equipment"
+    ],
+    "shape" : {
+      "width" : 4,
+      "height" : 4
+    },
+    "energy_production" : 13333.333333333,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "se-rtg-equipment-2" : {
+    "name" : "se-rtg-equipment-2",
+    "type" : "generator-equipment",
+    "localised_name" : [
+      "equipment-name.se-rtg-equipment-2"
+    ],
+    "shape" : {
+      "width" : 4,
+      "height" : 4
+    },
+    "energy_production" : 20000,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "solar-panel-equipment" : {
+    "name" : "solar-panel-equipment",
+    "type" : "solar-panel-equipment",
+    "localised_name" : [
+      "equipment-name.solar-panel-equipment"
+    ],
+    "shape" : {
+      "width" : 1,
+      "height" : 1
+    },
+    "energy_production" : 666.66666666667,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "big-solar-panel-equipment" : {
+    "name" : "big-solar-panel-equipment",
+    "type" : "solar-panel-equipment",
+    "localised_name" : [
+      "equipment-name.big-solar-panel-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 3200,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "imersite-solar-panel-equipment" : {
+    "name" : "imersite-solar-panel-equipment",
+    "type" : "solar-panel-equipment",
+    "localised_name" : [
+      "equipment-name.imersite-solar-panel-equipment"
+    ],
+    "shape" : {
+      "width" : 1,
+      "height" : 1
+    },
+    "energy_production" : 1333.3333333333,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "big-imersite-solar-panel-equipment" : {
+    "name" : "big-imersite-solar-panel-equipment",
+    "type" : "solar-panel-equipment",
+    "localised_name" : [
+      "equipment-name.big-imersite-solar-panel-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 6400,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "energy-absorber" : {
+    "name" : "energy-absorber",
+    "type" : "battery-equipment",
+    "localised_name" : [
+      "equipment-name.energy-absorber"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "battery-equipment" : {
+    "name" : "battery-equipment",
+    "type" : "battery-equipment",
+    "localised_name" : [
+      "equipment-name.battery-equipment"
+    ],
+    "shape" : {
+      "width" : 1,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "big-battery-equipment" : {
+    "name" : "big-battery-equipment",
+    "type" : "battery-equipment",
+    "localised_name" : [
+      "equipment-name.big-battery-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "battery-mk2-equipment" : {
+    "name" : "battery-mk2-equipment",
+    "type" : "battery-equipment",
+    "localised_name" : [
+      "equipment-name.battery-mk2-equipment"
+    ],
+    "shape" : {
+      "width" : 1,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "big-battery-mk2-equipment" : {
+    "name" : "big-battery-mk2-equipment",
+    "type" : "battery-equipment",
+    "localised_name" : [
+      "equipment-name.big-battery-mk2-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "battery-mk3-equipment" : {
+    "name" : "battery-mk3-equipment",
+    "type" : "battery-equipment",
+    "localised_name" : [
+      "equipment-name.battery-mk3-equipment"
+    ],
+    "shape" : {
+      "width" : 1,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "big-battery-mk3-equipment" : {
+    "name" : "big-battery-mk3-equipment",
+    "type" : "battery-equipment",
+    "localised_name" : [
+      "equipment-name.big-battery-mk3-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "universal-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "se-adaptive-armour-equipment-1" : {
+    "name" : "se-adaptive-armour-equipment-1",
+    "type" : "energy-shield-equipment",
+    "localised_name" : [
+      "equipment-name.se-adaptive-armour-equipment-1"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 25,
+    "energy_per_shield" : 20000,
+    "energy_consumption" : 416.66666666667,
+    "equipment_categories" : [
+      "armor"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "se-adaptive-armour-equipment-2" : {
+    "name" : "se-adaptive-armour-equipment-2",
+    "type" : "energy-shield-equipment",
+    "localised_name" : [
+      "equipment-name.se-adaptive-armour-equipment-2"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 50,
+    "energy_per_shield" : 20000,
+    "energy_consumption" : 833.33333333333,
+    "equipment_categories" : [
+      "armor"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "se-adaptive-armour-equipment-3" : {
+    "name" : "se-adaptive-armour-equipment-3",
+    "type" : "energy-shield-equipment",
+    "localised_name" : [
+      "equipment-name.se-adaptive-armour-equipment-3"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 100,
+    "energy_per_shield" : 20000,
+    "energy_consumption" : 1666.6666666667,
+    "equipment_categories" : [
+      "armor"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "se-adaptive-armour-equipment-4" : {
+    "name" : "se-adaptive-armour-equipment-4",
+    "type" : "energy-shield-equipment",
+    "localised_name" : [
+      "equipment-name.se-adaptive-armour-equipment-4"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 200,
+    "energy_per_shield" : 20000,
+    "energy_consumption" : 3333.3333333333,
+    "equipment_categories" : [
+      "armor"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "se-adaptive-armour-equipment-5" : {
+    "name" : "se-adaptive-armour-equipment-5",
+    "type" : "energy-shield-equipment",
+    "localised_name" : [
+      "equipment-name.se-adaptive-armour-equipment-5"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 500,
+    "energy_per_shield" : 20000,
+    "energy_consumption" : 8333.3333333333,
+    "equipment_categories" : [
+      "armor"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "energy-shield-equipment" : {
+    "name" : "energy-shield-equipment",
+    "type" : "energy-shield-equipment",
+    "localised_name" : [
+      "equipment-name.shield-generator-mk1"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 100,
+    "energy_per_shield" : 25666.666666667,
+    "energy_consumption" : 16666.666666667,
+    "equipment_categories" : [
+      "armor-shield",
+      "shield-tier-1"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "energy-shield-mk2-equipment" : {
+    "name" : "energy-shield-mk2-equipment",
+    "type" : "energy-shield-equipment",
+    "localised_name" : [
+      "equipment-name.shield-generator-mk2"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 250,
+    "energy_per_shield" : 26666.666666667,
+    "energy_consumption" : 50000,
+    "equipment_categories" : [
+      "armor-shield",
+      "shield-tier-2"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "energy-shield-mk3-equipment" : {
+    "name" : "energy-shield-mk3-equipment",
+    "type" : "energy-shield-equipment",
+    "localised_name" : [
+      "equipment-name.energy-shield-mk3-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 500,
+    "energy_per_shield" : 28333.333333333,
+    "energy_consumption" : 116666.66666667,
+    "equipment_categories" : [
+      "armor-shield",
+      "shield-tier-3"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "energy-shield-mk4-equipment" : {
+    "name" : "energy-shield-mk4-equipment",
+    "type" : "energy-shield-equipment",
+    "localised_name" : [
+      "equipment-name.energy-shield-mk4-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 1000,
+    "energy_per_shield" : 31666.666666667,
+    "energy_consumption" : 250000,
+    "equipment_categories" : [
+      "armor-shield",
+      "shield-tier-4"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "energy-shield-mk5-equipment" : {
+    "name" : "energy-shield-mk5-equipment",
+    "type" : "energy-shield-equipment",
+    "localised_name" : [
+      "equipment-name.energy-shield-mk5-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 2000,
+    "energy_per_shield" : 38333.333333333,
+    "energy_consumption" : 500000,
+    "equipment_categories" : [
+      "armor-shield",
+      "shield-tier-5"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "energy-shield-mk6-equipment" : {
+    "name" : "energy-shield-mk6-equipment",
+    "type" : "energy-shield-equipment",
+    "localised_name" : [
+      "equipment-name.energy-shield-mk6-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 4000,
+    "energy_per_shield" : 51666.666666667,
+    "energy_consumption" : 1000000,
+    "equipment_categories" : [
+      "armor-shield",
+      "shield-tier-6"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "exoskeleton-equipment" : {
+    "name" : "exoskeleton-equipment",
+    "type" : "movement-bonus-equipment",
+    "localised_name" : [
+      "equipment-name.exoskeleton-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 4
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 3333.3333333333,
+    "equipment_categories" : [
+      "movement-improving"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "advanced-exoskeleton-equipment" : {
+    "name" : "advanced-exoskeleton-equipment",
+    "type" : "movement-bonus-equipment",
+    "localised_name" : [
+      "equipment-name.advanced-exoskeleton-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 4
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 5000,
+    "equipment_categories" : [
+      "movement-improving"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "superior-exoskeleton-equipment" : {
+    "name" : "superior-exoskeleton-equipment",
+    "type" : "movement-bonus-equipment",
+    "localised_name" : [
+      "equipment-name.superior-exoskeleton-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 4
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 6666.6666666667,
+    "equipment_categories" : [
+      "movement-improving"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "additional-engine" : {
+    "name" : "additional-engine",
+    "type" : "movement-bonus-equipment",
+    "localised_name" : [
+      "equipment-name.additional-engine"
+    ],
+    "shape" : {
+      "width" : 4,
+      "height" : 4
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 1666.6666666667,
+    "equipment_categories" : [
+      "vehicle-motor"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "advanced-additional-engine" : {
+    "name" : "advanced-additional-engine",
+    "type" : "movement-bonus-equipment",
+    "localised_name" : [
+      "equipment-name.advanced-additional-engine"
+    ],
+    "shape" : {
+      "width" : 4,
+      "height" : 4
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 4166.6666666667,
+    "equipment_categories" : [
+      "vehicle-motor"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "jetpack-1" : {
+    "name" : "jetpack-1",
+    "type" : "battery-equipment",
+    "localised_name" : [
+      "equipment-name.jetpack-1"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "armor"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "jetpack-2" : {
+    "name" : "jetpack-2",
+    "type" : "battery-equipment",
+    "localised_name" : [
+      "equipment-name.jetpack-2"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "armor"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "jetpack-3" : {
+    "name" : "jetpack-3",
+    "type" : "battery-equipment",
+    "localised_name" : [
+      "equipment-name.jetpack-3"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "armor"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "jetpack-4" : {
+    "name" : "jetpack-4",
+    "type" : "battery-equipment",
+    "localised_name" : [
+      "equipment-name.jetpack-4"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "armor"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "belt-immunity-equipment" : {
+    "name" : "belt-immunity-equipment",
+    "type" : "belt-immunity-equipment",
+    "localised_name" : [
+      "equipment-name.belt-immunity-equipment"
+    ],
+    "shape" : {
+      "width" : 1,
+      "height" : 1
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 1666.6666666667,
+    "equipment_categories" : [
+      "belt-immunity"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "night-vision-equipment" : {
+    "name" : "night-vision-equipment",
+    "type" : "night-vision-equipment",
+    "localised_name" : [
+      "equipment-name.night-vision-equipment"
+    ],
+    "shape" : {
+      "width" : 1,
+      "height" : 1
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 166.66666666667,
+    "equipment_categories" : [
+      "armor"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "imersite-night-vision-equipment" : {
+    "name" : "imersite-night-vision-equipment",
+    "type" : "night-vision-equipment",
+    "localised_name" : [
+      "equipment-name.imersite-night-vision-equipment"
+    ],
+    "shape" : {
+      "width" : 1,
+      "height" : 1
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 250,
+    "equipment_categories" : [
+      "armor"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "personal-roboport-equipment" : {
+    "name" : "personal-roboport-equipment",
+    "type" : "roboport-equipment",
+    "localised_name" : [
+      "equipment-name.personal-roboport-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 33333.333333333,
+    "equipment_categories" : [
+      "robot-interaction-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "personal-roboport-mk2-equipment" : {
+    "name" : "personal-roboport-mk2-equipment",
+    "type" : "roboport-equipment",
+    "localised_name" : [
+      "equipment-name.personal-roboport-mk2-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 83333.333333333,
+    "equipment_categories" : [
+      "robot-interaction-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "vehicle-roboport" : {
+    "name" : "vehicle-roboport",
+    "type" : "roboport-equipment",
+    "localised_name" : [
+      "equipment-name.vehicle-roboport"
+    ],
+    "shape" : {
+      "width" : 4,
+      "height" : 4
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 500000,
+    "equipment_categories" : [
+      "vehicle-robot-interaction-equipment"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "se-lifesupport-equipment-1" : {
+    "name" : "se-lifesupport-equipment-1",
+    "type" : "movement-bonus-equipment",
+    "localised_name" : [
+      "equipment-name.se-lifesupport-equipment-1"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 1666.6666666667,
+    "equipment_categories" : [
+      "life-support-tier-1"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "se-lifesupport-equipment-2" : {
+    "name" : "se-lifesupport-equipment-2",
+    "type" : "movement-bonus-equipment",
+    "localised_name" : [
+      "equipment-name.se-lifesupport-equipment-2"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 1666.6666666667,
+    "equipment_categories" : [
+      "life-support-tier-2"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "se-lifesupport-equipment-3" : {
+    "name" : "se-lifesupport-equipment-3",
+    "type" : "movement-bonus-equipment",
+    "localised_name" : [
+      "equipment-name.se-lifesupport-equipment-3"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 1666.6666666667,
+    "equipment_categories" : [
+      "life-support-tier-3"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "se-lifesupport-equipment-4" : {
+    "name" : "se-lifesupport-equipment-4",
+    "type" : "movement-bonus-equipment",
+    "localised_name" : [
+      "equipment-name.se-lifesupport-equipment-4"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 1666.6666666667,
+    "equipment_categories" : [
+      "life-support-tier-4"
+    ],
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "personal-submachine-laser-defense-mk1-equipment" : {
+    "name" : "personal-submachine-laser-defense-mk1-equipment",
+    "type" : "active-defense-equipment",
+    "localised_name" : [
+      "equipment-name.personal-submachine-laser-defense-mk1-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "armor-weapons",
+      "combat-tier-1"
+    ],
+    "attack_parameters" : {
+      "type" : "beam",
+      "range" : 15,
+      "min_range" : 0,
+      "turn_range" : 1,
+      "fire_penalty" : 0,
+      "rotate_penalty" : 0,
+      "health_penalty" : 0,
+      "range_mode" : "center-to-center",
+      "min_attack_distance" : 15,
+      "damage_modifier" : 1.5,
+      "ammo_consumption_modifier" : 1,
+      "cooldown" : 6,
+      "warmup" : 0,
+      "movement_slow_down_factor" : 1,
+      "movement_slow_down_cooldown" : 6,
+      "ammo_type" : {
+        "action" : [
+          {
+            "type" : "direct",
+            "action_delivery" : [
+              {
+                "type" : "instant",
+                "target_effects" : [
+                  {
+                    "type" : "create-entity",
+                    "repeat_count" : 1,
+                    "repeat_count_deviation" : 0,
+                    "probability" : 1,
+                    "affects_target" : false,
+                    "show_in_tooltip" : false,
+                    "entity_name" : "explosion-hit",
+                    "offsets" : [
+                      {
+                        "x" : 0,
+                        "y" : 0
+                      }
+                    ],
+                    "offset_deviation" : {
+                      "left_top" : {
+                        "x" : 0,
+                        "y" : 0
+                      },
+                      "right_bottom" : {
+                        "x" : 0,
+                        "y" : 0
+                      },
+                      "orientation" : 0
+                    },
+                    "trigger_created_entity" : false,
+                    "check_buildablity" : false
+                  }
+                ]
+              },
+              {
+                "type" : "beam",
+                "beam" : "laser-beam",
+                "add_to_shooter" : true,
+                "max_length" : 16,
+                "duration" : 3,
+                "source_offset" : {
+                  "x" : 0,
+                  "y" : -1.31439
+                }
+              }
+            ],
+            "entity_flags" : {
+              "not-rotatable" : true,
+              "placeable-neutral" : true,
+              "placeable-player" : true,
+              "placeable-enemy" : true,
+              "placeable-off-grid" : true,
+              "player-creation" : true,
+              "building-direction-8-way" : true,
+              "filter-directions" : true,
+              "fast-replaceable-no-build-while-moving" : true,
+              "breaths-air" : true,
+              "not-repairable" : true,
+              "not-on-map" : true,
+              "not-deconstructable" : true,
+              "not-blueprintable" : true,
+              "hidden" : true,
+              "hide-alt-info" : true,
+              "fast-replaceable-no-cross-type-while-moving" : true,
+              "no-gap-fill-while-building" : true,
+              "not-flammable" : true,
+              "no-automated-item-removal" : true,
+              "no-automated-item-insertion" : true,
+              "no-copy-paste" : true,
+              "not-selectable-in-game" : true,
+              "not-upgradable" : true,
+              "not-in-kill-statistics" : true
+            },
+            "ignore_collision_condition" : false,
+            "collision_mask" : {
+              "doodad-layer" : true,
+              "floor-layer" : true,
+              "ghost-layer" : true,
+              "ground-tile" : true,
+              "item-layer" : true,
+              "layer-13" : true,
+              "layer-14" : true,
+              "layer-15" : true,
+              "layer-16" : true,
+              "layer-17" : true,
+              "layer-18" : true,
+              "layer-19" : true,
+              "layer-20" : true,
+              "layer-21" : true,
+              "layer-22" : true,
+              "layer-23" : true,
+              "layer-24" : true,
+              "layer-25" : true,
+              "layer-26" : true,
+              "layer-27" : true,
+              "layer-28" : true,
+              "layer-29" : true,
+              "layer-30" : true,
+              "layer-31" : true,
+              "layer-32" : true,
+              "layer-33" : true,
+              "layer-34" : true,
+              "layer-35" : true,
+              "layer-36" : true,
+              "layer-37" : true,
+              "layer-38" : true,
+              "layer-39" : true,
+              "layer-40" : true,
+              "layer-41" : true,
+              "layer-42" : true,
+              "layer-43" : true,
+              "layer-44" : true,
+              "layer-45" : true,
+              "layer-46" : true,
+              "layer-47" : true,
+              "layer-48" : true,
+              "layer-49" : true,
+              "layer-50" : true,
+              "layer-51" : true,
+              "layer-52" : true,
+              "layer-53" : true,
+              "layer-54" : true,
+              "layer-55" : true,
+              "object-layer" : true,
+              "player-layer" : true,
+              "rail-layer" : true,
+              "resource-layer" : true,
+              "train-layer" : true,
+              "transport-belt-layer" : true,
+              "water-tile" : true
+            },
+            "trigger_target_mask" : {
+              "common" : true,
+              "ground-unit" : true,
+              "ground-static" : true,
+              "rock" : true,
+              "tree" : true,
+              "flying" : true,
+              "biological" : true,
+              "mechanical" : true,
+              "character" : true,
+              "kr-tesla-coil-trigger" : true,
+              "flammable" : true
+            },
+            "force" : "all",
+            "repeat_count" : 1,
+            "probability" : 1,
+            "filter_enabled" : false
+          }
+        ],
+        "target_type" : "entity",
+        "clamp_position" : false,
+        "category" : "laser",
+        "energy_consumption" : 200000,
+        "range_modifier" : 1,
+        "cooldown_modifier" : 1,
+        "consumption_modifier" : 1
+      }
+    },
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "personal-submachine-laser-defense-mk2-equipment" : {
+    "name" : "personal-submachine-laser-defense-mk2-equipment",
+    "type" : "active-defense-equipment",
+    "localised_name" : [
+      "equipment-name.personal-submachine-laser-defense-mk2-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "armor-weapons",
+      "combat-tier-2"
+    ],
+    "attack_parameters" : {
+      "type" : "beam",
+      "range" : 18,
+      "min_range" : 0,
+      "turn_range" : 1,
+      "fire_penalty" : 0,
+      "rotate_penalty" : 0,
+      "health_penalty" : 0,
+      "range_mode" : "center-to-center",
+      "min_attack_distance" : 18,
+      "damage_modifier" : 2,
+      "ammo_consumption_modifier" : 1,
+      "cooldown" : 6,
+      "warmup" : 0,
+      "movement_slow_down_factor" : 1,
+      "movement_slow_down_cooldown" : 6,
+      "ammo_type" : {
+        "action" : [
+          {
+            "type" : "direct",
+            "action_delivery" : [
+              {
+                "type" : "instant",
+                "target_effects" : [
+                  {
+                    "type" : "create-entity",
+                    "repeat_count" : 1,
+                    "repeat_count_deviation" : 0,
+                    "probability" : 1,
+                    "affects_target" : false,
+                    "show_in_tooltip" : false,
+                    "entity_name" : "explosion-hit",
+                    "offsets" : [
+                      {
+                        "x" : 0,
+                        "y" : 0
+                      }
+                    ],
+                    "offset_deviation" : {
+                      "left_top" : {
+                        "x" : 0,
+                        "y" : 0
+                      },
+                      "right_bottom" : {
+                        "x" : 0,
+                        "y" : 0
+                      },
+                      "orientation" : 0
+                    },
+                    "trigger_created_entity" : false,
+                    "check_buildablity" : false
+                  }
+                ]
+              },
+              {
+                "type" : "beam",
+                "beam" : "laser-beam",
+                "add_to_shooter" : true,
+                "max_length" : 29,
+                "duration" : 3,
+                "source_offset" : {
+                  "x" : 0,
+                  "y" : -1.31439
+                }
+              }
+            ],
+            "entity_flags" : {
+              "not-rotatable" : true,
+              "placeable-neutral" : true,
+              "placeable-player" : true,
+              "placeable-enemy" : true,
+              "placeable-off-grid" : true,
+              "player-creation" : true,
+              "building-direction-8-way" : true,
+              "filter-directions" : true,
+              "fast-replaceable-no-build-while-moving" : true,
+              "breaths-air" : true,
+              "not-repairable" : true,
+              "not-on-map" : true,
+              "not-deconstructable" : true,
+              "not-blueprintable" : true,
+              "hidden" : true,
+              "hide-alt-info" : true,
+              "fast-replaceable-no-cross-type-while-moving" : true,
+              "no-gap-fill-while-building" : true,
+              "not-flammable" : true,
+              "no-automated-item-removal" : true,
+              "no-automated-item-insertion" : true,
+              "no-copy-paste" : true,
+              "not-selectable-in-game" : true,
+              "not-upgradable" : true,
+              "not-in-kill-statistics" : true
+            },
+            "ignore_collision_condition" : false,
+            "collision_mask" : {
+              "doodad-layer" : true,
+              "floor-layer" : true,
+              "ghost-layer" : true,
+              "ground-tile" : true,
+              "item-layer" : true,
+              "layer-13" : true,
+              "layer-14" : true,
+              "layer-15" : true,
+              "layer-16" : true,
+              "layer-17" : true,
+              "layer-18" : true,
+              "layer-19" : true,
+              "layer-20" : true,
+              "layer-21" : true,
+              "layer-22" : true,
+              "layer-23" : true,
+              "layer-24" : true,
+              "layer-25" : true,
+              "layer-26" : true,
+              "layer-27" : true,
+              "layer-28" : true,
+              "layer-29" : true,
+              "layer-30" : true,
+              "layer-31" : true,
+              "layer-32" : true,
+              "layer-33" : true,
+              "layer-34" : true,
+              "layer-35" : true,
+              "layer-36" : true,
+              "layer-37" : true,
+              "layer-38" : true,
+              "layer-39" : true,
+              "layer-40" : true,
+              "layer-41" : true,
+              "layer-42" : true,
+              "layer-43" : true,
+              "layer-44" : true,
+              "layer-45" : true,
+              "layer-46" : true,
+              "layer-47" : true,
+              "layer-48" : true,
+              "layer-49" : true,
+              "layer-50" : true,
+              "layer-51" : true,
+              "layer-52" : true,
+              "layer-53" : true,
+              "layer-54" : true,
+              "layer-55" : true,
+              "object-layer" : true,
+              "player-layer" : true,
+              "rail-layer" : true,
+              "resource-layer" : true,
+              "train-layer" : true,
+              "transport-belt-layer" : true,
+              "water-tile" : true
+            },
+            "trigger_target_mask" : {
+              "common" : true,
+              "ground-unit" : true,
+              "ground-static" : true,
+              "rock" : true,
+              "tree" : true,
+              "flying" : true,
+              "biological" : true,
+              "mechanical" : true,
+              "character" : true,
+              "kr-tesla-coil-trigger" : true,
+              "flammable" : true
+            },
+            "force" : "all",
+            "repeat_count" : 1,
+            "probability" : 1,
+            "filter_enabled" : false
+          }
+        ],
+        "target_type" : "entity",
+        "clamp_position" : false,
+        "category" : "laser",
+        "energy_consumption" : 350000,
+        "range_modifier" : 1,
+        "cooldown_modifier" : 1,
+        "consumption_modifier" : 1
+      }
+    },
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "personal-submachine-laser-defense-mk3-equipment" : {
+    "name" : "personal-submachine-laser-defense-mk3-equipment",
+    "type" : "active-defense-equipment",
+    "localised_name" : [
+      "equipment-name.personal-submachine-laser-defense-mk3-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "armor-weapons",
+      "combat-tier-3"
+    ],
+    "attack_parameters" : {
+      "type" : "beam",
+      "range" : 20,
+      "min_range" : 0,
+      "turn_range" : 1,
+      "fire_penalty" : 0,
+      "rotate_penalty" : 0,
+      "health_penalty" : 0,
+      "range_mode" : "center-to-center",
+      "min_attack_distance" : 20,
+      "damage_modifier" : 3,
+      "ammo_consumption_modifier" : 1,
+      "cooldown" : 6,
+      "warmup" : 0,
+      "movement_slow_down_factor" : 1,
+      "movement_slow_down_cooldown" : 6,
+      "ammo_type" : {
+        "action" : [
+          {
+            "type" : "direct",
+            "action_delivery" : [
+              {
+                "type" : "instant",
+                "target_effects" : [
+                  {
+                    "type" : "create-entity",
+                    "repeat_count" : 1,
+                    "repeat_count_deviation" : 0,
+                    "probability" : 1,
+                    "affects_target" : false,
+                    "show_in_tooltip" : false,
+                    "entity_name" : "explosion-hit",
+                    "offsets" : [
+                      {
+                        "x" : 0,
+                        "y" : 0
+                      }
+                    ],
+                    "offset_deviation" : {
+                      "left_top" : {
+                        "x" : 0,
+                        "y" : 0
+                      },
+                      "right_bottom" : {
+                        "x" : 0,
+                        "y" : 0
+                      },
+                      "orientation" : 0
+                    },
+                    "trigger_created_entity" : false,
+                    "check_buildablity" : false
+                  }
+                ]
+              },
+              {
+                "type" : "beam",
+                "beam" : "laser-beam",
+                "add_to_shooter" : true,
+                "max_length" : 21,
+                "duration" : 3,
+                "source_offset" : {
+                  "x" : 0,
+                  "y" : -1.31439
+                }
+              }
+            ],
+            "entity_flags" : {
+              "not-rotatable" : true,
+              "placeable-neutral" : true,
+              "placeable-player" : true,
+              "placeable-enemy" : true,
+              "placeable-off-grid" : true,
+              "player-creation" : true,
+              "building-direction-8-way" : true,
+              "filter-directions" : true,
+              "fast-replaceable-no-build-while-moving" : true,
+              "breaths-air" : true,
+              "not-repairable" : true,
+              "not-on-map" : true,
+              "not-deconstructable" : true,
+              "not-blueprintable" : true,
+              "hidden" : true,
+              "hide-alt-info" : true,
+              "fast-replaceable-no-cross-type-while-moving" : true,
+              "no-gap-fill-while-building" : true,
+              "not-flammable" : true,
+              "no-automated-item-removal" : true,
+              "no-automated-item-insertion" : true,
+              "no-copy-paste" : true,
+              "not-selectable-in-game" : true,
+              "not-upgradable" : true,
+              "not-in-kill-statistics" : true
+            },
+            "ignore_collision_condition" : false,
+            "collision_mask" : {
+              "doodad-layer" : true,
+              "floor-layer" : true,
+              "ghost-layer" : true,
+              "ground-tile" : true,
+              "item-layer" : true,
+              "layer-13" : true,
+              "layer-14" : true,
+              "layer-15" : true,
+              "layer-16" : true,
+              "layer-17" : true,
+              "layer-18" : true,
+              "layer-19" : true,
+              "layer-20" : true,
+              "layer-21" : true,
+              "layer-22" : true,
+              "layer-23" : true,
+              "layer-24" : true,
+              "layer-25" : true,
+              "layer-26" : true,
+              "layer-27" : true,
+              "layer-28" : true,
+              "layer-29" : true,
+              "layer-30" : true,
+              "layer-31" : true,
+              "layer-32" : true,
+              "layer-33" : true,
+              "layer-34" : true,
+              "layer-35" : true,
+              "layer-36" : true,
+              "layer-37" : true,
+              "layer-38" : true,
+              "layer-39" : true,
+              "layer-40" : true,
+              "layer-41" : true,
+              "layer-42" : true,
+              "layer-43" : true,
+              "layer-44" : true,
+              "layer-45" : true,
+              "layer-46" : true,
+              "layer-47" : true,
+              "layer-48" : true,
+              "layer-49" : true,
+              "layer-50" : true,
+              "layer-51" : true,
+              "layer-52" : true,
+              "layer-53" : true,
+              "layer-54" : true,
+              "layer-55" : true,
+              "object-layer" : true,
+              "player-layer" : true,
+              "rail-layer" : true,
+              "resource-layer" : true,
+              "train-layer" : true,
+              "transport-belt-layer" : true,
+              "water-tile" : true
+            },
+            "trigger_target_mask" : {
+              "common" : true,
+              "ground-unit" : true,
+              "ground-static" : true,
+              "rock" : true,
+              "tree" : true,
+              "flying" : true,
+              "biological" : true,
+              "mechanical" : true,
+              "character" : true,
+              "kr-tesla-coil-trigger" : true,
+              "flammable" : true
+            },
+            "force" : "all",
+            "repeat_count" : 1,
+            "probability" : 1,
+            "filter_enabled" : false
+          }
+        ],
+        "target_type" : "entity",
+        "clamp_position" : false,
+        "category" : "laser",
+        "energy_consumption" : 500000,
+        "range_modifier" : 1,
+        "cooldown_modifier" : 1,
+        "consumption_modifier" : 1
+      }
+    },
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "personal-submachine-laser-defense-mk4-equipment" : {
+    "name" : "personal-submachine-laser-defense-mk4-equipment",
+    "type" : "active-defense-equipment",
+    "localised_name" : [
+      "equipment-name.personal-submachine-laser-defense-mk4-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "armor-weapons",
+      "combat-tier-4"
+    ],
+    "attack_parameters" : {
+      "type" : "beam",
+      "range" : 22,
+      "min_range" : 0,
+      "turn_range" : 1,
+      "fire_penalty" : 0,
+      "rotate_penalty" : 0,
+      "health_penalty" : 0,
+      "range_mode" : "center-to-center",
+      "min_attack_distance" : 22,
+      "damage_modifier" : 6,
+      "ammo_consumption_modifier" : 1,
+      "cooldown" : 6,
+      "warmup" : 0,
+      "movement_slow_down_factor" : 1,
+      "movement_slow_down_cooldown" : 6,
+      "ammo_type" : {
+        "action" : [
+          {
+            "type" : "direct",
+            "action_delivery" : [
+              {
+                "type" : "beam",
+                "beam" : "laser-beam",
+                "add_to_shooter" : true,
+                "max_length" : 23,
+                "duration" : 3,
+                "source_offset" : {
+                  "x" : 0,
+                  "y" : -1.31439
+                }
+              }
+            ],
+            "entity_flags" : {
+              "not-rotatable" : true,
+              "placeable-neutral" : true,
+              "placeable-player" : true,
+              "placeable-enemy" : true,
+              "placeable-off-grid" : true,
+              "player-creation" : true,
+              "building-direction-8-way" : true,
+              "filter-directions" : true,
+              "fast-replaceable-no-build-while-moving" : true,
+              "breaths-air" : true,
+              "not-repairable" : true,
+              "not-on-map" : true,
+              "not-deconstructable" : true,
+              "not-blueprintable" : true,
+              "hidden" : true,
+              "hide-alt-info" : true,
+              "fast-replaceable-no-cross-type-while-moving" : true,
+              "no-gap-fill-while-building" : true,
+              "not-flammable" : true,
+              "no-automated-item-removal" : true,
+              "no-automated-item-insertion" : true,
+              "no-copy-paste" : true,
+              "not-selectable-in-game" : true,
+              "not-upgradable" : true,
+              "not-in-kill-statistics" : true
+            },
+            "ignore_collision_condition" : false,
+            "collision_mask" : {
+              "doodad-layer" : true,
+              "floor-layer" : true,
+              "ghost-layer" : true,
+              "ground-tile" : true,
+              "item-layer" : true,
+              "layer-13" : true,
+              "layer-14" : true,
+              "layer-15" : true,
+              "layer-16" : true,
+              "layer-17" : true,
+              "layer-18" : true,
+              "layer-19" : true,
+              "layer-20" : true,
+              "layer-21" : true,
+              "layer-22" : true,
+              "layer-23" : true,
+              "layer-24" : true,
+              "layer-25" : true,
+              "layer-26" : true,
+              "layer-27" : true,
+              "layer-28" : true,
+              "layer-29" : true,
+              "layer-30" : true,
+              "layer-31" : true,
+              "layer-32" : true,
+              "layer-33" : true,
+              "layer-34" : true,
+              "layer-35" : true,
+              "layer-36" : true,
+              "layer-37" : true,
+              "layer-38" : true,
+              "layer-39" : true,
+              "layer-40" : true,
+              "layer-41" : true,
+              "layer-42" : true,
+              "layer-43" : true,
+              "layer-44" : true,
+              "layer-45" : true,
+              "layer-46" : true,
+              "layer-47" : true,
+              "layer-48" : true,
+              "layer-49" : true,
+              "layer-50" : true,
+              "layer-51" : true,
+              "layer-52" : true,
+              "layer-53" : true,
+              "layer-54" : true,
+              "layer-55" : true,
+              "object-layer" : true,
+              "player-layer" : true,
+              "rail-layer" : true,
+              "resource-layer" : true,
+              "train-layer" : true,
+              "transport-belt-layer" : true,
+              "water-tile" : true
+            },
+            "trigger_target_mask" : {
+              "common" : true,
+              "ground-unit" : true,
+              "ground-static" : true,
+              "rock" : true,
+              "tree" : true,
+              "flying" : true,
+              "biological" : true,
+              "mechanical" : true,
+              "character" : true,
+              "kr-tesla-coil-trigger" : true,
+              "flammable" : true
+            },
+            "force" : "all",
+            "repeat_count" : 1,
+            "probability" : 1,
+            "filter_enabled" : false
+          }
+        ],
+        "target_type" : "entity",
+        "clamp_position" : false,
+        "category" : "laser",
+        "energy_consumption" : 750000,
+        "range_modifier" : 1,
+        "cooldown_modifier" : 1,
+        "consumption_modifier" : 1
+      }
+    },
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "personal-laser-defense-equipment" : {
+    "name" : "personal-laser-defense-equipment",
+    "type" : "active-defense-equipment",
+    "localised_name" : [
+      "equipment-name.personal-sniper-laser-defense-mk1-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "armor-weapons",
+      "combat-tier-1"
+    ],
+    "attack_parameters" : {
+      "type" : "beam",
+      "range" : 30,
+      "min_range" : 0,
+      "turn_range" : 1,
+      "fire_penalty" : 0,
+      "rotate_penalty" : 0,
+      "health_penalty" : 0,
+      "range_mode" : "center-to-center",
+      "min_attack_distance" : 30,
+      "damage_modifier" : 15,
+      "ammo_consumption_modifier" : 1,
+      "cooldown" : 80,
+      "warmup" : 0,
+      "movement_slow_down_factor" : 1,
+      "movement_slow_down_cooldown" : 80,
+      "ammo_type" : {
+        "action" : [
+          {
+            "type" : "direct",
+            "action_delivery" : [
+              {
+                "type" : "instant",
+                "target_effects" : [
+                  {
+                    "type" : "create-entity",
+                    "repeat_count" : 1,
+                    "repeat_count_deviation" : 0,
+                    "probability" : 1,
+                    "affects_target" : false,
+                    "show_in_tooltip" : false,
+                    "entity_name" : "explosion-hit",
+                    "offsets" : [
+                      {
+                        "x" : 0,
+                        "y" : 0
+                      }
+                    ],
+                    "offset_deviation" : {
+                      "left_top" : {
+                        "x" : 0,
+                        "y" : 0
+                      },
+                      "right_bottom" : {
+                        "x" : 0,
+                        "y" : 0
+                      },
+                      "orientation" : 0
+                    },
+                    "trigger_created_entity" : false,
+                    "check_buildablity" : false
+                  }
+                ]
+              },
+              {
+                "type" : "beam",
+                "beam" : "laser-beam",
+                "add_to_shooter" : true,
+                "max_length" : 35,
+                "duration" : 40,
+                "source_offset" : {
+                  "x" : 0,
+                  "y" : -1.31439
+                }
+              }
+            ],
+            "entity_flags" : {
+              "not-rotatable" : true,
+              "placeable-neutral" : true,
+              "placeable-player" : true,
+              "placeable-enemy" : true,
+              "placeable-off-grid" : true,
+              "player-creation" : true,
+              "building-direction-8-way" : true,
+              "filter-directions" : true,
+              "fast-replaceable-no-build-while-moving" : true,
+              "breaths-air" : true,
+              "not-repairable" : true,
+              "not-on-map" : true,
+              "not-deconstructable" : true,
+              "not-blueprintable" : true,
+              "hidden" : true,
+              "hide-alt-info" : true,
+              "fast-replaceable-no-cross-type-while-moving" : true,
+              "no-gap-fill-while-building" : true,
+              "not-flammable" : true,
+              "no-automated-item-removal" : true,
+              "no-automated-item-insertion" : true,
+              "no-copy-paste" : true,
+              "not-selectable-in-game" : true,
+              "not-upgradable" : true,
+              "not-in-kill-statistics" : true
+            },
+            "ignore_collision_condition" : false,
+            "collision_mask" : {
+              "doodad-layer" : true,
+              "floor-layer" : true,
+              "ghost-layer" : true,
+              "ground-tile" : true,
+              "item-layer" : true,
+              "layer-13" : true,
+              "layer-14" : true,
+              "layer-15" : true,
+              "layer-16" : true,
+              "layer-17" : true,
+              "layer-18" : true,
+              "layer-19" : true,
+              "layer-20" : true,
+              "layer-21" : true,
+              "layer-22" : true,
+              "layer-23" : true,
+              "layer-24" : true,
+              "layer-25" : true,
+              "layer-26" : true,
+              "layer-27" : true,
+              "layer-28" : true,
+              "layer-29" : true,
+              "layer-30" : true,
+              "layer-31" : true,
+              "layer-32" : true,
+              "layer-33" : true,
+              "layer-34" : true,
+              "layer-35" : true,
+              "layer-36" : true,
+              "layer-37" : true,
+              "layer-38" : true,
+              "layer-39" : true,
+              "layer-40" : true,
+              "layer-41" : true,
+              "layer-42" : true,
+              "layer-43" : true,
+              "layer-44" : true,
+              "layer-45" : true,
+              "layer-46" : true,
+              "layer-47" : true,
+              "layer-48" : true,
+              "layer-49" : true,
+              "layer-50" : true,
+              "layer-51" : true,
+              "layer-52" : true,
+              "layer-53" : true,
+              "layer-54" : true,
+              "layer-55" : true,
+              "object-layer" : true,
+              "player-layer" : true,
+              "rail-layer" : true,
+              "resource-layer" : true,
+              "train-layer" : true,
+              "transport-belt-layer" : true,
+              "water-tile" : true
+            },
+            "trigger_target_mask" : {
+              "common" : true,
+              "ground-unit" : true,
+              "ground-static" : true,
+              "rock" : true,
+              "tree" : true,
+              "flying" : true,
+              "biological" : true,
+              "mechanical" : true,
+              "character" : true,
+              "kr-tesla-coil-trigger" : true,
+              "flammable" : true
+            },
+            "force" : "all",
+            "repeat_count" : 1,
+            "probability" : 1,
+            "filter_enabled" : false
+          }
+        ],
+        "target_type" : "entity",
+        "clamp_position" : false,
+        "category" : "laser",
+        "energy_consumption" : 3000000,
+        "range_modifier" : 1,
+        "cooldown_modifier" : 1,
+        "consumption_modifier" : 1
+      }
+    },
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "personal-laser-defense-mk2-equipment" : {
+    "name" : "personal-laser-defense-mk2-equipment",
+    "type" : "active-defense-equipment",
+    "localised_name" : [
+      "equipment-name.personal-sniper-laser-defense-mk2-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "armor-weapons",
+      "combat-tier-2"
+    ],
+    "attack_parameters" : {
+      "type" : "beam",
+      "range" : 32.5,
+      "min_range" : 0,
+      "turn_range" : 1,
+      "fire_penalty" : 0,
+      "rotate_penalty" : 0,
+      "health_penalty" : 0,
+      "range_mode" : "center-to-center",
+      "min_attack_distance" : 32.5,
+      "damage_modifier" : 20,
+      "ammo_consumption_modifier" : 1,
+      "cooldown" : 80,
+      "warmup" : 0,
+      "movement_slow_down_factor" : 1,
+      "movement_slow_down_cooldown" : 80,
+      "ammo_type" : {
+        "action" : [
+          {
+            "type" : "direct",
+            "action_delivery" : [
+              {
+                "type" : "instant",
+                "target_effects" : [
+                  {
+                    "type" : "create-entity",
+                    "repeat_count" : 1,
+                    "repeat_count_deviation" : 0,
+                    "probability" : 1,
+                    "affects_target" : false,
+                    "show_in_tooltip" : false,
+                    "entity_name" : "explosion-hit",
+                    "offsets" : [
+                      {
+                        "x" : 0,
+                        "y" : 0
+                      }
+                    ],
+                    "offset_deviation" : {
+                      "left_top" : {
+                        "x" : 0,
+                        "y" : 0
+                      },
+                      "right_bottom" : {
+                        "x" : 0,
+                        "y" : 0
+                      },
+                      "orientation" : 0
+                    },
+                    "trigger_created_entity" : false,
+                    "check_buildablity" : false
+                  }
+                ]
+              },
+              {
+                "type" : "beam",
+                "beam" : "laser-beam",
+                "add_to_shooter" : true,
+                "max_length" : 40,
+                "duration" : 40,
+                "source_offset" : {
+                  "x" : 0,
+                  "y" : -1.31439
+                }
+              }
+            ],
+            "entity_flags" : {
+              "not-rotatable" : true,
+              "placeable-neutral" : true,
+              "placeable-player" : true,
+              "placeable-enemy" : true,
+              "placeable-off-grid" : true,
+              "player-creation" : true,
+              "building-direction-8-way" : true,
+              "filter-directions" : true,
+              "fast-replaceable-no-build-while-moving" : true,
+              "breaths-air" : true,
+              "not-repairable" : true,
+              "not-on-map" : true,
+              "not-deconstructable" : true,
+              "not-blueprintable" : true,
+              "hidden" : true,
+              "hide-alt-info" : true,
+              "fast-replaceable-no-cross-type-while-moving" : true,
+              "no-gap-fill-while-building" : true,
+              "not-flammable" : true,
+              "no-automated-item-removal" : true,
+              "no-automated-item-insertion" : true,
+              "no-copy-paste" : true,
+              "not-selectable-in-game" : true,
+              "not-upgradable" : true,
+              "not-in-kill-statistics" : true
+            },
+            "ignore_collision_condition" : false,
+            "collision_mask" : {
+              "doodad-layer" : true,
+              "floor-layer" : true,
+              "ghost-layer" : true,
+              "ground-tile" : true,
+              "item-layer" : true,
+              "layer-13" : true,
+              "layer-14" : true,
+              "layer-15" : true,
+              "layer-16" : true,
+              "layer-17" : true,
+              "layer-18" : true,
+              "layer-19" : true,
+              "layer-20" : true,
+              "layer-21" : true,
+              "layer-22" : true,
+              "layer-23" : true,
+              "layer-24" : true,
+              "layer-25" : true,
+              "layer-26" : true,
+              "layer-27" : true,
+              "layer-28" : true,
+              "layer-29" : true,
+              "layer-30" : true,
+              "layer-31" : true,
+              "layer-32" : true,
+              "layer-33" : true,
+              "layer-34" : true,
+              "layer-35" : true,
+              "layer-36" : true,
+              "layer-37" : true,
+              "layer-38" : true,
+              "layer-39" : true,
+              "layer-40" : true,
+              "layer-41" : true,
+              "layer-42" : true,
+              "layer-43" : true,
+              "layer-44" : true,
+              "layer-45" : true,
+              "layer-46" : true,
+              "layer-47" : true,
+              "layer-48" : true,
+              "layer-49" : true,
+              "layer-50" : true,
+              "layer-51" : true,
+              "layer-52" : true,
+              "layer-53" : true,
+              "layer-54" : true,
+              "layer-55" : true,
+              "object-layer" : true,
+              "player-layer" : true,
+              "rail-layer" : true,
+              "resource-layer" : true,
+              "train-layer" : true,
+              "transport-belt-layer" : true,
+              "water-tile" : true
+            },
+            "trigger_target_mask" : {
+              "common" : true,
+              "ground-unit" : true,
+              "ground-static" : true,
+              "rock" : true,
+              "tree" : true,
+              "flying" : true,
+              "biological" : true,
+              "mechanical" : true,
+              "character" : true,
+              "kr-tesla-coil-trigger" : true,
+              "flammable" : true
+            },
+            "force" : "all",
+            "repeat_count" : 1,
+            "probability" : 1,
+            "filter_enabled" : false
+          }
+        ],
+        "target_type" : "entity",
+        "clamp_position" : false,
+        "category" : "laser",
+        "energy_consumption" : 4000000,
+        "range_modifier" : 1,
+        "cooldown_modifier" : 1,
+        "consumption_modifier" : 1
+      }
+    },
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "personal-laser-defense-mk3-equipment" : {
+    "name" : "personal-laser-defense-mk3-equipment",
+    "type" : "active-defense-equipment",
+    "localised_name" : [
+      "equipment-name.personal-sniper-laser-defense-mk3-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "armor-weapons",
+      "combat-tier-3"
+    ],
+    "attack_parameters" : {
+      "type" : "beam",
+      "range" : 35,
+      "min_range" : 0,
+      "turn_range" : 1,
+      "fire_penalty" : 0,
+      "rotate_penalty" : 0,
+      "health_penalty" : 0,
+      "range_mode" : "center-to-center",
+      "min_attack_distance" : 35,
+      "damage_modifier" : 25,
+      "ammo_consumption_modifier" : 1,
+      "cooldown" : 90,
+      "warmup" : 0,
+      "movement_slow_down_factor" : 1,
+      "movement_slow_down_cooldown" : 90,
+      "ammo_type" : {
+        "action" : [
+          {
+            "type" : "direct",
+            "action_delivery" : [
+              {
+                "type" : "instant",
+                "target_effects" : [
+                  {
+                    "type" : "create-entity",
+                    "repeat_count" : 1,
+                    "repeat_count_deviation" : 0,
+                    "probability" : 1,
+                    "affects_target" : false,
+                    "show_in_tooltip" : false,
+                    "entity_name" : "explosion-hit",
+                    "offsets" : [
+                      {
+                        "x" : 0,
+                        "y" : 0
+                      }
+                    ],
+                    "offset_deviation" : {
+                      "left_top" : {
+                        "x" : 0,
+                        "y" : 0
+                      },
+                      "right_bottom" : {
+                        "x" : 0,
+                        "y" : 0
+                      },
+                      "orientation" : 0
+                    },
+                    "trigger_created_entity" : false,
+                    "check_buildablity" : false
+                  }
+                ]
+              },
+              {
+                "type" : "beam",
+                "beam" : "laser-beam",
+                "add_to_shooter" : true,
+                "max_length" : 40,
+                "duration" : 40,
+                "source_offset" : {
+                  "x" : 0,
+                  "y" : -1.31439
+                }
+              }
+            ],
+            "entity_flags" : {
+              "not-rotatable" : true,
+              "placeable-neutral" : true,
+              "placeable-player" : true,
+              "placeable-enemy" : true,
+              "placeable-off-grid" : true,
+              "player-creation" : true,
+              "building-direction-8-way" : true,
+              "filter-directions" : true,
+              "fast-replaceable-no-build-while-moving" : true,
+              "breaths-air" : true,
+              "not-repairable" : true,
+              "not-on-map" : true,
+              "not-deconstructable" : true,
+              "not-blueprintable" : true,
+              "hidden" : true,
+              "hide-alt-info" : true,
+              "fast-replaceable-no-cross-type-while-moving" : true,
+              "no-gap-fill-while-building" : true,
+              "not-flammable" : true,
+              "no-automated-item-removal" : true,
+              "no-automated-item-insertion" : true,
+              "no-copy-paste" : true,
+              "not-selectable-in-game" : true,
+              "not-upgradable" : true,
+              "not-in-kill-statistics" : true
+            },
+            "ignore_collision_condition" : false,
+            "collision_mask" : {
+              "doodad-layer" : true,
+              "floor-layer" : true,
+              "ghost-layer" : true,
+              "ground-tile" : true,
+              "item-layer" : true,
+              "layer-13" : true,
+              "layer-14" : true,
+              "layer-15" : true,
+              "layer-16" : true,
+              "layer-17" : true,
+              "layer-18" : true,
+              "layer-19" : true,
+              "layer-20" : true,
+              "layer-21" : true,
+              "layer-22" : true,
+              "layer-23" : true,
+              "layer-24" : true,
+              "layer-25" : true,
+              "layer-26" : true,
+              "layer-27" : true,
+              "layer-28" : true,
+              "layer-29" : true,
+              "layer-30" : true,
+              "layer-31" : true,
+              "layer-32" : true,
+              "layer-33" : true,
+              "layer-34" : true,
+              "layer-35" : true,
+              "layer-36" : true,
+              "layer-37" : true,
+              "layer-38" : true,
+              "layer-39" : true,
+              "layer-40" : true,
+              "layer-41" : true,
+              "layer-42" : true,
+              "layer-43" : true,
+              "layer-44" : true,
+              "layer-45" : true,
+              "layer-46" : true,
+              "layer-47" : true,
+              "layer-48" : true,
+              "layer-49" : true,
+              "layer-50" : true,
+              "layer-51" : true,
+              "layer-52" : true,
+              "layer-53" : true,
+              "layer-54" : true,
+              "layer-55" : true,
+              "object-layer" : true,
+              "player-layer" : true,
+              "rail-layer" : true,
+              "resource-layer" : true,
+              "train-layer" : true,
+              "transport-belt-layer" : true,
+              "water-tile" : true
+            },
+            "trigger_target_mask" : {
+              "common" : true,
+              "ground-unit" : true,
+              "ground-static" : true,
+              "rock" : true,
+              "tree" : true,
+              "flying" : true,
+              "biological" : true,
+              "mechanical" : true,
+              "character" : true,
+              "kr-tesla-coil-trigger" : true,
+              "flammable" : true
+            },
+            "force" : "all",
+            "repeat_count" : 1,
+            "probability" : 1,
+            "filter_enabled" : false
+          }
+        ],
+        "target_type" : "entity",
+        "clamp_position" : false,
+        "category" : "laser",
+        "energy_consumption" : 6000000,
+        "range_modifier" : 1,
+        "cooldown_modifier" : 1,
+        "consumption_modifier" : 1
+      }
+    },
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "personal-laser-defense-mk4-equipment" : {
+    "name" : "personal-laser-defense-mk4-equipment",
+    "type" : "active-defense-equipment",
+    "localised_name" : [
+      "equipment-name.personal-sniper-laser-defense-mk4-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "armor-weapons",
+      "combat-tier-4"
+    ],
+    "attack_parameters" : {
+      "type" : "beam",
+      "range" : 37.5,
+      "min_range" : 0,
+      "turn_range" : 1,
+      "fire_penalty" : 0,
+      "rotate_penalty" : 0,
+      "health_penalty" : 0,
+      "range_mode" : "center-to-center",
+      "min_attack_distance" : 37.5,
+      "damage_modifier" : 30,
+      "ammo_consumption_modifier" : 1,
+      "cooldown" : 100,
+      "warmup" : 0,
+      "movement_slow_down_factor" : 1,
+      "movement_slow_down_cooldown" : 100,
+      "ammo_type" : {
+        "action" : [
+          {
+            "type" : "direct",
+            "action_delivery" : [
+              {
+                "type" : "instant",
+                "target_effects" : [
+                  {
+                    "type" : "create-entity",
+                    "repeat_count" : 1,
+                    "repeat_count_deviation" : 0,
+                    "probability" : 1,
+                    "affects_target" : false,
+                    "show_in_tooltip" : false,
+                    "entity_name" : "explosion-hit",
+                    "offsets" : [
+                      {
+                        "x" : 0,
+                        "y" : 0
+                      }
+                    ],
+                    "offset_deviation" : {
+                      "left_top" : {
+                        "x" : 0,
+                        "y" : 0
+                      },
+                      "right_bottom" : {
+                        "x" : 0,
+                        "y" : 0
+                      },
+                      "orientation" : 0
+                    },
+                    "trigger_created_entity" : false,
+                    "check_buildablity" : false
+                  }
+                ]
+              },
+              {
+                "type" : "beam",
+                "beam" : "laser-beam",
+                "add_to_shooter" : true,
+                "max_length" : 40,
+                "duration" : 40,
+                "source_offset" : {
+                  "x" : 0,
+                  "y" : -1.31439
+                }
+              }
+            ],
+            "entity_flags" : {
+              "not-rotatable" : true,
+              "placeable-neutral" : true,
+              "placeable-player" : true,
+              "placeable-enemy" : true,
+              "placeable-off-grid" : true,
+              "player-creation" : true,
+              "building-direction-8-way" : true,
+              "filter-directions" : true,
+              "fast-replaceable-no-build-while-moving" : true,
+              "breaths-air" : true,
+              "not-repairable" : true,
+              "not-on-map" : true,
+              "not-deconstructable" : true,
+              "not-blueprintable" : true,
+              "hidden" : true,
+              "hide-alt-info" : true,
+              "fast-replaceable-no-cross-type-while-moving" : true,
+              "no-gap-fill-while-building" : true,
+              "not-flammable" : true,
+              "no-automated-item-removal" : true,
+              "no-automated-item-insertion" : true,
+              "no-copy-paste" : true,
+              "not-selectable-in-game" : true,
+              "not-upgradable" : true,
+              "not-in-kill-statistics" : true
+            },
+            "ignore_collision_condition" : false,
+            "collision_mask" : {
+              "doodad-layer" : true,
+              "floor-layer" : true,
+              "ghost-layer" : true,
+              "ground-tile" : true,
+              "item-layer" : true,
+              "layer-13" : true,
+              "layer-14" : true,
+              "layer-15" : true,
+              "layer-16" : true,
+              "layer-17" : true,
+              "layer-18" : true,
+              "layer-19" : true,
+              "layer-20" : true,
+              "layer-21" : true,
+              "layer-22" : true,
+              "layer-23" : true,
+              "layer-24" : true,
+              "layer-25" : true,
+              "layer-26" : true,
+              "layer-27" : true,
+              "layer-28" : true,
+              "layer-29" : true,
+              "layer-30" : true,
+              "layer-31" : true,
+              "layer-32" : true,
+              "layer-33" : true,
+              "layer-34" : true,
+              "layer-35" : true,
+              "layer-36" : true,
+              "layer-37" : true,
+              "layer-38" : true,
+              "layer-39" : true,
+              "layer-40" : true,
+              "layer-41" : true,
+              "layer-42" : true,
+              "layer-43" : true,
+              "layer-44" : true,
+              "layer-45" : true,
+              "layer-46" : true,
+              "layer-47" : true,
+              "layer-48" : true,
+              "layer-49" : true,
+              "layer-50" : true,
+              "layer-51" : true,
+              "layer-52" : true,
+              "layer-53" : true,
+              "layer-54" : true,
+              "layer-55" : true,
+              "object-layer" : true,
+              "player-layer" : true,
+              "rail-layer" : true,
+              "resource-layer" : true,
+              "train-layer" : true,
+              "transport-belt-layer" : true,
+              "water-tile" : true
+            },
+            "trigger_target_mask" : {
+              "common" : true,
+              "ground-unit" : true,
+              "ground-static" : true,
+              "rock" : true,
+              "tree" : true,
+              "flying" : true,
+              "biological" : true,
+              "mechanical" : true,
+              "character" : true,
+              "kr-tesla-coil-trigger" : true,
+              "flammable" : true
+            },
+            "force" : "all",
+            "repeat_count" : 1,
+            "probability" : 1,
+            "filter_enabled" : false
+          }
+        ],
+        "target_type" : "entity",
+        "clamp_position" : false,
+        "category" : "laser",
+        "energy_consumption" : 8000000,
+        "range_modifier" : 1,
+        "cooldown_modifier" : 1,
+        "consumption_modifier" : 1
+      }
+    },
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  },
+  "discharge-defense-equipment" : {
+    "name" : "discharge-defense-equipment",
+    "type" : "active-defense-equipment",
+    "localised_name" : [
+      "equipment-name.discharge-defense-equipment"
+    ],
+    "shape" : {
+      "width" : 2,
+      "height" : 2
+    },
+    "energy_production" : 0,
+    "shield" : 0,
+    "energy_per_shield" : 0,
+    "energy_consumption" : 0,
+    "equipment_categories" : [
+      "armor"
+    ],
+    "attack_parameters" : {
+      "type" : "projectile",
+      "range" : 10,
+      "min_range" : 0,
+      "turn_range" : 1,
+      "fire_penalty" : 0,
+      "rotate_penalty" : 0,
+      "health_penalty" : 0,
+      "range_mode" : "center-to-center",
+      "min_attack_distance" : 10,
+      "damage_modifier" : 10,
+      "ammo_consumption_modifier" : 1,
+      "cooldown" : 150,
+      "warmup" : 0,
+      "movement_slow_down_factor" : 1,
+      "movement_slow_down_cooldown" : 150,
+      "ammo_type" : {
+        "action" : [
+          {
+            "type" : "area",
+            "action_delivery" : [
+              {
+                "type" : "instant",
+                "target_effects" : [
+                  {
+                    "type" : "create-sticker",
+                    "repeat_count" : 1,
+                    "repeat_count_deviation" : 0,
+                    "probability" : 1,
+                    "affects_target" : false,
+                    "show_in_tooltip" : false,
+                    "sticker" : "stun-sticker",
+                    "trigger_created_entity" : false
+                  },
+                  {
+                    "type" : "push-back",
+                    "repeat_count" : 1,
+                    "repeat_count_deviation" : 0,
+                    "probability" : 1,
+                    "affects_target" : false,
+                    "show_in_tooltip" : true,
+                    "distance" : 4
+                  }
+                ]
+              },
+              {
+                "type" : "beam",
+                "beam" : "electric-beam-no-sound",
+                "add_to_shooter" : false,
+                "max_length" : 16,
+                "duration" : 15,
+                "source_offset" : {
+                  "x" : 0,
+                  "y" : -0.5
+                }
+              }
+            ],
+            "entity_flags" : {
+              "not-rotatable" : true,
+              "placeable-neutral" : true,
+              "placeable-player" : true,
+              "placeable-enemy" : true,
+              "placeable-off-grid" : true,
+              "player-creation" : true,
+              "building-direction-8-way" : true,
+              "filter-directions" : true,
+              "fast-replaceable-no-build-while-moving" : true,
+              "breaths-air" : true,
+              "not-repairable" : true,
+              "not-on-map" : true,
+              "not-deconstructable" : true,
+              "not-blueprintable" : true,
+              "hidden" : true,
+              "hide-alt-info" : true,
+              "fast-replaceable-no-cross-type-while-moving" : true,
+              "no-gap-fill-while-building" : true,
+              "not-flammable" : true,
+              "no-automated-item-removal" : true,
+              "no-automated-item-insertion" : true,
+              "no-copy-paste" : true,
+              "not-selectable-in-game" : true,
+              "not-upgradable" : true,
+              "not-in-kill-statistics" : true
+            },
+            "ignore_collision_condition" : false,
+            "collision_mask" : {
+              "doodad-layer" : true,
+              "floor-layer" : true,
+              "ghost-layer" : true,
+              "ground-tile" : true,
+              "item-layer" : true,
+              "layer-13" : true,
+              "layer-14" : true,
+              "layer-15" : true,
+              "layer-16" : true,
+              "layer-17" : true,
+              "layer-18" : true,
+              "layer-19" : true,
+              "layer-20" : true,
+              "layer-21" : true,
+              "layer-22" : true,
+              "layer-23" : true,
+              "layer-24" : true,
+              "layer-25" : true,
+              "layer-26" : true,
+              "layer-27" : true,
+              "layer-28" : true,
+              "layer-29" : true,
+              "layer-30" : true,
+              "layer-31" : true,
+              "layer-32" : true,
+              "layer-33" : true,
+              "layer-34" : true,
+              "layer-35" : true,
+              "layer-36" : true,
+              "layer-37" : true,
+              "layer-38" : true,
+              "layer-39" : true,
+              "layer-40" : true,
+              "layer-41" : true,
+              "layer-42" : true,
+              "layer-43" : true,
+              "layer-44" : true,
+              "layer-45" : true,
+              "layer-46" : true,
+              "layer-47" : true,
+              "layer-48" : true,
+              "layer-49" : true,
+              "layer-50" : true,
+              "layer-51" : true,
+              "layer-52" : true,
+              "layer-53" : true,
+              "layer-54" : true,
+              "layer-55" : true,
+              "object-layer" : true,
+              "player-layer" : true,
+              "rail-layer" : true,
+              "resource-layer" : true,
+              "train-layer" : true,
+              "transport-belt-layer" : true,
+              "water-tile" : true
+            },
+            "trigger_target_mask" : {
+              "common" : true,
+              "ground-unit" : true,
+              "ground-static" : true,
+              "rock" : true,
+              "tree" : true,
+              "flying" : true,
+              "biological" : true,
+              "mechanical" : true,
+              "character" : true,
+              "kr-tesla-coil-trigger" : true,
+              "flammable" : true
+            },
+            "force" : "enemy",
+            "repeat_count" : 1,
+            "probability" : 1,
+            "radius" : 8,
+            "trigger_from_target" : false,
+            "target_entities" : true,
+            "collision_mode" : "distance-from-collision-box",
+            "show_in_tooltip" : true
+          }
+        ],
+        "target_type" : "entity",
+        "clamp_position" : false,
+        "category" : "electric",
+        "energy_consumption" : 2000000,
+        "range_modifier" : 1,
+        "cooldown_modifier" : 1,
+        "consumption_modifier" : 1
+      },
+      "projectile_center" : {
+        "x" : 0,
+        "y" : 0
+      },
+      "projectile_creation_distance" : 0.60000002384186,
+      "projectile_orientation_offset" : 0
+    },
+    "background_color" : {
+      "r" : 0.2352941185236,
+      "g" : 0.2352941185236,
+      "b" : 0.2352941185236,
+      "a" : 0.30000001192093
+    }
+  }
+}
