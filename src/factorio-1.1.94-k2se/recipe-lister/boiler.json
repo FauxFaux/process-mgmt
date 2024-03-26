@@ -1,0 +1,191 @@
+{
+  "se-naquium-heat-pipe-long--+--" : {
+    "name" : "se-naquium-heat-pipe-long--+--",
+    "localised_name" : [
+      "entity-name.se-naquium-heat-pipe-long",
+      "--+--"
+    ],
+    "max_energy_usage" : 1e-07,
+    "target_temperature" : 10000,
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "emissions" : 0,
+        "max_temperature" : 10000,
+        "default_temperature" : 15,
+        "specific_heat" : 2000000,
+        "max_transfer" : 1666666666.6667,
+        "min_temperature_gradient" : 1,
+        "min_working_temperature" : 10000
+      }
+    },
+    "pollution" : 0
+  },
+  "se-naquium-heat-pipe-long--+-----+--" : {
+    "name" : "se-naquium-heat-pipe-long--+-----+--",
+    "localised_name" : [
+      "entity-name.se-naquium-heat-pipe-long",
+      "--+-----+--"
+    ],
+    "max_energy_usage" : 1e-07,
+    "target_temperature" : 10000,
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "emissions" : 0,
+        "max_temperature" : 10000,
+        "default_temperature" : 15,
+        "specific_heat" : 2000000,
+        "max_transfer" : 1666666666.6667,
+        "min_temperature_gradient" : 1,
+        "min_working_temperature" : 10000
+      }
+    },
+    "pollution" : 0
+  },
+  "boiler" : {
+    "name" : "boiler",
+    "localised_name" : [
+      "entity-name.boiler"
+    ],
+    "max_energy_usage" : 1500000,
+    "target_temperature" : 165,
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "burner" : {
+        "effectivity" : 1,
+        "fuel_categories" : {
+          "chemical" : true,
+          "processed-chemical" : true,
+          "vehicle-fuel" : true
+        },
+        "emissions" : 2.2222222222222e-07
+      }
+    },
+    "pollution" : 20
+  },
+  "se-big-heat-exchanger" : {
+    "name" : "se-big-heat-exchanger",
+    "localised_name" : [
+      "entity-name.se-big-heat-exchanger"
+    ],
+    "max_energy_usage" : 560000000,
+    "target_temperature" : 5000,
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "emissions" : 0,
+        "max_temperature" : 10000,
+        "default_temperature" : 15,
+        "specific_heat" : 1000000,
+        "max_transfer" : 33333333.333333,
+        "min_temperature_gradient" : 1,
+        "min_working_temperature" : 5000
+      }
+    },
+    "pollution" : 0
+  },
+  "heat-exchanger" : {
+    "name" : "heat-exchanger",
+    "localised_name" : [
+      "entity-name.heat-exchanger"
+    ],
+    "max_energy_usage" : 50000000,
+    "target_temperature" : 415,
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "emissions" : 0,
+        "max_temperature" : 1000,
+        "default_temperature" : 15,
+        "specific_heat" : 5000000,
+        "max_transfer" : 166666666.66667,
+        "min_temperature_gradient" : 1,
+        "min_working_temperature" : 415
+      }
+    },
+    "pollution" : 0
+  },
+  "se-energy-transmitter-chamber" : {
+    "name" : "se-energy-transmitter-chamber",
+    "localised_name" : [
+      "entity-name.se-energy-transmitter-chamber"
+    ],
+    "max_energy_usage" : 100000000,
+    "target_temperature" : 1000000,
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 0,
+        "emissions" : 0
+      }
+    },
+    "pollution" : 0
+  }
+}

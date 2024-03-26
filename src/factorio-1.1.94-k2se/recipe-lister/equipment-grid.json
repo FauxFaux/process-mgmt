@@ -1,0 +1,347 @@
+{
+  "kr-car-grid" : {
+    "name" : "kr-car-grid",
+    "localised_name" : [
+      "equipment-grid-name.kr-car-grid"
+    ],
+    "equipment_categories" : [
+      "universal-equipment",
+      "reactor-equipment",
+      "vehicle-robot-interaction-equipment",
+      "vehicle-equipment",
+      "vehicle-motor",
+      "armor-shield",
+      "armor-weapons",
+      "belt-immunity"
+    ],
+    "width" : 6,
+    "height" : 6
+  },
+  "kr-locomotive-grid" : {
+    "name" : "kr-locomotive-grid",
+    "localised_name" : [
+      "equipment-grid-name.kr-locomotive-grid"
+    ],
+    "equipment_categories" : [
+      "universal-equipment",
+      "reactor-equipment",
+      "vehicle-equipment",
+      "vehicle-motor",
+      "armor-shield",
+      "armor-weapons",
+      "shuttle-train"
+    ],
+    "width" : 12,
+    "height" : 12
+  },
+  "kr-spidertron-equipment-grid" : {
+    "name" : "kr-spidertron-equipment-grid",
+    "localised_name" : [
+      "equipment-grid-name.kr-spidertron-equipment-grid"
+    ],
+    "equipment_categories" : [
+      "universal-equipment",
+      "reactor-equipment",
+      "vehicle-robot-interaction-equipment",
+      "vehicle-equipment",
+      "armor-shield",
+      "armor-weapons",
+      "belt-immunity",
+      "movement-improving"
+    ],
+    "width" : 10,
+    "height" : 6
+  },
+  "kr-tank-grid" : {
+    "name" : "kr-tank-grid",
+    "localised_name" : [
+      "equipment-grid-name.kr-tank-grid"
+    ],
+    "equipment_categories" : [
+      "universal-equipment",
+      "reactor-equipment",
+      "vehicle-robot-interaction-equipment",
+      "vehicle-equipment",
+      "vehicle-motor",
+      "armor-shield",
+      "armor-weapons",
+      "belt-immunity"
+    ],
+    "width" : 6,
+    "height" : 11
+  },
+  "kr-tank-grid-2" : {
+    "name" : "kr-tank-grid-2",
+    "localised_name" : [
+      "equipment-grid-name.kr-tank-grid-2"
+    ],
+    "equipment_categories" : [
+      "universal-equipment",
+      "reactor-equipment",
+      "vehicle-robot-interaction-equipment",
+      "vehicle-equipment",
+      "vehicle-motor",
+      "armor-shield",
+      "armor-weapons",
+      "belt-immunity"
+    ],
+    "width" : 12,
+    "height" : 15
+  },
+  "kr-wagons-grid" : {
+    "name" : "kr-wagons-grid",
+    "localised_name" : [
+      "equipment-grid-name.kr-wagons-grid"
+    ],
+    "equipment_categories" : [
+      "universal-equipment",
+      "reactor-equipment",
+      "vehicle-robot-interaction-equipment",
+      "vehicle-equipment",
+      "vehicle-motor",
+      "armor-shield",
+      "armor-weapons"
+    ],
+    "width" : 6,
+    "height" : 16
+  },
+  "large-equipment-grid" : {
+    "name" : "large-equipment-grid",
+    "localised_name" : [
+      "equipment-grid-name.large-equipment-grid"
+    ],
+    "equipment_categories" : [
+      "universal-equipment",
+      "reactor-tier-1",
+      "armor",
+      "shield-tier-1",
+      "shield-tier-2",
+      "armor-jetpack",
+      "robot-interaction-equipment",
+      "combat-tier-1",
+      "combat-tier-2",
+      "belt-immunity",
+      "life-support-tier-1",
+      "life-support-tier-2",
+      "movement-improving"
+    ],
+    "width" : 8,
+    "height" : 8
+  },
+  "medium-equipment-grid" : {
+    "name" : "medium-equipment-grid",
+    "localised_name" : [
+      "equipment-grid-name.medium-equipment-grid"
+    ],
+    "equipment_categories" : [
+      "universal-equipment",
+      "reactor-tier-1",
+      "armor",
+      "armor-jetpack",
+      "robot-interaction-equipment",
+      "combat-tier-1",
+      "belt-immunity",
+      "movement-improving"
+    ],
+    "width" : 6,
+    "height" : 6
+  },
+  "mk3-armor-grid" : {
+    "name" : "mk3-armor-grid",
+    "localised_name" : [
+      "equipment-grid-name.mk3-armor-grid"
+    ],
+    "equipment_categories" : [
+      "universal-equipment",
+      "reactor-tier-1",
+      "reactor-tier-2",
+      "armor",
+      "shield-tier-1",
+      "shield-tier-2",
+      "shield-tier-3",
+      "shield-tier-4",
+      "armor-jetpack",
+      "robot-interaction-equipment",
+      "combat-tier-1",
+      "combat-tier-2",
+      "combat-tier-3",
+      "belt-immunity",
+      "life-support-tier-1",
+      "life-support-tier-2",
+      "movement-improving"
+    ],
+    "width" : 10,
+    "height" : 10
+  },
+  "mk4-armor-grid" : {
+    "name" : "mk4-armor-grid",
+    "localised_name" : [
+      "equipment-grid-name.mk4-armor-grid"
+    ],
+    "equipment_categories" : [
+      "universal-equipment",
+      "reactor-tier-1",
+      "reactor-tier-2",
+      "reactor-tier-3",
+      "armor",
+      "shield-tier-1",
+      "shield-tier-2",
+      "shield-tier-3",
+      "shield-tier-4",
+      "shield-tier-5",
+      "shield-tier-6",
+      "armor-jetpack",
+      "robot-interaction-equipment",
+      "combat-tier-1",
+      "combat-tier-2",
+      "combat-tier-3",
+      "combat-tier-4",
+      "belt-immunity",
+      "life-support-tier-1",
+      "life-support-tier-2",
+      "movement-improving"
+    ],
+    "width" : 12,
+    "height" : 12
+  },
+  "se-thruster-suit-2-grid" : {
+    "name" : "se-thruster-suit-2-grid",
+    "localised_name" : [
+      "equipment-grid-name.se-thruster-suit-2-grid"
+    ],
+    "equipment_categories" : [
+      "universal-equipment",
+      "reactor-tier-1",
+      "reactor-tier-2",
+      "armor",
+      "shield-tier-1",
+      "shield-tier-2",
+      "shield-tier-3",
+      "shield-tier-4",
+      "armor-jetpack",
+      "robot-interaction-equipment",
+      "belt-immunity",
+      "life-support-tier-1",
+      "life-support-tier-2",
+      "movement-improving"
+    ],
+    "width" : 10,
+    "height" : 10
+  },
+  "se-thruster-suit-3-grid" : {
+    "name" : "se-thruster-suit-3-grid",
+    "localised_name" : [
+      "equipment-grid-name.se-thruster-suit-3-grid"
+    ],
+    "equipment_categories" : [
+      "universal-equipment",
+      "reactor-tier-1",
+      "reactor-tier-2",
+      "armor",
+      "shield-tier-1",
+      "shield-tier-2",
+      "shield-tier-3",
+      "shield-tier-4",
+      "shield-tier-5",
+      "armor-jetpack",
+      "robot-interaction-equipment",
+      "belt-immunity",
+      "life-support-tier-1",
+      "life-support-tier-2",
+      "life-support-tier-3",
+      "movement-improving"
+    ],
+    "width" : 12,
+    "height" : 14
+  },
+  "se-thruster-suit-4-grid" : {
+    "name" : "se-thruster-suit-4-grid",
+    "localised_name" : [
+      "equipment-grid-name.se-thruster-suit-4-grid"
+    ],
+    "equipment_categories" : [
+      "universal-equipment",
+      "reactor-tier-1",
+      "reactor-tier-2",
+      "reactor-tier-3",
+      "armor",
+      "shield-tier-1",
+      "shield-tier-2",
+      "shield-tier-3",
+      "shield-tier-4",
+      "shield-tier-5",
+      "shield-tier-6",
+      "armor-jetpack",
+      "robot-interaction-equipment",
+      "belt-immunity",
+      "life-support-tier-1",
+      "life-support-tier-2",
+      "life-support-tier-3",
+      "life-support-tier-4",
+      "movement-improving"
+    ],
+    "width" : 16,
+    "height" : 16
+  },
+  "se-thruster-suit-grid" : {
+    "name" : "se-thruster-suit-grid",
+    "localised_name" : [
+      "equipment-grid-name.se-thruster-suit-grid"
+    ],
+    "equipment_categories" : [
+      "universal-equipment",
+      "reactor-tier-1",
+      "armor",
+      "shield-tier-1",
+      "shield-tier-2",
+      "shield-tier-3",
+      "armor-jetpack",
+      "robot-interaction-equipment",
+      "belt-immunity",
+      "life-support-tier-1",
+      "life-support-tier-2",
+      "movement-improving"
+    ],
+    "width" : 8,
+    "height" : 8
+  },
+  "shuttle-train" : {
+    "name" : "shuttle-train",
+    "localised_name" : [
+      "equipment-grid-name.shuttle-train"
+    ],
+    "equipment_categories" : [
+      "shuttle-train"
+    ],
+    "width" : 2,
+    "height" : 2
+  },
+  "small-equipment-grid" : {
+    "name" : "small-equipment-grid",
+    "localised_name" : [
+      "equipment-grid-name.small-equipment-grid"
+    ],
+    "equipment_categories" : [
+      "universal-equipment",
+      "armor",
+      "armor-jetpack",
+      "robot-interaction-equipment",
+      "combat-tier-1",
+      "belt-immunity",
+      "movement-improving"
+    ],
+    "width" : 4,
+    "height" : 4
+  },
+  "spidertron-equipment-grid" : {
+    "name" : "spidertron-equipment-grid",
+    "localised_name" : [
+      "equipment-grid-name.spidertron-equipment-grid"
+    ],
+    "equipment_categories" : [
+      "armor"
+    ],
+    "width" : 10,
+    "height" : 6
+  }
+}

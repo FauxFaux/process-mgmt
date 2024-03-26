@@ -1,0 +1,268 @@
+{
+  "burner-lab" : {
+    "name" : "burner-lab",
+    "localised_name" : [
+      "entity-name.burner-lab"
+    ],
+    "energy_usage" : 60000,
+    "lab_inputs" : [
+      "basic-tech-card",
+      "automation-science-pack"
+    ],
+    "researching_speed" : 1,
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "burner" : {
+        "effectivity" : 0.9,
+        "fuel_categories" : {
+          "chemical" : true,
+          "processed-chemical" : true,
+          "vehicle-fuel" : true
+        },
+        "emissions" : 1.1111111111111e-06
+      }
+    },
+    "pollution" : 4
+  },
+  "lab" : {
+    "name" : "lab",
+    "localised_name" : [
+      "entity-name.lab"
+    ],
+    "energy_usage" : 200000,
+    "lab_inputs" : [
+      "basic-tech-card",
+      "automation-science-pack",
+      "logistic-science-pack",
+      "military-science-pack",
+      "chemical-science-pack",
+      "se-rocket-science-pack"
+    ],
+    "researching_speed" : 1,
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 0,
+        "emissions" : 0
+      }
+    },
+    "pollution" : 0
+  },
+  "biusart-lab" : {
+    "name" : "biusart-lab",
+    "localised_name" : [
+      "entity-name.biusart-lab"
+    ],
+    "energy_usage" : 250000,
+    "lab_inputs" : [
+      "basic-tech-card",
+      "automation-science-pack",
+      "logistic-science-pack",
+      "military-science-pack",
+      "chemical-science-pack",
+      "se-rocket-science-pack",
+      "space-science-pack",
+      "production-science-pack",
+      "utility-science-pack",
+      "kr-optimization-tech-card"
+    ],
+    "researching_speed" : 2.5,
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 0,
+        "emissions" : 0
+      }
+    },
+    "pollution" : 0
+  },
+  "se-space-science-lab" : {
+    "name" : "se-space-science-lab",
+    "localised_name" : [
+      "entity-name.se-space-science-lab"
+    ],
+    "energy_usage" : 1000000,
+    "lab_inputs" : [
+      "basic-tech-card",
+      "automation-science-pack",
+      "logistic-science-pack",
+      "military-science-pack",
+      "chemical-science-pack",
+      "se-rocket-science-pack",
+      "space-science-pack",
+      "production-science-pack",
+      "utility-science-pack",
+      "kr-optimization-tech-card",
+      "advanced-tech-card",
+      "se-astronomic-science-pack-1",
+      "se-astronomic-science-pack-2",
+      "se-astronomic-science-pack-3",
+      "se-astronomic-science-pack-4",
+      "se-biological-science-pack-1",
+      "se-biological-science-pack-2",
+      "se-biological-science-pack-3",
+      "se-biological-science-pack-4",
+      "se-energy-science-pack-1",
+      "se-energy-science-pack-2",
+      "se-energy-science-pack-3",
+      "se-energy-science-pack-4",
+      "se-material-science-pack-1",
+      "se-material-science-pack-2",
+      "se-material-science-pack-3",
+      "se-material-science-pack-4",
+      "matter-tech-card"
+    ],
+    "researching_speed" : 5,
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 0,
+        "emissions" : 0
+      }
+    },
+    "pollution" : 0
+  },
+  "kr-singularity-lab" : {
+    "name" : "kr-singularity-lab",
+    "localised_name" : [
+      "entity-name.kr-singularity-lab"
+    ],
+    "energy_usage" : 10000000,
+    "lab_inputs" : [
+      "basic-tech-card",
+      "automation-science-pack",
+      "logistic-science-pack",
+      "military-science-pack",
+      "chemical-science-pack",
+      "se-rocket-science-pack",
+      "space-science-pack",
+      "production-science-pack",
+      "utility-science-pack",
+      "kr-optimization-tech-card",
+      "advanced-tech-card",
+      "singularity-tech-card",
+      "se-astronomic-science-pack-1",
+      "se-astronomic-science-pack-2",
+      "se-astronomic-science-pack-3",
+      "se-astronomic-science-pack-4",
+      "se-biological-science-pack-1",
+      "se-biological-science-pack-2",
+      "se-biological-science-pack-3",
+      "se-biological-science-pack-4",
+      "se-energy-science-pack-1",
+      "se-energy-science-pack-2",
+      "se-energy-science-pack-3",
+      "se-energy-science-pack-4",
+      "se-material-science-pack-1",
+      "se-material-science-pack-2",
+      "se-material-science-pack-3",
+      "se-material-science-pack-4",
+      "matter-tech-card",
+      "se-kr-matter-science-pack-2",
+      "se-deep-space-science-pack-1",
+      "se-deep-space-science-pack-2",
+      "se-deep-space-science-pack-3",
+      "se-deep-space-science-pack-4"
+    ],
+    "researching_speed" : 10,
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 96,
+      "b" : 145,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 255,
+      "g" : 25,
+      "b" : 25,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 0,
+        "emissions" : 0
+      }
+    },
+    "pollution" : 0
+  },
+  "kr-crash-site-lab-repaired" : {
+    "name" : "kr-crash-site-lab-repaired",
+    "localised_name" : [
+      "entity-name.kr-damaged-ship-research-computer"
+    ],
+    "energy_usage" : 60000,
+    "lab_inputs" : [
+      "basic-tech-card"
+    ],
+    "researching_speed" : 1,
+    "map_color" : {
+      "r" : 0,
+      "g" : 93,
+      "b" : 147,
+      "a" : 255
+    },
+    "friendly_map_color" : {
+      "r" : 0,
+      "g" : 93,
+      "b" : 147,
+      "a" : 255
+    },
+    "enemy_map_color" : {
+      "r" : 0,
+      "g" : 93,
+      "b" : 147,
+      "a" : 255
+    },
+    "energy_source" : {
+      "electric" : {
+        "drain" : 0,
+        "emissions" : 1.1111111111111e-06
+      }
+    },
+    "pollution" : 4
+  }
+}
