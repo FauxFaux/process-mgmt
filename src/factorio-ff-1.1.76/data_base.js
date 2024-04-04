@@ -66,12 +66,12 @@ const _recipe_has_fluid_temperature = function (recipe) {
 };
 
 const _add_basic_recipe = function (data, recipe) {
-    recipe.ingredients.forEach((ingredient) => {
+    for (const ingredient of recipe.ingredients) {
         check_add([recipe, ingredient], () => add_item(data, ingredient.name));
-    });
-    recipe.products.forEach((product) => {
+    }
+    for (const product of recipe.products) {
         check_add([recipe, product], () => add_item(data, product.name));
-    });
+    }
     check_add([recipe, recipe.category], () => {
         if (!data.factory_groups[recipe.category]) {
             data.add_factory_group(new FactoryGroup(recipe.category));
@@ -100,7 +100,7 @@ const _add_temperature_recipe = function (
             data.add_factory_group(new FactoryGroup(recipe.category));
         }
     });
-    recipe.ingredients.forEach((ingredient) => {
+    for (const ingredient of recipe.ingredients) {
         if (ingredient.minimum_temperature || ingredient.maximum_temperature) {
             // pass; should already be added?
         } else {
@@ -108,10 +108,10 @@ const _add_temperature_recipe = function (
                 add_item(data, ingredient.name),
             );
         }
-    });
-    recipe.products.forEach((product) => {
+    }
+    for (const product of recipe.products) {
         check_add([recipe, product], () => add_item(data, product.name));
-    });
+    }
 
     const ingredient_variations = cross_product_ingredients(
         data,
@@ -119,7 +119,7 @@ const _add_temperature_recipe = function (
         temperature_based_items,
     );
     check_add(recipe, () => {
-        ingredient_variations.forEach((variation, idx) => {
+        for (const [idx, variation] of ingredient_variations.entries()) {
             data.add_process(
                 new Process(
                     recipe.name + '--' + idx,
@@ -129,7 +129,7 @@ const _add_temperature_recipe = function (
                     data.factory_groups[recipe.category],
                 ),
             );
-        });
+        }
     });
 };
 
@@ -138,11 +138,11 @@ const compute_permutations = function (input, out) {
     const entry = input.shift();
     if (out) {
         const r = [];
-        out.forEach((o) => {
-            entry.forEach((e) => {
+        for (const o of out) {
+            for (const e of entry) {
                 r.push(o.concat(e));
-            });
-        });
+            }
+        }
         return compute_permutations(input, r);
     } else {
         return compute_permutations(
@@ -187,15 +187,15 @@ const cross_product_ingredients = function (
 };
 
 const add_factory_groups = function (data, group) {
-    Object.values(group).forEach((factory) => {
+    for (const factory of Object.values(group)) {
         check_add([factory, factory.crafting_categories], () => {
-            Object.keys(factory.crafting_categories).forEach(
-                (category_name) => {
-                    if (!data.factory_groups[category_name]) {
-                        data.add_factory_group(new FactoryGroup(category_name));
-                    }
-                },
-            );
+            for (const category_name of Object.keys(
+                factory.crafting_categories,
+            )) {
+                if (!data.factory_groups[category_name]) {
+                    data.add_factory_group(new FactoryGroup(category_name));
+                }
+            }
         });
         check_add(factory, () => {
             data.add_factory(
@@ -209,7 +209,7 @@ const add_factory_groups = function (data, group) {
                 ),
             );
         });
-    });
+    }
 };
 
 const _add_temperature_based_item = function (
@@ -239,10 +239,10 @@ async function create_data(game, version) {
             // enumerate all possible temperatures for fluids.
             // create temperature based items for each.
 
-            Object.values(recipe_raw).forEach((recipe) => {
+            for (const recipe of Object.values(recipe_raw)) {
                 if (!Array.isArray(recipe.ingredients)) recipe.ingredients = [];
                 if (!Array.isArray(recipe.products)) recipe.products = [];
-                recipe.products.forEach((product) => {
+                for (const product of recipe.products) {
                     if (product.temperature) {
                         const temp = product.temperature;
                         const item = check_add([recipe, product], () =>
@@ -262,17 +262,17 @@ async function create_data(game, version) {
                             add_item(data, product.name),
                         );
                     }
-                });
-            });
+                }
+            }
 
             // if a process has one of the temperature fluids as an input then create multiple variants
 
-            Object.values(recipe_raw).forEach((recipe) => {
+            for (const recipe of Object.values(recipe_raw)) {
                 check_add(recipe, () => {
                     if (!Array.isArray(recipe.ingredients))
                         recipe.ingredients = [];
                     if (!Array.isArray(recipe.products)) recipe.products = [];
-                    recipe.ingredients.forEach((i) => {
+                    for (const i of recipe.ingredients) {
                         if (i.temperature) {
                             i.minimum_temperature = i.temperature;
                             i.maximum_temperature = i.temperature;
@@ -307,7 +307,7 @@ async function create_data(game, version) {
                                 item,
                             );
                         }
-                    });
+                    }
 
                     if (_recipe_has_fluid_temperature(recipe)) {
                         _add_temperature_recipe(
@@ -319,7 +319,7 @@ async function create_data(game, version) {
                         _add_basic_recipe(data, recipe);
                     }
                 });
-            });
+            }
             return data;
         });
 
@@ -334,9 +334,9 @@ async function create_data(game, version) {
     );
     return Promise.all([data_p, ...groups_p]).then((arr) => {
         const data = arr.shift();
-        arr.forEach((g) => {
+        for (const g of arr) {
             add_factory_groups(data, g);
-        });
+        }
         return data;
     });
 }

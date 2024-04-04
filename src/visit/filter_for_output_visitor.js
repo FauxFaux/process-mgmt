@@ -37,12 +37,12 @@ class FilterForOutput extends ProcessChainVisitor {
             if (process && !visited_processes.includes(process.id)) {
                 result.push(process);
                 visited_processes.push(process.id);
-                process.inputs
+                for (const input of process.inputs
                     .filter((input) => !queue.includes(input.item.id))
                     .filter(
                         (input) => !visited_item_ids.includes(input.item.id),
-                    )
-                    .forEach((input) => queue.push(input.item.id));
+                    ))
+                    queue.push(input.item.id);
             }
         }
         this.allowed_processes = result;

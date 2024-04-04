@@ -26,14 +26,14 @@ const setup_data = function () {
 };
 
 const add_items_to_data = function (data, items) {
-    items.forEach((e) => data.add_item(new Item(e, e)));
+    for (const e of items) data.add_item(new Item(e, e));
 };
 
 /**
  * processes: object with entries like 'C': {"in": ['a', 'b'], "out": ['c']}
  */
 const add_processes_to_data = function (data, processes) {
-    Object.entries(processes).forEach((e) => {
+    for (const e of Object.entries(processes)) {
         data.add_process(
             new Process(
                 e[0], // id
@@ -43,7 +43,7 @@ const add_processes_to_data = function (data, processes) {
                 data.factory_groups.basic_group,
             ),
         );
-    });
+    }
 };
 
 const item_to_stack = function (data, item) {

@@ -16,15 +16,13 @@ class ProcessCountVisitor {
     build() {
         this.chain.rebuild_materials = function () {
             const materials = new StackSet();
-            this.processes.forEach((proc) => {
+            for (const proc of this.processes) {
                 const process_count = this.process_counts[proc.id];
-                proc.outputs.forEach((output) =>
-                    materials.add(output.mul(process_count)),
-                );
-                proc.inputs.forEach((input) =>
-                    materials.sub(input.mul(process_count)),
-                );
-            });
+                for (const output of proc.outputs)
+                    materials.add(output.mul(process_count));
+                for (const input of proc.inputs)
+                    materials.sub(input.mul(process_count));
+            }
             this.materials = materials;
         };
         return this.chain;

@@ -17,11 +17,11 @@ const mineable_ores = [
     'crotinnium',
     'jivolite',
 ];
-mineable_ores.forEach((ore) => {
+for (const ore of mineable_ores) {
     data.add_item(new Item('ore_' + ore, ore + ' ore'));
     data.add_item(new Item('crushed_' + ore, ore + ' crushed'));
     data.add_item(new Item('chunks_' + ore, ore + ' chunks'));
-});
+}
 data.add_items([
     new Item('crushed_stone', 'crushed stone'),
     new Item('sludge_mineral', 'mineral sludge'),

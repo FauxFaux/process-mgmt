@@ -39,25 +39,25 @@ const data_p = import('./exported-data.json', { assert: { type: 'json' } })
     .then((module) => module.default)
     .then((raw) => {
         const data = new Data('factorio-ab-01', '0.0.1');
-        raw.recipes.forEach((recipe) => {
-            if (!recipe.name) return; // ignore '{}'
+        for (const recipe of raw.recipes) {
+            if (!recipe.name) continue; // ignore '{}'
             check_add(recipe, function () {
                 const name = fix_identifier(recipe.name);
-                recipe.ingredients.forEach((ing) => {
+                for (const ing of recipe.ingredients) {
                     const ing_name = fix_identifier(ing.name);
                     if (!data.items[ing_name]) {
                         data.add_item(new Item(ing_name, ing_name));
                     }
-                });
+                }
             });
-            recipe.products.forEach((ing) => {
+            for (const ing of recipe.products) {
                 const ing_name = fix_identifier(ing.name);
                 if (!data.items[ing_name]) {
                     check_add(recipe, () =>
                         data.add_item(new Item(ing_name, ing_name)),
                     );
                 }
-            });
+            }
             const inputs = recipe.ingredients.map((ing) =>
                 convert_ingredient(ing, recipe),
             );
@@ -89,17 +89,17 @@ const data_p = import('./exported-data.json', { assert: { type: 'json' } })
                     data.factory_groups[category],
                 ),
             );
-        });
+        }
 
-        raw.craftingMachines.forEach((machine) => {
-            if (!machine.name) return; // ignore '{}'
+        for (const machine of raw.craftingMachines) {
+            if (!machine.name) continue; // ignore '{}'
             check_add(machine, function () {
-                Object.keys(machine.categories).forEach((cat) => {
+                for (const cat of Object.keys(machine.categories)) {
                     const category_name = fix_identifier(cat);
                     if (!data.factory_groups[category_name]) {
                         data.add_factory_group(new FactoryGroup(category_name));
                     }
-                });
+                }
                 const machine_name = fix_identifier(machine.name);
                 data.add_factory(
                     new Factory(
@@ -112,7 +112,7 @@ const data_p = import('./exported-data.json', { assert: { type: 'json' } })
                     ),
                 );
             });
-        });
+        }
         return data;
     });
 

@@ -60,10 +60,10 @@ class RateChain extends ProcessChain {
                     process_counts[process.id] = 0;
                 }
                 process_counts[process.id] += process_count;
-                process.outputs.forEach((input) => {
+                for (const input of process.outputs) {
                     materials.add(input.mul(process_count));
-                });
-                process.inputs.forEach((input) => {
+                }
+                for (const input of process.inputs) {
                     // if I have more than enough of this input already
                     // have 6 already, need 4 for this, then push nothing onto the queue. subtract 4 from materials.
                     // have 2 already, need 6 for this, then push 4 onto the queue. subtract 6 from the materials.
@@ -77,7 +77,7 @@ class RateChain extends ProcessChain {
                             queue.push(remaining_required.mul(-1));
                         }
                     }
-                });
+                }
             }
         }
         this.materials = materials;
@@ -87,15 +87,13 @@ class RateChain extends ProcessChain {
 
     rebuild_materials() {
         const materials = new StackSet();
-        this.processes.forEach((proc) => {
+        for (const proc of this.processes) {
             const process_count = this.process_counts[proc.id];
-            proc.outputs.forEach((output) =>
-                materials.add(output.mul(process_count)),
-            );
-            proc.inputs.forEach((input) =>
-                materials.sub(input.mul(process_count)),
-            );
-        });
+            for (const output of proc.outputs)
+                materials.add(output.mul(process_count));
+            for (const input of proc.inputs)
+                materials.sub(input.mul(process_count));
+        }
         this.materials = materials;
     }
 

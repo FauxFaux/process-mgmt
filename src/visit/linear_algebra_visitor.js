@@ -8,8 +8,8 @@ class Column {
     constructor(process) {
         this.process = process;
         this.entries = new StackSet();
-        process.inputs.forEach((s) => this.entries.sub(s));
-        process.outputs.forEach((s) => this.entries.add(s));
+        for (const s of process.inputs) this.entries.sub(s);
+        for (const s of process.outputs) this.entries.add(s);
     }
 
     items() {
@@ -55,11 +55,11 @@ class LinearAlgebra extends ProcessChainVisitor {
     visit_process(process, _chain) {
         const c = new Column(process);
         this.columns.push(c);
-        c.items().forEach((i) => {
+        for (const i of c.items()) {
             if (!this.items.includes(i)) {
                 this.items.push(i);
             }
-        });
+        }
     }
 
     _sort_columns_and_rows() {
@@ -77,7 +77,7 @@ class LinearAlgebra extends ProcessChainVisitor {
 
     _print_columns() {
         if (!this.print_matricies) return;
-        this.columns.forEach((col) => {
+        for (const col of this.columns) {
             console.log(
                 col.process.id,
                 'items: ',
@@ -89,7 +89,7 @@ class LinearAlgebra extends ProcessChainVisitor {
                     })
                     .join(', '),
             );
-        });
+        }
     }
 
     _print_matrix(identifier, matrix) {

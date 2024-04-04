@@ -38,10 +38,10 @@ class RateCalculator extends ProcessChainVisitor {
                     process_counts[process.id] = 0;
                 }
                 process_counts[process.id] += process_count;
-                process.outputs.forEach((output) => {
+                for (const output of process.outputs) {
                     materials.add(output.mul(process_count));
-                });
-                process.inputs.forEach((input) => {
+                }
+                for (const input of process.inputs) {
                     // if I have more than enough of this input already
                     // have 0 already, need 1 for this, then push 1 onto the queue. subtract 1 from materials.
                     // have 6 already, need 4 for this, then push nothing onto the queue. subtract 4 from materials.
@@ -67,7 +67,7 @@ class RateCalculator extends ProcessChainVisitor {
                         queue.push(requirement_to_push);
                     }
                     materials.sub(required_for_count);
-                });
+                }
             }
         }
         this.materials = materials;
