@@ -8,10 +8,10 @@ import { Stack } from '../../../src/stack.js';
 
 import { default as create_data } from '../../../src/factorio-py-1.1.53/data_base.js';
 
-let RECIPES = 'recipe.json';
-let ASSEMBLERS = 'assembling-machine.json';
-let FURNACES = 'furnace.json';
-let SILO = 'rocket-silo.json';
+const RECIPES = 'recipe.json';
+const ASSEMBLERS = 'assembling-machine.json';
+const FURNACES = 'furnace.json';
+const SILO = 'rocket-silo.json';
 
 import {
     single_mixed_recipe,
@@ -22,7 +22,7 @@ import {
 
 describe('Data Parsing', function () {
     describe('standard solid processes', function () {
-        let result = create_data('f', '1', (path) => {
+        const result = create_data('f', '1', (path) => {
             switch (path) {
                 case RECIPES:
                     return new Promise((rs, _) => rs(single_solids_recipe));
@@ -53,7 +53,7 @@ describe('Data Parsing', function () {
         });
     });
     describe('temperature restricted processes', function () {
-        let result = create_data('f', '1', (path) => {
+        const result = create_data('f', '1', (path) => {
             switch (path) {
                 case RECIPES:
                     return new Promise((rs, _) =>
@@ -134,7 +134,7 @@ describe('Data Parsing', function () {
         });
     });
     describe('temperature restricted processes; 2 input options', function () {
-        let result = create_data('f', '1', (path) => {
+        const result = create_data('f', '1', (path) => {
             switch (path) {
                 case RECIPES:
                     return new Promise((rs, _) =>
@@ -264,9 +264,9 @@ describe('Data Parsing', function () {
 
 const ff = function (input, out) {
     if (input.length == 0) return out;
-    let entry = input.shift();
+    const entry = input.shift();
     if (out) {
-        let r = [];
+        const r = [];
         out.forEach((o) => {
             entry.forEach((e) => {
                 r.push(o.concat(e));
@@ -283,26 +283,26 @@ const ff = function (input, out) {
 
 describe('combinatorics', () => {
     it('expands 1x1', () => {
-        let result = ff([['x']]);
+        const result = ff([['x']]);
         assert.deepStrictEqual(result, [['x']]);
     });
     it('expands 1x2', () => {
-        let result = ff([['x', 'y']]);
+        const result = ff([['x', 'y']]);
         assert.deepStrictEqual(result, [['x'], ['y']]);
     });
     it('expands 2x1', () => {
-        let result = ff([['x'], ['y']]);
+        const result = ff([['x'], ['y']]);
         assert.deepStrictEqual(result, [['x', 'y']]);
     });
     it('expands 2.1', () => {
-        let result = ff([['x', 'y'], ['a']]);
+        const result = ff([['x', 'y'], ['a']]);
         assert.deepStrictEqual(result, [
             ['x', 'a'],
             ['y', 'a'],
         ]);
     });
     it('expands 2.2', () => {
-        let result = ff([
+        const result = ff([
             ['x', 'y'],
             ['a', 'b'],
         ]);
@@ -314,7 +314,7 @@ describe('combinatorics', () => {
         ]);
     });
     it('expands 2.2.2', () => {
-        let result = ff([
+        const result = ff([
             ['x', 'y'],
             ['a', 'b'],
             ['p', 'q'],

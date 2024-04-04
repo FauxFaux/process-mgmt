@@ -1,4 +1,4 @@
-let single_solids_recipe = {
+const single_solids_recipe = {
     'copper-plate': {
         name: 'copper-plate',
         localised_name: ['item-name.copper-plate'],
@@ -30,7 +30,7 @@ let single_solids_recipe = {
     },
 };
 
-let single_temperature_recipe = {
+const single_temperature_recipe = {
     'warmer-stone-brick-1': {
         name: 'warmer-stone-brick-1',
         localised_name: ['item-name.warmer-stone-brick'],
@@ -119,7 +119,7 @@ let single_temperature_recipe = {
     },
 };
 
-let multiple_temperature_recipe = {
+const multiple_temperature_recipe = {
     'warmer-stone-brick-1': {
         name: 'warmer-stone-brick-1',
         localised_name: ['item-name.warmer-stone-brick'],
@@ -235,7 +235,7 @@ let multiple_temperature_recipe = {
     },
 };
 
-let single_mixed_recipe = {
+const single_mixed_recipe = {
     'warmer-air-2': {
         name: 'warmer-air-2',
         localised_name: ['fluid-name.hot-air'],

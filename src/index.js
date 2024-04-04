@@ -16,7 +16,7 @@ import { ProcessCountVisitor } from './visit/process_count_visitor.js';
 
 const array_disambiguate = function (data, config) {
     return function (requirement, options) {
-        let arr = Object.entries(config.get_process_choices())
+        const arr = Object.entries(config.get_process_choices())
             .map((e) => {
                 return [data.items[e[0]].id, data.processes[e[1]]];
             })
@@ -73,7 +73,7 @@ const array_disambiguate = function (data, config) {
 const quickest_factory_for_factory_type = function (data, factory_type) {
     return Object.values(data.factories)
         .filter((f) => {
-            let g = f.groups.filter((ft) => {
+            const g = f.groups.filter((ft) => {
                 return ft.id == factory_type.id;
             });
             return g.length != 0; // When `g` is not empty, the factory can handle the process.
@@ -83,8 +83,8 @@ const quickest_factory_for_factory_type = function (data, factory_type) {
 
 const command_all = function (argv) {
     import('./' + argv.data + '/data.js').then((module) => {
-        let data = module.data;
-        let p = new ProcessChain(Object.values(data.processes));
+        const data = module.data;
+        const p = new ProcessChain(Object.values(data.processes));
         console.log(p.to_graphviz());
     });
 };
@@ -133,9 +133,9 @@ const decorate_config = function (config) {
         process_factory_group_id,
         fallback_cb,
     ) {
-        let per_process = optional(config.factory_types, {})[process_id];
+        const per_process = optional(config.factory_types, {})[process_id];
         if (per_process) return data.factories[per_process];
-        let per_group = optional(config.factory_type_defaults, {})[
+        const per_group = optional(config.factory_type_defaults, {})[
             process_factory_group_id
         ];
         if (per_group) return data.factories[per_group];
@@ -179,12 +179,12 @@ const decorate_config = function (config) {
 
 const command_linear_algebra = function (argv) {
     fs.readFile(argv.config, 'utf8', (_err, str) => {
-        let config = decorate_config(JSON.parse(str));
+        const config = decorate_config(JSON.parse(str));
         import('./' + config.data + '/data.js')
             .catch((e) => console.log('failed to import', config.data, e))
             .then((module) => module.default)
             .then((data) => {
-                let g = new ProcessChain(Object.values(data.processes))
+                const g = new ProcessChain(Object.values(data.processes))
                     .filter_for_output(
                         config.get_requirement(data),
                         array_disambiguate(data, config),
@@ -282,9 +282,9 @@ const process_to_pretty_string = function (p, data) {
 
 const command_what_produces = function (argv) {
     import('./' + argv.data + '/data.js').then((module) => {
-        let data = module.data;
-        let p = new ProcessChain(Object.values(data.processes));
-        let options = p.processes_by_output[argv.produces];
+        const data = module.data;
+        const p = new ProcessChain(Object.values(data.processes));
+        const options = p.processes_by_output[argv.produces];
         console.log(
             options.map((p) => process_to_pretty_string(p, data)).join('\n'),
         );
@@ -293,9 +293,9 @@ const command_what_produces = function (argv) {
 
 const command_what_uses = function (argv) {
     import('./' + argv.data + '/data.js').then((module) => {
-        let data = module.data;
-        let p = new ProcessChain(Object.values(data.processes));
-        let options = p.processes_by_input[argv.uses];
+        const data = module.data;
+        const p = new ProcessChain(Object.values(data.processes));
+        const options = p.processes_by_input[argv.uses];
         console.log(
             options.map((p) => process_to_pretty_string(p, data)).join('\n'),
         );

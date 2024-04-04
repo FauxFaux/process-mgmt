@@ -41,10 +41,10 @@ class RateGraphRenderer extends ProcessChainVisitor {
     }
 
     visit_item(item, chain) {
-        let produce =
+        const produce =
             Math.round(chain.materials.total_positive(item).quantity * 100) /
             100;
-        let consume =
+        const consume =
             Math.round(
                 chain.materials.total_negative(item).mul(-1).quantity * 100,
             ) / 100;
@@ -68,8 +68,8 @@ class RateGraphRenderer extends ProcessChainVisitor {
     }
 
     visit_process(process, chain) {
-        let process_count = chain.process_counts[process.id];
-        let inputs = process.inputs
+        const process_count = chain.process_counts[process.id];
+        const inputs = process.inputs
             .map((input, index) => {
                 return (
                     '<i' +
@@ -82,7 +82,7 @@ class RateGraphRenderer extends ProcessChainVisitor {
                 );
             })
             .join(' | ');
-        let outputs = process.outputs
+        const outputs = process.outputs
             .map((output, index) => {
                 return (
                     '<o' +
@@ -133,11 +133,12 @@ class RateGraphRenderer extends ProcessChainVisitor {
     }
 
     visit_item_process_edge(stack, process, chain, index) {
-        let process_count = chain.process_counts[process.id];
-        let input_rate = process.inputs.find(
+        const process_count = chain.process_counts[process.id];
+        const input_rate = process.inputs.find(
             (i) => i.item.id === stack.item.id,
         );
-        let rate = Math.round(input_rate.quantity * process_count * 100) / 100;
+        const rate =
+            Math.round(input_rate.quantity * process_count * 100) / 100;
         this.out.push(
             '  ' +
                 fix_identifier(stack.item.id) +

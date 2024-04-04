@@ -15,9 +15,9 @@ class ProcessCountVisitor {
     }
     build() {
         this.chain.rebuild_materials = function () {
-            let materials = new StackSet();
+            const materials = new StackSet();
             this.processes.forEach((proc) => {
-                let process_count = this.process_counts[proc.id];
+                const process_count = this.process_counts[proc.id];
                 proc.outputs.forEach((output) =>
                     materials.add(output.mul(process_count)),
                 );

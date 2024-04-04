@@ -117,10 +117,10 @@ class StackSet {
             .filter((i) => !ignoring.includes(i))
             .map((id) => this.stacks[id][0].item)
             .map((item) => {
-                let total_p = this.total_positive(item);
-                let total_n = this.total_negative(item);
-                let total = total_p.add(total_n);
-                let margin = total.div(total_p.sub(total_n).quantity); // m = total / (p + (-1*n))
+                const total_p = this.total_positive(item);
+                const total_n = this.total_negative(item);
+                const total = total_p.add(total_n);
+                const margin = total.div(total_p.sub(total_n).quantity); // m = total / (p + (-1*n))
                 return margin;
             })
             .reduce((acc, m) => {
@@ -135,10 +135,10 @@ class StackSet {
             .filter((i) => !ignoring.includes(i))
             .map((id) => this.stacks[id][0].item)
             .map((item) => {
-                let total_p = this.total_positive(item);
-                let total_n = this.total_negative(item);
-                let total = total_p.add(total_n);
-                let margin = total.div(total_p.sub(total_n).quantity); // m = total / (p + (-1*n))
+                const total_p = this.total_positive(item);
+                const total_n = this.total_negative(item);
+                const total = total_p.add(total_n);
+                const margin = total.div(total_p.sub(total_n).quantity); // m = total / (p + (-1*n))
                 return margin;
             })
             .map((m) => m.pow(2))

@@ -20,7 +20,7 @@ function data_from_standard_json(name, version, json_import_p) {
     return json_import_p
         .then((module) => module.default)
         .then((raw) => {
-            let data = new Data(name, version);
+            const data = new Data(name, version);
 
             raw.items.forEach((i) =>
                 check_add(i, () => {
@@ -38,13 +38,13 @@ function data_from_standard_json(name, version, json_import_p) {
                         ),
                     );
                 }
-                let inputs = Object.entries(p.inputs).map((e) => {
+                const inputs = Object.entries(p.inputs).map((e) => {
                     return check_add(
                         p,
                         () => new Stack(data.items[e[0]], e[1]),
                     );
                 });
-                let outputs = Object.entries(p.outputs).map((e) => {
+                const outputs = Object.entries(p.outputs).map((e) => {
                     return check_add(
                         p,
                         () => new Stack(data.items[e[0]], e[1]),

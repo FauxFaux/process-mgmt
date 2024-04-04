@@ -16,7 +16,7 @@ import { Item } from '../../src/item.js';
 */
 
 const setup_data = function () {
-    let data = new Data('cycles_test', '0.0.1');
+    const data = new Data('cycles_test', '0.0.1');
 
     data.add_factory_group(new FactoryGroup('basic_group'));
     data.add_factory(

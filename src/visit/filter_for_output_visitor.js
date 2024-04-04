@@ -22,17 +22,17 @@ class FilterForOutput extends ProcessChainVisitor {
     }
 
     init(chain) {
-        let result = [];
-        let visited_item_ids = [];
-        let visited_processes = [];
-        let queue = [this.output_item.id];
+        const result = [];
+        const visited_item_ids = [];
+        const visited_processes = [];
+        const queue = [this.output_item.id];
         while (queue.length > 0) {
-            let current = queue.shift();
+            const current = queue.shift();
             visited_item_ids.push(current);
             if (this.ignored.includes(current)) {
                 continue;
             }
-            let process = select_process(chain, current, this.priority_cb);
+            const process = select_process(chain, current, this.priority_cb);
 
             if (process && !visited_processes.includes(process.id)) {
                 result.push(process);

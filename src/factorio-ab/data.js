@@ -7,9 +7,9 @@ import {
     Process,
 } from '../structures.js';
 
-let data = new Data('factorio-ab', '0.0.1');
+const data = new Data('factorio-ab', '0.0.1');
 
-let mineable_ores = [
+const mineable_ores = [
     'saphirite',
     'stiratite',
     'rubyte',
@@ -47,7 +47,7 @@ data.add_items([
     new Item('copper_plate', 'copper plate'),
     new Item('circuit', 'circuit'),
 ]);
-let items = data.items;
+const items = data.items;
 
 data.add_factory_groups([
     new FactoryGroup('crusher'),
@@ -60,7 +60,7 @@ data.add_factory_groups([
     new FactoryGroup('chemical_plant'),
     new FactoryGroup('hydro_plant'),
 ]);
-let factory_groups = data.factory_groups;
+const factory_groups = data.factory_groups;
 
 data.add_processes(
     [

@@ -15,7 +15,7 @@ import { StandardGraphRenderer } from '../../src/visit/standard_graph_renderer.j
 
 describe('calculating for output rates', function () {
     describe('basic, almost linear', function () {
-        let data = setup_data();
+        const data = setup_data();
         add_items_to_data(data, ['a', 'b', 'c', 'd', 'e', 'f', 'g']);
         add_processes_to_data(data, {
             C: { in: ['a', 'b'], out: ['c'] },
@@ -24,8 +24,8 @@ describe('calculating for output rates', function () {
             F: { in: ['e'], out: ['f'] },
         });
         it('calculates process counts', function () {
-            let pc = new ProcessChain(Object.values(data.processes));
-            let result = pc.accept(
+            const pc = new ProcessChain(Object.values(data.processes));
+            const result = pc.accept(
                 new RateCalculator(
                     new Stack(data.items['f'], 1),
                     [],
@@ -38,8 +38,8 @@ describe('calculating for output rates', function () {
             assert.strictEqual(result.process_counts['C'], 2);
         });
         it('calculates material counts', function () {
-            let pc = new ProcessChain(Object.values(data.processes));
-            let result = pc.accept(
+            const pc = new ProcessChain(Object.values(data.processes));
+            const result = pc.accept(
                 new RateCalculator(
                     new Stack(data.items['f'], 1),
                     [],

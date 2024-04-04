@@ -29,7 +29,7 @@ const get_ingredient_amount = function (ingredient) {
     if (typeof amount === 'undefined') {
         amount = (ingredient.amount_min + ingredient.amount_max) / 2;
     }
-    let probability = ingredient.probability;
+    const probability = ingredient.probability;
     if (probability) {
         amount = amount * probability;
     }
@@ -37,7 +37,7 @@ const get_ingredient_amount = function (ingredient) {
 };
 
 const convert_ingredient = function (data, ingredient) {
-    let amount = get_ingredient_amount(ingredient);
+    const amount = get_ingredient_amount(ingredient);
     if (ingredient.temperature) {
         return new Stack(
             data.items[ingredient.name + '_' + ingredient.temperature],
@@ -48,14 +48,14 @@ const convert_ingredient = function (data, ingredient) {
 };
 
 const _recipe_has_fluid_temperature = function (recipe) {
-    let i = recipe.ingredients.some(
+    const i = recipe.ingredients.some(
         (ingredient) =>
             false ||
             ingredient.minimum_temperature ||
             ingredient.maximum_temperature ||
             ingredient.temperature,
     );
-    let p = recipe.products.some(
+    const p = recipe.products.some(
         (ingredient) =>
             false ||
             ingredient.minimum_temperature ||
@@ -113,7 +113,7 @@ const _add_temperature_recipe = function (
         check_add([recipe, product], () => add_item(data, product.name));
     });
 
-    let ingredient_variations = cross_product_ingredients(
+    const ingredient_variations = cross_product_ingredients(
         data,
         recipe.ingredients,
         temperature_based_items,
@@ -135,9 +135,9 @@ const _add_temperature_recipe = function (
 
 const compute_permutations = function (input, out) {
     if (input.length == 0) return out;
-    let entry = input.shift();
+    const entry = input.shift();
     if (out) {
-        let r = [];
+        const r = [];
         out.forEach((o) => {
             entry.forEach((e) => {
                 r.push(o.concat(e));
@@ -157,9 +157,9 @@ const cross_product_ingredients = function (
     ingredients,
     temperature_based_items,
 ) {
-    let ingredients_with_temperature_lists = ingredients.map((i) => {
+    const ingredients_with_temperature_lists = ingredients.map((i) => {
         if (i.minimum_temperature || i.maximum_temperature) {
-            let stack_in_range = Object.keys(temperature_based_items[i.name])
+            const stack_in_range = Object.keys(temperature_based_items[i.name])
                 .filter(
                     (t) =>
                         i.minimum_temperature <= t &&
@@ -172,9 +172,9 @@ const cross_product_ingredients = function (
             return [convert_ingredient(data, i)];
         }
     });
-    let permutations = compute_permutations(
+    const permutations = compute_permutations(
         ingredients_with_temperature_lists.map((ingredient_list) => {
-            let r = [];
+            const r = [];
             for (let i = 0; i < ingredient_list.length; ++i) r.push(i);
             return r;
         }),
@@ -233,10 +233,10 @@ const _add_temperature_based_item = function (
 
 async function create_data(game, version, json_promise_cb) {
     // if (!!!json_promise_cb) json_promise_cb = _import_file;
-    let data_p = json_promise_cb('recipe.json').then((recipe_raw) => {
-        let data = new Data(game, version);
+    const data_p = json_promise_cb('recipe.json').then((recipe_raw) => {
+        const data = new Data(game, version);
 
-        let temperature_based_items = {}; // [base name][temperature] => Item
+        const temperature_based_items = {}; // [base name][temperature] => Item
 
         // enumerate all possible temperatures for fluids.
         // create temperature based items for each.
@@ -246,8 +246,8 @@ async function create_data(game, version, json_promise_cb) {
             if (!Array.isArray(recipe.products)) recipe.products = [];
             recipe.products.forEach((product) => {
                 if (product.temperature) {
-                    let temp = product.temperature;
-                    let item = check_add([recipe, product], () =>
+                    const temp = product.temperature;
+                    const item = check_add([recipe, product], () =>
                         add_item(
                             data,
                             product.name + '_' + temp,
@@ -279,8 +279,8 @@ async function create_data(game, version, json_promise_cb) {
                         i.maximum_temperature = i.temperature;
                     }
                     if (i.minimum_temperature > -1e207) {
-                        let temp = i.minimum_temperature;
-                        let item = check_add([recipe, i], () =>
+                        const temp = i.minimum_temperature;
+                        const item = check_add([recipe, i], () =>
                             add_item(
                                 data,
                                 i.name + '_' + temp,
@@ -294,8 +294,8 @@ async function create_data(game, version, json_promise_cb) {
                         );
                     }
                     if (i.maximum_temperature < 1e207) {
-                        let temp = i.maximum_temperature;
-                        let item = check_add([recipe, i], () =>
+                        const temp = i.maximum_temperature;
+                        const item = check_add([recipe, i], () =>
                             add_item(
                                 data,
                                 i.name + '_' + temp,
@@ -324,13 +324,13 @@ async function create_data(game, version, json_promise_cb) {
         return data;
     });
 
-    let groups_p = [
+    const groups_p = [
         'assembling-machine.json',
         'furnace.json',
         'rocket-silo.json',
     ].map(json_promise_cb);
     return Promise.all([data_p, ...groups_p]).then((arr) => {
-        let data = arr.shift();
+        const data = arr.shift();
         arr.forEach((g) => {
             add_factory_groups(data, g);
         });

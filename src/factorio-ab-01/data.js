@@ -4,7 +4,7 @@ import { Item } from '../item.js';
 import { Data } from '../data.js';
 import { Process } from '../process.js';
 
-let raw = require('./exported-data.json');
+const raw = require('./exported-data.json');
 
 const fix_identifier = function (id) {
     return id.replace(/-/g, '_');
@@ -22,7 +22,7 @@ const check_add = function (item, fn) {
 const convert_ingredient = function (ingredient, recipe) {
     const ingredient_name = fix_identifier(ingredient.name);
     let amount = ingredient.amount;
-    let probability = ingredient.probability;
+    const probability = ingredient.probability;
     if (typeof amount === 'undefined') {
         amount = (ingredient.amount_min + ingredient.amount_max) / 2;
     }
@@ -35,10 +35,10 @@ const convert_ingredient = function (ingredient, recipe) {
     );
 };
 
-let data_p = import('./exported-data.json', { assert: { type: 'json' } })
+const data_p = import('./exported-data.json', { assert: { type: 'json' } })
     .then((module) => module.default)
     .then((raw) => {
-        let data = new Data('factorio-ab-01', '0.0.1');
+        const data = new Data('factorio-ab-01', '0.0.1');
         raw.recipes.forEach((recipe) => {
             if (!recipe.name) return; // ignore '{}'
             check_add(recipe, function () {
@@ -58,7 +58,7 @@ let data_p = import('./exported-data.json', { assert: { type: 'json' } })
                     );
                 }
             });
-            let inputs = recipe.ingredients.map((ing) =>
+            const inputs = recipe.ingredients.map((ing) =>
                 convert_ingredient(ing, recipe),
             );
             let outputs = recipe.products

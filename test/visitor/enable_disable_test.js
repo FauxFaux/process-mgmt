@@ -12,7 +12,7 @@ import {
 
 describe('Enables and disables processes', function () {
     describe('basic enable/disable', function () {
-        let data = setup_data();
+        const data = setup_data();
         add_items_to_data(data, ['a', 'b', 'c', 'd', 'e', 'f', 'g']);
         add_processes_to_data(data, {
             C: { in: ['a', 'b'], out: ['c'] },
@@ -22,13 +22,13 @@ describe('Enables and disables processes', function () {
             G: { in: ['d'], out: ['g'] },
         });
         it('enables from an empty ProcessChain', function () {
-            let pc = new ProcessChain([]);
-            let result = pc.accept(new EnableDisable(data, ['C'], []));
+            const pc = new ProcessChain([]);
+            const result = pc.accept(new EnableDisable(data, ['C'], []));
             assert.strictEqual(result.processes.length, 1);
         });
         it('disables', function () {
-            let pc = new ProcessChain(Object.values(data.processes));
-            let result = pc.accept(new EnableDisable(data, [], ['C']));
+            const pc = new ProcessChain(Object.values(data.processes));
+            const result = pc.accept(new EnableDisable(data, [], ['C']));
             assert.strictEqual(result.processes.length, 4);
         });
     });
