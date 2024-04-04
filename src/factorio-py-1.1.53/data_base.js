@@ -217,7 +217,7 @@ const _add_temperature_based_item = function (
     product,
     item,
 ) {
-    if (!!!temperature_based_items[product.name]) {
+    if (!temperature_based_items[product.name]) {
         temperature_based_items[product.name] = {};
     }
     temperature_based_items[product.name][product.temperature] = item;
@@ -232,7 +232,7 @@ const _import_file = function (name) {
 };
 
 async function create_data(game, version, json_promise_cb) {
-    if (!!!json_promise_cb) json_promise_cb = _import_file;
+    if (!json_promise_cb) json_promise_cb = _import_file;
     const data_p = json_promise_cb('recipe.json').then((recipe_raw) => {
         const data = new Data(game, version);
 

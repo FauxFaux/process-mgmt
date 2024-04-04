@@ -96,7 +96,7 @@ class LinearAlgebra extends ProcessChainVisitor {
         if (!this.print_matricies) return;
         console.log(identifier);
         console.log('columns', matrix.numColumns(), 'rows', matrix.numRows());
-        if (!!!this.items) {
+        if (!this.items) {
             console.table(matrix.data);
             return;
         }

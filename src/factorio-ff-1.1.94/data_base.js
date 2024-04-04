@@ -296,7 +296,7 @@ const _add_temperature_based_item = function (
     product,
     item,
 ) {
-    if (!!!temperature_based_items[product.name]) {
+    if (!temperature_based_items[product.name]) {
         temperature_based_items[product.name] = {};
     }
     temperature_based_items[product.name][product.temperature] = item;
