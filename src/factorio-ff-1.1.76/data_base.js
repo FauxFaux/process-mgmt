@@ -29,7 +29,7 @@ const get_ingredient_amount = function (ingredient) {
     if (typeof amount === 'undefined') {
         amount = (ingredient.amount_min + ingredient.amount_max) / 2;
     }
-    let probability = ingredient.probability;
+    const probability = ingredient.probability;
     if (probability) {
         amount = amount * probability;
     }
@@ -37,7 +37,7 @@ const get_ingredient_amount = function (ingredient) {
 };
 
 const convert_ingredient = function (data, ingredient) {
-    let amount = get_ingredient_amount(ingredient);
+    const amount = get_ingredient_amount(ingredient);
     if (ingredient.temperature) {
         return new Stack(
             data.items[ingredient.name + '_' + ingredient.temperature],
@@ -48,14 +48,14 @@ const convert_ingredient = function (data, ingredient) {
 };
 
 const _recipe_has_fluid_temperature = function (recipe) {
-    let i = recipe.ingredients.some(
+    const i = recipe.ingredients.some(
         (ingredient) =>
             false ||
             ingredient.minimum_temperature ||
             ingredient.maximum_temperature ||
             ingredient.temperature,
     );
-    let p = recipe.products.some(
+    const p = recipe.products.some(
         (ingredient) =>
             false ||
             ingredient.minimum_temperature ||
@@ -66,12 +66,12 @@ const _recipe_has_fluid_temperature = function (recipe) {
 };
 
 const _add_basic_recipe = function (data, recipe) {
-    recipe.ingredients.forEach((ingredient) => {
+    for (const ingredient of recipe.ingredients) {
         check_add([recipe, ingredient], () => add_item(data, ingredient.name));
-    });
-    recipe.products.forEach((product) => {
+    }
+    for (const product of recipe.products) {
         check_add([recipe, product], () => add_item(data, product.name));
-    });
+    }
     check_add([recipe, recipe.category], () => {
         if (!data.factory_groups[recipe.category]) {
             data.add_factory_group(new FactoryGroup(recipe.category));
@@ -100,7 +100,7 @@ const _add_temperature_recipe = function (
             data.add_factory_group(new FactoryGroup(recipe.category));
         }
     });
-    recipe.ingredients.forEach((ingredient) => {
+    for (const ingredient of recipe.ingredients) {
         if (ingredient.minimum_temperature || ingredient.maximum_temperature) {
             // pass; should already be added?
         } else {
@@ -108,18 +108,18 @@ const _add_temperature_recipe = function (
                 add_item(data, ingredient.name),
             );
         }
-    });
-    recipe.products.forEach((product) => {
+    }
+    for (const product of recipe.products) {
         check_add([recipe, product], () => add_item(data, product.name));
-    });
+    }
 
-    let ingredient_variations = cross_product_ingredients(
+    const ingredient_variations = cross_product_ingredients(
         data,
         recipe.ingredients,
         temperature_based_items,
     );
     check_add(recipe, () => {
-        ingredient_variations.forEach((variation, idx) => {
+        for (const [idx, variation] of ingredient_variations.entries()) {
             data.add_process(
                 new Process(
                     recipe.name + '--' + idx,
@@ -129,20 +129,20 @@ const _add_temperature_recipe = function (
                     data.factory_groups[recipe.category],
                 ),
             );
-        });
+        }
     });
 };
 
 const compute_permutations = function (input, out) {
     if (input.length == 0) return out;
-    let entry = input.shift();
+    const entry = input.shift();
     if (out) {
-        let r = [];
-        out.forEach((o) => {
-            entry.forEach((e) => {
+        const r = [];
+        for (const o of out) {
+            for (const e of entry) {
                 r.push(o.concat(e));
-            });
-        });
+            }
+        }
         return compute_permutations(input, r);
     } else {
         return compute_permutations(
@@ -157,9 +157,9 @@ const cross_product_ingredients = function (
     ingredients,
     temperature_based_items,
 ) {
-    let ingredients_with_temperature_lists = ingredients.map((i) => {
+    const ingredients_with_temperature_lists = ingredients.map((i) => {
         if (i.minimum_temperature || i.maximum_temperature) {
-            let stack_in_range = Object.keys(temperature_based_items[i.name])
+            const stack_in_range = Object.keys(temperature_based_items[i.name])
                 .filter(
                     (t) =>
                         i.minimum_temperature <= t &&
@@ -172,9 +172,9 @@ const cross_product_ingredients = function (
             return [convert_ingredient(data, i)];
         }
     });
-    let permutations = compute_permutations(
+    const permutations = compute_permutations(
         ingredients_with_temperature_lists.map((ingredient_list) => {
-            let r = [];
+            const r = [];
             for (let i = 0; i < ingredient_list.length; ++i) r.push(i);
             return r;
         }),
@@ -187,15 +187,15 @@ const cross_product_ingredients = function (
 };
 
 const add_factory_groups = function (data, group) {
-    Object.values(group).forEach((factory) => {
+    for (const factory of Object.values(group)) {
         check_add([factory, factory.crafting_categories], () => {
-            Object.keys(factory.crafting_categories).forEach(
-                (category_name) => {
-                    if (!data.factory_groups[category_name]) {
-                        data.add_factory_group(new FactoryGroup(category_name));
-                    }
-                },
-            );
+            for (const category_name of Object.keys(
+                factory.crafting_categories,
+            )) {
+                if (!data.factory_groups[category_name]) {
+                    data.add_factory_group(new FactoryGroup(category_name));
+                }
+            }
         });
         check_add(factory, () => {
             data.add_factory(
@@ -209,7 +209,7 @@ const add_factory_groups = function (data, group) {
                 ),
             );
         });
-    });
+    }
 };
 
 const _add_temperature_based_item = function (
@@ -217,14 +217,14 @@ const _add_temperature_based_item = function (
     product,
     item,
 ) {
-    if (!!!temperature_based_items[product.name]) {
+    if (!temperature_based_items[product.name]) {
         temperature_based_items[product.name] = {};
     }
     temperature_based_items[product.name][product.temperature] = item;
 };
 
 async function create_data(game, version) {
-    let data_p = import('./recipe-lister/recipe.json', {
+    const data_p = import('./recipe-lister/recipe.json', {
         assert: { type: 'json' },
     })
         .catch((e) => {
@@ -232,20 +232,20 @@ async function create_data(game, version) {
         })
         .then((m) => m.default)
         .then((recipe_raw) => {
-            let data = new Data(game, version);
+            const data = new Data(game, version);
 
-            let temperature_based_items = {}; // [base name][temperature] => Item
+            const temperature_based_items = {}; // [base name][temperature] => Item
 
             // enumerate all possible temperatures for fluids.
             // create temperature based items for each.
 
-            Object.values(recipe_raw).forEach((recipe) => {
+            for (const recipe of Object.values(recipe_raw)) {
                 if (!Array.isArray(recipe.ingredients)) recipe.ingredients = [];
                 if (!Array.isArray(recipe.products)) recipe.products = [];
-                recipe.products.forEach((product) => {
+                for (const product of recipe.products) {
                     if (product.temperature) {
-                        let temp = product.temperature;
-                        let item = check_add([recipe, product], () =>
+                        const temp = product.temperature;
+                        const item = check_add([recipe, product], () =>
                             add_item(
                                 data,
                                 product.name + '_' + temp,
@@ -262,24 +262,24 @@ async function create_data(game, version) {
                             add_item(data, product.name),
                         );
                     }
-                });
-            });
+                }
+            }
 
             // if a process has one of the temperature fluids as an input then create multiple variants
 
-            Object.values(recipe_raw).forEach((recipe) => {
+            for (const recipe of Object.values(recipe_raw)) {
                 check_add(recipe, () => {
                     if (!Array.isArray(recipe.ingredients))
                         recipe.ingredients = [];
                     if (!Array.isArray(recipe.products)) recipe.products = [];
-                    recipe.ingredients.forEach((i) => {
+                    for (const i of recipe.ingredients) {
                         if (i.temperature) {
                             i.minimum_temperature = i.temperature;
                             i.maximum_temperature = i.temperature;
                         }
                         if (i.minimum_temperature > -1e207) {
-                            let temp = i.minimum_temperature;
-                            let item = check_add([recipe, i], () =>
+                            const temp = i.minimum_temperature;
+                            const item = check_add([recipe, i], () =>
                                 add_item(
                                     data,
                                     i.name + '_' + temp,
@@ -293,8 +293,8 @@ async function create_data(game, version) {
                             );
                         }
                         if (i.maximum_temperature < 1e207) {
-                            let temp = i.maximum_temperature;
-                            let item = check_add([recipe, i], () =>
+                            const temp = i.maximum_temperature;
+                            const item = check_add([recipe, i], () =>
                                 add_item(
                                     data,
                                     i.name + '_' + temp,
@@ -307,7 +307,7 @@ async function create_data(game, version) {
                                 item,
                             );
                         }
-                    });
+                    }
 
                     if (_recipe_has_fluid_temperature(recipe)) {
                         _add_temperature_recipe(
@@ -319,11 +319,11 @@ async function create_data(game, version) {
                         _add_basic_recipe(data, recipe);
                     }
                 });
-            });
+            }
             return data;
         });
 
-    let groups_p = [
+    const groups_p = [
         'assembling-machine.json',
         'furnace.json',
         'rocket-silo.json',
@@ -333,10 +333,10 @@ async function create_data(game, version) {
             .catch((e) => console.error('failed to read .json:', f, e)),
     );
     return Promise.all([data_p, ...groups_p]).then((arr) => {
-        let data = arr.shift();
-        arr.forEach((g) => {
+        const data = arr.shift();
+        for (const g of arr) {
             add_factory_groups(data, g);
-        });
+        }
         return data;
     });
 }

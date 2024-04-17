@@ -8,13 +8,19 @@ import { Stack } from '../../src/stack.js';
 
 import { RateVisitor } from '../../src/visit/rate_visitor.js';
 
-let item_a = new Item('a', 'A');
-let item_b = new Item('b', 'B');
-let item_c = new Item('c', 'C');
-let basic_group = new FactoryGroup('basic_group');
-let double_speed_factory = new Factory('basic', 'basic', [basic_group], 0.5, 1);
+const item_a = new Item('a', 'A');
+const item_b = new Item('b', 'B');
+const item_c = new Item('c', 'C');
+const basic_group = new FactoryGroup('basic_group');
+const double_speed_factory = new Factory(
+    'basic',
+    'basic',
+    [basic_group],
+    0.5,
+    1,
+);
 
-let process_for_c = new Process(
+const process_for_c = new Process(
     'produces_c',
     [new Stack(item_a, 3), new Stack(item_b, 2)],
     [new Stack(item_c, 5)],
@@ -25,37 +31,43 @@ let process_for_c = new Process(
 describe('Rate Visitor', function () {
     describe('Conversion to rates', function () {
         it("converts single process' output", function () {
-            let pc = new ProcessChain([process_for_c]);
-            let result = pc.accept(new RateVisitor());
+            const pc = new ProcessChain([process_for_c]);
+            const result = pc.accept(new RateVisitor());
             assert.strictEqual(2.5, result.processes[0].outputs[0].quantity);
         });
         it("converts single process' input", function () {
-            let pc = new ProcessChain([process_for_c]);
-            let result = pc.accept(new RateVisitor());
+            const pc = new ProcessChain([process_for_c]);
+            const result = pc.accept(new RateVisitor());
             assert.strictEqual(1.5, result.processes[0].inputs[0].quantity);
             assert.strictEqual(1, result.processes[0].inputs[1].quantity);
         });
         it("converts single process' duration", function () {
-            let pc = new ProcessChain([process_for_c]);
-            let result = pc.accept(new RateVisitor());
+            const pc = new ProcessChain([process_for_c]);
+            const result = pc.accept(new RateVisitor());
             assert.strictEqual(1, result.processes[0].duration);
         });
     });
     describe('Updates Processes based on factory type', function () {
         it("converts single process' output", function () {
-            let pc = new ProcessChain([process_for_c]);
-            let result = pc.accept(new RateVisitor(() => double_speed_factory));
+            const pc = new ProcessChain([process_for_c]);
+            const result = pc.accept(
+                new RateVisitor(() => double_speed_factory),
+            );
             assert.strictEqual(5, result.processes[0].outputs[0].quantity);
         });
         it("converts single process' input", function () {
-            let pc = new ProcessChain([process_for_c]);
-            let result = pc.accept(new RateVisitor(() => double_speed_factory));
+            const pc = new ProcessChain([process_for_c]);
+            const result = pc.accept(
+                new RateVisitor(() => double_speed_factory),
+            );
             assert.strictEqual(3, result.processes[0].inputs[0].quantity);
             assert.strictEqual(2, result.processes[0].inputs[1].quantity);
         });
         it("converts single process' duration", function () {
-            let pc = new ProcessChain([process_for_c]);
-            let result = pc.accept(new RateVisitor(() => double_speed_factory));
+            const pc = new ProcessChain([process_for_c]);
+            const result = pc.accept(
+                new RateVisitor(() => double_speed_factory),
+            );
             assert.strictEqual(1, result.processes[0].duration);
         });
     });

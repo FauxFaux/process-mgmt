@@ -20,12 +20,12 @@ class StandardGraphRenderer extends ProcessChainVisitor {
     }
 
     visit_process(process, _chain) {
-        let inputs = process.inputs
+        const inputs = process.inputs
             .map((input, index) => {
                 return '<i' + index + '> ' + input.item.name;
             })
             .join(' | ');
-        let outputs = process.outputs
+        const outputs = process.outputs
             .map((output, index) => {
                 return '<o' + index + '> ' + output.item.name;
             })

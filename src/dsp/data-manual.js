@@ -7,7 +7,7 @@ import {
     Process,
 } from '../structures.js';
 
-let data = new Data('dsp', '0.0.1');
+const data = new Data('dsp', '0.0.1');
 
 data.add_items([
     new Item('iron_ore', 'iron ore'),
@@ -42,14 +42,14 @@ data.add_items([
     new Item('kimberlite_ore', 'kimberlite ore'),
     new Item('d', ''),
 ]);
-let items = data.items;
+const items = data.items;
 
 data.add_factory_groups([
     new FactoryGroup('smelter'),
     new FactoryGroup('assembler'),
     new FactoryGroup('particle_collider'),
 ]);
-let factory_groups = data.factory_groups;
+const factory_groups = data.factory_groups;
 
 data.add_factories([
     new Factory('assembler_I', 'assembler I', factory_groups.assembler, 1 / 1),

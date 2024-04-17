@@ -32,16 +32,16 @@ class Data {
     }
 
     add_items(items) {
-        items.forEach((i) => this.add_item(i));
+        for (const i of items) this.add_item(i);
     }
     add_factory_groups(factory_groups) {
-        factory_groups.forEach((f) => this.add_factory_group(f));
+        for (const f of factory_groups) this.add_factory_group(f);
     }
     add_factories(factories) {
-        factories.forEach((f) => this.add_factory(f));
+        for (const f of factories) this.add_factory(f);
     }
     add_processes(processes) {
-        processes.forEach((p) => this.add_process(p));
+        for (const p of processes) this.add_process(p);
     }
 }
 

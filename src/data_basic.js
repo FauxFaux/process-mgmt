@@ -20,17 +20,16 @@ function data_from_standard_json(name, version, json_import_p) {
     return json_import_p
         .then((module) => module.default)
         .then((raw) => {
-            let data = new Data(name, version);
+            const data = new Data(name, version);
 
-            raw.items.forEach((i) =>
+            for (const i of raw.items)
                 check_add(i, () => {
                     if (!i.id) return;
                     data.add_item(new Item(i.id, i.i18n.en, i.group));
-                }),
-            );
+                });
 
-            raw.processes.forEach((p) => {
-                if (!p.name) return;
+            for (const p of raw.processes) {
+                if (!p.name) continue;
                 if (!data.factory_groups['' + p.factory_group]) {
                     check_add(p, () =>
                         data.add_factory_group(
@@ -38,13 +37,13 @@ function data_from_standard_json(name, version, json_import_p) {
                         ),
                     );
                 }
-                let inputs = Object.entries(p.inputs).map((e) => {
+                const inputs = Object.entries(p.inputs).map((e) => {
                     return check_add(
                         p,
                         () => new Stack(data.items[e[0]], e[1]),
                     );
                 });
-                let outputs = Object.entries(p.outputs).map((e) => {
+                const outputs = Object.entries(p.outputs).map((e) => {
                     return check_add(
                         p,
                         () => new Stack(data.items[e[0]], e[1]),
@@ -64,22 +63,19 @@ function data_from_standard_json(name, version, json_import_p) {
                         ),
                     );
                 });
-            });
+            }
 
-            raw.factory_types
-                .map((f) => [
-                    f,
-                    new Factory(
-                        '' + f.id,
-                        '' + f.name,
-                        f.factory_groups.map((id) => data.factory_groups[id]),
-                        f.duration_modifier,
-                        f.output_modifier,
-                    ),
-                ])
-                .forEach((ff) =>
-                    check_add(ff[0], () => data.add_factory(ff[1])),
-                );
+            for (const ff of raw.factory_types.map((f) => [
+                f,
+                new Factory(
+                    '' + f.id,
+                    '' + f.name,
+                    f.factory_groups.map((id) => data.factory_groups[id]),
+                    f.duration_modifier,
+                    f.output_modifier,
+                ),
+            ]))
+                check_add(ff[0], () => data.add_factory(ff[1]));
 
             return data;
         });

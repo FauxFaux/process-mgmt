@@ -1,5 +1,5 @@
 const select_process = function (chain, item_id, callback) {
-    let processes_for_current = chain.processes_by_output[item_id];
+    const processes_for_current = chain.processes_by_output[item_id];
     if (processes_for_current && processes_for_current.length > 1) {
         if (!callback) {
             throw new Error('No priority selector enabled');
